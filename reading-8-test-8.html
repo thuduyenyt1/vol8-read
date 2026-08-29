@@ -1,0 +1,4582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
+    <title>IELTS Full Reading Practice</title>
+    <style>
+        /* All CSS styles remain exactly the same as in the original code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            background-color: #ffffff;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+
+        .header {
+            background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb);
+            background-size: 200% 200%;
+            animation: bannerFlow 8s ease-in-out infinite;
+            padding: 10px 20px;
+            border-bottom: 1px solid #d7def5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 60px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1 1 auto;
+            justify-content: flex-start;
+        }
+        .header-ad {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(215, 222, 245, 0.9);
+            background: rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(4px);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12);
+            min-width: 180px;
+            max-width: calc(100% - 70px);
+            width: auto;
+            flex: 1 1 auto;
+            height: 48px;
+            overflow: hidden;
+        }
+        .ad-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .ad-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #6b7ac7;
+            margin: 0;
+            font-weight: 700;
+        }
+        .ad-marquee {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            //animation: marqueeSlide 14s linear infinite;
+            align-items: center;
+            padding-left: 4px;
+        }
+        .ad-headline {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1c2566;
+            white-space: nowrap;
+        }
+        .ad-loop {
+            display: flex;
+            gap: 40px;
+        }
+        .ad-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #cdd6f5;
+            background: rgba(255, 255, 255, 0.7);
+            color: #46507a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 800;
+            flex: 0 0 auto;
+            margin-left: 6px;
+            font-size: 16px;
+        }
+        .ad-close:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
+            background: #f6f8ff;
+        }
+        .ad-close {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #cdd6f5;
+            background: rgba(255, 255, 255, 0.7);
+            color: #46507a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 800;
+        }
+        .ad-close:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
+            background: #f6f8ff;
+        }
+        @keyframes bannerFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes marqueeSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+
+        .ielts-logo {
+            display: none;
+        }
+
+        .test-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .audio-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .audio-icon {
+            width: 16px;
+            height: 16px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon></svg>') no-repeat center;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+        }
+
+        #volume-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 4px;
+            background: #ddd;
+            outline: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        #volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+
+        #volume-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            border: none;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon:hover {
+            opacity: 1;
+        }
+        
+        #play-pause-btn {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .main-container {
+            margin-top: 90px;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            height: calc(100vh - 90px);
+        }
+
+        .panels-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px; /* Minimum width */
+        }
+
+        /* Passage Content */
+        .text-center {
+            text-align: center;
+        }
+        .reading-passage h4 {
+            font-family: 'Merriweather', 'Times New Roman', serif; /* Oqlangan serif shrift */
+            font-size: 22px; /* Biroz kattaroq */
+            font-weight: 600; /* O‘rtacha qalinlik */
+            color: #2c3e50; /* To‘q kulrang ko‘k rang */
+            line-height: 1.4; /* Qulay satr oralig‘i */
+            margin-bottom: 20px; /* Ko‘proq bo‘shliq */
+            text-align: center;
+            border-bottom: 2px solid #4a90e2; /* Ko‘k chegara */
+            padding-bottom: 5px; /* Chegara bilan matn oralig‘i */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Engil soya */
+        }
+       
+        .reading-passage p {
+            margin-bottom: 1.2em;
+        }
+
+        .question ul li label {
+            display: block;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .questions-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px; /* Minimum width */
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .resizer {
+            width: 10px;
+            cursor: col-resize;
+            background-color: #f0f0f0;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="30" viewBox="0 0 10 30"><path d="M4 11h2v2H4zM4 15h2v2H4zM4 19h2v2H4z" fill="%23888"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+
+        /* Left Panel */
+        .left-panel {
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: none;
+            width: 50%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .help-button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .help-button:hover {
+            background: #357abd;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .people-section {
+            margin-bottom: 30px;
+        }
+
+        .people-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        .people-table th {
+            text-align: left;
+            padding: 10px;
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+
+        .people-table td {
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+        }
+
+        .person-name {
+            font-size: 16px;
+        }
+
+        .question-number {
+            background: white;
+            border: 1px solid #4a90e2;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #4a90e2;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .assigned-responsibility {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+        }
+
+        .responsibilities-section {
+            margin-bottom: 30px;
+        }
+
+        .responsibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .responsibility-item {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: move;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .responsibility-item:hover {
+            background: #e9ecef;
+            transform: translateY(-1px);
+        }
+
+        .responsibility-item.dragging {
+            opacity: 0.5;
+        }
+
+        .questions-section {
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .instruction {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Map Styles */
+        .map-container {
+            position: relative;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .map-svg {
+            border: 2px solid #333;
+            background: white;
+        }
+
+        .map-room {
+            fill: #f9f9f9;
+            stroke: #333;
+            stroke-width: 1;
+        }
+
+        .map-text {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            text-anchor: middle;
+            fill: #333;
+        }
+
+        .map-number {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-anchor: middle;
+            fill: #333;
+        }
+
+        .room-labels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .room-label {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: move;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .room-label:hover {
+            background: #e9ecef;
+            transform: translateY(-1px);
+        }
+
+        .room-label.dragging {
+            opacity: 0.5;
+        }
+
+        /* Navigation Arrows */
+        .nav-arrows {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-arrow:hover {
+            background: #555;
+        }
+
+        .nav-arrow:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Bottom Navigation - Exact Match */
+        .nav-row {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+        
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            z-index: 100;
+        }
+
+        .footer__questionWrapper___1tZ46 {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+
+        .footer__questionNo___3WNct {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .footer__questionNo___3WNct:hover {
+            background-color: #f8f9fa;
+        }
+
+        .section-prefix {
+            font-size: 16px;
+        }
+
+        .sectionNr {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .attemptedCount {
+            font-size: 14px;
+            color: #666;
+            margin-left: 5px;
+            font-weight: 400; /* Normal weight */
+        }
+
+        @media (max-width: 768px) {
+            .attemptedCount {
+                display: none;
+            }
+        }
+
+        .footer__questionWrapper___1tZ46.selected .attemptedCount {
+            display: none;
+        }
+
+        .footer__subquestionWrapper___9GgoP {
+            display: none;
+            gap: 2px;
+            margin-left: 10px;
+        }
+
+        .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP {
+            display: flex;
+        }
+
+        .subQuestion {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ccc;
+            background: white;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+
+        .subQuestion.answered {
+            background-color: #e9ecef;
+            border-color: #ddd;
+        }
+        .subQuestion.correct {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        .subQuestion.incorrect {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .subQuestion.marked {
+            position: relative;
+            color: #333;
+        }
+
+        .subQuestion:hover {
+            background-color: #f0f0f0;
+            border-color: #999;
+        }
+
+        .subQuestion.active {
+            background-color: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+
+        .subQuestion.completed {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .subQuestion.marked.active {
+            box-shadow: 0 0 0 2px #f0c000;
+        }
+
+        .subQuestion.marked::after {
+            content: "";
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 14px;
+            height: 18px;
+            background: #ffd400;
+            border: 1px solid #d49b00;
+            border-radius: 2px 2px 0 0;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .footer__deliverButton___3FM07 {
+            margin-left: auto;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, border-color 0.2s;
+            min-width: 170px;
+            justify-content: center;
+        }
+
+        .footer__deliverButton___3FM07:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        .footer__deliverButton___3FM07:disabled {
+            background: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            border-color: #ddd;
+        }
+
+        .fa-check::before {
+            content: "✓";
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Context Menu */
+        .context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            min-width: 140px;
+        }
+
+        .context-menu-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .context-menu-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .context-menu-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .context-menu-item.has-submenu {
+            position: relative;
+            justify-content: space-between;
+            padding-right: 10px;
+        }
+
+        .submenu-arrow {
+            font-size: 12px;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .highlight-submenu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            display: none;
+            min-width: 132px;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .context-menu-item.has-submenu:hover .highlight-submenu {
+            display: block;
+        }
+
+        .highlight-color-option {
+            width: 100%;
+            border: none;
+            background: #fff;
+            padding: 10px 12px;
+            font-size: 15px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlight-color-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.18);
+            flex: 0 0 auto;
+        }
+
+        .color-dot.yellow { background-color: #fff3a3; }
+        .color-dot.green { background-color: #b4f0c1; }
+        .color-dot.pink { background-color: #ffc7df; }
+
+        .annotation-highlight {
+            background-color: var(--highlight-color, #fff3a3);
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
+        .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
+        .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
+
+        .annotation-note {
+            background-color: #b4f0c1;
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .annotation-note[data-note]:hover::after {
+            content: attr(data-note);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, -6px);
+            background: #1f2937;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 13px;
+            z-index: 2000;
+        }
+
+        .question {
+            margin-bottom: 40px;
+        }
+        .question p {
+            margin-bottom: 10px;
+        }
+        .question ul, .question .people-table {
+            margin-top: 0;
+        }
+        .question-prompt {
+            margin-bottom: 20px;
+        }
+        .question-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 10px;
+            color: #000;
+        }
+        .question ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .question ul li {
+            margin-bottom: 5px;
+        }
+        .answer-input {
+            border: 1px solid #888;
+            border-radius: 4px;
+            background-color: #fff;
+            padding: 2px 5px;
+            font-size: 16px;
+            text-align: center;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 28px; /* Standard height */
+            width: 150px; /* Standard width */
+        }
+        .answer-input.active-input {
+            border-color: #4a90e2;
+            box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5);
+        }
+        .answer-input::placeholder {
+            color: #999;
+            font-weight: bold;
+            text-align: center;
+        }
+        .answer-input.correct {
+            border-color: #28a745;
+            background-color: #e9f7ef;
+        }
+        .answer-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer-input {
+    z-index: 10;
+    position: relative;
+    pointer-events: auto;
+}
+        .drag-drop-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            align-items: flex-start;
+        }
+        .recommendations-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            min-height: 200px;
+        }
+        .drag-item {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: move;
+            font-size: 16px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .drag-item:hover {
+            background: #e9ecef;
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+        }
+        .drag-item.selected {
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
+        }
+        .drop-zone {
+            border: 2px dashed #aaa;
+            border-radius: 4px;
+            width: 50%;
+            margin-top: 19px;
+            margin-bottom: 5px;
+            transition: background-color 0.2s, border-color 0.2s;
+            padding: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .drop-zone.drag-over {
+            background-color: #e6f4ff;
+            border-color: #4a90e2;
+        }
+        .drop-zone.correct {
+            background-color: #e9f7ef;
+            border-color: #28a745;
+            border-style: solid;
+        }
+        .drop-zone.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            border-style: solid;
+        }
+        .drop-zone.disabled {
+            pointer-events: none;
+        }
+        .drop-zone .drag-item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            padding: 2px;
+        }
+        .drag-options-container {
+            margin-top: 10px;
+        }
+        .drag-options-container .drag-item {
+            display: block;
+            width: fit-content;
+            font-size: 15px;
+            padding: 0.5px 10px;
+            margin-bottom: 5px;
+        }
+        .drag-options-container .drag-item:last-child {
+            margin-bottom: 0;
+        }
+        .summary-options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px 16px;
+            margin-bottom: 14px;
+        }
+        .summary-options-grid .drag-item {
+            width: 100%;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        .q-number {
+            color: #888;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .questions-container {
+            width: 100%;
+        }
+        audio {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .part-header {
+            background-color: #f1f2ec;
+            padding: 10px 16px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            margin: 8px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .part-title {
+            font-weight: 800;
+            font-size: 16px;
+            color: #1f2b4d;
+        }
+        .part-subtitle {
+            font-size: 15px;
+            color: #28365c;
+        }
+
+        .question li.correct {
+            color: #155724;
+            font-weight: bold;
+        }
+        .question li.incorrect {
+            color: #721c24;
+        }
+        .question li.correct::before {
+            content: '✔ ';
+            color: #28a745;
+        }
+        .question li.incorrect::before {
+            content: '✖ ';
+            color: #dc3545;
+        }
+
+        .example-box {
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .timer-container {
+            display: flex;
+            position: relative;
+            cursor: default;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+            min-width: 220px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid #d7def5;
+            background: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08);
+        }
+        .timer-container .timer-tooltip {
+            display: none;
+        }
+
+        .timer-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+
+        .timer-controls button {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 0;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .timer-controls button:hover {
+            background: #e0e0e0;
+        }
+
+        .timer-controls button svg {
+            width: 20px;
+            height: 20px;
+            fill: #333;
+        }
+
+        .audio-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(40, 40, 40, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .audio-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 500px;
+            padding: 20px;
+        }
+        .audio-modal-content p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #eee;
+        }
+        .audio-modal-icon {
+            margin-bottom: 20px;
+        }
+        .modal-play-btn {
+            background-color: #000;
+            color: white;
+            border: 1px solid white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+        .modal-play-btn:hover {
+            background-color: #333;
+        }
+        #goto-widget {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        #goto-input {
+            width: 80px;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #goto-btn {
+            padding: 4px 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styles for TRUE/FALSE/NOT GIVEN questions */
+        .tf-question {
+            margin-bottom: 25px;
+            padding: 10px 0px;
+            border-radius: 4px;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .tf-question-line {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 5px 0px;
+            border-radius: 4px;
+        }
+        .tf-question-number, .question-number-box {
+            border: 2px solid #ccc;
+            padding: 2px 8px;
+            margin-right: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: border-color 0.3s;
+            display: inline-block;
+        }
+        .tf-question-text {
+            padding-top: 3px;
+        }
+        .tf-options {
+            padding-left: 5px;
+        }
+
+        .markable-question {
+            position: relative;
+        }
+        .question-number-with-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 10px;
+        }
+        .question-number-with-mark .tf-question-number,
+        .question-number-with-mark .question-number-box {
+            margin-right: 0;
+        }
+        .mark-toggle-btn {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin-left: 4px;
+            cursor: pointer;
+            opacity: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            color: #777;
+        }
+        .question-number-with-mark:hover .mark-toggle-btn,
+        .markable-blank-wrapper:hover .mark-toggle-btn.inside-blank,
+        .markable-blank-wrapper:focus-within .mark-toggle-btn.inside-blank,
+        .mark-toggle-btn:focus-visible,
+        .mark-toggle-btn.marked {
+            opacity: 1;
+        }
+        .mark-toggle-btn:focus-visible {
+            outline: 2px solid #f0c000;
+            outline-offset: 2px;
+        }
+        .markable-blank-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .markable-blank-wrapper input.answer-input,
+        .markable-blank-wrapper .summary-drop-zone,
+        .markable-blank-wrapper .drop-zone {
+            padding-right: 28px !important;
+            position: relative;
+            z-index: 1;
+        }
+        .mark-toggle-btn.inside-blank {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            width: 18px;
+            height: 18px;
+            color: #777;
+            z-index: 2;
+        }
+        .markable-blank-wrapper:hover .mark-toggle-btn.inside-blank,
+        .markable-blank-wrapper:focus-within .mark-toggle-btn.inside-blank,
+        .mark-toggle-btn.inside-blank.marked {
+            opacity: 1;
+        }
+        .mark-toggle-btn.inside-blank svg {
+            width: 16px;
+            height: 16px;
+        }
+        .mark-toggle-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+        .mark-toggle-btn:hover {
+            color: #444;
+        }
+        .mark-toggle-btn.marked {
+            color: #d49b00;
+        }
+        .mark-toggle-btn.marked svg {
+            fill: #ffd400;
+            stroke: #b37b00;
+        }
+        .tf-option {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .tf-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .tf-question.correct .tf-question-line {
+            background-color: #e9f7ef;
+        }
+        .tf-question.incorrect .tf-question-line {
+            background-color: #f8d7da;
+        }
+        .matching-question-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .matching-options-bank {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .matching-questions {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .matching-question-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .matching-question-item > span {
+            flex: 1;
+        }
+        .matching-question-item.correct {
+            background-color: #e9f7ef;
+            border-color: #28a745 !important;
+        }
+        .matching-question-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545 !important;
+        }
+        .matching-question-item .drop-zone {
+            width: 200px;
+            flex-shrink: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #aaa;
+        }
+        .matching-options-bank .drag-item {
+            font-size: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+
+        .questions-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px; /* Minimum width */
+            border-left: 1px solid #e0e0e0;
+        }
+        .matching-question-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545 !important;
+        }
+        .summary-completion-container {
+            margin-top: 20px;
+        }
+        .summary-text p {
+            line-height: 2.5;
+            font-size: 16px;
+        }
+        .summary-drop-zone {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            position: relative;
+            width: auto;
+            min-width: 90px;
+            max-width: none;
+            min-height: 26px;
+            height: auto;
+            border: 2px dashed #999;
+            border-radius: 4px;
+            margin: 0 5px;
+            padding: 3px 8px;
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+            color: #777;
+            font-weight: 600;
+            flex: 0 0 auto;
+            gap: 4px;
+        }
+        .summary-drop-zone::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 6px;
+            pointer-events: none; /* keep hit area visual-only so drag items remain draggable */
+        }
+        .summary-drop-zone.filled {
+            border-color: #4a90e2;
+            background-color: #f6f9ff;
+            color: #1f2b4d;
+        }
+        .summary-drop-zone.active-input {
+             border-color: #4a90e2;
+             box-shadow: none;
+        }
+        .summary-drop-zone .drag-item {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1f2b4d;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            text-align: center;
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: max-content;
+            white-space: nowrap;
+        }
+        .summary-options-bank {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px 16px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .summary-options-bank .drag-item {
+            text-align: center;
+            width: 100%;
+        }
+        .multi-choice-question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 3px solid transparent;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .multi-choice-option {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .multi-choice-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .multi-choice-option input[type="checkbox"],
+        .multi-choice-option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: #4a90e2;
+        }
+        .multi-choice-option.correct {
+            background-color: #e9f7ef;
+        }
+        .multi-choice-option.incorrect {
+            background-color: #f8d7da;
+        }
+        .multi-choice-warning {
+            margin-top: 8px;
+            color: #c0392b;
+            font-size: 14px;
+        }
+        .grouped-fill {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .grouped-fill-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            margin: 6px 0 10px;
+        }
+        .grouped-fill-intro {
+            margin: 4px 0 6px;
+            line-height: 1.5;
+        }
+        .grouped-fill-section {
+            padding: 4px 0 6px;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+        }
+        .grouped-fill-heading {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #000;
+            font-size: 16px;
+        }
+        .grouped-fill-list {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .grouped-fill-list .grouped-fill-bullet {
+            list-style: disc;
+            margin-left: 22px;
+            padding-left: 4px;
+            line-height: 1.6;
+        }
+        .grouped-fill-list .grouped-fill-subbullet {
+            list-style: none;
+            margin-left: 38px;
+            padding-left: 12px;
+            line-height: 1.6;
+            position: relative;
+        }
+        .grouped-fill-list .grouped-fill-subbullet::before {
+            content: '+';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
+            color: #000;
+        }
+        .grouped-fill-list .grouped-fill-plain {
+            list-style: none;
+            margin-left: 0;
+            line-height: 1.6;
+        }
+        .grouped-fill-list .answer-input {
+            width: 120px;
+            display: inline-block;
+            margin: 0 6px;
+        }
+        .flowchart-question {
+            margin-top: 6px;
+        }
+        .flowchart-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 10px;
+            color: #000;
+        }
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .flowchart-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+        .flowchart-box {
+            width: 100%;
+            max-width: 620px;
+            border: 2px solid #111;
+            padding: 10px 14px;
+            background: #fff;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .flowchart-box .answer-input {
+            width: 120px;
+            display: inline-block;
+            margin: 0 6px;
+        }
+        .flowchart-arrow {
+            position: relative;
+            width: 24px;
+            height: 32px;
+        }
+        .flowchart-arrow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 18px;
+            background: #111;
+        }
+        .flowchart-arrow::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 14px solid #111;
+        }
+        .matching-question-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545 !important;
+        }
+        .matching-question-item .drop-zone.filled {
+            border-color: #4a90e2;
+        }
+        .options-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 10px 0;
+        }
+        .options-list li {
+            margin-bottom: 6px;
+        }
+        .options-list-label {
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .matching-question-item .drop-zone {
+            width: 200px;
+            height: 40px;
+        }
+        .paragraph-matching-question {
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .paragraph-matching-question .answer-input {
+            width: 80px;
+            flex-shrink: 0;
+        }
+
+        .matching-form-container {
+            margin-top: 20px;
+        }
+        .matching-form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+        .matching-form-label {
+            width: auto;
+            flex: 1 1 320px;
+            margin-right: 8px;
+        }
+        .matching-form-row select.answer-input {
+            width: 220px;
+            flex-shrink: 0;
+        }
+
+        /* Results Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.hidden {
+            display: none;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .results-summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .results-details-container {
+            overflow-y: auto;
+            padding-right: 10px; /* For scrollbar */
+        }
+        .result-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr;
+            gap: 15px;
+            padding: 8px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+        }
+        .result-row.incorrect {
+            background-color: #f8d7da;
+        }
+        .result-row .q-num {
+            font-weight: bold;
+        }
+        .result-row .user-ans {
+            color: #555;
+        }
+        .result-row .correct-ans {
+            color: #155724;
+            font-weight: 500;
+        }
+        .correct-answer-display {
+            font-weight: bold;
+            color: #28a745;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .correct-answer-highlight, .tf-option.correct-answer-highlight, .multi-choice-option.correct-answer-highlight {
+            background-color: #d4edda !important;
+            border: 1px solid #c3e6cb !important;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        .correct-answer-highlight {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+        }
+        .diagram-question {
+            margin-bottom: 20px;
+        }
+        .diagram-title {
+            font-size: 18px;
+            margin: 6px 0 10px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .diagram-image-wrap {
+            margin: 12px 0;
+            text-align: center;
+        }
+        .diagram-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #dbe5f5;
+        }
+        .diagram-inputs {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .diagram-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .diagram-number {
+            font-weight: 700;
+            min-width: 32px;
+            color: #0f172a;
+        }
+        .diagram-label {
+            color: #111827;
+        }
+        .diagram-input {
+            flex: 1;
+            min-width: 140px;
+        }
+        .centered-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #launchScreen, #app {
+            width: 100vw;
+            height: 100vh;
+        }
+        #app {
+            display: none;
+        }
+        #launchScreen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%),
+                radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%),
+                #f4f6fc;
+            color: #1f2b59;
+        }
+        .launch-card {
+            width: min(980px, 100%);
+            border: 1px solid #d7def5;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #ffffff, #f7f9ff);
+            box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14);
+            padding: 28px 30px 22px;
+            display: grid;
+            gap: 12px;
+        }
+        .launch-eyebrow {
+            margin: 0;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6f7cb2;
+            font-weight: 700;
+        }
+        .launch-title {
+            margin: 4px 0 0;
+            font-size: clamp(26px, 3.5vw, 40px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #1c2566;
+        }
+        .launch-meta {
+            margin: 8px 0 0;
+            color: #3c4a81;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .launch-guide {
+            border: 1px solid #d7def5;
+            border-radius: 12px;
+            background: #f2f5ff;
+            padding: 14px;
+            display: grid;
+            gap: 6px;
+        }
+        .launch-main {
+            margin: 0;
+            font-size: clamp(18px, 2.2vw, 23px);
+            line-height: 1.32;
+            font-weight: 700;
+            color: #1d2a60;
+        }
+        .launch-sub {
+            margin: 0;
+            color: #4c598f;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        .launch-notes {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 6px;
+            color: #3f4e83;
+            font-size: 17px;
+            line-height: 1.45;
+        }
+        .launch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .launch-btn {
+            border: 1px solid #c5d0f2;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 11px 16px;
+            color: #24336e;
+            background: #ffffff;
+            transition: transform 0.12s ease;
+            box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14);
+        }
+        .launch-btn:hover {
+            transform: translateY(-1px);
+            background: #f6f8ff;
+        }
+        .launch-foot {
+            border-top: 1px dashed #d2daf3;
+            padding-top: 10px;
+            font-size: 13px;
+            color: #5f6da6;
+        }
+    </style>
+</head>
+<body>
+    <section id="launchScreen" aria-label="Launch screen">
+        <div class="launch-card">
+            <div>
+                <p class="launch-eyebrow">IELTS Test Launcher</p>
+                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test</h1>
+                <p class="launch-meta">Dạng bài: Reading</p>
+            </div>
+            <div class="launch-guide">
+                <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
+                <p class="launch-sub">Nhấn F11 lần nữa để thoát toàn màn hình nếu cần.</p>
+                <p class="launch-sub">Nếu bàn phím của bạn không có F11 hoặc bạn không muốn dùng toàn màn hình, hãy bấm nút bên dưới để làm bài ở giao diện thường.</p>
+            </div>
+            <ul class="launch-notes">
+                <li>Không tải lại trang trong khi làm bài để tránh mất tiến trình.</li>
+                <li>Chuẩn bị không gian yên tĩnh để tập trung làm bài.</li>
+            </ul>
+            <div class="launch-row">
+                <button id="startNormalBtn" class="launch-btn" type="button">Tôi không có nút F11 trên bàn phím</button>
+            </div>
+            <div class="launch-foot">Khuyến nghị dùng F11 để có trải nghiệm giống ứng dụng nhất.</div>
+        </div>
+    </section>
+    <div id="app">
+    <div class="header">
+        <div class="timer-container">
+            <span class="timer-display">60 minutes remaining</span>
+            <div class="timer-controls">
+                <button id="timer-toggle-btn" title="Pause/Resume Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>
+                </button>
+                <button id="timer-reset-btn" title="Reset Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://www.facebook.com/englishresourcehub" target="_blank" rel="noopener" class="header-ad">
+                <div class="ad-copy">
+                    <p class="ad-eyebrow">Study boost</p>
+                    <div class="ad-marquee">
+                        <div class="ad-loop">
+                            <span class="ad-headline">Chinh phục IELTS dễ dàng- Tài liệu đầy đủ, chiến lược rõ ràng!</span>
+                            <span class="ad-headline">Master every IELTS tip and strategy in full EXAM MATERIALS! </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <button class="ad-close" type="button" aria-label="Close ad" title="Close" onclick="window.open('https://www.facebook.com/englishresourcehub','_blank','noopener')">×</button>
+        </div>
+    </div>
+
+        <div class="main-container" id="main-container">
+            <div id="passage-header-container">
+                <!-- PART_HEADERS_START -->
+<div id="part-header-1" class="part-header">
+
+
+
+                    <p><strong>Part 1</strong></p>
+
+
+
+                    <p>Read the text and answer questions 1-13.</p>
+
+
+
+                </div>
+<div id="part-header-2" class="part-header hidden">
+
+
+
+                    <p><strong>Part 2</strong></p>
+
+
+
+                    <p>Read the text and answer questions 14-26.</p>
+
+
+
+                </div>
+<div id="part-header-3" class="part-header hidden">
+
+
+
+                    <p><strong>Part 3</strong></p>
+
+
+
+                    <p>Read the text and answer questions 27-40.</p>
+
+
+
+                </div>
+<!-- PART_HEADERS_END -->
+            </div>
+            <div class="panels-container">
+            <div class="passage-panel" id="passage-panel">
+                <!-- PASSAGES_START -->
+<div id="passage-text-1" class="reading-passage">
+
+
+
+                    <h4 class="text-center">Dust and the American West</h4>
+
+
+
+                    <p><b>A</b> Images of deserts in the United States show dusty, barren landscapes, but the land may not always have been this way. Ever since settlers moved west across the US there has been dust-clouds of it everywhere. It was part of the landscape, or so it seemed to them. But there were no records of the landscape of the West until the settlers arrived. Now evidence is starting to emerge which suggests that before the settlers, there was very little dust.</p>
+                    <p><b>B</b> The evidence comes from the San Juan mountains of southwest Colorado, downwind of Arizona and New Mexico. There Jason Neff, a geochemist from the University of Colorado, has been analyzing sediments, the sand, stones and mud, laid down over the past 5000 years. Atmospheric dust was minimal throughout those five millennia until the mid-19th century, he says, but then, 'from about 1860 to 1900, dust deposition rates shot up.'</p>
+                    <p><b>C</b> This is surprising because usually dry means dusty, and the American West has almost always been dry-often drier than today. There was a near-permanent drought between 900 and 1300 which was so intense that it destroyed a series of native American civilizations, including the Anasazi, whose cliff homes are now US national treasures. Yet the evidence from the San Juan lakes is that it was not dusty. Even as their civilization was collapsing, the Anasazi seem to have protected their soils from erosion.</p>
+                    <p><b>D</b> This was not the case with the European settlers once they brought their cows. The landscape the cattle were introduced to was remarkably ill-equipped to cope with grazing animals, says Neff. 'Unlike most other parts of the US, there were few grazers in the American Southwest until the Europeans came. No bison and few antelope or deer.'</p>
+                    <p><b>E</b> In the Great Plains to the east and north, bison roamed in vast herds. Their regular grazing had created tough grass, while the herds manured the soil. In the Southwest, the land had few defenses against a sudden invasion of millions of livestock, whose teeth stripped the grass and whose hooves punctured the hard crust of desert soils that protected them from the wind. The invasion was sudden, funded by a bubble of speculative investment, much of it from Britain. The money went into railroads, and herds of cattle and sheep that rode the rails to the wide open pastures. By 1900, when sedimentation rates peaked, there were 20 million cattle and 25 million sheep in the West.</p>
+                    <p><b>F</b> One of the biggest ranches was owned by the Aztec Land and Cattle Company, which owned a million acres of land by 1884. Each acre had cost the company a mere 50 cents, and like many other speculators, it was only interested in quick profits and had little incentive to protect the soils from overgrazing. By the time Aztec sold the ranch in 1901, it was barren, with cattle carcasses scattered across the exhausted land. Such was the damage to the grasslands that even now few of the pastures have recovered. The parched and exposed soil simply blew away. The 1862 Homestead Act was passed in order to encourage the populating of the West. Any family willing to make the journey was entitled to claim 160 acres and farm it. Yet by the time people moved west in large numbers, the cattle companies had taken most of the land and surrounded it with barbed wire. The water sources were therefore cut off, and were aggressively guarded. It was only in the 1930s, with the passage of the Taylor Grazing Act, that federal authorities finally sought to limit cattle herds.</p>
+                    <p><b>G</b> Soil scientists have known for a while about the importance of the hard crust that forms on arid soils. 'These crusts can survive winds of up to a hundred miles an hour, but cattle hooves break the crust,' says Jayne Belnap, a soil ecologist at the US Geographical Survey, Utah. The scale of the dust clouds created by the livestock invasion has until now been largely unknown. When Neff first discovered dust in Colorado lake sediments laid down in the 19th century, he was initially unsure where it came from. Maybe it had crossed the Pacific from China's Gobi Desert.</p>
+                    <p><b>H</b> But after investigating the size and chemical composition of the dust, Neff was clear that it mostly came from the American Southwest, mainly Arizona and New Mexico. Now, with the soil crusts gone, dust clouds still head north and are having significant ecological effects in the Colorado mountains. They carry nutrients with them into areas which previously evolved and survived without them. But perhaps the most dramatic impact of the dust has been on snowfields in the Rocky Mountain Range. Even a thin sprinkling of dark material means snow absorbs more solar radiation, meaning that snowmelt occurs far more rapidly during springtime. The impact on the ski tourism industry is obvious.</p>
+                    <p><b>I</b> The loss of snow and the shrinking of glaciers across the American West in the past century has been dramatic. Glacier National Park in Montana, for example, has lost three quarters of its snow cover since 1910. All this is frequently attributed to global warming. While this almost certainly plays a role, Neff's findings suggest that dust may also contribute.</p>
+
+
+
+                </div>
+<div id="passage-text-2" class="reading-passage hidden">
+
+
+
+                    <h4 class="text-center">Urban Regeneration: an award-winning redevelopment project in Berlin</h4>
+
+
+
+                    <p><b>A</b> Just over a kilometer south of Berlin's Potsdamer Platz, near the left bank of the Landwehr Canal, an extensive, triangular-shaped area of waste ground once separated the neighbourhoods of Kreuzberg to the east and Schoneberg to the west. Known as Gleisdreieck, meaning 'triangle of rails', it was formed by the intersection of different railway lines built in the mid-nineteenth century that entered Berlin from the south. Tracks, sheds and warehouses belonging to three old railway stations - Dresdner Bahnhof (1875-1882), Potsdamer Bahnhof (1838-1944) and Anhalter Bahnhof (1839-1952) - are situated on a raised area some twenty hectares in size, at a height of four metres above the surrounding ground level.</p>
+                    <p><b>B</b> As the railway infrastructure gradually ceased to be used, the whole area of Gleisdreieck became increasingly run down and abandoned, to the point of being used as a rubbish tip after 1945. Meanwhile, vegetation took over, turning it into a surprising, natural haven in the middle of built-up areas. The closeness of the wall which divided the city of Berlin between 1961 and 1990 also contributed to the fact that Gleisdreieck was for decades clearly identified as no-man's-land. Only a station of the same name in Berlin's underground railway system testified to its existence. Shortly before the fall of the Berlin Wall, however, the German Museum of Technology was established there, attracting large numbers of visitors and giving visibility to the site. More importantly, the unification of the formerly divided city gave the zone more centrality, at which point it became imperative to identify a purpose for it.</p>
+                    <p><b>C</b> After 2006, the State of Berlin put forward the proposal of converting Gleisdreieck into a large urban park that would integrate the different urban zones which converged there. The decades-long isolation of the site, which had formerly presented a problem, now represented an opportunity for joining the southern area of Potsdamer Platz with Kreuzberg and Schoneberg. The creation of the park would trigger one of the biggest urban expansions inside Berlin, all within a framework of multiple uses, and social characteristics. It was necessary to stimulate the development of sixteen new hectares of local amenities that would be capable of integrating different generations and social groups in sustainable way, and in harmony with nature. Following intense discussion with local proprietors and residents, the need to reconcile these goals with the conservation of railway heritage also emerged.</p>
+                    <p><b>D</b> Once the area had been subjected to a process of undergrowth clearance and decontamination, it was then organized around a combination of existing and added elements. The project as a whole was planned around a large central meadow, intersected from east to west by a concrete footpath, and from north to south by a pair of railway lines. Once a month, a train slowly travels along these lines from its parking shed to German Museum of Technology. The concrete footpath, which is a continuation of one of the main Kreuzberg boulevards, starts in the east, bridges the four-metre difference in ground level by means of a stairway, and suddenly ends in the west on reaching the underground lines.</p>
+                    <p><b>E</b> North of the meadow, there is a large concrete slab with rounded edges. Being south-facing, this functions as a big sunny terrace, full of benches complete with footrests. In the south, the meadow overlooks Yorckstrasse, an underpass crossed by more than fifteen former railway bridges. To the east of the meadow there is quite a dense forest of pre-existing maples, oaks and birches, as well as newly planted tree of the same species. In this area, a couple of large metal frames each hold two swings. The edges of the park are finished with a collection of distinctive, functional spaces, for example a nursery, sports fields, concave surfaces for skateboards, stages for dancing, community gardens, or simply areas covered in gravel obtained from the site itself.</p>
+                    <p><b>F</b> Although initially the regeneration of Gleisdreieck Park was the subject of disagreement between those who were in favour of safeguarding the railway heritage, and those who wanted to regenerate the adjacent neighbourhoods, it was opened to the public in September 2011. The heart of Berlin now has a new green lung, in which the atmosphere of various small, very different corners fits neatly into a large-scale, wide-ranging and robust general order. This has been possible precisely because the intervention was not limited to conserving industrial remains in order to promote railway history. And as a reminder of the six decades of human absence, during which nature took over, the park has been able to conserve to some extent the spirit of the non-place that preceded it.</p>
+
+
+
+                </div>
+<div id="passage-text-3" class="reading-passage hidden">
+
+
+
+                    <h4 class="text-center">The fluoridation controversy</h4>
+
+
+
+                    <p>The long-standing debate about whether to fluoridate our drinking water continues</p>
+                    <p>Fluoridation is the addition of fluorine to public water supplies with the aim of reducing tooth decay. The fluorine, when mixed with water, becomes fluoride and the desired concentration of fluoride in public water is approximately one part per million, depending on the regional temperature and hence the amount of water people are likely to drink. Many studies, such as those by McClure in 1970 through to Burt in 1983, have shown that when children drink fluoridated water, their average rate of tooth decay seems greatly reduced. A typical figure claimed is 50 percent reduction. This apparently enormous benefit for children's teeth is the major argument in favor of fluoridation.</p>
+                    <p>Three main grounds for opposition to fluoridation have been expressed. First, opponents claim the benefits are exaggerated or not established. Second, there are claims of health risks to pans of the population, for example, allergic reactions. It is also accepted that high levels of fluoride can cause discoloration of otherwise healthy teeth. Proponents do not consider this to be a problem in such small concentrations, whereas opponents disagree - especially because some people drink more water and obtain much more than the standard milligram of fluoride per day. Third, fluoridation is thought to be an infringement on individual rights because it is compulsory medication of all members of a community.</p>
+                    <p>An understanding of the fluoridation issue has important implications. If, according to the experts, fluoridation is unquestionably a beneficial and non-hazardous measure, then the wisdom of allowing the public to vote on, and reject it must be questioned. Almost all studies that have been done have assumed that the scientific aspects of the controversy are unproblematic, and they have excluded science from sociological examination. The traditional view is that science is a special kind of knowledge, which is established through scientific methods and objectively applied by members of a scientific community. However, in recent years there has been a major challenge to this picture by a sociology of science that shows how scientific knowledge is socially negotiated, and inevitably linked to the values of the relevant parties, both scientists and nonscientists. These challengers do not see scientific knowledge as exempt from social inquiry.</p>
+                    <p>Kuhn (1970) argued that scientific knowledge does not always develop as an orderly process, but is characterized by periodic revolutions, in which the methods of study and the assessment criteria change in a fragmented way. According to Kuhn, the shift from one scientific way of thinking to another is not made solely on the basis of clear rules of formal scientific practice, but can include social factors, though Kuhn has never developed a full analysis of what these might be. Collins (1975) took this concept further when he asserted that the outcome of experiments was not something whose meaning could be immediately comprehended, but rather something for interpretation, discussion between scientists, and reinterpretation in the light of other experiments.</p>
+                    <p>One interpretation of this analysis of science is that traditional distinctions between facts and theories, and between scientific knowledge and values, can no longer be justified. Because social processes are involved at all stages of the creation, evaluation, and establishing of scientific knowledge, social values may also be involved.</p>
+                    <p>In the same way as many scientists who study fluoridation have overlooked social values, sociologists have also downplayed an important part of the debate by ignoring the number of eminent scientists who have questioned aspects of fluoridation. An example is the study by Sutton in 1960, which analyzed the classic North American studies of the effect of fluoridation on tooth decay, and found that each showed significant methodological shortcomings. Sutton's detailed study throws doubt as to the extent of reductions in tooth decay from fluoridation. Yet Sutton's book is not cited in a single analysis of the fluoridation issue by any sociologist.</p>
+                    <p>In a situation of some scientific uncertainty, differences in values are highlighted. A supporter of fluoridation might argue. The evidence for the benefits of fluoridation is quite substantial, while the evidence for harm is limited and dubious. I think the likely benefits outweigh the possible dangers; hence I support fluoridation because it is the cheapest and easiest way to make sure every child reaps the benefits. An opponent might argue, 'Though the evidence for the benefits of fluoridation is substantial, there is some doubt about it. Since fluoridation is not necessary for good teeth, we should forego the benefits if there is some slight chance of harm. Some scientists claim that a small percentage of the population could be harmed by fluoride. Therefore I oppose fluoridation of water supplies and favor the voluntary use of fluoride tablets by those who want to take them.'</p>
+                    <p>Both arguments consider the scientific evidence concerning fluoridation, but differ in their assessments of the social benefits and costs. This difference is not between rationality and irrationality but is a legitimate difference in values, for example, the positive value placed on good teeth, the negative value placed on possible health risks, and the social benefits or costs of compulsory or voluntary intake of fluorides.</p>
+                    <p>From the sociological point of view, opposition to fluoridation is not necessarily irrational. Rather, claims to rationality and to scientific authority are better seen as part of a strategy to promote fluoridation than as incontrovertible statements of fact. Second, social values are likely to be bound up in any decision about fluoridation, so this is not an issue on which declarations by scientific experts ought to be considered the final word.</p>
+
+
+
+                </div>
+<!-- PASSAGES_END -->
+            </div>
+            <div class="resizer" id="resizer"></div>
+            <div class="questions-panel" id="questions-panel">
+                <!-- QUESTIONS_START -->
+<div id="questions-1" class="question-set">
+
+
+
+                    <div class="questions-container">
+
+
+
+<div class="question" data-q-start="1" data-q-end="7">
+
+
+
+<div class="question-prompt"><p><strong>Questions 1-7</strong></p><p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text.</p><p>Choose <strong>FALSE</strong> if the statement contradicts the information.</p><p>Choose <strong>NOT GIVEN</strong> if there is no information on this.</p></div>
+
+
+
+<div class="tf-question" data-q-start="1" data-q-end="1">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">1</span><span class="tf-question-text">Jason Neff discovered there had been a dramatic rise in dust levels in the second half of the nineteenth century.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q1" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q1" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q1" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="2" data-q-end="2">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">2</span><span class="tf-question-text">The Anasazi civilization disappeared due to the impact of dust in the atmosphere.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q2" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q2" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q2" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="3" data-q-end="3">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">3</span><span class="tf-question-text">Before cattle were introduced to the American Southwest, large numbers of bison occupied the area.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q3" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q3" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q3" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="4" data-q-end="4">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">4</span><span class="tf-question-text">The bison population in the Great Plains diminished because European settlers found it easy to hunt them.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q4" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q4" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q4" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="5" data-q-end="5">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">5</span><span class="tf-question-text">The development of railroads across the US was more expensive than originally expected.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q5" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q5" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q5" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="6" data-q-end="6">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">6</span><span class="tf-question-text">The Aztec Land and Cattle Company worked hard to take care of the grazing land it owned.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q6" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q6" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="7" data-q-end="7">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">7</span><span class="tf-question-text">Most of the land once owned by the Aztec Land and Cattle Company remains infertile today.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q7" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q7" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q7" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question grouped-fill-question" data-q-start="8" data-q-end="13">
+
+
+
+<div class="question-prompt"><p><strong>Questions 8-13</strong></p><p>Complete the notes below.</p><p>Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p></div>
+
+
+
+                            <div class="grouped-fill">
+
+
+
+<div class="grouped-fill-title">American Southwest: 1860s to present day</div>
+
+
+
+
+
+
+
+<div class="grouped-fill-section">
+
+
+
+                                
+
+
+
+                                <ul class="grouped-fill-list">
+
+
+
+<li class="grouped-fill-bullet">1862 - American Homestead Act was passed to encourage settlement in the West.</li>
+<li class="grouped-fill-bullet">1930s - Laws were passed to control the size of <input type="text" class="answer-input" id="q8" placeholder="8">.</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+<div class="grouped-fill-section">
+
+
+
+                                <div class="grouped-fill-heading">Today Jayne Belnap believes:</div>
+
+
+
+                                <ul class="grouped-fill-list">
+
+
+
+<li class="grouped-fill-bullet">soil was not affected by high <input type="text" class="answer-input" id="q9" placeholder="9"></li>
+<li class="grouped-fill-bullet">soil was seriously affected by cattle hooves.</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+<div class="grouped-fill-section">
+
+
+
+                                <div class="grouped-fill-heading">Jason Neff:</div>
+
+
+
+                                <ul class="grouped-fill-list">
+
+
+
+<li class="grouped-fill-bullet">found that <input type="text" class="answer-input" id="q10" placeholder="10"> in the Colorado region contained dust</li>
+<li class="grouped-fill-bullet">examined the dust for its chemical content as well as its <input type="text" class="answer-input" id="q11" placeholder="11">.</li>
+<li class="grouped-fill-bullet">concluded that the dust was from the American Southwest</li>
+<li class="grouped-fill-bullet">found that dust affects mountain environments by bringing in <input type="text" class="answer-input" id="q12" placeholder="12"> that are not normally found there, causing faster seasonal snowmelt</li>
+<li class="grouped-fill-bullet">argues that dust is partly to blame for the gradual disappearance of some <input type="text" class="answer-input" id="q13" placeholder="13"> and snow.</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+<div id="questions-2" class="question-set hidden">
+
+
+
+                    <div class="questions-container">
+
+
+
+<div class="question" data-q-start="14" data-q-end="19">
+
+
+
+<div class="question-prompt"><p><strong>Questions 14-19</strong></p><p>Reading Passage <strong>2</strong> has six paragraphs.</p><p>Choose the correct heading for each paragraph from the list of headings below.</p><p>Choose the correct number, i-viii, in boxes <strong>14</strong>-<strong>19</strong>.</p></div>
+
+
+
+
+
+
+
+                            <div class="example-box" style="font-size: 15px;">
+
+
+
+                                <p><strong>List of Headings</strong></p>
+
+
+
+                                <ul class="options-list">
+
+
+
+<li><span class="options-list-label">i</span> Objectives of the regeneration project</li>
+<li><span class="options-list-label">ii</span> Architectural details of the station buildings</li>
+<li><span class="options-list-label">iii</span> Features and facilities of the completed development</li>
+<li><span class="options-list-label">iv</span> The remains of a railway system</li>
+<li><span class="options-list-label">v</span> A positive evaluation of the finished project</li>
+<li><span class="options-list-label">vi</span> A way of controlling development costs</li>
+<li><span class="options-list-label">vii</span> Ways of crossing the site</li>
+<li><span class="options-list-label">viii</span> Reasons why the area had become neglected</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            <div class="matching-form-container">
+
+
+
+<div class="matching-form-row">
+
+
+
+                                    <label for="q14" class="matching-form-label"><strong>14</strong>&nbsp;&nbsp;Paragraph A</label>
+
+
+
+                                    <select class="answer-input" id="q14"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q15" class="matching-form-label"><strong>15</strong>&nbsp;&nbsp;Paragraph B</label>
+
+
+
+                                    <select class="answer-input" id="q15"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q16" class="matching-form-label"><strong>16</strong>&nbsp;&nbsp;Paragraph C</label>
+
+
+
+                                    <select class="answer-input" id="q16"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q17" class="matching-form-label"><strong>17</strong>&nbsp;&nbsp;Paragraph D</label>
+
+
+
+                                    <select class="answer-input" id="q17"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q18" class="matching-form-label"><strong>18</strong>&nbsp;&nbsp;Paragraph E</label>
+
+
+
+                                    <select class="answer-input" id="q18"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q19" class="matching-form-label"><strong>19</strong>&nbsp;&nbsp;Paragraph F</label>
+
+
+
+                                    <select class="answer-input" id="q19"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option></select>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="20" data-q-end="21">
+
+
+
+<div class="question-prompt"><p><strong>Questions 20-21</strong></p><p>Choose <strong>TWO</strong> correct answers.</p></div>
+
+
+
+                            <div class="multi-choice-question" data-q-start="20" data-q-end="21" data-shared-questions="20,21" data-shared-name="q20_21" data-max-select="2">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box">20-21</span><span class="mcq-question-title">Which TWO reasons are given for the choice of Gleisdreieck as a site for a park?</span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="20"></span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="21"></span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="A"> It was a habitat for some rare wildlife species.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="B"> It contained a particular tourist attraction.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="C"> It lay at the heart of the reunited city.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="D"> It was served by a major rail network.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="E"> It contained buildings which could be easily converted.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="22" data-q-end="23">
+
+
+
+<div class="question-prompt"><p><strong>Questions 22-23</strong></p><p>Choose <strong>TWO</strong> correct answers.</p></div>
+
+
+
+                            <div class="multi-choice-question" data-q-start="22" data-q-end="23" data-shared-questions="22,23" data-shared-name="q22_23" data-max-select="2">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box">22-23</span><span class="mcq-question-title">The list below identifies some of the possible aims of urban redevelopment projects. Which TWO things did the State of Berlin hope to achieve with the Gleisdreieck development?</span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="22"></span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="23"></span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="A"> to bring people of different ages together</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="B"> to encourage tourism</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="C"> to improve transport links</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="D"> to preserve industrial remains</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="E"> to generate income for the city</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="24" data-q-end="26">
+
+
+
+<div class="question-prompt"><p><strong>Questions 24-26</strong></p><p>Complete the summary below.</p><p>Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="question-title">Gleisdreieck Urban Park</div></div>
+
+
+
+
+
+
+
+                            <p>In the middle of the new park is a <input type="text" class="answer-input" id="q24" placeholder="24">, where there is a path for pedestrians and two railway lines. A slow train uses these lines to make a regular journey between its based and a <input type="text" class="answer-input" id="q25" placeholder="25">. Benches have been provided on the north side, so that people can relax and enjoy the sunshine, and to the east is an area with mature trees of various kinds, as well as sets of swings. A range of sports and leisure areas are situated around the <input type="text" class="answer-input" id="q26" placeholder="26"> of the site.</p>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+<div id="questions-3" class="question-set hidden">
+
+
+
+                    <div class="questions-container">
+
+
+
+<div class="question" data-q-start="27" data-q-end="31">
+
+
+
+<div class="question-prompt"><p><strong>Questions 27-31</strong></p><p>Choose the correct answer.</p></div>
+
+
+
+<div class="multi-choice-question" data-q-start="27" data-q-end="27">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="27">27</span><span class="mcq-question-title">The optimum amount of fluorine in fluoridated water is calculated partly according to</span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="radio" name="q27" value="A"> how hot the area is.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q27" value="B"> how warm the water is.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q27" value="C"> how many dental problems there are in the community.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q27" value="D"> how much fluorine the community chooses to have in its water.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+<div class="multi-choice-question" data-q-start="28" data-q-end="28">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="28">28</span><span class="mcq-question-title">One reason given by the writer for opposing fluoridation is that</span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="radio" name="q28" value="A"> it may contribute to tooth decay</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q28" value="B"> it will be unacceptably expensive for the public.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q28" value="C"> obligatory fluoridation takes away personal freedom.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q28" value="D"> excessive fluoride could be added to the water by mistake.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+<div class="multi-choice-question" data-q-start="29" data-q-end="29">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="29">29</span><span class="mcq-question-title">The writer mentions Kuhn in order to</span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="radio" name="q29" value="A"> provide a contrast with the view of Collins.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q29" value="B"> support the rational nature of scientific inquiry.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q29" value="C"> demonstrate that Kuhn did not argue his case adequately.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q29" value="D"> show that science can be influenced by non-scientific considerations</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+<div class="multi-choice-question" data-q-start="30" data-q-end="30">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="30">30</span><span class="mcq-question-title">What did Sutton's research discover about earlier studies in North America?</span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="radio" name="q30" value="A"> There were failings in the way they were carried out.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q30" value="B"> The scientists involved had achieved unique results.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q30" value="C"> Proponents of fluoridation had not understood its long-term effects.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q30" value="D"> Fluoridation had a greater effect on tooth decay than previously believed.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+<div class="multi-choice-question" data-q-start="31" data-q-end="31">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="31">31</span><span class="mcq-question-title">In the last paragraph, what does the writer say about scientists?</span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="radio" name="q31" value="A"> They should reveal their true motivations.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q31" value="B"> They should not decide the fluoridation policy.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q31" value="C"> They are solely concerned with scientific truths.</label></div>
+<div class="multi-choice-option"><label><input type="radio" name="q31" value="D"> They cannot reach agreement on the fluoridation issue.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="32" data-q-end="35">
+
+
+
+<div class="question-prompt"><p><strong>Questions 32-35</strong></p><p>Choose <strong>YES</strong> if the statement agrees with the claims of the writer.</p><p>Choose <strong>NO</strong> if the statement contradicts the claims of the writer.</p><p>Choose <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p></div>
+
+
+
+<div class="tf-question" data-q-start="32" data-q-end="32">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">32</span><span class="tf-question-text">Scientific knowledge should be kept separate from social values.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q32" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q32" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q32" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="33" data-q-end="33">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">33</span><span class="tf-question-text">Many sociologists have disregarded the doubts that some scientists have concerning fluoridation.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q33" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q33" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q33" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="34" data-q-end="34">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">34</span><span class="tf-question-text">Sutton's findings have been given insufficient attention by scientists outside of North America.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q34" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q34" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q34" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="35" data-q-end="35">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">35</span><span class="tf-question-text">There are valid arguments on both sides of the fluoridation debate.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q35" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q35" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q35" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="36" data-q-end="40">
+
+
+
+<div class="question-prompt"><p><strong>Questions 36-40</strong></p><p>Complete each sentence with the correct ending, <strong>A-G</strong>, below.</p></div>
+
+
+
+
+
+
+
+                            <div class="example-box" style="font-size: 15px;">
+
+
+
+                                <p><strong>List of Options</strong></p>
+
+
+
+                                <ul class="options-list">
+
+
+
+<li><span class="options-list-label">A</span> The results of scientific research are not always understood at first</li>
+<li><span class="options-list-label">B</span> It is impossible to say what the writer thinks about this</li>
+<li><span class="options-list-label">C</span> People should be able to choose whether they want fluoride</li>
+<li><span class="options-list-label">D</span> There is insufficient proof to support a cautious approach</li>
+<li><span class="options-list-label">E</span> The serious damage fluoride causes far outweighs any positive effects</li>
+<li><span class="options-list-label">F</span> Children are not the only ones who benefit from fluoridation</li>
+<li><span class="options-list-label">G</span> Scientific knowledge is affected by the beliefs of everyone concerned</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            <div class="matching-form-container">
+
+
+
+<div class="matching-form-row">
+
+
+
+                                    <label for="q36" class="matching-form-label"><strong>36</strong>&nbsp;&nbsp;The traditional view of science is that</label>
+
+
+
+                                    <select class="answer-input" id="q36"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q37" class="matching-form-label"><strong>37</strong>&nbsp;&nbsp;A sociological view of science argues that</label>
+
+
+
+                                    <select class="answer-input" id="q37"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q38" class="matching-form-label"><strong>38</strong>&nbsp;&nbsp;Collins is of the opinion that</label>
+
+
+
+                                    <select class="answer-input" id="q38"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q39" class="matching-form-label"><strong>39</strong>&nbsp;&nbsp;The writer suggests that a supporter of fluoridation may conclude that</label>
+
+
+
+                                    <select class="answer-input" id="q39"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q40" class="matching-form-label"><strong>40</strong>&nbsp;&nbsp;The writer suggests that an opponent of fluoridation may conclude that</label>
+
+
+
+                                    <select class="answer-input" id="q40"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+<!-- QUESTIONS_END -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <button class="nav-arrow" onclick="previousQuestion()" id="prevBtn">‹</button>
+        <button class="nav-arrow" onclick="nextQuestion()" id="nextBtn">›</button>
+    </div>
+
+    <!-- FOOTER_NAV_START -->
+<nav class="nav-row perScorableItem" aria-label="Questions">
+
+
+
+<div class="footer__questionWrapper___1tZ46 multiple selected" role="tablist">
+
+
+
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(1)">
+
+
+
+                <span>
+
+
+
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+
+
+
+                    <span class="sectionNr" aria-hidden="true">1</span>
+
+
+
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+
+
+
+                </span>
+
+
+
+            </button>
+
+
+
+            <div class="footer__subquestionWrapper___9GgoP">
+
+
+
+<button class="subQuestion scorable-item" onclick="goToQuestion(1)"><span class="sr-only">Question 1</span><span aria-hidden="true">1</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(2)"><span class="sr-only">Question 2</span><span aria-hidden="true">2</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(3)"><span class="sr-only">Question 3</span><span aria-hidden="true">3</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(4)"><span class="sr-only">Question 4</span><span aria-hidden="true">4</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(5)"><span class="sr-only">Question 5</span><span aria-hidden="true">5</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(6)"><span class="sr-only">Question 6</span><span aria-hidden="true">6</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(7)"><span class="sr-only">Question 7</span><span aria-hidden="true">7</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(8)"><span class="sr-only">Question 8</span><span aria-hidden="true">8</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(9)"><span class="sr-only">Question 9</span><span aria-hidden="true">9</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(10)"><span class="sr-only">Question 10</span><span aria-hidden="true">10</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(11)"><span class="sr-only">Question 11</span><span aria-hidden="true">11</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(12)"><span class="sr-only">Question 12</span><span aria-hidden="true">12</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(13)"><span class="sr-only">Question 13</span><span aria-hidden="true">13</span></button>
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+
+
+
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(2)">
+
+
+
+                <span>
+
+
+
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+
+
+
+                    <span class="sectionNr" aria-hidden="true">2</span>
+
+
+
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+
+
+
+                </span>
+
+
+
+            </button>
+
+
+
+            <div class="footer__subquestionWrapper___9GgoP">
+
+
+
+<button class="subQuestion scorable-item" onclick="goToQuestion(14)"><span class="sr-only">Question 14</span><span aria-hidden="true">14</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(15)"><span class="sr-only">Question 15</span><span aria-hidden="true">15</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(16)"><span class="sr-only">Question 16</span><span aria-hidden="true">16</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(17)"><span class="sr-only">Question 17</span><span aria-hidden="true">17</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(18)"><span class="sr-only">Question 18</span><span aria-hidden="true">18</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(19)"><span class="sr-only">Question 19</span><span aria-hidden="true">19</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(20)"><span class="sr-only">Question 20</span><span aria-hidden="true">20</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(21)"><span class="sr-only">Question 21</span><span aria-hidden="true">21</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(22)"><span class="sr-only">Question 22</span><span aria-hidden="true">22</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(23)"><span class="sr-only">Question 23</span><span aria-hidden="true">23</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(24)"><span class="sr-only">Question 24</span><span aria-hidden="true">24</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(25)"><span class="sr-only">Question 25</span><span aria-hidden="true">25</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(26)"><span class="sr-only">Question 26</span><span aria-hidden="true">26</span></button>
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+
+
+
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(3)">
+
+
+
+                <span>
+
+
+
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+
+
+
+                    <span class="sectionNr" aria-hidden="true">3</span>
+
+
+
+                    <span class="attemptedCount" aria-hidden="true">0 of 14</span>
+
+
+
+                </span>
+
+
+
+            </button>
+
+
+
+            <div class="footer__subquestionWrapper___9GgoP">
+
+
+
+<button class="subQuestion scorable-item" onclick="goToQuestion(27)"><span class="sr-only">Question 27</span><span aria-hidden="true">27</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(28)"><span class="sr-only">Question 28</span><span aria-hidden="true">28</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(29)"><span class="sr-only">Question 29</span><span aria-hidden="true">29</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(30)"><span class="sr-only">Question 30</span><span aria-hidden="true">30</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(31)"><span class="sr-only">Question 31</span><span aria-hidden="true">31</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(32)"><span class="sr-only">Question 32</span><span aria-hidden="true">32</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(33)"><span class="sr-only">Question 33</span><span aria-hidden="true">33</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(34)"><span class="sr-only">Question 34</span><span aria-hidden="true">34</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(35)"><span class="sr-only">Question 35</span><span aria-hidden="true">35</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(36)"><span class="sr-only">Question 36</span><span aria-hidden="true">36</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(37)"><span class="sr-only">Question 37</span><span aria-hidden="true">37</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(38)"><span class="sr-only">Question 38</span><span aria-hidden="true">38</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(39)"><span class="sr-only">Question 39</span><span aria-hidden="true">39</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
+
+
+
+            <i class="fa fa fa-check" aria-hidden="true"></i>
+
+
+
+            <span>Check Answers</span>
+
+
+
+        </button>
+
+
+
+    </nav>
+<!-- FOOTER_NAV_END -->
+
+    <!-- Context Menu -->
+    <div id="contextMenu" class="context-menu">
+        <div id="menu-highlight" class="context-menu-item has-submenu" onclick="highlightText()">
+            <span>Highlight</span>
+            <span class="submenu-arrow">▶</span>
+            <div class="highlight-submenu" onclick="event.stopPropagation()">
+                <button type="button" class="highlight-color-option" onclick="highlightText('yellow')">
+                    <span class="color-dot yellow"></span> Yellow
+                </button>
+                <button type="button" class="highlight-color-option" onclick="highlightText('green')">
+                    <span class="color-dot green"></span> Green
+                </button>
+                <button type="button" class="highlight-color-option" onclick="highlightText('pink')">
+                    <span class="color-dot pink"></span> Pink
+                </button>
+            </div>
+        </div>
+        
+        <div id="menu-note" class="context-menu-item" onclick="addNote()">
+            Take note
+        </div>
+        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">
+            Delete
+        </div>
+        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">
+            Delete all
+        </div>
+    </div>
+
+    <div id="results-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
+            <h2>Results</h2>
+            <div class="results-summary">
+                <p>Score: <span id="results-score"></span> / 40</p>
+                <p>IELTS Band: <span id="results-band"></span></p>
+            </div>
+            <div id="results-details" class="results-details-container">
+                <!-- Results for each question will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"TRUE","2":"FALSE","3":"FALSE","4":"NOT GIVEN","5":"NOT GIVEN","6":"FALSE","7":"TRUE","8":"cattle herds","9":"winds","10":"lake sediments","11":"size","12":"nutrients","13":"glaciers","14":"iv","15":"viii","16":"i","17":"vii","18":"iii","19":"v","20":"B","21":"C","22":"A","23":"D","24":"meadow","25":"museum","26":"edges","27":"A","28":"C","29":"D","30":"A","31":"B","32":"NO","33":"YES","34":"NOT GIVEN","35":"YES","36":"B","37":"G","38":"A","39":"D","40":"C"}};</script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const launchScreen = document.getElementById('launchScreen');
+        const app = document.getElementById('app');
+        const startNormalBtn = document.getElementById('startNormalBtn');
+        const launchTitle = document.getElementById('launchTestTitle');
+        if (launchTitle && document.title) {
+            launchTitle.textContent = document.title;
+        }
+        let examStarted = false;
+
+        const beginExam = () => {
+            if (examStarted) return;
+            examStarted = true;
+            if (launchScreen) launchScreen.style.display = 'none';
+            if (app) app.style.display = 'block';
+            initialize();
+        };
+
+        if (startNormalBtn) {
+            startNormalBtn.addEventListener('click', beginExam);
+        }
+        const isF11Key = (event) => event.key === 'F11' || event.code === 'F11' || event.keyCode === 122;
+        const isLikelyBrowserFullscreen = () => {
+            const vw = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0);
+            const vh = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0);
+            const sw = Math.max(window.screen?.width || 0, window.screen?.availWidth || 0);
+            const sh = Math.max(window.screen?.height || 0, window.screen?.availHeight || 0);
+            return vw >= sw - 4 && vh >= sh - 4;
+        };
+        const tryStartFromFullscreen = () => {
+            if (examStarted) return;
+            if (isLikelyBrowserFullscreen()) {
+                beginExam();
+            }
+        };
+        const onLaunchKey = (event) => {
+            if (examStarted) return;
+            if (event.key === 'Enter' || event.key === 'NumpadEnter') {
+                event.preventDefault();
+                beginExam();
+                return;
+            }
+            if (isF11Key(event)) {
+                setTimeout(beginExam, 0);
+            }
+        };
+        window.addEventListener('keydown', onLaunchKey, true);
+        window.addEventListener('keyup', onLaunchKey, true);
+        document.addEventListener('keydown', onLaunchKey, true);
+        document.addEventListener('keyup', onLaunchKey, true);
+        window.addEventListener('resize', () => setTimeout(tryStartFromFullscreen, 30), true);
+        document.addEventListener('fullscreenchange', tryStartFromFullscreen, true);
+        setTimeout(tryStartFromFullscreen, 0);
+
+        // --- TEST META (default fallback; replaced when generator injects window.testMeta) ---
+        const defaultTestMeta = {
+            totalQuestions: 40,
+            parts: [
+                { part: 1, start: 1, end: 13 },
+                { part: 2, start: 14, end: 26 },
+                { part: 3, start: 27, end: 40 }
+            ],
+            correctAnswers: {
+                '1': 'FALSE', '2': 'FALSE', '3': 'NOT GIVEN', '4': 'NOT GIVEN', '5': 'FALSE',
+                '6': 'TRUE', '7': 'TRUE', '8': 'FALSE',
+                '9': 'B', '10': 'C', '11': 'E', '12': 'F', '13': 'A',
+                '14': 'iii', '15': 'i', '16': 'vi', '17': 'ii', '18': 'ix', '19': 'v', '20': 'iv',
+                '21': 'epidemic', '22': 'Finland', '23': 'institutions', '24': 'Eurasia', '25': 'einkorn wheat', '26': 'Singapore',
+                '27': 'NO', '28': 'NOT GIVEN', '29': 'NO', '30': 'YES', '31': 'NOT GIVEN',
+                '32': 'B', '33': 'A', '34': 'B', '35': 'C', '36': 'D',
+                '37': 'B', '38': 'C', '39': 'F', '40': 'E'
+            }
+        };
+        const testMeta = window.testMeta || defaultTestMeta;
+        const partRanges = testMeta.parts || [];
+        const correctAnswers = testMeta.correctAnswers || {};
+        const totalQuestions = testMeta.totalQuestions || Object.keys(correctAnswers).length;
+
+        // --- STATE VARIABLES ---
+        let currentPassage = partRanges[0]?.part || 1;
+        let currentQuestion = partRanges[0]?.start || 1;
+        let pendingSelectionRange = null;
+        let activeAnnotationTarget = null;
+        let timeInSeconds = 3600;
+        let timerInterval;
+        let hasSubmitted = false;
+        let draggedItem = null;
+        let activeQuestionElement = null;
+        let selectedDragItem = null;
+        const markedQuestions = new Set();
+        const markButtons = new Map();
+        const COUNTDOWN_THRESHOLD = 300;
+
+        // --- DOM ELEMENTS ---
+        const timerDisplay = document.querySelector('.timer-display');
+        const timerToggleButton = document.getElementById('timer-toggle-btn');
+        const timerResetButton = document.getElementById('timer-reset-btn');
+        const deliverButton = document.getElementById('deliver-button');
+        const resizer = document.getElementById('resizer');
+        const passagePanel = document.getElementById('passage-panel');
+        const questionsPanel = document.getElementById('questions-panel');
+        const contextMenu = document.getElementById('contextMenu');
+        const menuHighlight = document.getElementById('menu-highlight');
+        const menuNote = document.getElementById('menu-note');
+        const menuClear = document.getElementById('menu-clear');
+        const menuClearAll = document.getElementById('menu-clear-all');
+
+        // --- ICON SVGs ---
+        const playIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>';
+        const pauseIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        const bookmarkIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg>';
+
+        // --- INITIALIZATION ---
+        function initialize() {
+            startTimer();
+            initializeDragAndDrop();
+            setupCheckboxLimits();
+            setupExampleHeading();
+            const firstPart = partRanges[0]?.part || 1;
+            switchToPart(firstPart); // Also calls goToQuestion(first question) and updateNavigation
+            
+            document.body.addEventListener('input', updateAllIndicators);
+            document.body.addEventListener('change', updateAllIndicators);
+            deliverButton.addEventListener('click', checkAnswers);
+            timerToggleButton.addEventListener('click', toggleTimer);
+            timerResetButton.addEventListener('click', resetTimer);
+
+            // Add click listeners to question containers for navigation
+            document.querySelectorAll('[data-q-start]').forEach(el => {
+                el.addEventListener('click', (ev) => {
+                    // Ignore clicks on form controls to prevent scroll jump
+                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row, .drop-zone, .summary-drop-zone, .drag-item')) {
+                        return;
+                    }
+                    const qNum = parseInt(el.dataset.qStart, 10);
+                    if (currentQuestion !== qNum) {
+                        goToQuestion(qNum);
+                    }
+                });
+            });
+
+            resizer.addEventListener('mousedown', initResize, false);
+            initializeContextMenu();
+            initializeQuestionMarkers();
+        }
+
+        // --- CORE TEST LOGIC ---
+
+        function checkAnswers() {
+            if (hasSubmitted) return;
+            hasSubmitted = true;
+            // Disable all inputs to prevent changes
+            const allInputs = document.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => {
+                input.disabled = true;
+            });
+
+            // Disable submit button
+            deliverButton.disabled = true;
+            deliverButton.style.cursor = 'not-allowed';
+            
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            let score = 0;
+            const resultsDetailsContainer = document.getElementById('results-details');
+            resultsDetailsContainer.innerHTML = '';
+
+            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => {
+                el.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
+            });
+            document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
+            const processedSharedCheckboxContainers = new Set();
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionKey = String(i);
+                const correctAnswer = correctAnswers[questionKey];
+                let userAnswer = '';
+                let isCorrect = false;
+                
+                let userAnswerDisplay = 'Not Answered';
+                const correctAnswerText = Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : correctAnswer;
+
+                const textInput = document.getElementById(`q${i}`);
+                const radioGroup = document.querySelectorAll(`input[name="q${i}"][type="radio"]`);
+                const selectInput = document.getElementById(`q${i}`);
+                let checkboxInputs = document.querySelectorAll(`input[name="q${i}"][type="checkbox"]`);
+                let questionContainer = null;
+                let isSharedCheckbox = false;
+                if (!checkboxInputs.length) {
+                    const sharedContainer = Array.from(document.querySelectorAll('.multi-choice-question[data-shared-questions]')).find(el => {
+                        const parts = (el.dataset.sharedQuestions || '').split(',').map(n => parseInt(n, 10));
+                        return parts.includes(i);
+                    });
+                    if (sharedContainer) {
+                        const sharedName = sharedContainer.dataset.sharedName;
+                        if (sharedName) {
+                            checkboxInputs = sharedContainer.querySelectorAll(`input[name="${sharedName}"][type="checkbox"]`);
+                            questionContainer = sharedContainer;
+                            isSharedCheckbox = true;
+                        }
+                    }
+                }
+                const checkedCheckboxes = Array.from(checkboxInputs).filter(cb => cb.checked);
+                
+                // Handle Text Inputs
+                if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
+                    const element = textInput.closest('.matching-form-row') || textInput;
+                    userAnswer = textInput.value.trim();
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = Array.isArray(correctAnswer) ?
+                        correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) :
+                        userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        textInput.parentNode.insertBefore(correctAnswerSpan, textInput.nextSibling);
+                    }
+                }
+                // Handle Select Inputs
+                else if (selectInput && selectInput.tagName === 'SELECT') {
+                    const element = selectInput.closest('.matching-form-row') || selectInput;
+                    userAnswer = selectInput.value;
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = userAnswer === correctAnswer;
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        selectInput.parentNode.insertBefore(correctAnswerSpan, selectInput.nextSibling);
+                    }
+                }
+                // Handle Radio Button Inputs (T/F, MCQs)
+                else if (radioGroup.length > 0) {
+                    const questionContainer = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
+                    const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+
+                    if (checkedRadio) {
+                        userAnswer = checkedRadio.value;
+                        userAnswerDisplay = userAnswer;
+                        isCorrect = userAnswer === correctAnswer;
+
+                        const userLabel = checkedRadio.closest('.tf-option, .multi-choice-option');
+                        if (userLabel) {
+                            userLabel.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                    }
+
+                    if (isCorrect) {
+                        score++;
+                    } else {
+                        if (questionContainer){
+                            const correctOptionEl = questionContainer.querySelector(`input[value="${correctAnswerText}"]`);
+                            if (correctOptionEl) {
+                                const correctLabel = correctOptionEl.closest('.tf-option, .multi-choice-option');
+                                if (correctLabel) {
+                                    correctLabel.classList.add('correct-answer-highlight');
+                                }
+                            }
+                        }
+                    }
+                }
+                // Handle Checkbox MCQs (multiple answers)
+                else if (checkboxInputs.length > 0) {
+                    if (!questionContainer) {
+                        questionContainer = checkboxInputs[0].closest('.multi-choice-question');
+                    }
+                    const selectedValues = checkedCheckboxes.map(cb => cb.value);
+                    const normalizedCorrect = Array.isArray(correctAnswer)
+                        ? correctAnswer.map(ans => String(ans).toLowerCase())
+                        : [String(correctAnswerText).toLowerCase()];
+                    const normalizedUser = selectedValues.map(v => String(v).toLowerCase());
+                    const expectedCount = normalizedCorrect.filter(Boolean).length;
+                    const maxSelectAttr = questionContainer?.dataset.maxSelect;
+                    const maxAllowed = maxSelectAttr ? parseInt(maxSelectAttr, 10) : null;
+                    const withinLimit = maxAllowed ? normalizedUser.length <= maxAllowed : true;
+                    let normalizedCorrectForStyling = normalizedCorrect;
+                    let questionContainerState = isCorrect;
+
+                    userAnswer = selectedValues;
+                    userAnswerDisplay = selectedValues.length ? selectedValues.join(', ') : 'Not Answered';
+
+                    if (isSharedCheckbox && !Array.isArray(correctAnswer)) {
+                        const target = normalizedCorrect[0];
+                        isCorrect = !!target && normalizedUser.includes(target) && withinLimit;
+
+                        const sharedQuestions = (questionContainer?.dataset.sharedQuestions || '')
+                            .split(',')
+                            .map(n => parseInt(n, 10))
+                            .filter(Number.isFinite);
+                        const sharedCorrect = [];
+                        sharedQuestions.forEach(qNum => {
+                            const ans = correctAnswers[String(qNum)];
+                            if (Array.isArray(ans)) {
+                                ans.forEach(a => sharedCorrect.push(String(a).toLowerCase()));
+                            } else if (ans != null) {
+                                sharedCorrect.push(String(ans).toLowerCase());
+                            }
+                        });
+                        normalizedCorrectForStyling = Array.from(new Set(sharedCorrect.filter(Boolean)));
+                        questionContainerState = normalizedCorrectForStyling.length > 0 &&
+                            normalizedUser.length === normalizedCorrectForStyling.length &&
+                            normalizedCorrectForStyling.every(ans => normalizedUser.includes(ans)) &&
+                            withinLimit;
+                    } else {
+                        isCorrect = expectedCount > 0 &&
+                            normalizedUser.length === expectedCount &&
+                            normalizedCorrect.every(ans => normalizedUser.includes(ans));
+                        questionContainerState = isCorrect;
+                    }
+
+                    if (questionContainer && selectedValues.length) {
+                        questionContainer.classList.add(questionContainerState ? 'correct' : 'incorrect');
+                    }
+
+                    const shouldStyleOptions = !isSharedCheckbox || !processedSharedCheckboxContainers.has(questionContainer);
+                    if (shouldStyleOptions) {
+                        checkboxInputs.forEach(cb => {
+                            const label = cb.closest('.multi-choice-option');
+                            if (!label) return;
+                            const isCorrectOption = normalizedCorrectForStyling.includes(String(cb.value).toLowerCase());
+                            label.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
+                            if (isCorrectOption) {
+                                label.classList.add('correct-answer-highlight');
+                            }
+                            if (cb.checked) {
+                                label.classList.add(isCorrectOption ? 'correct' : 'incorrect');
+                            }
+                        });
+                        if (isSharedCheckbox && questionContainer) {
+                            processedSharedCheckboxContainers.add(questionContainer);
+                        }
+                    }
+
+                    if (isCorrect) {
+                        score++;
+                    }
+                }
+                // Handle drag/drop blanks (summary/drag-drop)
+                else {
+                    let dropZone = document.querySelector(`.drop-zone[data-q-start="${i}"]`);
+                    if (!dropZone) {
+                        const fallback = document.getElementById(`q${i}`);
+                        if (fallback && fallback.classList.contains('drop-zone')) {
+                            dropZone = fallback;
+                        }
+                    }
+                    if (dropZone) {
+                        const droppedItem = dropZone.querySelector('.drag-item');
+                        userAnswer = droppedItem ? (droppedItem.dataset.value || droppedItem.textContent.trim()) : '';
+                        userAnswerDisplay = userAnswer || 'Not Answered';
+
+                        const normalizedUser = String(userAnswer).toLowerCase();
+                        const normalizedCorrect = Array.isArray(correctAnswer)
+                          ? correctAnswer.map(ans => String(ans).toLowerCase())
+                          : [String(correctAnswerText).toLowerCase()];
+
+                        isCorrect = normalizedUser && normalizedCorrect.includes(normalizedUser);
+
+                        if (isCorrect) {
+                            score++;
+                            dropZone.classList.add('correct');
+                        } else {
+                            dropZone.classList.add('incorrect');
+                            const correctAnswerSpan = document.createElement('span');
+                            correctAnswerSpan.className = 'correct-answer-display';
+                            correctAnswerSpan.innerHTML = `&nbsp;ƒzo&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                            dropZone.insertAdjacentElement('afterend', correctAnswerSpan);
+                        }
+                    }
+                }
+                   
+                // For showing results in the modal
+                 const resultRow = `
+                    <div class="result-row ${isCorrect ? '' : 'incorrect'}">
+                        <span class="q-num">${i}</span>
+                        <span class="user-ans">${userAnswerDisplay}</span>
+                        <span class="correct-ans">${correctAnswerText}</span>
+                    </div>`;
+                resultsDetailsContainer.innerHTML += resultRow;
+                
+                // Update nav button color
+                const navButton = document.querySelector(`.subQuestion[onclick="goToQuestion(${i})"]`);
+                if (navButton) {
+                    navButton.classList.remove('answered', 'active');
+                    navButton.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+            }
+
+            document.getElementById('results-score').textContent = score;
+            document.getElementById('results-band').textContent = calculateBandScore(score);
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        function calculateBandScore(score) {
+            if (score >= 39) return '9.0';
+            const mapping = {
+                40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5,
+                33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5,
+                26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5,
+                19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5,
+                12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0,
+                5: 2.5, 4: 2.5
+            };
+            if (score <= 0) return 0.0;
+            if (score === 1) return 1.0;
+            if (score <= 3) return 2.0;
+            if (score <= 5) return 2.5;
+            return mapping[score] || 0.0;
+        }
+
+        function getUserAnswer(qNum) {
+            const dropZone = document.querySelector(`.drop-zone[data-q-start="${qNum}"]`);
+            const textInput = document.getElementById(`q${qNum}`);
+            const radioInput = document.querySelector(`input[name="q${qNum}"]:checked`);
+
+            if (dropZone) {
+                const droppedItem = dropZone.querySelector('.drag-item');
+                return { 
+                    value: droppedItem ? droppedItem.dataset.value : null, 
+                    text: droppedItem ? droppedItem.textContent.trim() : 'N/A' 
+                };
+            }
+            if (textInput) { // Handles <input type="text"> and <select>
+                return { value: textInput.value || '', text: textInput.value || 'N/A' };
+            }
+            if (radioInput) {
+                return { value: radioInput.value, text: radioInput.value };
+            }
+            return { value: null, text: 'N/A' };
+        }
+
+        function displayCorrectAnswer(qNum, correctAnswer) {
+            // Handle radio button questions by highlighting the correct label
+            const correctRadioInput = document.querySelector(`input[name="q${qNum}"][value="${correctAnswer}"]`);
+            if (correctRadioInput) {
+                const parentOption = correctRadioInput.closest('.tf-option, .multi-choice-option');
+                if (parentOption) {
+                    parentOption.classList.add('correct-answer-highlight');
+                    return;
+                }
+            }
+
+            // Handle text inputs, select dropdowns, and others by showing the answer next to them
+            const inputEl = document.getElementById(`q${qNum}`);
+            if (inputEl) {
+                const displaySpan = document.createElement('span');
+                displaySpan.className = 'correct-answer-display';
+                displaySpan.textContent = ` ✓ ${correctAnswer}`;
+                inputEl.insertAdjacentElement('afterend', displaySpan);
+                return; // Done
+            }
+            
+            // Fallback for questions identified by a container (e.g., some T/F/NG questions)
+            const element = findQuestionElement(qNum);
+            if (element) {
+                const displaySpan = document.createElement('span');
+                displaySpan.className = 'correct-answer-display';
+                displaySpan.textContent = ` ✓ ${correctAnswer}`;
+                const itemContainer = element.querySelector('.tf-question-text');
+                if (itemContainer) {
+                     itemContainer.appendChild(displaySpan);
+                } else {
+                     element.appendChild(displaySpan);
+                }
+            }
+        }
+        
+        function findQuestionElement(qNum) {
+             const direct = document.querySelector(`[data-q-start="${qNum}"]`);
+             if (direct) return direct;
+             const rangeMatch = Array.from(document.querySelectorAll('[data-q-start][data-q-end]')).find(el => {
+                const start = parseInt(el.dataset.qStart || '0', 10);
+                const end = parseInt(el.dataset.qEnd || start, 10);
+                return qNum >= start && qNum <= end;
+             });
+             if (rangeMatch) return rangeMatch;
+             const sharedMatch = Array.from(document.querySelectorAll('.multi-choice-question[data-shared-questions]')).find(el => {
+                const parts = (el.dataset.sharedQuestions || '').split(',').map(n => parseInt(n, 10));
+                return parts.includes(qNum);
+             });
+             return sharedMatch || null;
+        }
+
+        function addResultToModal(qNum, userAnswer, correctAnswer, isCorrect) {
+            const resultsDetails = document.getElementById('results-details');
+            const row = document.createElement('div');
+            row.className = 'result-row';
+            if (!isCorrect) {
+                row.classList.add('incorrect');
+            }
+            row.innerHTML = `
+                <span class="q-num">${qNum}</span>
+                <span class="user-ans">${userAnswer}</span>
+                <span class="correct-ans">${correctAnswer}</span>
+            `;
+            resultsDetails.appendChild(row);
+        }
+
+        function showResultsModal() {
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        window.closeResultsModal = function() {
+            document.getElementById('results-modal').classList.add('hidden');
+        }
+        
+        function disableInputs() {
+            deliverButton.innerHTML = `<span>Checked! View Results.</span>`;
+            deliverButton.removeEventListener('click', checkAnswers);
+            deliverButton.onclick = showResultsModal;
+
+            document.querySelectorAll('input, select').forEach(el => {
+                el.disabled = true;
+                 if (el.matches('input[type=radio], input[type=checkbox]')) {
+                     el.style.cursor = 'not-allowed';
+                     el.parentElement.style.cursor = 'not-allowed';
+                 }
+            });
+            document.querySelectorAll('.drag-item').forEach(el => {
+                el.setAttribute('draggable', 'false');
+                el.style.cursor = 'default';
+            });
+            document.querySelectorAll('.drop-zone').forEach(el => {
+                el.classList.add('disabled');
+            });
+        }
+
+        function checkValue(userValue, correctValue) {
+            if (userValue === null || userValue === undefined) return false;
+            const formattedUserValue = userValue.trim().toLowerCase();
+            if (Array.isArray(correctValue)) {
+                return correctValue.map(v => v.toLowerCase()).includes(formattedUserValue);
+            } else {
+                return formattedUserValue === String(correctValue).toLowerCase();
+            }
+        }
+
+        function markQuestion(qNum, isCorrect) {
+            const subQuestionBtn = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
+            subQuestionBtn?.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            const elementsToMark = [
+                document.querySelector(`.tf-question[data-q-start="${qNum}"]`),
+                document.querySelector(`.multi-choice-question[data-q-start="${qNum}"]`),
+                document.querySelector(`.matching-question-item[data-q-start="${qNum}"]`),
+                document.querySelector(`.drop-zone[data-q-start="${qNum}"]`),
+                document.getElementById(`q${qNum}`),
+                document.querySelector(`input[name="q${qNum}"]:checked`)?.closest('.tf-option'),
+                document.querySelector(`input[name="q${qNum}"]:checked`)?.closest('.multi-choice-option')
+            ];
+            
+            elementsToMark.forEach(el => {
+                if (el) el.classList.add(isCorrect ? 'correct' : 'incorrect');
+            });
+        }
+
+        const getFirstQuestionOfPart = (partNumber) => {
+            const match = partRanges.find(p => p.part === partNumber);
+            return match ? match.start : 1;
+        };
+
+        const getPartForQuestion = (questionNumber) => {
+            const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end);
+            return match ? match.part : partRanges[0]?.part || 1;
+        };
+
+        function switchToPart(partNumber) {
+            currentPassage = partNumber;
+
+            // Hide all passages and questions
+            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Show the correct passage, questions, and header
+            document.getElementById(`passage-text-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`questions-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`part-header-${partNumber}`).classList.remove('hidden');
+
+            // Update bottom navigation 'selected' state
+            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => {
+                wrapper.classList.toggle('selected', (index + 1) === partNumber);
+            });
+
+            // Go to the first question of the part
+            goToQuestion(getFirstQuestionOfPart(partNumber));
+        }
+        
+        function goToQuestion(questionNumber) {
+            currentQuestion = questionNumber;
+
+            const passageNumber = getPartForQuestion(questionNumber);
+            
+            if (currentPassage !== passageNumber) {
+                switchToPart(passageNumber);
+                return; 
+            }
+
+            if (activeQuestionElement) {
+                activeQuestionElement.classList.remove('active-question', 'active-input');
+            }
+
+            let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
+
+            if (targetEl) {
+                activeQuestionElement = targetEl;
+                 if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
+                     targetEl.classList.add('active-input');
+                 } else {
+                     targetEl.classList.add('active-question');
+                 }
+                 scrollIntoViewIfNeeded(targetEl);
+            } else {
+                 const pMatch = document.querySelector(`.paragraph-matching-question select[id="q${questionNumber}"]`);
+                 if(pMatch) {
+                    activeQuestionElement = pMatch;
+                    pMatch.classList.add('active-input');
+                    scrollIntoViewIfNeeded(pMatch);
+                 }
+            }
+
+            updateNavigation();
+        }
+        
+        // --- UI & NAVIGATION ---
+
+        function updateNavigation() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            const activeNav = document.querySelector(`.subQuestion[onclick="goToQuestion(${currentQuestion})"]`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            const inputs = document.querySelectorAll('.answer-input, .drop-zone.filled, .summary-drop-zone.filled');
+            inputs.forEach(input => input.classList.remove('active-input'));
+            
+            const activeInput = document.getElementById(`q${currentQuestion}`);
+            if (activeInput) {
+                activeInput.classList.add('active-input');
+                if (typeof activeInput.focus === 'function') {
+                    activeInput.focus();
+                }
+            } else {
+                const activeQuestionBlock = document.querySelector(`[data-q-start="${currentQuestion}"]`);
+                if (activeQuestionBlock) {
+                    const firstInput = activeQuestionBlock.querySelector('input, select');
+                    if(firstInput) {
+                        firstInput.classList.add('active-input');
+                         if (typeof firstInput.focus === 'function') {
+                            firstInput.focus();
+                        }
+                    }
+                }
+            }
+        }
+        
+        function selectDragItem(item) {
+            if (selectedDragItem) {
+                selectedDragItem.classList.remove('selected');
+            }
+            selectedDragItem = item;
+            if (selectedDragItem) {
+                selectedDragItem.classList.add('selected');
+            }
+        }
+        
+        window.nextQuestion = () => currentQuestion < totalQuestions && goToQuestion(currentQuestion + 1);
+        window.previousQuestion = () => currentQuestion > 1 && goToQuestion(currentQuestion - 1);
+
+        function updateAllIndicators() {
+            partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end));
+            updateAnsweredNav();
+        }
+        
+        function updateAnsweredNav() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => {
+                const qNum = parseInt(btn.textContent, 10);
+                if (isQuestionAnswered(qNum)) {
+                    btn.classList.add('answered');
+                } else {
+                    btn.classList.remove('answered');
+                }
+            });
+        }
+        
+        function isQuestionAnswered(qNum) {
+            const dropZone = document.querySelector(`.drop-zone[data-q-start="${qNum}"]`);
+            if (dropZone && dropZone.querySelector('.drag-item')) return true;
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') return true;
+            const radio = document.querySelector(`input[name="q${qNum}"]:checked`);
+            if (radio) {
+                return true;
+            }
+            const checkbox = document.querySelector(`input[name="q${qNum}"]:checked`);
+            if (checkbox) {
+                return true;
+            }
+            return false;
+        }
+
+        function scrollIntoViewIfNeeded(element) {
+            const panel = element.closest('.questions-panel, .passage-panel');
+            const panelRect = panel.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        // --- DRAG AND DROP ---
+        
+        function initializeDragAndDrop() {
+            document.querySelectorAll('.drag-item').forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+                item.addEventListener('click', () => selectDragItem(item));
+            });
+            document.querySelectorAll('.drop-zone, .drag-options-container').forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('dragleave', handleDragLeave);
+                zone.addEventListener('drop', handleDrop);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedItem = e.target;
+            setTimeout(() => e.target.classList.add('dragging'), 0);
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedItem = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            const targetZone = e.currentTarget;
+            if (draggedItem && draggedItem.dataset.dndGroup === targetZone.dataset.dndGroup) {
+                targetZone.classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const targetZone = e.currentTarget;
+            targetZone.classList.remove('drag-over');
+
+            if (!draggedItem || draggedItem.dataset.dndGroup !== targetZone.dataset.dndGroup) {
+                return;
+            }
+
+            const sourceZone = draggedItem.parentElement;
+            if (sourceZone === targetZone) return; // Prevent dropping on itself
+
+            const existingItemInTarget = targetZone.classList.contains('drop-zone') 
+                ? targetZone.querySelector('.drag-item') 
+                : null;
+
+            // First, clear the target drop-zone of any text (like question numbers) before adding the new item.
+            if (targetZone.classList.contains('drop-zone')) {
+                Array.from(targetZone.childNodes).forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        node.remove();
+                    }
+                });
+            }
+
+            // Move the item that was in the target (if any) to the source zone.
+            if (existingItemInTarget) {
+                sourceZone.appendChild(existingItemInTarget);
+            }
+            
+            // Finally, move the dragged item to the target zone.
+            targetZone.appendChild(draggedItem);
+            targetZone.classList.add('filled');
+
+            // After the move, clean up the source zone if it's a drop-zone and is now empty.
+            if (sourceZone.classList.contains('drop-zone') && !sourceZone.querySelector('.drag-item')) {
+                 sourceZone.classList.remove('filled');
+                 const qNum = sourceZone.dataset.qStart;
+                 sourceZone.innerText = qNum; // Restore the question number
+            }
+            
+            updateAllIndicators();
+        }
+        
+        // --- MISC HELPERS ---
+        
+        function updateTimerDisplay() {
+            const displaySeconds = Math.max(timeInSeconds, 0);
+            if (displaySeconds > COUNTDOWN_THRESHOLD) {
+                const minutesRemaining = Math.ceil(displaySeconds / 60);
+                timerDisplay.textContent = `${minutesRemaining} minutes remaining`;
+            } else {
+                const minutes = Math.floor(displaySeconds / 60);
+                const seconds = displaySeconds % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        function handleTimeExpired() {
+            timeInSeconds = 0;
+            updateTimerDisplay();
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            checkAnswers();
+        }
+
+        function startTimer() {
+            if (hasSubmitted) return;
+            if (timerInterval) clearInterval(timerInterval); // Ensure no multiple intervals
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeInSeconds = Math.max(timeInSeconds - 1, 0);
+                updateTimerDisplay();
+                if (timeInSeconds <= 0) {
+                    handleTimeExpired();
+                }
+            }, 1000);
+            timerToggleButton.innerHTML = pauseIcon;
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+        }
+
+        function toggleTimer() {
+            if (timerInterval) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function resetTimer() {
+            timeInSeconds = 3600;
+            updateTimerDisplay();
+            startTimer();
+        }
+        
+        function setupCheckboxLimits() {
+            const warningClass = 'multi-choice-warning';
+            document.querySelectorAll('.multi-choice-question[data-max-select]').forEach(question => {
+                const maxSelect = parseInt(question.dataset.maxSelect, 10);
+                if (!maxSelect || maxSelect < 1) return;
+                const checkboxes = question.querySelectorAll('input[type="checkbox"]');
+                if (!checkboxes.length) return;
+
+                let warningEl = question.querySelector(`.${warningClass}`);
+                if (!warningEl) {
+                    warningEl = document.createElement('div');
+                    warningEl.className = warningClass;
+                    warningEl.setAttribute('aria-live', 'polite');
+                    question.appendChild(warningEl);
+                }
+
+                checkboxes.forEach(cb => {
+                    cb.addEventListener('change', (e) => {
+                        const checked = question.querySelectorAll('input[type="checkbox"]:checked');
+                        if (checked.length > maxSelect) {
+                            e.target.checked = false;
+                            warningEl.textContent = `You can select up to ${maxSelect} option${maxSelect > 1 ? 's' : ''}. Tap a selected option again to change your answers.`;
+                        } else {
+                            warningEl.textContent = '';
+                        }
+                        updateAnsweredNav();
+                    });
+                });
+            });
+        }
+
+        function setupExampleHeading() {
+            // No specific example boxes to set up
+        }
+        
+        function initResize(e) {
+            e.preventDefault();
+            const startX = e.clientX;
+            const startWidth = passagePanel.offsetWidth;
+            
+            const doDrag = (e) => {
+                const newWidth = startWidth + e.clientX - startX;
+                if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) {
+                    passagePanel.style.flex = `0 0 ${newWidth}px`;
+                }
+            };
+            const stopDrag = () => {
+                window.removeEventListener('mousemove', doDrag, false);
+                window.removeEventListener('mouseup', stopDrag, false);
+            };
+            
+            window.addEventListener('mousemove', doDrag, false);
+            window.addEventListener('mouseup', stopDrag, false);
+        }
+        
+        // --- CONTEXT MENU (Highlighting) ---
+        const ANNOTATION_CLASSES = {
+            highlight: 'annotation-highlight',
+            note: 'annotation-note'
+        };
+
+        function unwrapElement(element) {
+            const parent = element?.parentNode;
+            if (!parent) return;
+            while (element.firstChild) {
+                parent.insertBefore(element.firstChild, element);
+            }
+            parent.removeChild(element);
+        }
+
+        function selectionWithinPanels(selection) {
+            const anchor = selection.anchorNode;
+            const focus = selection.focusNode;
+            const inPanels = node => node && (passagePanel.contains(node) || questionsPanel.contains(node));
+            return inPanels(anchor) && inPanels(focus);
+        }
+
+        function isRangeInsidePanels(range) {
+            const root = range.commonAncestorContainer;
+            return passagePanel.contains(root) || questionsPanel.contains(root);
+        }
+
+        function getCurrentSelectionRange() {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed) return null;
+            return selection.getRangeAt(0).cloneRange();
+        }
+
+        function positionContextMenu(x, y) {
+            contextMenu.style.display = 'block';
+            const menuHeight = contextMenu.offsetHeight;
+            const menuWidth = contextMenu.offsetWidth;
+            let left = x;
+            let top = y - menuHeight - 8;
+            if (left + menuWidth > window.innerWidth) left = window.innerWidth - menuWidth - 8;
+            if (left < 8) left = 8;
+            if (top < 8) top = y + 8;
+            contextMenu.style.left = `${left}px`;
+            contextMenu.style.top = `${top}px`;
+        }
+
+        function resetSelectionState() {
+            pendingSelectionRange = null;
+            activeAnnotationTarget = null;
+        }
+
+        function showMenuForSelection(event) {
+            menuHighlight.style.display = 'flex';
+            menuNote.style.display = 'flex';
+            menuClear.style.display = 'none';
+            menuClearAll.style.display = 'none';
+            contextMenu.dataset.mode = 'create';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function showMenuForAnnotation(event, target) {
+            activeAnnotationTarget = target;
+            pendingSelectionRange = null;
+            window.getSelection().removeAllRanges();
+            menuHighlight.style.display = 'none';
+            menuNote.style.display = 'none';
+            menuClear.style.display = 'flex';
+            menuClearAll.style.display = 'flex';
+            contextMenu.dataset.mode = 'manage';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function closeContextMenu(resetSelection = false) {
+            contextMenu.style.display = 'none';
+            contextMenu.dataset.mode = '';
+            if (resetSelection) {
+                window.getSelection().removeAllRanges();
+            }
+            resetSelectionState();
+        }
+
+        function expandRangeToAnnotations(range, selector) {
+            const spans = Array.from(document.querySelectorAll(selector));
+            spans.forEach(span => {
+                if (!range.intersectsNode(span)) return;
+                const spanRange = document.createRange();
+                spanRange.selectNode(span);
+                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) {
+                    range.setStartBefore(span);
+                }
+                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) {
+                    range.setEndAfter(span);
+                }
+            });
+        }
+
+        function unwrapAnnotationsInRange(range, type) {
+            const selector = type === 'highlight'
+                ? `.${ANNOTATION_CLASSES.highlight}`
+                : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
+            document.querySelectorAll(selector).forEach(span => {
+                if (range.intersectsNode(span)) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function getTextNodesInRange(range, type) {
+            const nodes = [];
+            const shouldInclude = (node) => {
+                if (!node || !node.nodeValue || !node.nodeValue.trim()) return false;
+                if (!range.intersectsNode(node)) return false;
+                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) {
+                    return false;
+                }
+                return true;
+            };
+
+            if (range.commonAncestorContainer.nodeType === Node.TEXT_NODE) {
+                if (shouldInclude(range.commonAncestorContainer)) {
+                    nodes.push(range.commonAncestorContainer);
+                }
+                return nodes;
+            }
+
+            const walker = document.createTreeWalker(
+                range.commonAncestorContainer,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+                }
+            );
+
+            while (walker.nextNode()) {
+                nodes.push(walker.currentNode);
+            }
+            return nodes;
+        }
+
+        function wrapTextPortion(node, range, type, noteText = '', highlightColor = 'yellow') {
+            let startOffset = 0;
+            let endOffset = node.nodeValue.length;
+
+            if (node === range.startContainer && range.startOffset > startOffset) {
+                startOffset = range.startOffset;
+            }
+            if (node === range.endContainer && range.endOffset < endOffset) {
+                endOffset = range.endOffset;
+            }
+
+            if (startOffset >= endOffset) return;
+
+            const selectedText = node.splitText(startOffset);
+            selectedText.splitText(endOffset - startOffset);
+
+            const span = document.createElement('span');
+            span.classList.add('annotation', type === 'highlight' ? ANNOTATION_CLASSES.highlight : ANNOTATION_CLASSES.note);
+            span.dataset.type = type;
+            if (type === 'highlight') {
+                const allowedColors = ['yellow', 'green', 'pink'];
+                const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
+                span.dataset.color = safeColor;
+                span.classList.add(`highlight-${safeColor}`);
+            }
+            if (type === 'note') {
+                const content = noteText || '';
+                span.dataset.note = content;
+                if (content) {
+                    span.setAttribute('data-note', content);
+                    span.title = content;
+                } else {
+                    span.removeAttribute('data-note');
+                    span.title = 'Note';
+                }
+            }
+            selectedText.parentNode.insertBefore(span, selectedText);
+            span.appendChild(selectedText);
+        }
+
+        function mergeAdjacentAnnotations() {
+            const annotations = document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+            annotations.forEach(span => {
+                if (!span.parentNode) return;
+                let cursor = span.nextSibling;
+                while (true) {
+                    const whitespaceBetween = [];
+                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) {
+                        whitespaceBetween.push(cursor);
+                        cursor = cursor.nextSibling;
+                    }
+                    if (
+                        cursor &&
+                        cursor.nodeType === Node.ELEMENT_NODE &&
+                        cursor.classList.contains('annotation') &&
+                        cursor.dataset.type === span.dataset.type &&
+                        (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))
+                    ) {
+                        whitespaceBetween.forEach(node => span.appendChild(node));
+                        while (cursor.firstChild) {
+                            span.appendChild(cursor.firstChild);
+                        }
+                        const after = cursor.nextSibling;
+                        cursor.remove();
+                        cursor = after;
+                    } else {
+                        break;
+                    }
+                }
+                if (!span.textContent.trim()) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function handleTextSelection(event) {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) {
+                return;
+            }
+            if (!selectionWithinPanels(selection)) {
+                return;
+            }
+            const range = selection.getRangeAt(0).cloneRange();
+            pendingSelectionRange = range;
+            activeAnnotationTarget = null;
+            showMenuForSelection(event);
+        }
+
+        function initializeContextMenu() {
+            const panels = [passagePanel, questionsPanel];
+            panels.forEach(panel => {
+                panel.addEventListener('mouseup', (e) => {
+                    setTimeout(() => handleTextSelection(e), 0);
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (contextMenu.contains(e.target)) return;
+                const annotation = e.target.closest(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+                if (annotation) {
+                    showMenuForAnnotation(e, annotation);
+                    return;
+                }
+                closeContextMenu();
+            });
+        }
+
+        function applyAnnotation(type, noteText = '', highlightColor = 'yellow') {
+            const baseRange = pendingSelectionRange ? pendingSelectionRange.cloneRange() : getCurrentSelectionRange();
+            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) {
+                closeContextMenu(true);
+                return;
+            }
+
+            if (type === 'highlight') {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`);
+            } else {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`);
+            }
+
+            unwrapAnnotationsInRange(baseRange, type);
+            const targets = getTextNodesInRange(baseRange, type);
+            targets.forEach(node => wrapTextPortion(node, baseRange, type, noteText, highlightColor));
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        function highlightText(color = 'yellow') {
+            applyAnnotation('highlight', '', color);
+        }
+
+        function addNote() {
+            const note = prompt('Nhập nội dung ghi chú (Take note):');
+            if (note === null) {
+                closeContextMenu();
+                return;
+            }
+            applyAnnotation('note', note.trim());
+        }
+
+        function clearHighlight() {
+            if (activeAnnotationTarget) {
+                unwrapElement(activeAnnotationTarget);
+                mergeAdjacentAnnotations();
+            }
+            closeContextMenu(true);
+        }
+        
+        function clearAllHighlights() {
+            document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`)
+                .forEach(unwrapElement);
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        // --- QUESTION MARKING ---
+
+        function findQuestionAnchor(qNum) {
+            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`);
+            if (mcqNumber) return mcqNumber;
+            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum);
+            if (tfNumber) return tfNumber;
+
+            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim()));
+            if (strongLabel) return strongLabel;
+
+            const genericLabel = document.querySelector(`label[for="q${qNum}"]`);
+            if (genericLabel) return genericLabel;
+
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput) return textInput;
+
+            const summaryBlank = document.querySelector(`.summary-drop-zone[data-q-start="${qNum}"]`);
+            if (summaryBlank) return summaryBlank;
+
+            return null;
+        }
+
+        function ensureMcqNumbering() {
+            document.querySelectorAll('.multi-choice-question').forEach(q => {
+                const qStart = parseInt(q.dataset.qStart || '0', 10);
+                const qEnd = parseInt(q.dataset.qEnd || q.dataset.qStart || '0', 10);
+                if (!qStart) return;
+                const optionsContainer = q.querySelector('.multi-choice-options');
+                if (!optionsContainer) return;
+                let titleEl = q.querySelector('.mcq-question-title');
+                if (!titleEl) {
+                    const p = optionsContainer.querySelector('p');
+                    if (p) {
+                        titleEl = document.createElement('span');
+                        titleEl.className = 'mcq-question-title';
+                        while (p.firstChild) {
+                            titleEl.appendChild(p.firstChild);
+                        }
+                        p.appendChild(titleEl);
+                    }
+                }
+                if (titleEl && !q.querySelector('.mcq-question-number')) {
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'mcq-question-number question-number-box';
+                    numSpan.dataset.qNumber = String(qStart);
+                    numSpan.textContent = (qEnd && qEnd !== qStart) ? `${qStart}-${qEnd}` : qStart;
+                    titleEl.parentNode.insertBefore(numSpan, titleEl);
+                }
+
+                if (!titleEl) return;
+                const sharedNumbers = (q.dataset.sharedQuestions || '')
+                    .split(',')
+                    .map(val => parseInt(val.trim(), 10))
+                    .filter(Boolean);
+                const rangeNumbers = (qEnd && qEnd !== qStart)
+                    ? Array.from({ length: qEnd - qStart + 1 }, (_, i) => qStart + i)
+                    : [qStart];
+                const numbers = sharedNumbers.length ? sharedNumbers : rangeNumbers;
+                const existing = new Set(
+                    Array.from(q.querySelectorAll('.mcq-hidden-anchor[data-q-number]')).map(el => el.dataset.qNumber)
+                );
+                numbers.forEach(num => {
+                    const key = String(num);
+                    if (existing.has(key)) return;
+                    const anchor = document.createElement('span');
+                    anchor.className = 'mcq-hidden-anchor mcq-question-number';
+                    anchor.dataset.qNumber = key;
+                    titleEl.parentNode.appendChild(anchor);
+                });
+            });
+        }
+
+        function createMarkerButton(anchor, qNum) {
+            if (!anchor || anchor.closest('.question-number-with-mark') || anchor.closest('.markable-blank-wrapper')) return null;
+            const isInput = anchor.tagName === 'INPUT';
+            const isSummaryBlank = anchor.classList?.contains('summary-drop-zone') || anchor.classList?.contains('drop-zone');
+            const isInlineBlank = isInput || isSummaryBlank;
+
+            const wrapper = document.createElement('span');
+            wrapper.dataset.questionNumber = qNum;
+            const parent = anchor.parentNode;
+            if (!parent) return null;
+
+            if (isInlineBlank) {
+                wrapper.className = 'markable-blank-wrapper';
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            } else {
+                wrapper.className = 'question-number-with-mark';
+                const displayMode = window.getComputedStyle(anchor).display;
+                if (displayMode === 'block' || displayMode === 'flex') {
+                    wrapper.style.display = 'flex';
+                    wrapper.style.alignItems = 'center';
+                }
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            }
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = isInlineBlank ? 'mark-toggle-btn inside-blank' : 'mark-toggle-btn';
+            button.dataset.questionNumber = qNum;
+            button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`);
+            button.innerHTML = bookmarkIcon;
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMark(qNum);
+            });
+            wrapper.appendChild(button);
+
+            const markHost = wrapper.closest('.tf-question, .matching-form-row, .matching-question-item, .question, .drag-drop-question, .summary-question, .paragraph-matching-question') || wrapper;
+            markHost.classList.add('markable-question');
+
+            markButtons.set(qNum, button);
+            return button;
+        }
+
+        function initializeQuestionMarkers() {
+            ensureMcqNumbering();
+            for (let i = 1; i <= totalQuestions; i++) {
+                const anchor = findQuestionAnchor(i);
+                createMarkerButton(anchor, i);
+            }
+        }
+
+        function toggleMark(qNum) {
+            const isMarked = markedQuestions.has(qNum);
+            if (isMarked) {
+                markedQuestions.delete(qNum);
+            } else {
+                markedQuestions.add(qNum);
+            }
+            updateMarkState(qNum, !isMarked);
+        }
+
+        function updateMarkState(qNum, marked) {
+            const btn = markButtons.get(qNum);
+            if (btn) {
+                btn.classList.toggle('marked', marked);
+                btn.setAttribute('aria-pressed', marked ? 'true' : 'false');
+            }
+            const navButton = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
+            if (navButton) {
+                navButton.classList.toggle('marked', marked);
+            }
+        }
+
+        function updateAttemptedCount(part, startQ, endQ) {
+            let answeredCount = 0;
+            for (let i = startQ; i <= endQ; i++) {
+                if (isQuestionAnswered(i)) {
+                    answeredCount++;
+                }
+            }
+            const partHeader = document.querySelector(`.footer__questionNo___3WNct[onclick="switchToPart(${part})"]`);
+            if (partHeader) {
+                const countSpan = partHeader.querySelector('.attemptedCount');
+                if (countSpan) {
+                     countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`;
+                }
+            }
+        }
+
+        // --- GLOBAL FUNCTION EXPOSURE ---
+        window.nextQuestion = nextQuestion;
+        window.previousQuestion = previousQuestion;
+        window.goToQuestion = goToQuestion;
+        window.switchToPart = switchToPart;
+        window.closeResultsModal = closeResultsModal;
+        window.highlightText = highlightText;
+        window.addNote = addNote;
+        window.clearHighlight = clearHighlight;
+        window.clearAllHighlights = clearAllHighlights;
+
+        // --- START THE APP ---
+    });
+
+    </script>
+</div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,4545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
+    <title>IELTS Full Reading Practice</title>
+    <style>
+        /* All CSS styles remain exactly the same as in the original code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            background-color: #ffffff;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+
+        .header {
+            background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb);
+            background-size: 200% 200%;
+            animation: bannerFlow 8s ease-in-out infinite;
+            padding: 10px 20px;
+            border-bottom: 1px solid #d7def5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 60px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1 1 auto;
+            justify-content: flex-start;
+        }
+        .header-ad {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(215, 222, 245, 0.9);
+            background: rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(4px);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12);
+            min-width: 180px;
+            max-width: calc(100% - 70px);
+            width: auto;
+            flex: 1 1 auto;
+            height: 48px;
+            overflow: hidden;
+        }
+        .ad-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .ad-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #6b7ac7;
+            margin: 0;
+            font-weight: 700;
+        }
+        .ad-marquee {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            //animation: marqueeSlide 14s linear infinite;
+            align-items: center;
+            padding-left: 4px;
+        }
+        .ad-headline {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1c2566;
+            white-space: nowrap;
+        }
+        .ad-loop {
+            display: flex;
+            gap: 40px;
+        }
+        .ad-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #cdd6f5;
+            background: rgba(255, 255, 255, 0.7);
+            color: #46507a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 800;
+            flex: 0 0 auto;
+            margin-left: 6px;
+            font-size: 16px;
+        }
+        .ad-close:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
+            background: #f6f8ff;
+        }
+        .ad-close {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #cdd6f5;
+            background: rgba(255, 255, 255, 0.7);
+            color: #46507a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 800;
+        }
+        .ad-close:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
+            background: #f6f8ff;
+        }
+        @keyframes bannerFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes marqueeSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+
+        .ielts-logo {
+            display: none;
+        }
+
+        .test-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .audio-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .audio-icon {
+            width: 16px;
+            height: 16px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon></svg>') no-repeat center;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+        }
+
+        #volume-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 4px;
+            background: #ddd;
+            outline: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        #volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+
+        #volume-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            border: none;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon:hover {
+            opacity: 1;
+        }
+        
+        #play-pause-btn {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .main-container {
+            margin-top: 90px;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            height: calc(100vh - 90px);
+        }
+
+        .panels-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px; /* Minimum width */
+        }
+
+        /* Passage Content */
+        .text-center {
+            text-align: center;
+        }
+        .reading-passage h4 {
+            font-family: 'Merriweather', 'Times New Roman', serif; /* Oqlangan serif shrift */
+            font-size: 22px; /* Biroz kattaroq */
+            font-weight: 600; /* O‘rtacha qalinlik */
+            color: #2c3e50; /* To‘q kulrang ko‘k rang */
+            line-height: 1.4; /* Qulay satr oralig‘i */
+            margin-bottom: 20px; /* Ko‘proq bo‘shliq */
+            text-align: center;
+            border-bottom: 2px solid #4a90e2; /* Ko‘k chegara */
+            padding-bottom: 5px; /* Chegara bilan matn oralig‘i */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Engil soya */
+        }
+       
+        .reading-passage p {
+            margin-bottom: 1.2em;
+        }
+
+        .question ul li label {
+            display: block;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .questions-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px; /* Minimum width */
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .resizer {
+            width: 10px;
+            cursor: col-resize;
+            background-color: #f0f0f0;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="30" viewBox="0 0 10 30"><path d="M4 11h2v2H4zM4 15h2v2H4zM4 19h2v2H4z" fill="%23888"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+
+        /* Left Panel */
+        .left-panel {
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: none;
+            width: 50%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .help-button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .help-button:hover {
+            background: #357abd;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .people-section {
+            margin-bottom: 30px;
+        }
+
+        .people-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        .people-table th {
+            text-align: left;
+            padding: 10px;
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+
+        .people-table td {
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+        }
+
+        .person-name {
+            font-size: 16px;
+        }
+
+        .question-number {
+            background: white;
+            border: 1px solid #4a90e2;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #4a90e2;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .assigned-responsibility {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+        }
+
+        .responsibilities-section {
+            margin-bottom: 30px;
+        }
+
+        .responsibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .responsibility-item {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: move;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .responsibility-item:hover {
+            background: #e9ecef;
+            transform: translateY(-1px);
+        }
+
+        .responsibility-item.dragging {
+            opacity: 0.5;
+        }
+
+        .questions-section {
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .instruction {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Map Styles */
+        .map-container {
+            position: relative;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .map-svg {
+            border: 2px solid #333;
+            background: white;
+        }
+
+        .map-room {
+            fill: #f9f9f9;
+            stroke: #333;
+            stroke-width: 1;
+        }
+
+        .map-text {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            text-anchor: middle;
+            fill: #333;
+        }
+
+        .map-number {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-anchor: middle;
+            fill: #333;
+        }
+
+        .room-labels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .room-label {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: move;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .room-label:hover {
+            background: #e9ecef;
+            transform: translateY(-1px);
+        }
+
+        .room-label.dragging {
+            opacity: 0.5;
+        }
+
+        /* Navigation Arrows */
+        .nav-arrows {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-arrow:hover {
+            background: #555;
+        }
+
+        .nav-arrow:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Bottom Navigation - Exact Match */
+        .nav-row {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+        
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            z-index: 100;
+        }
+
+        .footer__questionWrapper___1tZ46 {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+
+        .footer__questionNo___3WNct {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .footer__questionNo___3WNct:hover {
+            background-color: #f8f9fa;
+        }
+
+        .section-prefix {
+            font-size: 16px;
+        }
+
+        .sectionNr {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .attemptedCount {
+            font-size: 14px;
+            color: #666;
+            margin-left: 5px;
+            font-weight: 400; /* Normal weight */
+        }
+
+        @media (max-width: 768px) {
+            .attemptedCount {
+                display: none;
+            }
+        }
+
+        .footer__questionWrapper___1tZ46.selected .attemptedCount {
+            display: none;
+        }
+
+        .footer__subquestionWrapper___9GgoP {
+            display: none;
+            gap: 2px;
+            margin-left: 10px;
+        }
+
+        .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP {
+            display: flex;
+        }
+
+        .subQuestion {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ccc;
+            background: white;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+
+        .subQuestion.answered {
+            background-color: #e9ecef;
+            border-color: #ddd;
+        }
+        .subQuestion.correct {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        .subQuestion.incorrect {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .subQuestion.marked {
+            position: relative;
+            color: #333;
+        }
+
+        .subQuestion:hover {
+            background-color: #f0f0f0;
+            border-color: #999;
+        }
+
+        .subQuestion.active {
+            background-color: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+
+        .subQuestion.completed {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .subQuestion.marked.active {
+            box-shadow: 0 0 0 2px #f0c000;
+        }
+
+        .subQuestion.marked::after {
+            content: "";
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 14px;
+            height: 18px;
+            background: #ffd400;
+            border: 1px solid #d49b00;
+            border-radius: 2px 2px 0 0;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .footer__deliverButton___3FM07 {
+            margin-left: auto;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, border-color 0.2s;
+            min-width: 170px;
+            justify-content: center;
+        }
+
+        .footer__deliverButton___3FM07:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        .footer__deliverButton___3FM07:disabled {
+            background: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            border-color: #ddd;
+        }
+
+        .fa-check::before {
+            content: "✓";
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Context Menu */
+        .context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            min-width: 140px;
+        }
+
+        .context-menu-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .context-menu-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .context-menu-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .context-menu-item.has-submenu {
+            position: relative;
+            justify-content: space-between;
+            padding-right: 10px;
+        }
+
+        .submenu-arrow {
+            font-size: 12px;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .highlight-submenu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            display: none;
+            min-width: 132px;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .context-menu-item.has-submenu:hover .highlight-submenu {
+            display: block;
+        }
+
+        .highlight-color-option {
+            width: 100%;
+            border: none;
+            background: #fff;
+            padding: 10px 12px;
+            font-size: 15px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlight-color-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.18);
+            flex: 0 0 auto;
+        }
+
+        .color-dot.yellow { background-color: #fff3a3; }
+        .color-dot.green { background-color: #b4f0c1; }
+        .color-dot.pink { background-color: #ffc7df; }
+
+        .annotation-highlight {
+            background-color: var(--highlight-color, #fff3a3);
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
+        .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
+        .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
+
+        .annotation-note {
+            background-color: #b4f0c1;
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .annotation-note[data-note]:hover::after {
+            content: attr(data-note);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, -6px);
+            background: #1f2937;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 13px;
+            z-index: 2000;
+        }
+
+        .question {
+            margin-bottom: 40px;
+        }
+        .question p {
+            margin-bottom: 10px;
+        }
+        .question ul, .question .people-table {
+            margin-top: 0;
+        }
+        .question-prompt {
+            margin-bottom: 20px;
+        }
+        .question-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 10px;
+            color: #000;
+        }
+        .question ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .question ul li {
+            margin-bottom: 5px;
+        }
+        .answer-input {
+            border: 1px solid #888;
+            border-radius: 4px;
+            background-color: #fff;
+            padding: 2px 5px;
+            font-size: 16px;
+            text-align: center;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 28px; /* Standard height */
+            width: 150px; /* Standard width */
+        }
+        .answer-input.active-input {
+            border-color: #4a90e2;
+            box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5);
+        }
+        .answer-input::placeholder {
+            color: #999;
+            font-weight: bold;
+            text-align: center;
+        }
+        .answer-input.correct {
+            border-color: #28a745;
+            background-color: #e9f7ef;
+        }
+        .answer-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer-input {
+    z-index: 10;
+    position: relative;
+    pointer-events: auto;
+}
+        .drag-drop-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            align-items: flex-start;
+        }
+        .recommendations-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            min-height: 200px;
+        }
+        .drag-item {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: move;
+            font-size: 16px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .drag-item:hover {
+            background: #e9ecef;
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+        }
+        .drag-item.selected {
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
+        }
+        .drop-zone {
+            border: 2px dashed #aaa;
+            border-radius: 4px;
+            width: 50%;
+            margin-top: 19px;
+            margin-bottom: 5px;
+            transition: background-color 0.2s, border-color 0.2s;
+            padding: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .drop-zone.drag-over {
+            background-color: #e6f4ff;
+            border-color: #4a90e2;
+        }
+        .drop-zone.correct {
+            background-color: #e9f7ef;
+            border-color: #28a745;
+            border-style: solid;
+        }
+        .drop-zone.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            border-style: solid;
+        }
+        .drop-zone.disabled {
+            pointer-events: none;
+        }
+        .drop-zone .drag-item {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            padding: 2px;
+        }
+        .drag-options-container {
+            margin-top: 10px;
+        }
+        .drag-options-container .drag-item {
+            display: block;
+            width: fit-content;
+            font-size: 15px;
+            padding: 0.5px 10px;
+            margin-bottom: 5px;
+        }
+        .drag-options-container .drag-item:last-child {
+            margin-bottom: 0;
+        }
+        .summary-options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px 16px;
+            margin-bottom: 14px;
+        }
+        .summary-options-grid .drag-item {
+            width: 100%;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        .q-number {
+            color: #888;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .questions-container {
+            width: 100%;
+        }
+        audio {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .part-header {
+            background-color: #f1f2ec;
+            padding: 10px 16px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            margin: 8px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .part-title {
+            font-weight: 800;
+            font-size: 16px;
+            color: #1f2b4d;
+        }
+        .part-subtitle {
+            font-size: 15px;
+            color: #28365c;
+        }
+
+        .question li.correct {
+            color: #155724;
+            font-weight: bold;
+        }
+        .question li.incorrect {
+            color: #721c24;
+        }
+        .question li.correct::before {
+            content: '✔ ';
+            color: #28a745;
+        }
+        .question li.incorrect::before {
+            content: '✖ ';
+            color: #dc3545;
+        }
+
+        .example-box {
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .timer-container {
+            display: flex;
+            position: relative;
+            cursor: default;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+            min-width: 220px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid #d7def5;
+            background: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08);
+        }
+        .timer-container .timer-tooltip {
+            display: none;
+        }
+
+        .timer-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+
+        .timer-controls button {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 0;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .timer-controls button:hover {
+            background: #e0e0e0;
+        }
+
+        .timer-controls button svg {
+            width: 20px;
+            height: 20px;
+            fill: #333;
+        }
+
+        .audio-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(40, 40, 40, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .audio-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 500px;
+            padding: 20px;
+        }
+        .audio-modal-content p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #eee;
+        }
+        .audio-modal-icon {
+            margin-bottom: 20px;
+        }
+        .modal-play-btn {
+            background-color: #000;
+            color: white;
+            border: 1px solid white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+        .modal-play-btn:hover {
+            background-color: #333;
+        }
+        #goto-widget {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        #goto-input {
+            width: 80px;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #goto-btn {
+            padding: 4px 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styles for TRUE/FALSE/NOT GIVEN questions */
+        .tf-question {
+            margin-bottom: 25px;
+            padding: 10px 0px;
+            border-radius: 4px;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .tf-question-line {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 5px 0px;
+            border-radius: 4px;
+        }
+        .tf-question-number, .question-number-box {
+            border: 2px solid #ccc;
+            padding: 2px 8px;
+            margin-right: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: border-color 0.3s;
+            display: inline-block;
+        }
+        .tf-question-text {
+            padding-top: 3px;
+        }
+        .tf-options {
+            padding-left: 5px;
+        }
+
+        .markable-question {
+            position: relative;
+        }
+        .question-number-with-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 10px;
+        }
+        .question-number-with-mark .tf-question-number,
+        .question-number-with-mark .question-number-box {
+            margin-right: 0;
+        }
+        .mark-toggle-btn {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin-left: 4px;
+            cursor: pointer;
+            opacity: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            color: #777;
+        }
+        .question-number-with-mark:hover .mark-toggle-btn,
+        .markable-blank-wrapper:hover .mark-toggle-btn.inside-blank,
+        .markable-blank-wrapper:focus-within .mark-toggle-btn.inside-blank,
+        .mark-toggle-btn:focus-visible,
+        .mark-toggle-btn.marked {
+            opacity: 1;
+        }
+        .mark-toggle-btn:focus-visible {
+            outline: 2px solid #f0c000;
+            outline-offset: 2px;
+        }
+        .markable-blank-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .markable-blank-wrapper input.answer-input,
+        .markable-blank-wrapper .summary-drop-zone,
+        .markable-blank-wrapper .drop-zone {
+            padding-right: 28px !important;
+            position: relative;
+            z-index: 1;
+        }
+        .mark-toggle-btn.inside-blank {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            width: 18px;
+            height: 18px;
+            color: #777;
+            z-index: 2;
+        }
+        .markable-blank-wrapper:hover .mark-toggle-btn.inside-blank,
+        .markable-blank-wrapper:focus-within .mark-toggle-btn.inside-blank,
+        .mark-toggle-btn.inside-blank.marked {
+            opacity: 1;
+        }
+        .mark-toggle-btn.inside-blank svg {
+            width: 16px;
+            height: 16px;
+        }
+        .mark-toggle-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+        .mark-toggle-btn:hover {
+            color: #444;
+        }
+        .mark-toggle-btn.marked {
+            color: #d49b00;
+        }
+        .mark-toggle-btn.marked svg {
+            fill: #ffd400;
+            stroke: #b37b00;
+        }
+        .tf-option {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .tf-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .tf-question.correct .tf-question-line {
+            background-color: #e9f7ef;
+        }
+        .tf-question.incorrect .tf-question-line {
+            background-color: #f8d7da;
+        }
+        .matching-question-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .matching-options-bank {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .matching-questions {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .matching-question-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .matching-question-item > span {
+            flex: 1;
+        }
+        .matching-question-item.correct {
+            background-color: #e9f7ef;
+            border-color: #28a745 !important;
+        }
+        .matching-question-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545 !important;
+        }
+        .matching-question-item .drop-zone {
+            width: 200px;
+            flex-shrink: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #aaa;
+        }
+        .matching-options-bank .drag-item {
+            font-size: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+
+        .questions-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px; /* Minimum width */
+            border-left: 1px solid #e0e0e0;
+        }
+        .matching-question-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545 !important;
+        }
+        .summary-completion-container {
+            margin-top: 20px;
+        }
+        .summary-text p {
+            line-height: 2.5;
+            font-size: 16px;
+        }
+        .summary-drop-zone {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            position: relative;
+            width: auto;
+            min-width: 90px;
+            max-width: none;
+            min-height: 26px;
+            height: auto;
+            border: 2px dashed #999;
+            border-radius: 4px;
+            margin: 0 5px;
+            padding: 3px 8px;
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+            color: #777;
+            font-weight: 600;
+            flex: 0 0 auto;
+            gap: 4px;
+        }
+        .summary-drop-zone::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 6px;
+            pointer-events: none; /* keep hit area visual-only so drag items remain draggable */
+        }
+        .summary-drop-zone.filled {
+            border-color: #4a90e2;
+            background-color: #f6f9ff;
+            color: #1f2b4d;
+        }
+        .summary-drop-zone.active-input {
+             border-color: #4a90e2;
+             box-shadow: none;
+        }
+        .summary-drop-zone .drag-item {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1f2b4d;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            text-align: center;
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: max-content;
+            white-space: nowrap;
+        }
+        .summary-options-bank {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px 16px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .summary-options-bank .drag-item {
+            text-align: center;
+            width: 100%;
+        }
+        .multi-choice-question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 3px solid transparent;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .multi-choice-option {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .multi-choice-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .multi-choice-option input[type="checkbox"],
+        .multi-choice-option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: #4a90e2;
+        }
+        .multi-choice-option.correct {
+            background-color: #e9f7ef;
+        }
+        .multi-choice-option.incorrect {
+            background-color: #f8d7da;
+        }
+        .multi-choice-warning {
+            margin-top: 8px;
+            color: #c0392b;
+            font-size: 14px;
+        }
+        .grouped-fill {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .grouped-fill-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            margin: 6px 0 10px;
+        }
+        .grouped-fill-intro {
+            margin: 4px 0 6px;
+            line-height: 1.5;
+        }
+        .grouped-fill-section {
+            padding: 4px 0 6px;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+        }
+        .grouped-fill-heading {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #000;
+            font-size: 16px;
+        }
+        .grouped-fill-list {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .grouped-fill-list .grouped-fill-bullet {
+            list-style: disc;
+            margin-left: 22px;
+            padding-left: 4px;
+            line-height: 1.6;
+        }
+        .grouped-fill-list .grouped-fill-subbullet {
+            list-style: none;
+            margin-left: 38px;
+            padding-left: 12px;
+            line-height: 1.6;
+            position: relative;
+        }
+        .grouped-fill-list .grouped-fill-subbullet::before {
+            content: '+';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
+            color: #000;
+        }
+        .grouped-fill-list .grouped-fill-plain {
+            list-style: none;
+            margin-left: 0;
+            line-height: 1.6;
+        }
+        .grouped-fill-list .answer-input {
+            width: 120px;
+            display: inline-block;
+            margin: 0 6px;
+        }
+        .flowchart-question {
+            margin-top: 6px;
+        }
+        .flowchart-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 10px;
+            color: #000;
+        }
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .flowchart-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+        .flowchart-box {
+            width: 100%;
+            max-width: 620px;
+            border: 2px solid #111;
+            padding: 10px 14px;
+            background: #fff;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .flowchart-box .answer-input {
+            width: 120px;
+            display: inline-block;
+            margin: 0 6px;
+        }
+        .flowchart-arrow {
+            position: relative;
+            width: 24px;
+            height: 32px;
+        }
+        .flowchart-arrow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 18px;
+            background: #111;
+        }
+        .flowchart-arrow::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 14px solid #111;
+        }
+        .matching-question-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545 !important;
+        }
+        .matching-question-item .drop-zone.filled {
+            border-color: #4a90e2;
+        }
+        .options-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 10px 0;
+        }
+        .options-list li {
+            margin-bottom: 6px;
+        }
+        .options-list-label {
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .matching-question-item .drop-zone {
+            width: 200px;
+            height: 40px;
+        }
+        .paragraph-matching-question {
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .paragraph-matching-question .answer-input {
+            width: 80px;
+            flex-shrink: 0;
+        }
+
+        .matching-form-container {
+            margin-top: 20px;
+        }
+        .matching-form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+        .matching-form-label {
+            width: auto;
+            flex: 1 1 320px;
+            margin-right: 8px;
+        }
+        .matching-form-row select.answer-input {
+            width: 220px;
+            flex-shrink: 0;
+        }
+
+        /* Results Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.hidden {
+            display: none;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .results-summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .results-details-container {
+            overflow-y: auto;
+            padding-right: 10px; /* For scrollbar */
+        }
+        .result-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr;
+            gap: 15px;
+            padding: 8px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+        }
+        .result-row.incorrect {
+            background-color: #f8d7da;
+        }
+        .result-row .q-num {
+            font-weight: bold;
+        }
+        .result-row .user-ans {
+            color: #555;
+        }
+        .result-row .correct-ans {
+            color: #155724;
+            font-weight: 500;
+        }
+        .correct-answer-display {
+            font-weight: bold;
+            color: #28a745;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .correct-answer-highlight, .tf-option.correct-answer-highlight, .multi-choice-option.correct-answer-highlight {
+            background-color: #d4edda !important;
+            border: 1px solid #c3e6cb !important;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        .correct-answer-highlight {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+        }
+        .diagram-question {
+            margin-bottom: 20px;
+        }
+        .diagram-title {
+            font-size: 18px;
+            margin: 6px 0 10px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .diagram-image-wrap {
+            margin: 12px 0;
+            text-align: center;
+        }
+        .diagram-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #dbe5f5;
+        }
+        .diagram-inputs {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .diagram-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .diagram-number {
+            font-weight: 700;
+            min-width: 32px;
+            color: #0f172a;
+        }
+        .diagram-label {
+            color: #111827;
+        }
+        .diagram-input {
+            flex: 1;
+            min-width: 140px;
+        }
+        .centered-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #launchScreen, #app {
+            width: 100vw;
+            height: 100vh;
+        }
+        #app {
+            display: none;
+        }
+        #launchScreen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%),
+                radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%),
+                #f4f6fc;
+            color: #1f2b59;
+        }
+        .launch-card {
+            width: min(980px, 100%);
+            border: 1px solid #d7def5;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #ffffff, #f7f9ff);
+            box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14);
+            padding: 28px 30px 22px;
+            display: grid;
+            gap: 12px;
+        }
+        .launch-eyebrow {
+            margin: 0;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6f7cb2;
+            font-weight: 700;
+        }
+        .launch-title {
+            margin: 4px 0 0;
+            font-size: clamp(26px, 3.5vw, 40px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #1c2566;
+        }
+        .launch-meta {
+            margin: 8px 0 0;
+            color: #3c4a81;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .launch-guide {
+            border: 1px solid #d7def5;
+            border-radius: 12px;
+            background: #f2f5ff;
+            padding: 14px;
+            display: grid;
+            gap: 6px;
+        }
+        .launch-main {
+            margin: 0;
+            font-size: clamp(18px, 2.2vw, 23px);
+            line-height: 1.32;
+            font-weight: 700;
+            color: #1d2a60;
+        }
+        .launch-sub {
+            margin: 0;
+            color: #4c598f;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        .launch-notes {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 6px;
+            color: #3f4e83;
+            font-size: 17px;
+            line-height: 1.45;
+        }
+        .launch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .launch-btn {
+            border: 1px solid #c5d0f2;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 11px 16px;
+            color: #24336e;
+            background: #ffffff;
+            transition: transform 0.12s ease;
+            box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14);
+        }
+        .launch-btn:hover {
+            transform: translateY(-1px);
+            background: #f6f8ff;
+        }
+        .launch-foot {
+            border-top: 1px dashed #d2daf3;
+            padding-top: 10px;
+            font-size: 13px;
+            color: #5f6da6;
+        }
+    </style>
+</head>
+<body>
+    <section id="launchScreen" aria-label="Launch screen">
+        <div class="launch-card">
+            <div>
+                <p class="launch-eyebrow">IELTS Test Launcher</p>
+                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test</h1>
+                <p class="launch-meta">Dạng bài: Reading</p>
+            </div>
+            <div class="launch-guide">
+                <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
+                <p class="launch-sub">Nhấn F11 lần nữa để thoát toàn màn hình nếu cần.</p>
+                <p class="launch-sub">Nếu bàn phím của bạn không có F11 hoặc bạn không muốn dùng toàn màn hình, hãy bấm nút bên dưới để làm bài ở giao diện thường.</p>
+            </div>
+            <ul class="launch-notes">
+                <li>Không tải lại trang trong khi làm bài để tránh mất tiến trình.</li>
+                <li>Chuẩn bị không gian yên tĩnh để tập trung làm bài.</li>
+            </ul>
+            <div class="launch-row">
+                <button id="startNormalBtn" class="launch-btn" type="button">Tôi không có nút F11 trên bàn phím</button>
+            </div>
+            <div class="launch-foot">Khuyến nghị dùng F11 để có trải nghiệm giống ứng dụng nhất.</div>
+        </div>
+    </section>
+    <div id="app">
+    <div class="header">
+        <div class="timer-container">
+            <span class="timer-display">60 minutes remaining</span>
+            <div class="timer-controls">
+                <button id="timer-toggle-btn" title="Pause/Resume Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>
+                </button>
+                <button id="timer-reset-btn" title="Reset Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://www.facebook.com/englishresourcehub" target="_blank" rel="noopener" class="header-ad">
+                <div class="ad-copy">
+                    <p class="ad-eyebrow">Study boost</p>
+                    <div class="ad-marquee">
+                        <div class="ad-loop">
+                            <span class="ad-headline">Chinh phục IELTS dễ dàng- Tài liệu đầy đủ, chiến lược rõ ràng!</span>
+                            <span class="ad-headline">Master every IELTS tip and strategy in full EXAM MATERIALS! </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <button class="ad-close" type="button" aria-label="Close ad" title="Close" onclick="window.open('https://www.facebook.com/englishresourcehub','_blank','noopener')">×</button>
+        </div>
+    </div>
+
+        <div class="main-container" id="main-container">
+            <div id="passage-header-container">
+                <!-- PART_HEADERS_START -->
+<div id="part-header-1" class="part-header">
+
+
+
+                    <p><strong>Part 1</strong></p>
+
+
+
+                    <p>Read the text and answer questions 1-13.</p>
+
+
+
+                </div>
+<div id="part-header-2" class="part-header hidden">
+
+
+
+                    <p><strong>Part 2</strong></p>
+
+
+
+                    <p>Read the text and answer questions 14-26.</p>
+
+
+
+                </div>
+<div id="part-header-3" class="part-header hidden">
+
+
+
+                    <p><strong>Part 3</strong></p>
+
+
+
+                    <p>Read the text and answer questions 27-40.</p>
+
+
+
+                </div>
+<!-- PART_HEADERS_END -->
+            </div>
+            <div class="panels-container">
+            <div class="passage-panel" id="passage-panel">
+                <!-- PASSAGES_START -->
+<div id="passage-text-1" class="reading-passage">
+
+
+
+                    <h4 class="text-center">The history of the guitar</h4>
+
+
+
+                    <p><b>A</b>
+The earliest stringed instruments currently known to archaeologists are bowl harps. For millennia, people made bowl harps using, for example, tortoise shells as resonators, with a bent stick for a neck and one or more gut or silk strings. The world's museums contain many such harps from the ancient Sumerian, Babylonian, and Egyptian civilisations. Around 2500-2000 BC more advanced harps, such as the beautifully carved 11-stringedinstrument found in the tomb of Queen Shub-Ad in ancient Mesopotamia, now modern day Iraq, started to appear.</p>
+                    <p><b>B</b>
+The tanbur* probably developed from the bowl harp. It was different from the bowl harp in that its neck was straightened out to allow the strings to be pressed down to create more notes. Tomb paintings and stone carvings in Egypt indicate that harps and tanburs - plus flutes and percussion instruments - were being played together 3,500-4,000 years ago. Archaeologists have also found many similar relics amongst the ruins of the ancient Mesopotamian civilisation. Many of these instruments have survived into modern times in almost unchanged form, for example folk instruments of the region such as the Turkish saz and Afghan panchtar.</p>
+                    <p><b>C</b>
+At 3,500 years old, the tanbur which belonged to the Egyptian singer Har-Mose is the earliest known example of this instrument. Har-Mose's tanbur had three strings and a plectrum suspended from the neck by a cord. The soundbox, which increased the volume, was made of beautifully polished cedarwood and covered in rawhide. It can be seen today at the Archaeological Museum in Cairo.</p>
+                    <p><b>D</b>
+In order to distinguish guitars from other stringed instruments, it is helpful to have a broad definition of the guitar. Music expert Dr Michael Kasha defines a guitar as having 'a long, fretted neck, flat wooden soundboard, ribs, and a flat back, most often with sides that curve inwards'. The oldest known visual representation of such an instrument is a stone carving at Alaca Huyuk in Turkey, which shows a 3,300-year-old instrument with a long neck and sides that clearly curve inwards.</p>
+                    <p><b>E</b>
+The name 'guitar' comes from the ancient Sanskrit word for 'string' - 'tar'. Many popular stringed instruments used in central Asia today have existed in an unchanged form for several thousand years, as shown by archaeological finds in the area. Many have names that end in 'tar', with a prefix indicating the number of strings, such as the doter, a two-stringed instrument found in Turkestan, and the Persian three-stringed setar and four-stringed charter. The Indian sitar almost certainly took its name from the setar, but over the centuries it evolved radically, following the Indians' own aesthetic and cultural ideals.</p>
+                    <p><b>F</b>
+Tanburs and harps spread around the ancient world with travellers, merchants and seamen. The earliest guitar-like instruments to arrive in Europe had, most often, four strings. Many such instruments, and variations with from three to five strings, can be seen in mediaeval illustrated manuscripts. They were also carved in stone in European churches and cathedrals, from the first century AD through until the 13th century.</p>
+                    <p><b>G</b>
+When the four-stringed Persian chartar arrived in Spain, however, it changed in form and construction, acquiring pairs of strings tuned to the same note instead of single strings. It became known as the chitarra. By the middle of the 14th century, the chitarra had become dominant, at least in most of Europe. The earliest known music for the eight-stringed chitarra was written in 16th-century Spain. The ten-string version first appeared in Italy at the same time, and gradually replaced the eight-stringed instrument. A further two strings first appeared in the 17th century, an innovation which guitar makers all over Europe quickly took up. However, this twelve-string arrangement gradually gave way to six single strings across the continent. The six-stringed guitar can thus he said to be a development of the twelve-stung., rather than vice versa, as was thought previously.</p>
+                    <p><b>H</b>
+At the beginning of the 19th century, the present-day guitar began to take shape, although bodies were still fairly small and narrow-waisted. The modern classical guitar first appeared in its current form in the mid-19th century, when the Spanish guitar maker Antonio Torres increased the size of the body, altered its proportions, and introduced the revolutionary fan-braced top**. His design radically increased the volume and improved the tone of the instrument, and very soon became the norm. This design has remained essentially unchanged to this day.</p>
+                    <p><b>I</b>
+At the time when Torres made his breakthrough. German immigrants to America - among them Christian Fredrich Martin - began making guitars with X-braced tops. Steel strings, which became widely available several decades later in the early 1900s, offered the promise of much louder guitar, but the increased tension was too much for the fan-braced top. The stronger X-braced top proved equal to the job, and quickly became the industry standard.</p>
+                    <p><b>J</b>
+At the end of the 19th century, guitar manufacturer Orville Gibson added steel strings to a body constructed like a cello, a combination which produced more volume. The electric guitar was born when pickups were fitted to Hawaiian and jazz guitars in the late 1920s, but met with little success until 1836, when Gibson introduced its famous ES150 model.</p>
+                    <p>tanbur*: a long-necked stringed instrument with a small pear-shaped body</p>
+                    <p>fan-braced top**: a strengthening structure in the shape of a fan inserted into the soundbox</p>
+
+
+
+                </div>
+<div id="passage-text-2" class="reading-passage hidden">
+
+
+
+                    <h4 class="text-center">Playing soccer</h4>
+
+
+
+                    <p>There are many differences between playing soccer in the street and joining a youth team in an organized league in the USA</p>
+                    <p><b>A</b>
+Street soccer, as its name implies, is an informal variation of the sport, often played on the street, particularly in urban areas. There are many reasons for the widespread popularity of street soccer. Unlike youth soccer, its more formally organized counterpart, no large space is needed, and goal posts, corner markers, and marked lines, associated with the formal game, are typically absent, as are game officials or referees. Another attraction of street soccer is that it is played frequently and competitively, but does not necessarily require standard 11-a-side teams or fixed playing positions. Unlike in youth soccer, inexperienced street soccer players rarely learn from repetitive technical and tactical drills. Instead, they learn from their poor performance in competition, unconscious of the skills they are nonetheless developing, and without older adults or coaches present. Players learn without effort through playing the game, and soon attain an almost natural feeling for the sport.</p>
+                    <p><b>B</b>
+However, there are lots of cities in the world today where conditions are such that street soccer is no longer possible. Congested traffic now dominates where games were once played. Parks and open fields are used as hangouts for older teenagers with other interests. Add to this the requirement in many localities for official permits to use public spaces and the managed schedules that many young people have today, and spontaneous play of any kind is hard to imagine.</p>
+                    <p><b>C</b>
+In spite of all these obstacles, which are probably solvable in most instances, there is another sociological explanation of why in many places street soccer doesn't enjoy the same popularity it once did. In his book How Soccer Explains the World, US writer Franklin Foer observes: But for all the talk of freedom, the 1960s parenting style had a far less relaxed side too. Like the 1960s consumer movement which brought seat belts and airbags to cars, the (youth) soccer movement felt like it could create a set of ... regulations that would protect both the child's body and mind from damage. Soccer leagues like the one I played in as a child handed out 'participation' prizes to every player, no matter how few games his (or her) team won.... Where most of the world accepts the practice of using your head to hit the ball as an essential element of the game, some (youth) soccer parents have worried over the potential for injury to the brain. An entire industry grew up to manufacture protective headgear.... Even though very little medical evidence supports this fear, some youth leagues prohibited heading the ball altogether.</p>
+                    <p><b>D</b>
+A growing body of people don't believe street soccer involves a legitimate educational method. They argue that children need to be taught by experts. Youth soccer instruction now begins with four-year-olds, so that they will have an advantage as six-year-olds. This need to get ahead brings with it a fear of falling behind that only expert instruction can prevent. This type of instruction leaves no room for the trial and error approach of street soccer.</p>
+                    <p><b>E</b>
+One of the basic ideas of street soccer is that young players are assigned a particular role by a better player and are expected to play for the good of the team. Such an assignment runs counter to the idea of youth soccer that every child needs to learn every position and will benefit from doing so. In street soccer, you fill the role that you are best wiled to at a particular time. While this role assignment can change from game to game, the purpose is always the same: to get the best out of each individual at any given moment.</p>
+                    <p><b>F</b>
+In tartlet soccer, children have to learn patience, to wait their turn, to realize that they are not entitled to make decisions, or even be listened to simply because they allow up. Positions of responsibility are earned through competition within the team. Younger players in street soccer must wait to attain those positions. In youth soccer, however, with its overly democratic values, youngsters are guaranteed their time in the spotlight. Whether it's their turn to be captain, to play a central position or to take a crucial shot, youth soccer players come to believe that hard work and patience aren't really necessary.</p>
+                    <p><b>G</b>
+Not only does every youth soccer player get a chance, it is assumed that each individual has played well. 'Everyone's a winner; no one's a loser' is a guiding principle of youth soccer. This ensures each individual goes away positive about themselves. No one can leave a game or a practice feeling bad. But, if there really are no losers, then why try at all? Since giving less than your best receives the same reward as giving your best why go to any extra effort? In street soccer, every game results in a winner and a loser and everyone knows who is who. Losing a game is a common experience and players learn early on how to handle this. As a result, unlike most youth soccer players, they acquire resilience.<br>A further difference between these two strands of soccer is that in street soccer a formal record is not kept. You can lose one day and win the next. The results are only temporary and are forgotten within minutes of the end of the match. But in organized youth soccer, the position each person plays and the results are formally noted and maintained throughout a season.</p>
+
+
+
+                </div>
+<div id="passage-text-3" class="reading-passage hidden">
+
+
+
+                    <h4 class="text-center">The History of Chocolate</h4>
+
+
+
+                    <p><b>A</b>
+Chocolate is now perceived as a ubiquitous indulgence, whether consumed as confectionery or a beverage, readily accessible in global markets. However, it may come as a surprise that chocolate was once regarded as a commodity of extraordinary value. The discovery of the cocoa tree, the source of chocolate, occurred approximately 2,000 years ago in the lush tropical rain forests of the Americas. The evolution of the chocolate - from a regionally significant Mesoamerican drink to globally consumed confectionery - has been shaped through cross-continental cultural exchanges and the successive influences of multiple civilisations.</p>
+                    <p><b>B</b>
+Historians suggest that the ancient Maya pioneered cocoa tree cultivation in Mesoamerica, with evidence dating back approximately 2,000 years. They transplanted cocoa trees from the dense rain forest into their domesticated gardens, where cocoa beans were initially roasted and ground into a smooth paste. The paste was combined with spices and water to produce unsweetened chocolate beverages. The Maya also employed a distinctive technique of transferring the liquid back and forth between containers, generating a foamy layer on the drink's surface.</p>
+                    <p><b>C</b>
+Cocoa and chocolate were integral to Maya culture, commonly depicted in their architectural structures and artistic works. While the aristocracy, particularly the royal families, consumed chocolate during elaborate ceremonies, even less privileged groups occasionally savoured the drink. Furthermore, cocoa beans served as a powerful emblem of marital union and were ritually exchanged during wedding ceremonies.</p>
+                    <p><b>D</b>
+The Aztec civilisation in Mexico regarded chocolate as a prestigious commodity, despite being geographically unable to cultivate cocoa trees within their heartland. Accordingly, they sourced cocoa beans through extensive trade networks, even utilising them as currency for tax payments. Chocolate held an exclusive function within Aztec imperial and religious ceremonies, where priests offered cocoa beans as divine offerings and prepared sacred chocolate drinks. Due to the scarcity of cocoa beans, consumption remained restricted to the societal elite, with historical accounts suggesting Emperor Montezuma consumed up to 50 cups daily. Linguists trace the term 'chocolate' to the Aztec Nahuatl word xocolatl, meaning 'bitter water' in the Nahuatl language, though some scholars argue that it has hybrid origins combining Maya and Nahuatl linguistic elements.</p>
+                    <p><b>E</b>
+In 1502, explorer Christopher Columbus introduced cocoa beans to Spain after voyaging to Mesoamerica, and later Spanish explorer Hernan Cortes quickly recognised the potential economic value of chocolate. Upon arriving in present-day Mexico in 1519, Cortes observed that chocolate beverages would appeal to the Spanish. After conquering the Aztec Empire, Spanish forces exported confiscated cocoa supplies to Spain. In response to the growing demand, Spain began cultivating cocoa trees in its American colonies. Spanish elite first developed a taste for sweetened chocolate drinks, but the beverage rapidly spread across Europe. England, the Netherlands, and France followed suit by establishing cocoa plantations in their own colonies. By the 18th century, chocolate remained primarily a luxury restricted to the affluent. However, the Industrial Revolution's technologies enabled mechanised production, dramatically reducing costs and making chocolate available to a broader population.</p>
+                    <p><b>F</b>
+Cocoa trees are cultivated across multiple countries in Africa, Mesoamerica, and South America, thriving in cool, shaded environments within equatorial zones. Despite widespread cultivation, cocoa farming remains labour-intensive, due to the trees' requirement for specific water thresholds, temperature ranges, soil compositions, and protection from environmental threats. Approximately five years after planting, cocoa trees begin to yield large, pod-shaped fruits that grow on the trunk. These pods contain the beans used in chocolate production. While several types of cocoa trees exist, the bulk of the chocolate is produced from the seeds of the most commonly cultivated varieties. <br><br>However, farmers opt to grow more specialised types, such as Criollo or Trinitario, valued for distinctive flavour profiles. Unexpectedly, cocoa trees grown on farms are more vulnerable to disease and pests than their wild counterparts. Cocoa cultivation presents a strenuous endeavour for farmers, who sell their harvests on futures markets, exposing their incomes to external market fluctuations.</p>
+                    <p><b>G</b>
+The process of chocolate production involves a series of steps, carried out in specialised factories where cocoa beans are meticulously processed. Workers first sort, clean, and roast the beans before extracting the outer shells, leaving only the inner nibs. These nibs I are then ground into a dense paste known as chocolate liquor, which is subsequently separated into two components: cocoa solids and cocoa butter. Following standardised formulations, chocolate manufacturers blend the chocolate liquor with precise ratios of sugar, milk, and cocoa butter. The resulting mixture, often referred to as the 'crumb', undergoes fine grinding to create a smooth consistency. Finally, the mixture is then subjected to two additional processes - conching and tempering - before being placed into moulds to create various forms, such as bars or other chocolate products.</p>
+                    <p><b>H</b>
+Chocolate holds significant global economic value, with the manufacturing industry generating over $5 billion annually from cocoa crops, and its reputation remains most prominent in Europe and the United States. For instance, US cocoa product imports reached $1.4 billion in 2005. On average, Americans consume over five kilogrammes of chocolate per person each year. In addition, upscale chocolate boutiques, which offer premium chocolates, have gained significant popularity. Many of these shops specialise in artisanal chocolates, crafted with unique flavour profiles. Renowned chocolate brands such as Cadbury, Godiva, Lindt, and Ferrero Rocher dominate the market. However, the cocoa and chocolate production sectors often face challenges related to fair trade, sustainable development, and environmental preservation. These issues are now being actively addressed by industry stakeholders, including officials, activists, and researchers, who are working closely with farmers to promote faming practices that foster sustainability and protect the environment.</p>
+
+
+
+                </div>
+<!-- PASSAGES_END -->
+            </div>
+            <div class="resizer" id="resizer"></div>
+            <div class="questions-panel" id="questions-panel">
+                <!-- QUESTIONS_START -->
+<div id="questions-1" class="question-set">
+
+
+
+                    <div class="questions-container">
+
+
+
+<div class="question" data-q-start="1" data-q-end="6">
+
+
+
+<div class="question-prompt"><p><strong>Questions 1-6</strong></p><p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text,</p><p>choose <strong>FALSE</strong> if the statement contradicts the information,</p><p>or choose <strong>NOT GIVEN</strong> if there is no information on this.</p></div>
+
+
+
+<div class="tf-question" data-q-start="1" data-q-end="1">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">1</span><span class="tf-question-text">The instrument found in Queen Shub-Ad's tomb is the world's oldest known version of a harp.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q1" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q1" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q1" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="2" data-q-end="2">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">2</span><span class="tf-question-text">Today's Afghan panchtar is very similar to an ancient Mesopotamian instrument.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q2" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q2" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q2" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="3" data-q-end="3">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">3</span><span class="tf-question-text">The Egyptian singer Har-Mole was an excellent tanbur player.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q3" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q3" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q3" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="4" data-q-end="4">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">4</span><span class="tf-question-text">Cairo Archaeological Museum contains many historic musical instruments.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q4" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q4" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q4" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="5" data-q-end="5">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">5</span><span class="tf-question-text">The instrument carved in stone at Alaca Huyuk is consistent with Dr Michael Kasha's definition of a guitar.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q5" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q5" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q5" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="6" data-q-end="6">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">6</span><span class="tf-question-text">The different instruments that appeared in medieval literature had the same number of strings.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q6" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q6" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question grouped-fill-question" data-q-start="7" data-q-end="13">
+
+
+
+<div class="question-prompt"><p><strong>Questions 7-13</strong></p><p>Complete the table below.</p><p>Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p></div>
+
+
+
+                            <div class="grouped-fill">
+
+
+
+<div class="grouped-fill-title">The development of the guitar</div>
+
+
+
+
+
+
+
+<div class="grouped-fill-section">
+
+
+
+                                
+
+
+
+                                <ul class="grouped-fill-list">
+
+
+
+<li class="grouped-fill-plain"><table style="border-collapse:collapse;width:100%;table-layout:fixed;">
+  <tr>
+    <th style="border:2px solid #000;padding:12px;text-align:left;width:22%;">Date</th>
+    <th style="border:2px solid #000;padding:12px;text-align:left;width:25%;">Type of<br>instrument</th>
+    <th style="border:2px solid #000;padding:12px;text-align:left;">Notes</th>
+  </tr>
+  <tr>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">13th-19th<br>century</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">Chitarra</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">- was a development of an earlier instrument called the <input type="text" class="answer-input" id="q7" placeholder="7"><br>- extra strings added in 16th century in Italy</td>
+  </tr>
+  <tr>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;" rowspan="2">from around<br>the 1850s</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">Classical guitar</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">- its shape a result of modifications including a larger <input type="text" class="answer-input" id="q8" placeholder="8"> introduced by Antonio Torres<br>- changes produced better tone and greater <input type="text" class="answer-input" id="q9" placeholder="9"></td>
+  </tr>
+  <tr>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">X-braced top<br>guitar</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">- first made in <input type="text" class="answer-input" id="q10" placeholder="10"> in mid-19th century<br>- strings made of <input type="text" class="answer-input" id="q11" placeholder="11"> became available around 1900</td>
+  </tr>
+  <tr>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">1920s onwards</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">Electric guitar</td>
+    <td style="border:2px solid #000;padding:18px;vertical-align:middle;">- in the 1920s, <input type="text" class="answer-input" id="q12" placeholder="12"> added to guitars<br>- a well-known version brought out by <input type="text" class="answer-input" id="q13" placeholder="13"></td>
+  </tr>
+</table></li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+<div id="questions-2" class="question-set hidden">
+
+
+
+                    <div class="questions-container">
+
+
+
+<div class="question" data-q-start="14" data-q-end="19">
+
+
+
+<div class="question-prompt"><p><strong>Questions 14-19</strong></p><p>Reading Passage <strong>2</strong> has seven sections, <strong>A-G</strong>.</p><p>Which section contains the following information?</p><p>Choose the correct letter, <strong>A-G</strong>, in boxes <strong>14</strong>-<strong>19</strong>.</p></div>
+
+
+
+
+
+
+
+                            <div class="example-box" style="font-size: 15px;">
+
+
+
+                                <p><strong>List of Options</strong></p>
+
+
+
+                                <ul class="options-list">
+
+
+
+<li><span class="options-list-label">A</span> A</li>
+<li><span class="options-list-label">B</span> B</li>
+<li><span class="options-list-label">C</span> C</li>
+<li><span class="options-list-label">D</span> D</li>
+<li><span class="options-list-label">E</span> E</li>
+<li><span class="options-list-label">F</span> F</li>
+<li><span class="options-list-label">G</span> G</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            <div class="matching-form-container">
+
+
+
+<div class="matching-form-row">
+
+
+
+                                    <label for="q14" class="matching-form-label"><strong>14</strong>&nbsp;&nbsp;a contrast between the ways young players gain experience of playing different positions</label>
+
+
+
+                                    <select class="answer-input" id="q14"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q15" class="matching-form-label"><strong>15</strong>&nbsp;&nbsp;examples outside sport of greater emphasis on individual safety</label>
+
+
+
+                                    <select class="answer-input" id="q15"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q16" class="matching-form-label"><strong>16</strong>&nbsp;&nbsp;a description of methods of selection for leadership on soccer teams</label>
+
+
+
+                                    <select class="answer-input" id="q16"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q17" class="matching-form-label"><strong>17</strong>&nbsp;&nbsp;details of urban changes that discourage street soccer</label>
+
+
+
+                                    <select class="answer-input" id="q17"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q18" class="matching-form-label"><strong>18</strong>&nbsp;&nbsp;a mention of the lesson that failure teaches street soccer players</label>
+
+
+
+                                    <select class="answer-input" id="q18"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q19" class="matching-form-label"><strong>19</strong>&nbsp;&nbsp;an explanation of why youth soccer emphasises the need for coaches</label>
+
+
+
+                                    <select class="answer-input" id="q19"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="20" data-q-end="21">
+
+
+
+<div class="question-prompt"><p><strong>Questions 20-21</strong></p><p>The list below gives some possible reasons for the popularity of street soccer.</p></div>
+
+
+
+                            <div class="multi-choice-question" data-q-start="20" data-q-end="21" data-shared-questions="20,21" data-shared-name="q20_21" data-max-select="2">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box">20-21</span><span class="mcq-question-title">Which TWO of these reasons are mentioned by the writer of the text?</span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="20"></span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="21"></span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="A"> Many famous soccer players got their start in street soccer.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="B"> Young people can begin playing street soccer at a very early age.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="C"> You do not need elaborate facilities to play street soccer.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="D"> Inexperienced street soccer players are not criticised for mistakes.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q20_21" value="E"> Street soccer teams can have varying numbers of players.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="22" data-q-end="23">
+
+
+
+<div class="question-prompt"><p><strong>Questions 22-23</strong></p><p>The list below goes some possible results of the 1960s parenting style.</p></div>
+
+
+
+                            <div class="multi-choice-question" data-q-start="22" data-q-end="23" data-shared-questions="22,23" data-shared-name="q22_23" data-max-select="2">
+
+
+
+                                <div class="multi-choice-options">
+
+
+
+<p class="mcq-question-text"><span class="mcq-question-number question-number-box">22-23</span><span class="mcq-question-title">Which TWO of these results are mentioned by Franklin Foer in the excerpt from How Soccer Explains the World?</span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="22"></span><span class="mcq-hidden-anchor mcq-question-number" data-q-number="23"></span></p>
+
+
+
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="A"> Participation in youth soccer became much more expensive.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="B"> Some youth soccer leagues adopted more restrictive rules of play.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="C"> Fewer young people joined youth soccer teams.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="D"> Youth soccer players were sometimes rewarded for simply playing in games.</label></div>
+<div class="multi-choice-option"><label><input type="checkbox" name="q22_23" value="E"> Soccer equipment manufacturers directed advertising towards parents.</label></div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="24" data-q-end="26">
+
+
+
+<div class="question-prompt"><p><strong>Questions 24-26</strong></p><p>Complete the summary below.</p><p>Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="question-title">Winners and losers</div></div>
+
+
+
+
+
+
+
+                            <p>For youth soccer players, a key <input type="text" class="answer-input" id="q24" placeholder="24"> is that they should always come away from the game with a positive attitude. In this respect, regardless of the effort the players make, they get some kind of <input type="text" class="answer-input" id="q25" placeholder="25"> at the end of a game.</p>
+                            <p>In street soccer, however, players gain resilience because they have to learn to cope with failure. But the outcome of a match isn't remembered for long. In fact, no-one ever keeps a <input type="text" class="answer-input" id="q26" placeholder="26"> of the results of games.</p>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+<div id="questions-3" class="question-set hidden">
+
+
+
+                    <div class="questions-container">
+
+
+
+<div class="question" data-q-start="27" data-q-end="31">
+
+
+
+<div class="question-prompt"><p><strong>Questions 27-31</strong></p><p>Reading Passage <strong>3</strong> has eight paragraphs, <strong>A-H</strong>.</p><p>Which paragraph contains the following information?</p><p>Choose the correct letter, <strong>A-H</strong>, in boxes <strong>27</strong>-<strong>31</strong>.</p><p><strong>NB</strong> You may use any letter more than once.</p></div>
+
+
+
+
+
+
+
+                            <div class="example-box" style="font-size: 15px;">
+
+
+
+                                <p><strong>List of Options</strong></p>
+
+
+
+                                <ul class="options-list">
+
+
+
+<li><span class="options-list-label">A</span> A</li>
+<li><span class="options-list-label">B</span> B</li>
+<li><span class="options-list-label">C</span> C</li>
+<li><span class="options-list-label">D</span> D</li>
+<li><span class="options-list-label">E</span> E</li>
+<li><span class="options-list-label">F</span> F</li>
+<li><span class="options-list-label">G</span> G</li>
+<li><span class="options-list-label">H</span> H</li>
+
+
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+                            <div class="matching-form-container">
+
+
+
+<div class="matching-form-row">
+
+
+
+                                    <label for="q27" class="matching-form-label"><strong>27</strong>&nbsp;&nbsp;the part of cocoa trees used for chocolate production</label>
+
+
+
+                                    <select class="answer-input" id="q27"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q28" class="matching-form-label"><strong>28</strong>&nbsp;&nbsp;annual chocolate consumption per capita in the United States</label>
+
+
+
+                                    <select class="answer-input" id="q28"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q29" class="matching-form-label"><strong>29</strong>&nbsp;&nbsp;the higher likelihood of cultivated cocoa trees being attacked by insects</label>
+
+
+
+                                    <select class="answer-input" id="q29"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q30" class="matching-form-label"><strong>30</strong>&nbsp;&nbsp;a community which developed a preference for sweetened chocolate beverages</label>
+
+
+
+                                    <select class="answer-input" id="q30"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+
+
+
+                                </div>
+<div class="matching-form-row">
+
+
+
+                                    <label for="q31" class="matching-form-label"><strong>31</strong>&nbsp;&nbsp;an approach by which ancient Mexicans could acquire cocoa beans</label>
+
+
+
+                                    <select class="answer-input" id="q31"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question" data-q-start="32" data-q-end="36">
+
+
+
+<div class="question-prompt"><p><strong>Questions 32-36</strong></p><p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text,</p><p>choose <strong>FALSE</strong> if the statement contradicts the information,</p><p>or choose <strong>NOT GIVEN</strong> if there is no information on this.</p></div>
+
+
+
+<div class="tf-question" data-q-start="32" data-q-end="32">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">32</span><span class="tf-question-text">The Mayan ruling class forbade the use of cocoa and chocolate in rituals.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q32" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q32" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q32" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="33" data-q-end="33">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">33</span><span class="tf-question-text">The Spanish explorer Hernan Cortes had made an investment in chocolate and chocolate beverages.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q33" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q33" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q33" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="34" data-q-end="34">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">34</span><span class="tf-question-text">Wild cocoa trees are more susceptible to infectious diseases than cultivated ones.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q34" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q34" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q34" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="35" data-q-end="35">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">35</span><span class="tf-question-text">During chocolate production, some of the seeds are discarded.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q35" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q35" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q35" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+<div class="tf-question" data-q-start="36" data-q-end="36">
+
+
+
+                                <div class="tf-question-line"><span class="tf-question-number">36</span><span class="tf-question-text">Chocolate enjoys more prestige in Europe and the United States than in any other country.</span></div>
+
+
+
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q36" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q36" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q36" value="NOT GIVEN"> NOT GIVEN</label></div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+<div class="question flowchart-question" data-q-start="37" data-q-end="40">
+
+
+
+<div class="question-prompt"><p><strong>Questions 37-40</strong></p><p>Complete the flow-chart below.</p><p>Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p></div>
+
+
+
+<div class="flowchart-title">From Cocoa Beans to Chocolate</div>
+
+
+
+                            <div class="flowchart-container">
+
+
+
+<div class="flowchart-step">
+
+
+
+                                <div class="flowchart-box">Seeds<br>- classifying, cleaning, and roasting<br>- stripping their <input type="text" class="answer-input" id="q37" placeholder="37"></div>
+
+
+
+                                <div class="flowchart-arrow"></div>
+
+
+
+                            </div>
+<div class="flowchart-step">
+
+
+
+                                <div class="flowchart-box">Nibs</div>
+
+
+
+                                <div class="flowchart-arrow"></div>
+
+
+
+                            </div>
+<div class="flowchart-step">
+
+
+
+                                <div class="flowchart-box">Crushing<br>- producing <input type="text" class="answer-input" id="q38" placeholder="38"><br>- mixing with measured quantities of substances such as sweeteners, liquid dairy, and <input type="text" class="answer-input" id="q39" placeholder="39"></div>
+
+
+
+                                <div class="flowchart-arrow"></div>
+
+
+
+                            </div>
+<div class="flowchart-step">
+
+
+
+                                <div class="flowchart-box">Crumb blending...........<br>- crushing finely to obtain a smooth texture<br>- manufacturing diverse shapes of chocolate in <input type="text" class="answer-input" id="q40" placeholder="40"></div>
+
+
+
+                                <div class="flowchart-arrow"></div>
+
+
+
+                            </div>
+<div class="flowchart-step">
+
+
+
+                                <div class="flowchart-box">Chocolate</div>
+
+
+
+                                
+
+
+
+                            </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+<!-- QUESTIONS_END -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <button class="nav-arrow" onclick="previousQuestion()" id="prevBtn">‹</button>
+        <button class="nav-arrow" onclick="nextQuestion()" id="nextBtn">›</button>
+    </div>
+
+    <!-- FOOTER_NAV_START -->
+<nav class="nav-row perScorableItem" aria-label="Questions">
+
+
+
+<div class="footer__questionWrapper___1tZ46 multiple selected" role="tablist">
+
+
+
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(1)">
+
+
+
+                <span>
+
+
+
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+
+
+
+                    <span class="sectionNr" aria-hidden="true">1</span>
+
+
+
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+
+
+
+                </span>
+
+
+
+            </button>
+
+
+
+            <div class="footer__subquestionWrapper___9GgoP">
+
+
+
+<button class="subQuestion scorable-item" onclick="goToQuestion(1)"><span class="sr-only">Question 1</span><span aria-hidden="true">1</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(2)"><span class="sr-only">Question 2</span><span aria-hidden="true">2</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(3)"><span class="sr-only">Question 3</span><span aria-hidden="true">3</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(4)"><span class="sr-only">Question 4</span><span aria-hidden="true">4</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(5)"><span class="sr-only">Question 5</span><span aria-hidden="true">5</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(6)"><span class="sr-only">Question 6</span><span aria-hidden="true">6</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(7)"><span class="sr-only">Question 7</span><span aria-hidden="true">7</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(8)"><span class="sr-only">Question 8</span><span aria-hidden="true">8</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(9)"><span class="sr-only">Question 9</span><span aria-hidden="true">9</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(10)"><span class="sr-only">Question 10</span><span aria-hidden="true">10</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(11)"><span class="sr-only">Question 11</span><span aria-hidden="true">11</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(12)"><span class="sr-only">Question 12</span><span aria-hidden="true">12</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(13)"><span class="sr-only">Question 13</span><span aria-hidden="true">13</span></button>
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+
+
+
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(2)">
+
+
+
+                <span>
+
+
+
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+
+
+
+                    <span class="sectionNr" aria-hidden="true">2</span>
+
+
+
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+
+
+
+                </span>
+
+
+
+            </button>
+
+
+
+            <div class="footer__subquestionWrapper___9GgoP">
+
+
+
+<button class="subQuestion scorable-item" onclick="goToQuestion(14)"><span class="sr-only">Question 14</span><span aria-hidden="true">14</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(15)"><span class="sr-only">Question 15</span><span aria-hidden="true">15</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(16)"><span class="sr-only">Question 16</span><span aria-hidden="true">16</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(17)"><span class="sr-only">Question 17</span><span aria-hidden="true">17</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(18)"><span class="sr-only">Question 18</span><span aria-hidden="true">18</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(19)"><span class="sr-only">Question 19</span><span aria-hidden="true">19</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(20)"><span class="sr-only">Question 20</span><span aria-hidden="true">20</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(21)"><span class="sr-only">Question 21</span><span aria-hidden="true">21</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(22)"><span class="sr-only">Question 22</span><span aria-hidden="true">22</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(23)"><span class="sr-only">Question 23</span><span aria-hidden="true">23</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(24)"><span class="sr-only">Question 24</span><span aria-hidden="true">24</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(25)"><span class="sr-only">Question 25</span><span aria-hidden="true">25</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(26)"><span class="sr-only">Question 26</span><span aria-hidden="true">26</span></button>
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+
+
+
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(3)">
+
+
+
+                <span>
+
+
+
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+
+
+
+                    <span class="sectionNr" aria-hidden="true">3</span>
+
+
+
+                    <span class="attemptedCount" aria-hidden="true">0 of 14</span>
+
+
+
+                </span>
+
+
+
+            </button>
+
+
+
+            <div class="footer__subquestionWrapper___9GgoP">
+
+
+
+<button class="subQuestion scorable-item" onclick="goToQuestion(27)"><span class="sr-only">Question 27</span><span aria-hidden="true">27</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(28)"><span class="sr-only">Question 28</span><span aria-hidden="true">28</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(29)"><span class="sr-only">Question 29</span><span aria-hidden="true">29</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(30)"><span class="sr-only">Question 30</span><span aria-hidden="true">30</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(31)"><span class="sr-only">Question 31</span><span aria-hidden="true">31</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(32)"><span class="sr-only">Question 32</span><span aria-hidden="true">32</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(33)"><span class="sr-only">Question 33</span><span aria-hidden="true">33</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(34)"><span class="sr-only">Question 34</span><span aria-hidden="true">34</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(35)"><span class="sr-only">Question 35</span><span aria-hidden="true">35</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(36)"><span class="sr-only">Question 36</span><span aria-hidden="true">36</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(37)"><span class="sr-only">Question 37</span><span aria-hidden="true">37</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(38)"><span class="sr-only">Question 38</span><span aria-hidden="true">38</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(39)"><span class="sr-only">Question 39</span><span aria-hidden="true">39</span></button>
+<button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
+
+
+
+            <i class="fa fa fa-check" aria-hidden="true"></i>
+
+
+
+            <span>Check Answers</span>
+
+
+
+        </button>
+
+
+
+    </nav>
+<!-- FOOTER_NAV_END -->
+
+    <!-- Context Menu -->
+    <div id="contextMenu" class="context-menu">
+        <div id="menu-highlight" class="context-menu-item has-submenu" onclick="highlightText()">
+            <span>Highlight</span>
+            <span class="submenu-arrow">▶</span>
+            <div class="highlight-submenu" onclick="event.stopPropagation()">
+                <button type="button" class="highlight-color-option" onclick="highlightText('yellow')">
+                    <span class="color-dot yellow"></span> Yellow
+                </button>
+                <button type="button" class="highlight-color-option" onclick="highlightText('green')">
+                    <span class="color-dot green"></span> Green
+                </button>
+                <button type="button" class="highlight-color-option" onclick="highlightText('pink')">
+                    <span class="color-dot pink"></span> Pink
+                </button>
+            </div>
+        </div>
+        
+        <div id="menu-note" class="context-menu-item" onclick="addNote()">
+            Take note
+        </div>
+        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">
+            Delete
+        </div>
+        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">
+            Delete all
+        </div>
+    </div>
+
+    <div id="results-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
+            <h2>Results</h2>
+            <div class="results-summary">
+                <p>Score: <span id="results-score"></span> / 40</p>
+                <p>IELTS Band: <span id="results-band"></span></p>
+            </div>
+            <div id="results-details" class="results-details-container">
+                <!-- Results for each question will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"FALSE","2":"TRUE","3":"NOT GIVEN","4":"NOT GIVEN","5":"TRUE","6":"FALSE","7":"chartar","8":"body","9":"volume","10":"America","11":"steel","12":"pickups","13":"Gibson","14":"E","15":"C","16":"F","17":"B","18":"G","19":"D","20":"C","21":"E","22":"B","23":"D","24":"principle","25":"reward","26":"record","27":"F","28":"H","29":"F","30":"E","31":"D","32":"FALSE","33":"NOT GIVEN","34":"FALSE","35":"NOT GIVEN","36":"NOT GIVEN","37":"outer shells","38":"chocolate liquor","39":"cocoa butter","40":"moulds"}};</script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const launchScreen = document.getElementById('launchScreen');
+        const app = document.getElementById('app');
+        const startNormalBtn = document.getElementById('startNormalBtn');
+        const launchTitle = document.getElementById('launchTestTitle');
+        if (launchTitle && document.title) {
+            launchTitle.textContent = document.title;
+        }
+        let examStarted = false;
+
+        const beginExam = () => {
+            if (examStarted) return;
+            examStarted = true;
+            if (launchScreen) launchScreen.style.display = 'none';
+            if (app) app.style.display = 'block';
+            initialize();
+        };
+
+        if (startNormalBtn) {
+            startNormalBtn.addEventListener('click', beginExam);
+        }
+        const isF11Key = (event) => event.key === 'F11' || event.code === 'F11' || event.keyCode === 122;
+        const isLikelyBrowserFullscreen = () => {
+            const vw = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0);
+            const vh = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0);
+            const sw = Math.max(window.screen?.width || 0, window.screen?.availWidth || 0);
+            const sh = Math.max(window.screen?.height || 0, window.screen?.availHeight || 0);
+            return vw >= sw - 4 && vh >= sh - 4;
+        };
+        const tryStartFromFullscreen = () => {
+            if (examStarted) return;
+            if (isLikelyBrowserFullscreen()) {
+                beginExam();
+            }
+        };
+        const onLaunchKey = (event) => {
+            if (examStarted) return;
+            if (event.key === 'Enter' || event.key === 'NumpadEnter') {
+                event.preventDefault();
+                beginExam();
+                return;
+            }
+            if (isF11Key(event)) {
+                setTimeout(beginExam, 0);
+            }
+        };
+        window.addEventListener('keydown', onLaunchKey, true);
+        window.addEventListener('keyup', onLaunchKey, true);
+        document.addEventListener('keydown', onLaunchKey, true);
+        document.addEventListener('keyup', onLaunchKey, true);
+        window.addEventListener('resize', () => setTimeout(tryStartFromFullscreen, 30), true);
+        document.addEventListener('fullscreenchange', tryStartFromFullscreen, true);
+        setTimeout(tryStartFromFullscreen, 0);
+
+        // --- TEST META (default fallback; replaced when generator injects window.testMeta) ---
+        const defaultTestMeta = {
+            totalQuestions: 40,
+            parts: [
+                { part: 1, start: 1, end: 13 },
+                { part: 2, start: 14, end: 26 },
+                { part: 3, start: 27, end: 40 }
+            ],
+            correctAnswers: {
+                '1': 'FALSE', '2': 'FALSE', '3': 'NOT GIVEN', '4': 'NOT GIVEN', '5': 'FALSE',
+                '6': 'TRUE', '7': 'TRUE', '8': 'FALSE',
+                '9': 'B', '10': 'C', '11': 'E', '12': 'F', '13': 'A',
+                '14': 'iii', '15': 'i', '16': 'vi', '17': 'ii', '18': 'ix', '19': 'v', '20': 'iv',
+                '21': 'epidemic', '22': 'Finland', '23': 'institutions', '24': 'Eurasia', '25': 'einkorn wheat', '26': 'Singapore',
+                '27': 'NO', '28': 'NOT GIVEN', '29': 'NO', '30': 'YES', '31': 'NOT GIVEN',
+                '32': 'B', '33': 'A', '34': 'B', '35': 'C', '36': 'D',
+                '37': 'B', '38': 'C', '39': 'F', '40': 'E'
+            }
+        };
+        const testMeta = window.testMeta || defaultTestMeta;
+        const partRanges = testMeta.parts || [];
+        const correctAnswers = testMeta.correctAnswers || {};
+        const totalQuestions = testMeta.totalQuestions || Object.keys(correctAnswers).length;
+
+        // --- STATE VARIABLES ---
+        let currentPassage = partRanges[0]?.part || 1;
+        let currentQuestion = partRanges[0]?.start || 1;
+        let pendingSelectionRange = null;
+        let activeAnnotationTarget = null;
+        let timeInSeconds = 3600;
+        let timerInterval;
+        let hasSubmitted = false;
+        let draggedItem = null;
+        let activeQuestionElement = null;
+        let selectedDragItem = null;
+        const markedQuestions = new Set();
+        const markButtons = new Map();
+        const COUNTDOWN_THRESHOLD = 300;
+
+        // --- DOM ELEMENTS ---
+        const timerDisplay = document.querySelector('.timer-display');
+        const timerToggleButton = document.getElementById('timer-toggle-btn');
+        const timerResetButton = document.getElementById('timer-reset-btn');
+        const deliverButton = document.getElementById('deliver-button');
+        const resizer = document.getElementById('resizer');
+        const passagePanel = document.getElementById('passage-panel');
+        const questionsPanel = document.getElementById('questions-panel');
+        const contextMenu = document.getElementById('contextMenu');
+        const menuHighlight = document.getElementById('menu-highlight');
+        const menuNote = document.getElementById('menu-note');
+        const menuClear = document.getElementById('menu-clear');
+        const menuClearAll = document.getElementById('menu-clear-all');
+
+        // --- ICON SVGs ---
+        const playIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>';
+        const pauseIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        const bookmarkIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg>';
+
+        // --- INITIALIZATION ---
+        function initialize() {
+            startTimer();
+            initializeDragAndDrop();
+            setupCheckboxLimits();
+            setupExampleHeading();
+            const firstPart = partRanges[0]?.part || 1;
+            switchToPart(firstPart); // Also calls goToQuestion(first question) and updateNavigation
+            
+            document.body.addEventListener('input', updateAllIndicators);
+            document.body.addEventListener('change', updateAllIndicators);
+            deliverButton.addEventListener('click', checkAnswers);
+            timerToggleButton.addEventListener('click', toggleTimer);
+            timerResetButton.addEventListener('click', resetTimer);
+
+            // Add click listeners to question containers for navigation
+            document.querySelectorAll('[data-q-start]').forEach(el => {
+                el.addEventListener('click', (ev) => {
+                    // Ignore clicks on form controls to prevent scroll jump
+                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row, .drop-zone, .summary-drop-zone, .drag-item')) {
+                        return;
+                    }
+                    const qNum = parseInt(el.dataset.qStart, 10);
+                    if (currentQuestion !== qNum) {
+                        goToQuestion(qNum);
+                    }
+                });
+            });
+
+            resizer.addEventListener('mousedown', initResize, false);
+            initializeContextMenu();
+            initializeQuestionMarkers();
+        }
+
+        // --- CORE TEST LOGIC ---
+
+        function checkAnswers() {
+            if (hasSubmitted) return;
+            hasSubmitted = true;
+            // Disable all inputs to prevent changes
+            const allInputs = document.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => {
+                input.disabled = true;
+            });
+
+            // Disable submit button
+            deliverButton.disabled = true;
+            deliverButton.style.cursor = 'not-allowed';
+            
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            let score = 0;
+            const resultsDetailsContainer = document.getElementById('results-details');
+            resultsDetailsContainer.innerHTML = '';
+
+            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => {
+                el.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
+            });
+            document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
+            const processedSharedCheckboxContainers = new Set();
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionKey = String(i);
+                const correctAnswer = correctAnswers[questionKey];
+                let userAnswer = '';
+                let isCorrect = false;
+                
+                let userAnswerDisplay = 'Not Answered';
+                const correctAnswerText = Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : correctAnswer;
+
+                const textInput = document.getElementById(`q${i}`);
+                const radioGroup = document.querySelectorAll(`input[name="q${i}"][type="radio"]`);
+                const selectInput = document.getElementById(`q${i}`);
+                let checkboxInputs = document.querySelectorAll(`input[name="q${i}"][type="checkbox"]`);
+                let questionContainer = null;
+                let isSharedCheckbox = false;
+                if (!checkboxInputs.length) {
+                    const sharedContainer = Array.from(document.querySelectorAll('.multi-choice-question[data-shared-questions]')).find(el => {
+                        const parts = (el.dataset.sharedQuestions || '').split(',').map(n => parseInt(n, 10));
+                        return parts.includes(i);
+                    });
+                    if (sharedContainer) {
+                        const sharedName = sharedContainer.dataset.sharedName;
+                        if (sharedName) {
+                            checkboxInputs = sharedContainer.querySelectorAll(`input[name="${sharedName}"][type="checkbox"]`);
+                            questionContainer = sharedContainer;
+                            isSharedCheckbox = true;
+                        }
+                    }
+                }
+                const checkedCheckboxes = Array.from(checkboxInputs).filter(cb => cb.checked);
+                
+                // Handle Text Inputs
+                if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
+                    const element = textInput.closest('.matching-form-row') || textInput;
+                    userAnswer = textInput.value.trim();
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = Array.isArray(correctAnswer) ?
+                        correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) :
+                        userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        textInput.parentNode.insertBefore(correctAnswerSpan, textInput.nextSibling);
+                    }
+                }
+                // Handle Select Inputs
+                else if (selectInput && selectInput.tagName === 'SELECT') {
+                    const element = selectInput.closest('.matching-form-row') || selectInput;
+                    userAnswer = selectInput.value;
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = userAnswer === correctAnswer;
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        selectInput.parentNode.insertBefore(correctAnswerSpan, selectInput.nextSibling);
+                    }
+                }
+                // Handle Radio Button Inputs (T/F, MCQs)
+                else if (radioGroup.length > 0) {
+                    const questionContainer = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
+                    const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+
+                    if (checkedRadio) {
+                        userAnswer = checkedRadio.value;
+                        userAnswerDisplay = userAnswer;
+                        isCorrect = userAnswer === correctAnswer;
+
+                        const userLabel = checkedRadio.closest('.tf-option, .multi-choice-option');
+                        if (userLabel) {
+                            userLabel.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                    }
+
+                    if (isCorrect) {
+                        score++;
+                    } else {
+                        if (questionContainer){
+                            const correctOptionEl = questionContainer.querySelector(`input[value="${correctAnswerText}"]`);
+                            if (correctOptionEl) {
+                                const correctLabel = correctOptionEl.closest('.tf-option, .multi-choice-option');
+                                if (correctLabel) {
+                                    correctLabel.classList.add('correct-answer-highlight');
+                                }
+                            }
+                        }
+                    }
+                }
+                // Handle Checkbox MCQs (multiple answers)
+                else if (checkboxInputs.length > 0) {
+                    if (!questionContainer) {
+                        questionContainer = checkboxInputs[0].closest('.multi-choice-question');
+                    }
+                    const selectedValues = checkedCheckboxes.map(cb => cb.value);
+                    const normalizedCorrect = Array.isArray(correctAnswer)
+                        ? correctAnswer.map(ans => String(ans).toLowerCase())
+                        : [String(correctAnswerText).toLowerCase()];
+                    const normalizedUser = selectedValues.map(v => String(v).toLowerCase());
+                    const expectedCount = normalizedCorrect.filter(Boolean).length;
+                    const maxSelectAttr = questionContainer?.dataset.maxSelect;
+                    const maxAllowed = maxSelectAttr ? parseInt(maxSelectAttr, 10) : null;
+                    const withinLimit = maxAllowed ? normalizedUser.length <= maxAllowed : true;
+                    let normalizedCorrectForStyling = normalizedCorrect;
+                    let questionContainerState = isCorrect;
+
+                    userAnswer = selectedValues;
+                    userAnswerDisplay = selectedValues.length ? selectedValues.join(', ') : 'Not Answered';
+
+                    if (isSharedCheckbox && !Array.isArray(correctAnswer)) {
+                        const target = normalizedCorrect[0];
+                        isCorrect = !!target && normalizedUser.includes(target) && withinLimit;
+
+                        const sharedQuestions = (questionContainer?.dataset.sharedQuestions || '')
+                            .split(',')
+                            .map(n => parseInt(n, 10))
+                            .filter(Number.isFinite);
+                        const sharedCorrect = [];
+                        sharedQuestions.forEach(qNum => {
+                            const ans = correctAnswers[String(qNum)];
+                            if (Array.isArray(ans)) {
+                                ans.forEach(a => sharedCorrect.push(String(a).toLowerCase()));
+                            } else if (ans != null) {
+                                sharedCorrect.push(String(ans).toLowerCase());
+                            }
+                        });
+                        normalizedCorrectForStyling = Array.from(new Set(sharedCorrect.filter(Boolean)));
+                        questionContainerState = normalizedCorrectForStyling.length > 0 &&
+                            normalizedUser.length === normalizedCorrectForStyling.length &&
+                            normalizedCorrectForStyling.every(ans => normalizedUser.includes(ans)) &&
+                            withinLimit;
+                    } else {
+                        isCorrect = expectedCount > 0 &&
+                            normalizedUser.length === expectedCount &&
+                            normalizedCorrect.every(ans => normalizedUser.includes(ans));
+                        questionContainerState = isCorrect;
+                    }
+
+                    if (questionContainer && selectedValues.length) {
+                        questionContainer.classList.add(questionContainerState ? 'correct' : 'incorrect');
+                    }
+
+                    const shouldStyleOptions = !isSharedCheckbox || !processedSharedCheckboxContainers.has(questionContainer);
+                    if (shouldStyleOptions) {
+                        checkboxInputs.forEach(cb => {
+                            const label = cb.closest('.multi-choice-option');
+                            if (!label) return;
+                            const isCorrectOption = normalizedCorrectForStyling.includes(String(cb.value).toLowerCase());
+                            label.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
+                            if (isCorrectOption) {
+                                label.classList.add('correct-answer-highlight');
+                            }
+                            if (cb.checked) {
+                                label.classList.add(isCorrectOption ? 'correct' : 'incorrect');
+                            }
+                        });
+                        if (isSharedCheckbox && questionContainer) {
+                            processedSharedCheckboxContainers.add(questionContainer);
+                        }
+                    }
+
+                    if (isCorrect) {
+                        score++;
+                    }
+                }
+                // Handle drag/drop blanks (summary/drag-drop)
+                else {
+                    let dropZone = document.querySelector(`.drop-zone[data-q-start="${i}"]`);
+                    if (!dropZone) {
+                        const fallback = document.getElementById(`q${i}`);
+                        if (fallback && fallback.classList.contains('drop-zone')) {
+                            dropZone = fallback;
+                        }
+                    }
+                    if (dropZone) {
+                        const droppedItem = dropZone.querySelector('.drag-item');
+                        userAnswer = droppedItem ? (droppedItem.dataset.value || droppedItem.textContent.trim()) : '';
+                        userAnswerDisplay = userAnswer || 'Not Answered';
+
+                        const normalizedUser = String(userAnswer).toLowerCase();
+                        const normalizedCorrect = Array.isArray(correctAnswer)
+                          ? correctAnswer.map(ans => String(ans).toLowerCase())
+                          : [String(correctAnswerText).toLowerCase()];
+
+                        isCorrect = normalizedUser && normalizedCorrect.includes(normalizedUser);
+
+                        if (isCorrect) {
+                            score++;
+                            dropZone.classList.add('correct');
+                        } else {
+                            dropZone.classList.add('incorrect');
+                            const correctAnswerSpan = document.createElement('span');
+                            correctAnswerSpan.className = 'correct-answer-display';
+                            correctAnswerSpan.innerHTML = `&nbsp;ƒzo&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                            dropZone.insertAdjacentElement('afterend', correctAnswerSpan);
+                        }
+                    }
+                }
+                   
+                // For showing results in the modal
+                 const resultRow = `
+                    <div class="result-row ${isCorrect ? '' : 'incorrect'}">
+                        <span class="q-num">${i}</span>
+                        <span class="user-ans">${userAnswerDisplay}</span>
+                        <span class="correct-ans">${correctAnswerText}</span>
+                    </div>`;
+                resultsDetailsContainer.innerHTML += resultRow;
+                
+                // Update nav button color
+                const navButton = document.querySelector(`.subQuestion[onclick="goToQuestion(${i})"]`);
+                if (navButton) {
+                    navButton.classList.remove('answered', 'active');
+                    navButton.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+            }
+
+            document.getElementById('results-score').textContent = score;
+            document.getElementById('results-band').textContent = calculateBandScore(score);
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        function calculateBandScore(score) {
+            if (score >= 39) return '9.0';
+            const mapping = {
+                40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5,
+                33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5,
+                26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5,
+                19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5,
+                12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0,
+                5: 2.5, 4: 2.5
+            };
+            if (score <= 0) return 0.0;
+            if (score === 1) return 1.0;
+            if (score <= 3) return 2.0;
+            if (score <= 5) return 2.5;
+            return mapping[score] || 0.0;
+        }
+
+        function getUserAnswer(qNum) {
+            const dropZone = document.querySelector(`.drop-zone[data-q-start="${qNum}"]`);
+            const textInput = document.getElementById(`q${qNum}`);
+            const radioInput = document.querySelector(`input[name="q${qNum}"]:checked`);
+
+            if (dropZone) {
+                const droppedItem = dropZone.querySelector('.drag-item');
+                return { 
+                    value: droppedItem ? droppedItem.dataset.value : null, 
+                    text: droppedItem ? droppedItem.textContent.trim() : 'N/A' 
+                };
+            }
+            if (textInput) { // Handles <input type="text"> and <select>
+                return { value: textInput.value || '', text: textInput.value || 'N/A' };
+            }
+            if (radioInput) {
+                return { value: radioInput.value, text: radioInput.value };
+            }
+            return { value: null, text: 'N/A' };
+        }
+
+        function displayCorrectAnswer(qNum, correctAnswer) {
+            // Handle radio button questions by highlighting the correct label
+            const correctRadioInput = document.querySelector(`input[name="q${qNum}"][value="${correctAnswer}"]`);
+            if (correctRadioInput) {
+                const parentOption = correctRadioInput.closest('.tf-option, .multi-choice-option');
+                if (parentOption) {
+                    parentOption.classList.add('correct-answer-highlight');
+                    return;
+                }
+            }
+
+            // Handle text inputs, select dropdowns, and others by showing the answer next to them
+            const inputEl = document.getElementById(`q${qNum}`);
+            if (inputEl) {
+                const displaySpan = document.createElement('span');
+                displaySpan.className = 'correct-answer-display';
+                displaySpan.textContent = ` ✓ ${correctAnswer}`;
+                inputEl.insertAdjacentElement('afterend', displaySpan);
+                return; // Done
+            }
+            
+            // Fallback for questions identified by a container (e.g., some T/F/NG questions)
+            const element = findQuestionElement(qNum);
+            if (element) {
+                const displaySpan = document.createElement('span');
+                displaySpan.className = 'correct-answer-display';
+                displaySpan.textContent = ` ✓ ${correctAnswer}`;
+                const itemContainer = element.querySelector('.tf-question-text');
+                if (itemContainer) {
+                     itemContainer.appendChild(displaySpan);
+                } else {
+                     element.appendChild(displaySpan);
+                }
+            }
+        }
+        
+        function findQuestionElement(qNum) {
+             const direct = document.querySelector(`[data-q-start="${qNum}"]`);
+             if (direct) return direct;
+             const rangeMatch = Array.from(document.querySelectorAll('[data-q-start][data-q-end]')).find(el => {
+                const start = parseInt(el.dataset.qStart || '0', 10);
+                const end = parseInt(el.dataset.qEnd || start, 10);
+                return qNum >= start && qNum <= end;
+             });
+             if (rangeMatch) return rangeMatch;
+             const sharedMatch = Array.from(document.querySelectorAll('.multi-choice-question[data-shared-questions]')).find(el => {
+                const parts = (el.dataset.sharedQuestions || '').split(',').map(n => parseInt(n, 10));
+                return parts.includes(qNum);
+             });
+             return sharedMatch || null;
+        }
+
+        function addResultToModal(qNum, userAnswer, correctAnswer, isCorrect) {
+            const resultsDetails = document.getElementById('results-details');
+            const row = document.createElement('div');
+            row.className = 'result-row';
+            if (!isCorrect) {
+                row.classList.add('incorrect');
+            }
+            row.innerHTML = `
+                <span class="q-num">${qNum}</span>
+                <span class="user-ans">${userAnswer}</span>
+                <span class="correct-ans">${correctAnswer}</span>
+            `;
+            resultsDetails.appendChild(row);
+        }
+
+        function showResultsModal() {
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        window.closeResultsModal = function() {
+            document.getElementById('results-modal').classList.add('hidden');
+        }
+        
+        function disableInputs() {
+            deliverButton.innerHTML = `<span>Checked! View Results.</span>`;
+            deliverButton.removeEventListener('click', checkAnswers);
+            deliverButton.onclick = showResultsModal;
+
+            document.querySelectorAll('input, select').forEach(el => {
+                el.disabled = true;
+                 if (el.matches('input[type=radio], input[type=checkbox]')) {
+                     el.style.cursor = 'not-allowed';
+                     el.parentElement.style.cursor = 'not-allowed';
+                 }
+            });
+            document.querySelectorAll('.drag-item').forEach(el => {
+                el.setAttribute('draggable', 'false');
+                el.style.cursor = 'default';
+            });
+            document.querySelectorAll('.drop-zone').forEach(el => {
+                el.classList.add('disabled');
+            });
+        }
+
+        function checkValue(userValue, correctValue) {
+            if (userValue === null || userValue === undefined) return false;
+            const formattedUserValue = userValue.trim().toLowerCase();
+            if (Array.isArray(correctValue)) {
+                return correctValue.map(v => v.toLowerCase()).includes(formattedUserValue);
+            } else {
+                return formattedUserValue === String(correctValue).toLowerCase();
+            }
+        }
+
+        function markQuestion(qNum, isCorrect) {
+            const subQuestionBtn = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
+            subQuestionBtn?.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            const elementsToMark = [
+                document.querySelector(`.tf-question[data-q-start="${qNum}"]`),
+                document.querySelector(`.multi-choice-question[data-q-start="${qNum}"]`),
+                document.querySelector(`.matching-question-item[data-q-start="${qNum}"]`),
+                document.querySelector(`.drop-zone[data-q-start="${qNum}"]`),
+                document.getElementById(`q${qNum}`),
+                document.querySelector(`input[name="q${qNum}"]:checked`)?.closest('.tf-option'),
+                document.querySelector(`input[name="q${qNum}"]:checked`)?.closest('.multi-choice-option')
+            ];
+            
+            elementsToMark.forEach(el => {
+                if (el) el.classList.add(isCorrect ? 'correct' : 'incorrect');
+            });
+        }
+
+        const getFirstQuestionOfPart = (partNumber) => {
+            const match = partRanges.find(p => p.part === partNumber);
+            return match ? match.start : 1;
+        };
+
+        const getPartForQuestion = (questionNumber) => {
+            const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end);
+            return match ? match.part : partRanges[0]?.part || 1;
+        };
+
+        function switchToPart(partNumber) {
+            currentPassage = partNumber;
+
+            // Hide all passages and questions
+            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Show the correct passage, questions, and header
+            document.getElementById(`passage-text-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`questions-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`part-header-${partNumber}`).classList.remove('hidden');
+
+            // Update bottom navigation 'selected' state
+            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => {
+                wrapper.classList.toggle('selected', (index + 1) === partNumber);
+            });
+
+            // Go to the first question of the part
+            goToQuestion(getFirstQuestionOfPart(partNumber));
+        }
+        
+        function goToQuestion(questionNumber) {
+            currentQuestion = questionNumber;
+
+            const passageNumber = getPartForQuestion(questionNumber);
+            
+            if (currentPassage !== passageNumber) {
+                switchToPart(passageNumber);
+                return; 
+            }
+
+            if (activeQuestionElement) {
+                activeQuestionElement.classList.remove('active-question', 'active-input');
+            }
+
+            let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
+
+            if (targetEl) {
+                activeQuestionElement = targetEl;
+                 if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
+                     targetEl.classList.add('active-input');
+                 } else {
+                     targetEl.classList.add('active-question');
+                 }
+                 scrollIntoViewIfNeeded(targetEl);
+            } else {
+                 const pMatch = document.querySelector(`.paragraph-matching-question select[id="q${questionNumber}"]`);
+                 if(pMatch) {
+                    activeQuestionElement = pMatch;
+                    pMatch.classList.add('active-input');
+                    scrollIntoViewIfNeeded(pMatch);
+                 }
+            }
+
+            updateNavigation();
+        }
+        
+        // --- UI & NAVIGATION ---
+
+        function updateNavigation() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            const activeNav = document.querySelector(`.subQuestion[onclick="goToQuestion(${currentQuestion})"]`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            const inputs = document.querySelectorAll('.answer-input, .drop-zone.filled, .summary-drop-zone.filled');
+            inputs.forEach(input => input.classList.remove('active-input'));
+            
+            const activeInput = document.getElementById(`q${currentQuestion}`);
+            if (activeInput) {
+                activeInput.classList.add('active-input');
+                if (typeof activeInput.focus === 'function') {
+                    activeInput.focus();
+                }
+            } else {
+                const activeQuestionBlock = document.querySelector(`[data-q-start="${currentQuestion}"]`);
+                if (activeQuestionBlock) {
+                    const firstInput = activeQuestionBlock.querySelector('input, select');
+                    if(firstInput) {
+                        firstInput.classList.add('active-input');
+                         if (typeof firstInput.focus === 'function') {
+                            firstInput.focus();
+                        }
+                    }
+                }
+            }
+        }
+        
+        function selectDragItem(item) {
+            if (selectedDragItem) {
+                selectedDragItem.classList.remove('selected');
+            }
+            selectedDragItem = item;
+            if (selectedDragItem) {
+                selectedDragItem.classList.add('selected');
+            }
+        }
+        
+        window.nextQuestion = () => currentQuestion < totalQuestions && goToQuestion(currentQuestion + 1);
+        window.previousQuestion = () => currentQuestion > 1 && goToQuestion(currentQuestion - 1);
+
+        function updateAllIndicators() {
+            partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end));
+            updateAnsweredNav();
+        }
+        
+        function updateAnsweredNav() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => {
+                const qNum = parseInt(btn.textContent, 10);
+                if (isQuestionAnswered(qNum)) {
+                    btn.classList.add('answered');
+                } else {
+                    btn.classList.remove('answered');
+                }
+            });
+        }
+        
+        function isQuestionAnswered(qNum) {
+            const dropZone = document.querySelector(`.drop-zone[data-q-start="${qNum}"]`);
+            if (dropZone && dropZone.querySelector('.drag-item')) return true;
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') return true;
+            const radio = document.querySelector(`input[name="q${qNum}"]:checked`);
+            if (radio) {
+                return true;
+            }
+            const checkbox = document.querySelector(`input[name="q${qNum}"]:checked`);
+            if (checkbox) {
+                return true;
+            }
+            return false;
+        }
+
+        function scrollIntoViewIfNeeded(element) {
+            const panel = element.closest('.questions-panel, .passage-panel');
+            const panelRect = panel.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        // --- DRAG AND DROP ---
+        
+        function initializeDragAndDrop() {
+            document.querySelectorAll('.drag-item').forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+                item.addEventListener('click', () => selectDragItem(item));
+            });
+            document.querySelectorAll('.drop-zone, .drag-options-container').forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('dragleave', handleDragLeave);
+                zone.addEventListener('drop', handleDrop);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedItem = e.target;
+            setTimeout(() => e.target.classList.add('dragging'), 0);
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedItem = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            const targetZone = e.currentTarget;
+            if (draggedItem && draggedItem.dataset.dndGroup === targetZone.dataset.dndGroup) {
+                targetZone.classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const targetZone = e.currentTarget;
+            targetZone.classList.remove('drag-over');
+
+            if (!draggedItem || draggedItem.dataset.dndGroup !== targetZone.dataset.dndGroup) {
+                return;
+            }
+
+            const sourceZone = draggedItem.parentElement;
+            if (sourceZone === targetZone) return; // Prevent dropping on itself
+
+            const existingItemInTarget = targetZone.classList.contains('drop-zone') 
+                ? targetZone.querySelector('.drag-item') 
+                : null;
+
+            // First, clear the target drop-zone of any text (like question numbers) before adding the new item.
+            if (targetZone.classList.contains('drop-zone')) {
+                Array.from(targetZone.childNodes).forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        node.remove();
+                    }
+                });
+            }
+
+            // Move the item that was in the target (if any) to the source zone.
+            if (existingItemInTarget) {
+                sourceZone.appendChild(existingItemInTarget);
+            }
+            
+            // Finally, move the dragged item to the target zone.
+            targetZone.appendChild(draggedItem);
+            targetZone.classList.add('filled');
+
+            // After the move, clean up the source zone if it's a drop-zone and is now empty.
+            if (sourceZone.classList.contains('drop-zone') && !sourceZone.querySelector('.drag-item')) {
+                 sourceZone.classList.remove('filled');
+                 const qNum = sourceZone.dataset.qStart;
+                 sourceZone.innerText = qNum; // Restore the question number
+            }
+            
+            updateAllIndicators();
+        }
+        
+        // --- MISC HELPERS ---
+        
+        function updateTimerDisplay() {
+            const displaySeconds = Math.max(timeInSeconds, 0);
+            if (displaySeconds > COUNTDOWN_THRESHOLD) {
+                const minutesRemaining = Math.ceil(displaySeconds / 60);
+                timerDisplay.textContent = `${minutesRemaining} minutes remaining`;
+            } else {
+                const minutes = Math.floor(displaySeconds / 60);
+                const seconds = displaySeconds % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        function handleTimeExpired() {
+            timeInSeconds = 0;
+            updateTimerDisplay();
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            checkAnswers();
+        }
+
+        function startTimer() {
+            if (hasSubmitted) return;
+            if (timerInterval) clearInterval(timerInterval); // Ensure no multiple intervals
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeInSeconds = Math.max(timeInSeconds - 1, 0);
+                updateTimerDisplay();
+                if (timeInSeconds <= 0) {
+                    handleTimeExpired();
+                }
+            }, 1000);
+            timerToggleButton.innerHTML = pauseIcon;
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+        }
+
+        function toggleTimer() {
+            if (timerInterval) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function resetTimer() {
+            timeInSeconds = 3600;
+            updateTimerDisplay();
+            startTimer();
+        }
+        
+        function setupCheckboxLimits() {
+            const warningClass = 'multi-choice-warning';
+            document.querySelectorAll('.multi-choice-question[data-max-select]').forEach(question => {
+                const maxSelect = parseInt(question.dataset.maxSelect, 10);
+                if (!maxSelect || maxSelect < 1) return;
+                const checkboxes = question.querySelectorAll('input[type="checkbox"]');
+                if (!checkboxes.length) return;
+
+                let warningEl = question.querySelector(`.${warningClass}`);
+                if (!warningEl) {
+                    warningEl = document.createElement('div');
+                    warningEl.className = warningClass;
+                    warningEl.setAttribute('aria-live', 'polite');
+                    question.appendChild(warningEl);
+                }
+
+                checkboxes.forEach(cb => {
+                    cb.addEventListener('change', (e) => {
+                        const checked = question.querySelectorAll('input[type="checkbox"]:checked');
+                        if (checked.length > maxSelect) {
+                            e.target.checked = false;
+                            warningEl.textContent = `You can select up to ${maxSelect} option${maxSelect > 1 ? 's' : ''}. Tap a selected option again to change your answers.`;
+                        } else {
+                            warningEl.textContent = '';
+                        }
+                        updateAnsweredNav();
+                    });
+                });
+            });
+        }
+
+        function setupExampleHeading() {
+            // No specific example boxes to set up
+        }
+        
+        function initResize(e) {
+            e.preventDefault();
+            const startX = e.clientX;
+            const startWidth = passagePanel.offsetWidth;
+            
+            const doDrag = (e) => {
+                const newWidth = startWidth + e.clientX - startX;
+                if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) {
+                    passagePanel.style.flex = `0 0 ${newWidth}px`;
+                }
+            };
+            const stopDrag = () => {
+                window.removeEventListener('mousemove', doDrag, false);
+                window.removeEventListener('mouseup', stopDrag, false);
+            };
+            
+            window.addEventListener('mousemove', doDrag, false);
+            window.addEventListener('mouseup', stopDrag, false);
+        }
+        
+        // --- CONTEXT MENU (Highlighting) ---
+        const ANNOTATION_CLASSES = {
+            highlight: 'annotation-highlight',
+            note: 'annotation-note'
+        };
+
+        function unwrapElement(element) {
+            const parent = element?.parentNode;
+            if (!parent) return;
+            while (element.firstChild) {
+                parent.insertBefore(element.firstChild, element);
+            }
+            parent.removeChild(element);
+        }
+
+        function selectionWithinPanels(selection) {
+            const anchor = selection.anchorNode;
+            const focus = selection.focusNode;
+            const inPanels = node => node && (passagePanel.contains(node) || questionsPanel.contains(node));
+            return inPanels(anchor) && inPanels(focus);
+        }
+
+        function isRangeInsidePanels(range) {
+            const root = range.commonAncestorContainer;
+            return passagePanel.contains(root) || questionsPanel.contains(root);
+        }
+
+        function getCurrentSelectionRange() {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed) return null;
+            return selection.getRangeAt(0).cloneRange();
+        }
+
+        function positionContextMenu(x, y) {
+            contextMenu.style.display = 'block';
+            const menuHeight = contextMenu.offsetHeight;
+            const menuWidth = contextMenu.offsetWidth;
+            let left = x;
+            let top = y - menuHeight - 8;
+            if (left + menuWidth > window.innerWidth) left = window.innerWidth - menuWidth - 8;
+            if (left < 8) left = 8;
+            if (top < 8) top = y + 8;
+            contextMenu.style.left = `${left}px`;
+            contextMenu.style.top = `${top}px`;
+        }
+
+        function resetSelectionState() {
+            pendingSelectionRange = null;
+            activeAnnotationTarget = null;
+        }
+
+        function showMenuForSelection(event) {
+            menuHighlight.style.display = 'flex';
+            menuNote.style.display = 'flex';
+            menuClear.style.display = 'none';
+            menuClearAll.style.display = 'none';
+            contextMenu.dataset.mode = 'create';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function showMenuForAnnotation(event, target) {
+            activeAnnotationTarget = target;
+            pendingSelectionRange = null;
+            window.getSelection().removeAllRanges();
+            menuHighlight.style.display = 'none';
+            menuNote.style.display = 'none';
+            menuClear.style.display = 'flex';
+            menuClearAll.style.display = 'flex';
+            contextMenu.dataset.mode = 'manage';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function closeContextMenu(resetSelection = false) {
+            contextMenu.style.display = 'none';
+            contextMenu.dataset.mode = '';
+            if (resetSelection) {
+                window.getSelection().removeAllRanges();
+            }
+            resetSelectionState();
+        }
+
+        function expandRangeToAnnotations(range, selector) {
+            const spans = Array.from(document.querySelectorAll(selector));
+            spans.forEach(span => {
+                if (!range.intersectsNode(span)) return;
+                const spanRange = document.createRange();
+                spanRange.selectNode(span);
+                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) {
+                    range.setStartBefore(span);
+                }
+                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) {
+                    range.setEndAfter(span);
+                }
+            });
+        }
+
+        function unwrapAnnotationsInRange(range, type) {
+            const selector = type === 'highlight'
+                ? `.${ANNOTATION_CLASSES.highlight}`
+                : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
+            document.querySelectorAll(selector).forEach(span => {
+                if (range.intersectsNode(span)) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function getTextNodesInRange(range, type) {
+            const nodes = [];
+            const shouldInclude = (node) => {
+                if (!node || !node.nodeValue || !node.nodeValue.trim()) return false;
+                if (!range.intersectsNode(node)) return false;
+                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) {
+                    return false;
+                }
+                return true;
+            };
+
+            if (range.commonAncestorContainer.nodeType === Node.TEXT_NODE) {
+                if (shouldInclude(range.commonAncestorContainer)) {
+                    nodes.push(range.commonAncestorContainer);
+                }
+                return nodes;
+            }
+
+            const walker = document.createTreeWalker(
+                range.commonAncestorContainer,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+                }
+            );
+
+            while (walker.nextNode()) {
+                nodes.push(walker.currentNode);
+            }
+            return nodes;
+        }
+
+        function wrapTextPortion(node, range, type, noteText = '', highlightColor = 'yellow') {
+            let startOffset = 0;
+            let endOffset = node.nodeValue.length;
+
+            if (node === range.startContainer && range.startOffset > startOffset) {
+                startOffset = range.startOffset;
+            }
+            if (node === range.endContainer && range.endOffset < endOffset) {
+                endOffset = range.endOffset;
+            }
+
+            if (startOffset >= endOffset) return;
+
+            const selectedText = node.splitText(startOffset);
+            selectedText.splitText(endOffset - startOffset);
+
+            const span = document.createElement('span');
+            span.classList.add('annotation', type === 'highlight' ? ANNOTATION_CLASSES.highlight : ANNOTATION_CLASSES.note);
+            span.dataset.type = type;
+            if (type === 'highlight') {
+                const allowedColors = ['yellow', 'green', 'pink'];
+                const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
+                span.dataset.color = safeColor;
+                span.classList.add(`highlight-${safeColor}`);
+            }
+            if (type === 'note') {
+                const content = noteText || '';
+                span.dataset.note = content;
+                if (content) {
+                    span.setAttribute('data-note', content);
+                    span.title = content;
+                } else {
+                    span.removeAttribute('data-note');
+                    span.title = 'Note';
+                }
+            }
+            selectedText.parentNode.insertBefore(span, selectedText);
+            span.appendChild(selectedText);
+        }
+
+        function mergeAdjacentAnnotations() {
+            const annotations = document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+            annotations.forEach(span => {
+                if (!span.parentNode) return;
+                let cursor = span.nextSibling;
+                while (true) {
+                    const whitespaceBetween = [];
+                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) {
+                        whitespaceBetween.push(cursor);
+                        cursor = cursor.nextSibling;
+                    }
+                    if (
+                        cursor &&
+                        cursor.nodeType === Node.ELEMENT_NODE &&
+                        cursor.classList.contains('annotation') &&
+                        cursor.dataset.type === span.dataset.type &&
+                        (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))
+                    ) {
+                        whitespaceBetween.forEach(node => span.appendChild(node));
+                        while (cursor.firstChild) {
+                            span.appendChild(cursor.firstChild);
+                        }
+                        const after = cursor.nextSibling;
+                        cursor.remove();
+                        cursor = after;
+                    } else {
+                        break;
+                    }
+                }
+                if (!span.textContent.trim()) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function handleTextSelection(event) {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) {
+                return;
+            }
+            if (!selectionWithinPanels(selection)) {
+                return;
+            }
+            const range = selection.getRangeAt(0).cloneRange();
+            pendingSelectionRange = range;
+            activeAnnotationTarget = null;
+            showMenuForSelection(event);
+        }
+
+        function initializeContextMenu() {
+            const panels = [passagePanel, questionsPanel];
+            panels.forEach(panel => {
+                panel.addEventListener('mouseup', (e) => {
+                    setTimeout(() => handleTextSelection(e), 0);
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (contextMenu.contains(e.target)) return;
+                const annotation = e.target.closest(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+                if (annotation) {
+                    showMenuForAnnotation(e, annotation);
+                    return;
+                }
+                closeContextMenu();
+            });
+        }
+
+        function applyAnnotation(type, noteText = '', highlightColor = 'yellow') {
+            const baseRange = pendingSelectionRange ? pendingSelectionRange.cloneRange() : getCurrentSelectionRange();
+            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) {
+                closeContextMenu(true);
+                return;
+            }
+
+            if (type === 'highlight') {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`);
+            } else {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`);
+            }
+
+            unwrapAnnotationsInRange(baseRange, type);
+            const targets = getTextNodesInRange(baseRange, type);
+            targets.forEach(node => wrapTextPortion(node, baseRange, type, noteText, highlightColor));
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        function highlightText(color = 'yellow') {
+            applyAnnotation('highlight', '', color);
+        }
+
+        function addNote() {
+            const note = prompt('Nhập nội dung ghi chú (Take note):');
+            if (note === null) {
+                closeContextMenu();
+                return;
+            }
+            applyAnnotation('note', note.trim());
+        }
+
+        function clearHighlight() {
+            if (activeAnnotationTarget) {
+                unwrapElement(activeAnnotationTarget);
+                mergeAdjacentAnnotations();
+            }
+            closeContextMenu(true);
+        }
+        
+        function clearAllHighlights() {
+            document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`)
+                .forEach(unwrapElement);
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        // --- QUESTION MARKING ---
+
+        function findQuestionAnchor(qNum) {
+            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`);
+            if (mcqNumber) return mcqNumber;
+            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum);
+            if (tfNumber) return tfNumber;
+
+            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim()));
+            if (strongLabel) return strongLabel;
+
+            const genericLabel = document.querySelector(`label[for="q${qNum}"]`);
+            if (genericLabel) return genericLabel;
+
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput) return textInput;
+
+            const summaryBlank = document.querySelector(`.summary-drop-zone[data-q-start="${qNum}"]`);
+            if (summaryBlank) return summaryBlank;
+
+            return null;
+        }
+
+        function ensureMcqNumbering() {
+            document.querySelectorAll('.multi-choice-question').forEach(q => {
+                const qStart = parseInt(q.dataset.qStart || '0', 10);
+                const qEnd = parseInt(q.dataset.qEnd || q.dataset.qStart || '0', 10);
+                if (!qStart) return;
+                const optionsContainer = q.querySelector('.multi-choice-options');
+                if (!optionsContainer) return;
+                let titleEl = q.querySelector('.mcq-question-title');
+                if (!titleEl) {
+                    const p = optionsContainer.querySelector('p');
+                    if (p) {
+                        titleEl = document.createElement('span');
+                        titleEl.className = 'mcq-question-title';
+                        while (p.firstChild) {
+                            titleEl.appendChild(p.firstChild);
+                        }
+                        p.appendChild(titleEl);
+                    }
+                }
+                if (titleEl && !q.querySelector('.mcq-question-number')) {
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'mcq-question-number question-number-box';
+                    numSpan.dataset.qNumber = String(qStart);
+                    numSpan.textContent = (qEnd && qEnd !== qStart) ? `${qStart}-${qEnd}` : qStart;
+                    titleEl.parentNode.insertBefore(numSpan, titleEl);
+                }
+
+                if (!titleEl) return;
+                const sharedNumbers = (q.dataset.sharedQuestions || '')
+                    .split(',')
+                    .map(val => parseInt(val.trim(), 10))
+                    .filter(Boolean);
+                const rangeNumbers = (qEnd && qEnd !== qStart)
+                    ? Array.from({ length: qEnd - qStart + 1 }, (_, i) => qStart + i)
+                    : [qStart];
+                const numbers = sharedNumbers.length ? sharedNumbers : rangeNumbers;
+                const existing = new Set(
+                    Array.from(q.querySelectorAll('.mcq-hidden-anchor[data-q-number]')).map(el => el.dataset.qNumber)
+                );
+                numbers.forEach(num => {
+                    const key = String(num);
+                    if (existing.has(key)) return;
+                    const anchor = document.createElement('span');
+                    anchor.className = 'mcq-hidden-anchor mcq-question-number';
+                    anchor.dataset.qNumber = key;
+                    titleEl.parentNode.appendChild(anchor);
+                });
+            });
+        }
+
+        function createMarkerButton(anchor, qNum) {
+            if (!anchor || anchor.closest('.question-number-with-mark') || anchor.closest('.markable-blank-wrapper')) return null;
+            const isInput = anchor.tagName === 'INPUT';
+            const isSummaryBlank = anchor.classList?.contains('summary-drop-zone') || anchor.classList?.contains('drop-zone');
+            const isInlineBlank = isInput || isSummaryBlank;
+
+            const wrapper = document.createElement('span');
+            wrapper.dataset.questionNumber = qNum;
+            const parent = anchor.parentNode;
+            if (!parent) return null;
+
+            if (isInlineBlank) {
+                wrapper.className = 'markable-blank-wrapper';
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            } else {
+                wrapper.className = 'question-number-with-mark';
+                const displayMode = window.getComputedStyle(anchor).display;
+                if (displayMode === 'block' || displayMode === 'flex') {
+                    wrapper.style.display = 'flex';
+                    wrapper.style.alignItems = 'center';
+                }
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            }
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = isInlineBlank ? 'mark-toggle-btn inside-blank' : 'mark-toggle-btn';
+            button.dataset.questionNumber = qNum;
+            button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`);
+            button.innerHTML = bookmarkIcon;
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMark(qNum);
+            });
+            wrapper.appendChild(button);
+
+            const markHost = wrapper.closest('.tf-question, .matching-form-row, .matching-question-item, .question, .drag-drop-question, .summary-question, .paragraph-matching-question') || wrapper;
+            markHost.classList.add('markable-question');
+
+            markButtons.set(qNum, button);
+            return button;
+        }
+
+        function initializeQuestionMarkers() {
+            ensureMcqNumbering();
+            for (let i = 1; i <= totalQuestions; i++) {
+                const anchor = findQuestionAnchor(i);
+                createMarkerButton(anchor, i);
+            }
+        }
+
+        function toggleMark(qNum) {
+            const isMarked = markedQuestions.has(qNum);
+            if (isMarked) {
+                markedQuestions.delete(qNum);
+            } else {
+                markedQuestions.add(qNum);
+            }
+            updateMarkState(qNum, !isMarked);
+        }
+
+        function updateMarkState(qNum, marked) {
+            const btn = markButtons.get(qNum);
+            if (btn) {
+                btn.classList.toggle('marked', marked);
+                btn.setAttribute('aria-pressed', marked ? 'true' : 'false');
+            }
+            const navButton = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
+            if (navButton) {
+                navButton.classList.toggle('marked', marked);
+            }
+        }
+
+        function updateAttemptedCount(part, startQ, endQ) {
+            let answeredCount = 0;
+            for (let i = startQ; i <= endQ; i++) {
+                if (isQuestionAnswered(i)) {
+                    answeredCount++;
+                }
+            }
+            const partHeader = document.querySelector(`.footer__questionNo___3WNct[onclick="switchToPart(${part})"]`);
+            if (partHeader) {
+                const countSpan = partHeader.querySelector('.attemptedCount');
+                if (countSpan) {
+                     countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`;
+                }
+            }
+        }
+
+        // --- GLOBAL FUNCTION EXPOSURE ---
+        window.nextQuestion = nextQuestion;
+        window.previousQuestion = previousQuestion;
+        window.goToQuestion = goToQuestion;
+        window.switchToPart = switchToPart;
+        window.closeResultsModal = closeResultsModal;
+        window.highlightText = highlightText;
+        window.addNote = addNote;
+        window.clearHighlight = clearHighlight;
+        window.clearAllHighlights = clearAllHighlights;
+
+        // --- START THE APP ---
+    });
+
+    </script>
+</div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

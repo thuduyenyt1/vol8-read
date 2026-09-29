@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
+    <title>IELTS Full Reading Practice - Test 4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            background-color: #ffffff;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+
+        .header {
+            background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb);
+            background-size: 200% 200%;
+            animation: bannerFlow 8s ease-in-out infinite;
+            padding: 10px 20px;
+            border-bottom: 1px solid #d7def5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 60px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1 1 auto;
+            justify-content: flex-start;
+        }
+        .header-ad {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(215, 222, 245, 0.9);
+            background: rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(4px);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12);
+            min-width: 180px;
+            max-width: calc(100% - 70px);
+            width: auto;
+            flex: 1 1 auto;
+            height: 48px;
+            overflow: hidden;
+        }
+        .ad-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .ad-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #6b7ac7;
+            margin: 0;
+            font-weight: 700;
+        }
+        .ad-marquee {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            align-items: center;
+            padding-left: 4px;
+        }
+        .ad-headline {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1c2566;
+            white-space: nowrap;
+        }
+        .ad-loop {
+            display: flex;
+            gap: 40px;
+        }
+        .ad-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #cdd6f5;
+            background: rgba(255, 255, 255, 0.7);
+            color: #46507a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 800;
+            flex: 0 0 auto;
+            margin-left: 6px;
+            font-size: 16px;
+        }
+        .ad-close:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
+            background: #f6f8ff;
+        }
+        @keyframes bannerFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-container {
+            margin-top: 90px;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            height: calc(100vh - 90px);
+        }
+
+        .panels-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .reading-passage h4 {
+            font-family: 'Merriweather', 'Times New Roman', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+       
+        .reading-passage p {
+            margin-bottom: 1.2em;
+        }
+
+        .questions-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .resizer {
+            width: 10px;
+            cursor: col-resize;
+            background-color: #f0f0f0;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="30" viewBox="0 0 10 30"><path d="M4 11h2v2H4zM4 15h2v2H4zM4 19h2v2H4z" fill="%23888"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+
+        .nav-arrows {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-arrow:hover {
+            background: #555;
+        }
+
+        .nav-row {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            z-index: 100;
+        }
+
+        .footer__questionWrapper___1tZ46 {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .footer__questionNo___3WNct {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .footer__questionNo___3WNct:hover {
+            background-color: #f8f9fa;
+        }
+
+        .section-prefix {
+            font-size: 16px;
+        }
+
+        .sectionNr {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .attemptedCount {
+            font-size: 14px;
+            color: #666;
+            margin-left: 5px;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .attemptedCount {
+                display: none;
+            }
+        }
+
+        .footer__questionWrapper___1tZ46.selected .attemptedCount {
+            display: none;
+        }
+
+        .footer__subquestionWrapper___9GgoP {
+            display: none;
+            gap: 2px;
+            margin-left: 10px;
+        }
+
+        .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP {
+            display: flex;
+        }
+
+        .subQuestion {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ccc;
+            background: white;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+
+        .subQuestion.answered {
+            background-color: #e9ecef;
+            border-color: #ddd;
+        }
+        .subQuestion.correct {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        .subQuestion.incorrect {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .subQuestion.marked {
+            position: relative;
+            color: #333;
+        }
+
+        .subQuestion:hover {
+            background-color: #f0f0f0;
+            border-color: #999;
+        }
+
+        .subQuestion.active {
+            background-color: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .footer__deliverButton___3FM07 {
+            margin-left: auto;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, border-color 0.2s;
+            min-width: 170px;
+            justify-content: center;
+        }
+
+        .footer__deliverButton___3FM07:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        .footer__deliverButton___3FM07:disabled {
+            background: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            border-color: #ddd;
+        }
+
+        .fa-check::before {
+            content: "✓";
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Context Menu - 3 màu trực tiếp & Take note */
+        .context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            min-width: 140px;
+            overflow: hidden;
+        }
+
+        .context-menu-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .context-menu-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .context-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .color-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+        .color-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        
+        .color-btn.yellow { background-color: #fff3a3; }
+        .color-btn.green { background-color: #b4f0c1; }
+        .color-btn.pink { background-color: #ffc7df; }
+
+        .annotation-highlight {
+            background-color: var(--highlight-color, #fff3a3);
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
+        .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
+        .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
+
+        .annotation-note {
+            background-color: #b4f0c1;
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .annotation-note[data-note]:hover::after {
+            content: attr(data-note);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, -6px);
+            background: #1f2937;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 13px;
+            z-index: 2000;
+        }
+
+        .question {
+            margin-bottom: 40px;
+        }
+        .question p {
+            margin-bottom: 10px;
+        }
+        .question-prompt {
+            margin-bottom: 20px;
+        }
+        .question-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 10px;
+            color: #000;
+        }
+        .answer-input {
+            border: 1px solid #888;
+            border-radius: 4px;
+            background-color: #fff;
+            padding: 2px 5px;
+            font-size: 16px;
+            text-align: center;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 28px;
+            width: 150px;
+            z-index: 10;
+            position: relative;
+            pointer-events: auto;
+        }
+        .answer-input.active-input {
+            border-color: #4a90e2;
+            box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5);
+        }
+        .answer-input::placeholder {
+            color: #999;
+            font-weight: bold;
+            text-align: center;
+        }
+        .answer-input.correct {
+            border-color: #28a745;
+            background-color: #e9f7ef;
+        }
+        .answer-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .part-header {
+            background-color: #f1f2ec;
+            padding: 10px 16px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            margin: 8px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .timer-container {
+            display: flex;
+            position: relative;
+            cursor: default;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+            min-width: 220px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid #d7def5;
+            background: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08);
+        }
+
+        .timer-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+
+        .timer-controls button {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 0;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .timer-controls button:hover {
+            background: #e0e0e0;
+        }
+
+        .tf-question {
+            margin-bottom: 25px;
+            padding: 10px 0px;
+            border-radius: 4px;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .tf-question-line {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 5px 0px;
+            border-radius: 4px;
+        }
+        .tf-question-number, .question-number-box {
+            border: 2px solid #ccc;
+            padding: 2px 8px;
+            margin-right: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: border-color 0.3s;
+            display: inline-block;
+        }
+        .tf-question-text {
+            padding-top: 3px;
+        }
+        .tf-options {
+            padding-left: 5px;
+        }
+        .tf-option {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .tf-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .tf-question.correct .tf-question-line {
+            background-color: #e9f7ef;
+        }
+        .tf-question.incorrect .tf-question-line {
+            background-color: #f8d7da;
+        }
+        .multi-choice-question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 3px solid transparent;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .multi-choice-option {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .multi-choice-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .multi-choice-option input[type="checkbox"],
+        .multi-choice-option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: #4a90e2;
+        }
+        .multi-choice-option.correct {
+            background-color: #e9f7ef;
+        }
+        .multi-choice-option.incorrect {
+            background-color: #f8d7da;
+        }
+        .matching-form-container {
+            margin-top: 20px;
+        }
+        .matching-form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .matching-form-label {
+            width: auto;
+            flex: 1 1 320px;
+            margin-right: 8px;
+        }
+        .matching-form-row select.answer-input {
+            width: 220px;
+            flex-shrink: 0;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.hidden {
+            display: none;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .results-summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .results-details-container {
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .result-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr;
+            gap: 15px;
+            padding: 8px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+        }
+        .result-row.incorrect {
+            background-color: #f8d7da;
+        }
+        .result-row .q-num {
+            font-weight: bold;
+        }
+        .result-row .user-ans {
+            color: #555;
+        }
+        .result-row .correct-ans {
+            color: #155724;
+            font-weight: 500;
+        }
+        .correct-answer-display {
+            font-weight: bold;
+            color: #28a745;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .correct-answer-highlight {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #launchScreen, #app {
+            width: 100vw;
+            height: 100vh;
+        }
+        #app {
+            display: none;
+        }
+        #launchScreen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%),
+                radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%),
+                #f4f6fc;
+            color: #1f2b59;
+        }
+        .launch-card {
+            width: min(980px, 100%);
+            border: 1px solid #d7def5;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #ffffff, #f7f9ff);
+            box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14);
+            padding: 28px 30px 22px;
+            display: grid;
+            gap: 12px;
+        }
+        .launch-eyebrow {
+            margin: 0;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6f7cb2;
+            font-weight: 700;
+        }
+        .launch-title {
+            margin: 4px 0 0;
+            font-size: clamp(26px, 3.5vw, 40px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #1c2566;
+        }
+        .launch-meta {
+            margin: 8px 0 0;
+            color: #3c4a81;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .launch-guide {
+            border: 1px solid #d7def5;
+            border-radius: 12px;
+            background: #f2f5ff;
+            padding: 14px;
+            display: grid;
+            gap: 6px;
+        }
+        .launch-main {
+            margin: 0;
+            font-size: clamp(18px, 2.2vw, 23px);
+            line-height: 1.32;
+            font-weight: 700;
+            color: #1d2a60;
+        }
+        .launch-sub {
+            margin: 0;
+            color: #4c598f;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        .launch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .launch-btn {
+            border: 1px solid #c5d0f2;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 11px 16px;
+            color: #24336e;
+            background: #ffffff;
+            transition: transform 0.12s ease;
+            box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14);
+        }
+        .launch-btn:hover {
+            transform: translateY(-1px);
+            background: #f6f8ff;
+        }
+
+        .explanation-box {
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background-color: #f0f7ff;
+            border-left: 4px solid #4a90e2;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 1.5;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .explanation-box.show {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .explanation-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1c2566;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .options-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+        .options-list li {
+            margin-bottom: 5px;
+        }
+        .options-list-label {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .example-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <section id="launchScreen" aria-label="Launch screen">
+        <div class="launch-card">
+            <div>
+                <p class="launch-eyebrow">IELTS Test Launcher</p>
+                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test - Test 4</h1>
+                <p class="launch-meta">Dạng bài: Reading</p>
+            </div>
+            <div class="launch-guide">
+                <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
+                <p class="launch-sub">Nhấn F11 lần nữa để thoát toàn màn hình nếu cần.</p>
+            </div>
+            <div class="launch-row">
+                <button id="startNormalBtn" class="launch-btn" type="button">Bắt đầu làm bài</button>
+            </div>
+        </div>
+    </section>
+    <div id="app">
+    <div class="header">
+        <div class="timer-container">
+            <span class="timer-display">60 minutes remaining</span>
+            <div class="timer-controls">
+                <button id="timer-toggle-btn" title="Pause/Resume Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>
+                </button>
+                <button id="timer-reset-btn" title="Reset Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://www.facebook.com/englishresourcehub" target="_blank" rel="noopener" class="header-ad">
+                <div class="ad-copy">
+                    <p class="ad-eyebrow">Study boost</p>
+                    <div class="ad-marquee">
+                        <div class="ad-loop">
+                            <span class="ad-headline">Chinh phục IELTS dễ dàng - Tài liệu đầy đủ, chiến lược rõ ràng!</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <button class="ad-close" type="button" aria-label="Close ad" title="Close" onclick="window.open('https://www.facebook.com/englishresourcehub','_blank','noopener')">×</button>
+        </div>
+    </div>
+
+        <div class="main-container" id="main-container">
+            <div id="passage-header-container">
+                <div id="part-header-1" class="part-header">
+                    <p><strong>Part 1</strong></p>
+                    <p>Read the text and answer questions 1-13.</p>
+                </div>
+                <div id="part-header-2" class="part-header hidden">
+                    <p><strong>Part 2</strong></p>
+                    <p>Read the text and answer questions 14-26.</p>
+                </div>
+                <div id="part-header-3" class="part-header hidden">
+                    <p><strong>Part 3</strong></p>
+                    <p>Read the text and answer questions 27-40.</p>
+                </div>
+            </div>
+            <div class="panels-container">
+            <div class="passage-panel" id="passage-panel">
+                <div id="passage-text-1" class="reading-passage">
+                    <h4 class="text-center">Rubber</h4>
+                    <p class="text-center"><strong>T and W Musgrove discuss the origins and early uses of rubber</strong></p>
+                    <p>The plants that produce rubber are spread right across the globe, and grow in many different habitats. One might think it likely, therefore, that humankind has known about rubber for thousands of years. Yet, unlike other crops of economic importance, rubber led a relatively anonymous life until the last 150 years or so. The Indians of South America appear to be the first people to have understood the properties of rubber, and the Aztecs of what is now Mexico were the first to be recorded using the substance; a wall painting dating back to the sixth century depicts a scene of a tributary offering of crude rubber. With the arrival of Columbus in the Americas and the resulting Spanish influx, further evidence starts to appear concerning the Native American use of rubber. Antonio de Herrera y Tordesillas describes a ritual game played with a rubber ball at the court of the Aztec Emperor Montezuma II, and the Mayan and Toltec people are known to have taken part in similar activities. Rubber was also used to make raincoats, shoes, jars, torches and musical instruments, all of which must have been made from the indigenous Castilla elastica, as the Para plant now favoured for rubber cultivation does not grow in the Mexican region.</p>
+                    <p>The first description of latex (liquid rubber) extraction is made by Juan de Torquemada, who noted that if a receptacle was not at hand the Native Americans would place the latex on their bodies to allow it to solidify. However, no real interest in rubber was shown by any European until Charles de la Condamine, a French mathematician, published an account of his journey to South America in 1735. The journey was undertaken on behalf of the Paris Academy of Sciences to measure an arc of the meridian line on the equator, but the journey home was to turn out to be more significant than the true purpose of the trip. Condamine explored Brazil and Peru and discovered how the local people used one single piece of coagulated latex to make boots. The boots were impervious to water and, when smoked, looked like real leather. In 1747 the first description of the rubber tree and latex tapping was made by a military engineer and amateur botanist, François Fresneau, who was posted to French Guiana. The publications of Condamine and Fresneau created considerable excitement among French scientists, and an attempt was made to discover a solvent that could turn the crude rubber into a substance for commercial exploitation.</p>
+                    <p>In 1818 a British medical student named James Syme first used rubber to make waterproof cloth. Another early use of the substance was as an eraser of pencil marks, hence the name 'rubber'. This was complemented by balloons, rubber bands, braces, boots for the army and other ideas that met with varying degrees of success. In 1820 Thomas Hancock, an English manufacturer of rubber goods such as driving belts, industrial rollers and rubber hoses, invented a machine he called the 'piokle', which chewed up waste strips for re-use. It was discovered that the masticated rubber was more malleable, while maintaining much of its elasticity. In Scotland at the same time Charles Mackintosh had discovered a way of using rubber as waterproofing material, by a process he patented in 1823. Hancock and Mackintosh joined forces in 1834, and three years later Hancock invented a machine for spreading rubber onto material.</p>
+                    <p>Despite their beneficial qualities, such as waterproofing, rubber goods were still not particularly popular as they had some major flaws, including the fact that they dissolved malodorously. They also became pliant when warm and rigid when cold. Then in 1839 the American Charles Goodyear discovered that it was possible to stabilise rubber by mixing it with sulphur while exposing it to heat - a process he called vulcanisation - and the full versatility of this extraordinary substance became apparent.</p>
+                    <p>Rubber goods could now be manufactured which had all the beneficial qualities of the material, such as durability, elasticity and variability, but which were not sticky, soluble or governed by the vagaries of the weather. The economic potential of rubber was now clearly evident. It played an important role in the Industrial Revolution, being employed in the steam engines found in factories, mills, mines and railways. It made a triumphant entrance as a new and innovative material at the Great Exhibition of 1851, where shoes, airbeds, furniture and clothing made out of newly improved rubber were proudly displayed.</p>
+                    <p>One of the most important rubber inventions was made in 1888, when an Irishman called John Boyd Dunlop produced the first pneumatic tyre. Solid rubber tyres had been used for the previous 18 years, but Dunlop's new design, which he updated in 1890, immediately became popular. In 1895 Dunlop's tyres were first used in motor cars, and with the mass production of cars just over the horizon the rubber industry had never looked healthier. The import levels of rubber over the nineteenth century bear witness to its irrepressible rise. In 1830 Britain had imported just 211 kg of crude rubber. This had risen to 10,000kg in 1857, and by 1874 levels were just under six times as much again.</p>
+                </div>
+                <div id="passage-text-2" class="reading-passage hidden">
+                    <h4 class="text-center">The Myth of the Eight-hour Sleep</h4>
+                    <p>We often worry about lying awake in the middle of the night – but it could be good for you. Indications from both science and history suggest that the eight-hour sleep may not be a natural or inborn pattern for humans. In the early 1990s, psychiatrist Thomas Wehr conducted research which implies just that. Wehr kept a group of people in a darkened room for 14 hours a day for a month. It took some time for their sleep to regulate, but by the fourth week the subjects had settled into a very distinct sleeping pattern. Firstly, they slept four hours, then woke for one or two hours before falling into a second four-hour sleep. Though sleep scientists were impressed by the implications of the study, the idea that we must sleep for eight consecutive hours persists amongst the general public.</p>
+                    <p>In 2001, historian Roger Ekirch of Virginia Tech University in the US published a paper drawn from 16 years of research, revealing historical evidence that humans used to sleep in two distinct periods of time each night. Ekirch's research found more than 500 references to a segmented sleeping pattern – in diaries, court recorders, medical books and literature, from the ancient Greeks to tribes in Nigeria. Much like Wehr's findings, these references describe a first sleep which began not long following sunset. Then there was a waking period of one or two hours and after that a second sleep. During the waking period, people could be quite active. They sometimes got up and moved around the house, although most people stayed in bed, and perhaps read or wrote if they had enough money for candles. In many historic accounts, Ekirch found that people used the time that they were awake between periods of sleep to think about and attempt to analyse their dreams.</p>
+                    <p>In his book, Evening's Empire, historian Craig Koslofsky suggested an explanation for this divided sleep pattern in Europe. 'Associations with night before the 17th century were not good,' he writes. He goes on to explain that the streets of cities and towns at night were often populated by thieves or worse. The streets at night consequently scared many people. Even the wealthy, who could afford to light their way, had better things to spend their money on. There was no prestige or social value with going out or staying up late at night.</p>
+                    <p>Ekirch found that references to the first and second sleep started to disappear during the late 17th century. The pattern began to alter first among the urban upper classes changing amongst the rest of Western society. By the 1920s, the idea of a first and second sleep had receded entirely from our social consciousness. Ekirch attributes the initial shift to improvements in street and home lighting. As the night became a time for all kinds of activity, the length of time people used for rest declined.</p>
+                    <p>In 1667, Paris became the first city in the world to light its streets, using wax candles in glass lamps. It was followed by another French city, Lille, in the same year and by Amsterdam in Holland two years later, where a much more efficient oil-powered lamp was developed. London didn't light its streets until 1584, but by the end of the 17th century, more than 50 of Europe's major towns and cities were lit at night. Coffee houses emerged as a fashionable phenomenon and many were open virtually around the clock. Going out at night became commonplace, and spending hours lying in bed was considered a waste of time. 'People were becoming increasingly time-conscious and sensitive to efficiency, certainly before the 19th century,' says Ekirch. 'But the Industrial Revolution intensified that attitude considerably.' Strong evidence of this shifting attitude is contained in a medical journal from 1829 which urged parents to force their children out of the pattern of first and second sleep.</p>
+                    <p>Today, most people seem to have adapted quite well to the eight-hour sleep, but Ekirch believes many sleeping problems may have roots in the human body's natural preference for divided sleep, as well as in difficulties caused by extended exposure to artificial light in the modern world. This could be the cause of a condition called sleep maintenance insomnia, where people wake during the night and have trouble getting back to sleep. The condition first appears in literature at the end of the 19th century, at the same time as accounts of interrupted sleep disappear.</p>
+                    <p>Sleep psychologist, Gregg Jacobs, says that the idea that we must sleep for an extended period of time could be changing. If it makes people who wake up in the night anxious, as this anxiety can itself discourage sleep and is likely to affect waking life too. Jacobs suggests that the waking period between sleeping, when people simply rested and relaxed, could have played an important part in the human capacity to regulate stress naturally. Russell Foster, a professor of circadian (body clock) neuroscience at Oxford University in the UK, shares this point of view. 'Over 30% of the medical problems that doctors are faced with stem directly or indirectly from sleep. But sleep has been ignored in medical training, and there are very few countries where sleep is studied,' Foster says. He feels this needs to change.</p>
+                </div>
+                <div id="passage-text-3" class="reading-passage hidden">
+                    <h4 class="text-center">Living dunes</h4>
+                    <p class="text-center"><strong>Things don't come much stranger than heaps of sand that can move and sing of their own accord. Sally Palmer investigates</strong></p>
+                    <p>Armies of giant sand dunes are advancing across the world's deserts, engulfing anything that crosses their path. They are tens of metres tall and hundreds of metres long. Fortunately, they aren't going very fast. Even the smallest, speediest dunes only travel about 100 metres over the course of a year, while the bigger ones, which weigh something in the order of 10,000 tonnes, barely move one metre in that time. However, their insidious creep can have serious consequences if there is an oil installation or a railway line in their path.</p>
+                    <p>About 47% of the world's land mass, including Antarctica, most of Australia and large areas of Africa, is classified as arid or semi-arid desert. Only around 20% of that is sand-covered, however, and over half of that is classified as 'linear' sand dunes. These form in a long curving wave, as a result of wind blowing strongly from several quarters, flipping them from side to side. Although linear dunes are static, sand blowing off them can cause problems for desert villages, burying crops and buildings.</p>
+                    <p>Moving dunes make up just a small percentage of the rest, but they are of the most interest to scientists. They are known as 'barchans': heavy, crescent-shaped sand piles with a ridged crest and two elongated arms, one curving away to either side. 'Barchan dunes only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas,' says Giles Wiggs, a geomorphologist at Oxford University, who has been studying the formation and movement of sand dunes for more than a decade.</p>
+                    <p>But even with strong winds, how can entire barchans move while retaining their form? That question was first answered in the mid-20th century by British explorer Ralph Alger Bagnold, and his answer hinges on the fact that dunes aren't solid, but granular. Bagnold figured out how barchan dunes are able to move grain by grain. Imagine a single grain of sand being blown up the back of a dune by the wind and deposited on the top. More grains follow the same pattern, until the accumulated weight of piled-up sand finally pushes the top down the dune face. The grain tumbles, then stops on the face until subsequent mini-avalanches bury it. Eventually, it reappears at the back of the dune, ready to repeat the process. As this happens to every grain of sand in the dune, the whole thing creeps in the direction of the prevailing wind.</p>
+                    <p>The relationship between the wind and barchan dunes is complex. As a dune grows, it modifies the speed and course of the wind, which in turn alters how that dune and its neighbours evolve. 'Interestingly, the dune can regulate its own shape, and maintain it as it moves,' says Dr Stéphane Douady, a physicist at Ecole Normale Supérieure (ENS) in France. 'Even when two dunes collide, they quickly take on their distinctive shapes again. It's like a living organism.'</p>
+                    <p>Douady and his colleagues have also been studying an even odder phenomenon than moving dunes: some barchans actually sing. Local legends attributed the sounds to dangerous spirits which were trying to trap unwary travellers. Douady is more pragmatic. 'It's a strong booming noise with a low frequency,' he explains, making a noise like a foghorn to demonstrate. 'It can last for a long time - up to several minutes. It's a very loud sound and you don't understand where it's coming from when you first hear it.' There are about 50 dunes distributed across 35 deserts round the world that are known to sing. Douady says the sound is caused by the way sand avalanches down the faces of particular dunes. Rather than tumbling randomly, the sand grains flow in synchrony and set each other vibrating like the membrane on a gigantic loudspeaker. The synchronisation causes the air to move in and out between the grains, creating a powerful sound wave.</p>
+                    <p>What really surprised the scientists, however, was that they were able to take samples of the singing sand back to France and replicate the sound at ENS, proving that it's the sand, not the dune shape, that causes the sound. Their studies show the grains are a uniform shape, well-rounded from years of striking each other, and that the variations in size affect the tone. Crucially, the grains are coated with a special veneer, which Douady calls 'desert glaze', made from a precise combination of minerals from surrounding rocks including iron, aluminium, manganese, silicon and calcium. The team found that after a month or so, the veneer wore off and the grains lost their 'voice'. 'We managed to reproduce the desert glaze and then the grains started to sing again,' says Douady. 'We tried putting the coating onto different grains, but they weren't round enough and it didn't work. But some American colleagues made some artificial grains and managed to make them sing, after covering them in desert glaze.' Douady has now made recordings of dunesong from all over the world which are to be made into a CD.</p>
+                </div>
+            </div>
+            <div class="resizer" id="resizer"></div>
+            <div class="questions-panel" id="questions-panel">
+                <div id="questions-1" class="question-set">
+                    <div class="questions-container">
+                        <div class="question" data-q-start="1" data-q-end="6">
+                            <div class="question-prompt"><p><strong>Questions 1-6</strong></p><p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text,</p><p>choose <strong>FALSE</strong> if the statement contradicts the information,</p><p>or choose <strong>NOT GIVEN</strong> if there is no information on this.</p></div>
+                            <div class="tf-question" data-q-start="1" data-q-end="1">
+                                <div class="tf-question-line"><span class="tf-question-number">1</span><span class="tf-question-text">Rubber plants grow only in certain regions of the world.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q1" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q1" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q1" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="2" data-q-end="2">
+                                <div class="tf-question-line"><span class="tf-question-number">2</span><span class="tf-question-text">Rubber was extracted in Mexico as early as the sixth century.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q2" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q2" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q2" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="3" data-q-end="3">
+                                <div class="tf-question-line"><span class="tf-question-number">3</span><span class="tf-question-text">Rubber from the Castilla elastica plant is of poorer quality than that from the Para plant.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q3" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q3" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q3" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="4" data-q-end="4">
+                                <div class="tf-question-line"><span class="tf-question-number">4</span><span class="tf-question-text">A French mathematician inspired real interest in rubber amongst Europeans.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q4" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q4" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q4" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="5" data-q-end="5">
+                                <div class="tf-question-line"><span class="tf-question-number">5</span><span class="tf-question-text">The process of vulcanisation was discovered by accident.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q5" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q5" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q5" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="6" data-q-end="6">
+                                <div class="tf-question-line"><span class="tf-question-number">6</span><span class="tf-question-text">Imports of crude rubber into Britain fell during the nineteenth century.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q6" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q6" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="7" data-q-end="13">
+                            <div class="question-prompt">
+                                <p><strong>Questions 7-13</strong></p>
+                                <p>Complete the summary below.</p>
+                                <p>Write <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p>
+                                <div class="question-title">The Commercial Development of Rubber</div>
+                            </div>
+                            <p>Early European travellers gave accounts of various rubber objects in use in Central and South America, and these accounts created interest in the commercial exploitation of rubber. In 1818, <input type="text" class="answer-input" id="q7" placeholder="7"> was produced using rubber, and in 1820 a machine was invented for recycling <input type="text" class="answer-input" id="q8" placeholder="8"> of rubber. Over the next few years, other attempts were made to improve rubber, but some problems remained. For example, rubber products smelt bad when they were dissolved, and could turn either soft or <input type="text" class="answer-input" id="q9" placeholder="9"> depending on the temperature. However, in 1839 a new process to <input type="text" class="answer-input" id="q10" placeholder="10"> the substance greatly increased its potential. For example, rubber was used in the creation of the <input type="text" class="answer-input" id="q11" placeholder="11"> industry during the Industrial Revolution. Then in 1888 the <input type="text" class="answer-input" id="q12" placeholder="12"> was developed, and a few years later the <input type="text" class="answer-input" id="q13" placeholder="13"> of the motor car began.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="questions-2" class="question-set hidden">
+                    <div class="questions-container">
+                        <div class="question" data-q-start="14" data-q-end="18">
+                            <div class="question-prompt">
+                                <p><strong>Questions 14-18</strong></p>
+                                <p>Reading Passage <strong>2</strong> has five sections.</p>
+                                <p>Choose the correct heading for each section from the list of headings below.</p>
+                                <p>Choose the correct number, <strong>i-vii</strong>.</p>
+                            </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Headings</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">i</span> Historical reasons why interrupted sleep became uncommon</li>
+                                    <li><span class="options-list-label">ii</span> Brain structures involved in sleep patterns</li>
+                                    <li><span class="options-list-label">iii</span> Potential health issues related to sleep</li>
+                                    <li><span class="options-list-label">iv</span> Famous cases in literature of sleep</li>
+                                    <li><span class="options-list-label">v</span> An analysis of old documents to discover deep patterns</li>
+                                    <li><span class="options-list-label">vi</span> Biological and environmental factors preventing people from falling asleep again</li>
+                                    <li><span class="options-list-label">vii</span> Scientific evidence that divided sleep is a natural phenomenon</li>
+                                </ul>
+                            </div>
+                            <div class="matching-form-container">
+                                <div class="matching-form-row">
+                                    <label for="q14" class="matching-form-label"><strong>14</strong>&nbsp;&nbsp;Section 1</label>
+                                    <select class="answer-input" id="q14"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q15" class="matching-form-label"><strong>15</strong>&nbsp;&nbsp;Section 2</label>
+                                    <select class="answer-input" id="q15"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q16" class="matching-form-label"><strong>16</strong>&nbsp;&nbsp;Section 3</label>
+                                    <select class="answer-input" id="q16"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q17" class="matching-form-label"><strong>17</strong>&nbsp;&nbsp;Section 4</label>
+                                    <select class="answer-input" id="q17"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q18" class="matching-form-label"><strong>18</strong>&nbsp;&nbsp;Section 5</label>
+                                    <select class="answer-input" id="q18"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="19" data-q-end="23">
+                            <div class="question-prompt"><p><strong>Questions 19-23</strong></p><p>Look at the following statements (Questions <strong>19-23</strong>) and the list of researchers below.</p><p>Match each statement with the correct researcher, A-E.</p><p>You may use any letter more than once.</p></div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Academics</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">A</span> Thomas Wehr</li>
+                                    <li><span class="options-list-label">B</span> Roger Ekirch</li>
+                                    <li><span class="options-list-label">C</span> Craig Koslofsky</li>
+                                    <li><span class="options-list-label">D</span> Gregg Jacobs</li>
+                                    <li><span class="options-list-label">E</span> Russell Foster</li>
+                                </ul>
+                            </div>
+                            <div class="matching-form-container">
+                                <div class="matching-form-row">
+                                    <label for="q19" class="matching-form-label"><strong>19</strong>&nbsp;&nbsp;In certain historical periods, the threat of criminal danger led to segmented sleep.</label>
+                                    <select class="answer-input" id="q19"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q20" class="matching-form-label"><strong>20</strong>&nbsp;&nbsp;Physicians should learn more about treating people with sleeping difficulties.</label>
+                                    <select class="answer-input" id="q20"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q21" class="matching-form-label"><strong>21</strong>&nbsp;&nbsp;Historically, when people experienced interrupted sleep, they used the waking period at night for different activities.</label>
+                                    <select class="answer-input" id="q21"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q22" class="matching-form-label"><strong>22</strong>&nbsp;&nbsp;Technological changes in Europe made people more likely to sleep throughout the night.</label>
+                                    <select class="answer-input" id="q22"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q23" class="matching-form-label"><strong>23</strong>&nbsp;&nbsp;The belief that humans should have a long continuous sleep can be psychologically harmful.</label>
+                                    <select class="answer-input" id="q23"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="24" data-q-end="26">
+                            <div class="question-prompt"><p><strong>Questions 24-26</strong></p><p>Complete the summary below.</p><p>Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="question-title">Historical patterns of interrupted sleep</div></div>
+                            <p>Historical evidence seems to show that humans had common sleep patterns which were quite unlike today's eight hours of unbroken sleep each night. People habitually went to bed early, soon after <input type="text" class="answer-input" id="q24" placeholder="24">, slept for a while, then woke up for a few hours of activity or perhaps to consider, for example, the meaning of <input type="text" class="answer-input" id="q25" placeholder="25">. There was little else to do at home in the dark, since what little means of lighting they had, such as using candles, was costly. In 16th-century Europe, people tended to stay at home at night because they feared <input type="text" class="answer-input" id="q26" placeholder="26"> on large unit city. Once urban street lighting improved, night life in cities became popular, and recreational spots, like coffee houses came to be considered fashionable. Consequently, sleeping patterns also began to change.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="questions-3" class="question-set hidden">
+                    <div class="questions-container">
+                        <div class="question" data-q-start="27" data-q-end="33">
+                            <div class="question-prompt">
+                                <p><strong>Questions 27-33</strong></p>
+                                <p>Reading Passage <strong>3</strong> has seven paragraphs.</p>
+                                <p>Choose the correct heading for each paragraph from the list of headings below.</p>
+                                <p>Choose the correct number, <strong>i-ix</strong>.</p>
+                            </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Headings</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">i</span> Moving rapidly across the desert</li>
+                                    <li><span class="options-list-label">ii</span> Recreating the process in a laboratory</li>
+                                    <li><span class="options-list-label">iii</span> Strange music created by human movement</li>
+                                    <li><span class="options-list-label">iv</span> A potential threat to industry and communications</li>
+                                    <li><span class="options-list-label">v</span> Dunes coming together and re-forming</li>
+                                    <li><span class="options-list-label">vi</span> Needing a specific combination of conditions</li>
+                                    <li><span class="options-list-label">vii</span> A continuous cycle</li>
+                                    <li><span class="options-list-label">viii</span> The commonest type of dune</li>
+                                    <li><span class="options-list-label">ix</span> Old superstitions demystified</li>
+                                </ul>
+                            </div>
+                            <div class="matching-form-container">
+                                <div class="matching-form-row">
+                                    <label for="q27" class="matching-form-label"><strong>27</strong>&nbsp;&nbsp;Paragraph 1</label>
+                                    <select class="answer-input" id="q27"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q28" class="matching-form-label"><strong>28</strong>&nbsp;&nbsp;Paragraph 2</label>
+                                    <select class="answer-input" id="q28"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q29" class="matching-form-label"><strong>29</strong>&nbsp;&nbsp;Paragraph 3</label>
+                                    <select class="answer-input" id="q29"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q30" class="matching-form-label"><strong>30</strong>&nbsp;&nbsp;Paragraph 4</label>
+                                    <select class="answer-input" id="q30"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q31" class="matching-form-label"><strong>31</strong>&nbsp;&nbsp;Paragraph 5</label>
+                                    <select class="answer-input" id="q31"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q32" class="matching-form-label"><strong>32</strong>&nbsp;&nbsp;Paragraph 6</label>
+                                    <select class="answer-input" id="q32"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q33" class="matching-form-label"><strong>33</strong>&nbsp;&nbsp;Paragraph 7</label>
+                                    <select class="answer-input" id="q33"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="34" data-q-end="36">
+                            <div class="question-prompt"><p><strong>Questions 34-36</strong></p><p>Choose the correct answer.</p></div>
+                            <div class="multi-choice-question" data-q-start="34" data-q-end="34">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="34">34</span><span class="mcq-question-title">What are we told about linear dunes?</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="A"> They are formed by strong winds blowing from one direction.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="B"> They can move up to 100 metres in a twelve-month period.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="C"> They develop in a recognisable shape.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="D"> They make up about 20% of the world's deserts.</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="35" data-q-end="35">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="35">35</span><span class="mcq-question-title">Bagnold discovered that movement in barchans was caused by</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="A"> the long straight shape of the dunes.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="B"> the particular composition of the dunes.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="C"> the exceptionally heavy nature of the sand grains.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="D"> the unusual strength of the wind in certain seasons.</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="36" data-q-end="36">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="36">36</span><span class="mcq-question-title">Why does Dr Douady compare a barchan dune to a living organism?</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="A"> It starts small and then increases in size.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="B"> It has an effect on its immediate surroundings.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="C"> Its relations with desert organisms are quite developed.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="D"> Its outline stays the same even after a period of movement.</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="37" data-q-end="40">
+                            <div class="question-prompt">
+                                <p><strong>Questions 37-40</strong></p>
+                                <p>Complete the summary below.</p>
+                                <p>Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+                                <div class="question-title">Singing dunes</div>
+                            </div>
+                            <p>Singing dunes, which belong to the type of dunes known as <input type="text" class="answer-input" id="q37" placeholder="37">, produce a very loud sound which is transmitted at a low frequency. Researchers have worked out that sand grains fall down the dune and start vibrating against other grains, forming a sound wave.</p>
+                            <p>Research proves that the individual grains have a similar <input type="text" class="answer-input" id="q38" placeholder="38">, but the differences in dimensions alter the <input type="text" class="answer-input" id="q39" placeholder="39"> of the 'song'. Each grain is covered with a mixture of different <input type="text" class="answer-input" id="q40" placeholder="40"> and this is vital to the sound production.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <button class="nav-arrow" onclick="previousQuestion()" id="prevBtn">‹</button>
+        <button class="nav-arrow" onclick="nextQuestion()" id="nextBtn">›</button>
+    </div>
+
+    <!-- FOOTER_NAV_START -->
+    <nav class="nav-row perScorableItem" aria-label="Questions">
+        <div class="footer__questionWrapper___1tZ46 multiple selected" role="tablist">
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(1)">
+                <span>
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+                    <span class="sectionNr" aria-hidden="true">1</span>
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+                </span>
+            </button>
+            <div class="footer__subquestionWrapper___9GgoP">
+                <button class="subQuestion scorable-item" onclick="goToQuestion(1)"><span class="sr-only">Question 1</span><span aria-hidden="true">1</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(2)"><span class="sr-only">Question 2</span><span aria-hidden="true">2</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(3)"><span class="sr-only">Question 3</span><span aria-hidden="true">3</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(4)"><span class="sr-only">Question 4</span><span aria-hidden="true">4</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(5)"><span class="sr-only">Question 5</span><span aria-hidden="true">5</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(6)"><span class="sr-only">Question 6</span><span aria-hidden="true">6</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(7)"><span class="sr-only">Question 7</span><span aria-hidden="true">7</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(8)"><span class="sr-only">Question 8</span><span aria-hidden="true">8</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(9)"><span class="sr-only">Question 9</span><span aria-hidden="true">9</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(10)"><span class="sr-only">Question 10</span><span aria-hidden="true">10</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(11)"><span class="sr-only">Question 11</span><span aria-hidden="true">11</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(12)"><span class="sr-only">Question 12</span><span aria-hidden="true">12</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(13)"><span class="sr-only">Question 13</span><span aria-hidden="true">13</span></button>
+            </div>
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(2)">
+                <span>
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+                    <span class="sectionNr" aria-hidden="true">2</span>
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+                </span>
+            </button>
+            <div class="footer__subquestionWrapper___9GgoP">
+                <button class="subQuestion scorable-item" onclick="goToQuestion(14)"><span class="sr-only">Question 14</span><span aria-hidden="true">14</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(15)"><span class="sr-only">Question 15</span><span aria-hidden="true">15</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(16)"><span class="sr-only">Question 16</span><span aria-hidden="true">16</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(17)"><span class="sr-only">Question 17</span><span aria-hidden="true">17</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(18)"><span class="sr-only">Question 18</span><span aria-hidden="true">18</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(19)"><span class="sr-only">Question 19</span><span aria-hidden="true">19</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(20)"><span class="sr-only">Question 20</span><span aria-hidden="true">20</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(21)"><span class="sr-only">Question 21</span><span aria-hidden="true">21</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(22)"><span class="sr-only">Question 22</span><span aria-hidden="true">22</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(23)"><span class="sr-only">Question 23</span><span aria-hidden="true">23</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(24)"><span class="sr-only">Question 24</span><span aria-hidden="true">24</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(25)"><span class="sr-only">Question 25</span><span aria-hidden="true">25</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(26)"><span class="sr-only">Question 26</span><span aria-hidden="true">26</span></button>
+            </div>
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(3)">
+                <span>
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+                    <span class="sectionNr" aria-hidden="true">3</span>
+                    <span class="attemptedCount" aria-hidden="true">0 of 14</span>
+                </span>
+            </button>
+            <div class="footer__subquestionWrapper___9GgoP">
+                <button class="subQuestion scorable-item" onclick="goToQuestion(27)"><span class="sr-only">Question 27</span><span aria-hidden="true">27</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(28)"><span class="sr-only">Question 28</span><span aria-hidden="true">28</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(29)"><span class="sr-only">Question 29</span><span aria-hidden="true">29</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(30)"><span class="sr-only">Question 30</span><span aria-hidden="true">30</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(31)"><span class="sr-only">Question 31</span><span aria-hidden="true">31</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(32)"><span class="sr-only">Question 32</span><span aria-hidden="true">32</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(33)"><span class="sr-only">Question 33</span><span aria-hidden="true">33</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(34)"><span class="sr-only">Question 34</span><span aria-hidden="true">34</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(35)"><span class="sr-only">Question 35</span><span aria-hidden="true">35</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(36)"><span class="sr-only">Question 36</span><span aria-hidden="true">36</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(37)"><span class="sr-only">Question 37</span><span aria-hidden="true">37</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(38)"><span class="sr-only">Question 38</span><span aria-hidden="true">38</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(39)"><span class="sr-only">Question 39</span><span aria-hidden="true">39</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
+            </div>
+        </div>
+
+        <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
+            <i class="fa fa fa-check" aria-hidden="true"></i>
+            <span>Check Answers</span>
+        </button>
+    </nav>
+    <!-- FOOTER_NAV_END -->
+
+    <!-- Context Menu - 3 màu trực tiếp -->
+    <div id="contextMenu" class="context-menu">
+        <div id="menu-note" class="context-menu-item" onclick="addNote()">
+            📝 Take note
+        </div>
+        <div id="menu-highlight-colors" class="context-menu-item" style="display: flex; gap: 15px; justify-content: center; padding: 12px 16px;">
+            <button type="button" class="color-btn yellow" onclick="highlightText('yellow')" title="Highlight Yellow"></button>
+            <button type="button" class="color-btn green" onclick="highlightText('green')" title="Highlight Green"></button>
+            <button type="button" class="color-btn pink" onclick="highlightText('pink')" title="Highlight Pink"></button>
+        </div>
+        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">
+            🗑️ Delete
+        </div>
+        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">
+            🗑️ Delete all
+        </div>
+    </div>
+
+    <div id="results-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
+            <h2>Results</h2>
+            <div class="results-summary">
+                <p>Score: <span id="results-score"></span> / 40</p>
+                <p>IELTS Band: <span id="results-band"></span></p>
+            </div>
+            <div id="results-details" class="results-details-container">
+                <!-- Results for each question will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"FALSE","2":"TRUE","3":"NOT GIVEN","4":"TRUE","5":"NOT GIVEN","6":"FALSE","7":"waterproof cloth","8":"waste strips","9":"rigid","10":"stabilise","11":"steam engines","12":"pneumatic tyre","13":"mass production","14":"vii","15":"v","16":"i","17":"vi","18":"iii","19":"C","20":"E","21":"B","22":"B","23":"D","24":"sunset","25":"dreams","26":"thieves","27":"iv","28":"viii","29":"vi","30":"vii","31":"v","32":"ix","33":"ii","34":"C","35":"B","36":"D","37":"barchans","38":"shape","39":"tone","40":"minerals"}};</script>
+    
+    <script>
+    window.testExplanations = {
+        "1": "Trích dẫn: \"The plants that produce rubber are spread right across the globe, and grow in many different habitats.\" (Paragraph 1, Line 1) -> Bài nói cây cao su mọc ở khắp nơi trên thế giới chứ không phải chỉ ở một số vùng nhất định, nên đáp án là FALSE[cite: 3].",
+        "2": "Trích dẫn: \"...the Aztecs of what is now Mexico were the first to be recorded using the substance; a wall painting dating back to the sixth century...\" (Paragraph 1, Line 4) -> Khớp với thông tin trích xuất cao su/sử dụng cao su ở Mexico từ thế kỷ thứ 6, đáp án là TRUE[cite: 3].",
+        "3": "Bài viết có nhắc đến cây Castilla elastica nhưng không có sự so sánh trực tiếp về chất lượng cao hay thấp giữa loại này và cây Para, nên đáp án là NOT GIVEN[cite: 3].",
+        "4": "Trích dẫn: \"However, no real interest in rubber was shown by any European until Charles de la Condamine, a French mathematician, published an account...\" (Paragraph 3, Line 3) -> Nhà toán học người Pháp đã khơi mào sự quan tâm thực sự của người Châu Âu, đáp án là TRUE[cite: 3].",
+        "5": "Bài viết chỉ nói Charles Goodyear tìm ra phương pháp vào năm 1839, không đề cập đến việc ông tìm ra nó một cách tình cờ hay có chủ đích, đáp án là NOT GIVEN[cite: 3].",
+        "6": "Trích dẫn: \"The import levels of rubber over the nineteenth century bear witness to its irrepressible rise.\" (Paragraph 3, Line 5) -> Mức độ nhập khẩu tăng lên chứ không giảm, đáp án là FALSE[cite: 3].",
+        "7": "Trích dẫn: \"In 1818 a British medical student named James Syme first used rubber to make waterproof cloth.\" (Paragraph 3, Line 1) -> Đáp án: waterproof cloth[cite: 3].",
+        "8": "Trích dẫn: \"...invented a machine he called the 'piokle', which chewed up waste strips for re-use.\" (Paragraph 3, Line 7) -> Đáp án: waste strips[cite: 3].",
+        "9": "Trích dẫn: \"They also became pliant when warm and rigid when cold.\" (Paragraph 4, Line 3) -> Đáp án: rigid[cite: 3].",
+        "10": "Trích dẫn: \"...discovered that it was possible to stabilise rubber by mixing it with sulphur...\" (Paragraph 4, Line 5) -> Đáp án: stabilise[cite: 3].",
+        "11": "Trích dẫn: \"It played an important role in the Industrial Revolution, being employed in the steam engines found in factories, mills, mines and railways.\" (Paragraph 5, Line 4) -> Đáp án: steam engines[cite: 3].",
+        "12": "Trích dẫn: \"...John Boyd Dunlop produced the first pneumatic tyre.\" (Paragraph 6, Line 2) -> Đáp án: pneumatic tyre[cite: 3].",
+        "13": "Trích dẫn: \"...with the mass production of cars just over the horizon...\" (Paragraph 6, Line 5) -> Đáp án: mass production[cite: 3].",
+        "14": "Đoạn 1 nói về thí nghiệm của Wehr chứng minh giấc ngủ chia làm 2 giai đoạn là tự nhiên -> Heading vii (Scientific evidence that divided sleep is a natural phenomenon)[cite: 3].",
+        "15": "Đoạn 2 nói về việc Roger Ekirch nghiên cứu hơn 500 tài liệu lịch sử để tìm ra bằng chứng về giấc ngủ ngắt quãng -> Heading v (An analysis of old documents to discover deep patterns)[cite: 3].",
+        "16": "Đoạn 3 nói về nguyên nhân lịch sử làm thay đổi thói quen ngủ (như cải thiện ánh sáng đường phố/nhà cửa) -> Heading i (Historical reasons why interrupted sleep became uncommon)[cite: 3].",
+        "17": "Đoạn 4 giải thích các yếu tố môi trường hiện đại và ánh sáng nhân tạo ảnh hưởng đến giấc ngủ -> Heading vi (Biological and environmental factors preventing people from falling asleep again)[cite: 3].",
+        "18": "Đoạn 5 thảo luận về các vấn đề y tế xuất phát từ giấc ngủ -> Heading iii (Potential health issues related to sleep)[cite: 3].",
+        "19": "Trích dẫn: \"Craig Koslofsky suggested... the streets of cities and towns at night were often populated by thieves or worse.\" -> Đáp án: C[cite: 3].",
+        "20": "Trích dẫn: \"Russell Foster... 'But sleep has been ignored in medical training...'\" -> Đáp án: E[cite: 3].",
+        "21": "Trích dẫn: \"Ekirch's research found... During the waking period, people could be quite active... read or wrote...\" -> Đáp án: B[cite: 3].",
+        "22": "Trích dẫn: \"Ekirch found that references to the first and second sleep started to disappear... shift to improvements in street and home lighting.\" -> Đáp án: B[cite: 3].",
+        "23": "Trích dẫn: \"Gregg Jacobs, says... If it makes people who wake up in the night anxious...\" -> Đáp án: D[cite: 3].",
+        "24": "Trích dẫn: \"...describe a first sleep which began not long following sunset.\" -> Đáp án: sunset[cite: 3].",
+        "25": "Trích dẫn: \"...used the time... to think about and attempt to analyse their dreams.\" -> Đáp án: dreams[cite: 3].",
+        "26": "Trích dẫn: \"...the streets at night were often populated by thieves or worse.\" -> Đáp án: thieves[cite: 3].",
+        "27": "Paragraph 1 nói về việc các đụn cát di chuyển chậm chạp gây đe dọa đến cơ sở hạ tầng, đường sắt -> Heading iv (A potential threat to industry and communications)[cite: 3].",
+        "28": "Paragraph 2 mô tả đụn cát tuyến tính chiếm phần lớn diện tích cát -> Heading viii (The commonest type of dune)[cite: 3].",
+        "29": "Paragraph 3 nói về các điều kiện cụ thể để hình thành đụn cát barchans -> Heading vi (Needing a specific combination of conditions)[cite: 3].",
+        "30": "Paragraph 4 mô tả chu kỳ liên tục dịch chuyển từng hạt cát của đụn barchans -> Heading vii (A continuous cycle)[cite: 3].",
+        "31": "Paragraph 5 nói về việc các đụn cát va chạm, tự điều chỉnh hình dạng và tái định hình -> Heading v (Dunes coming together and re-forming)[cite: 3].",
+        "32": "Paragraph 6 giải thích âm thanh kỳ lạ của đụn cát để xóa bỏ các truyền thuyết/mê tín dị đoan -> Heading ix (Old superstitions demystified)[cite: 3].",
+        "33": "Paragraph 7 mô tả việc tái tạo lại âm thanh cát hát trong phòng thí nghiệm -> Heading ii (Recreating the process in a laboratory)[cite: 3].",
+        "34": "Trích dẫn: \"These form in a long curving wave...\" -> Đáp án: C (They develop in a recognisable shape)[cite: 3].",
+        "35": "Trích dẫn: \"...his answer hinges on the fact that dunes aren't solid, but granular.\" -> Đáp án: B (the particular composition of the dunes)[cite: 3].",
+        "36": "Trích dẫn: \"...the dune can regulate its own shape, and maintain it as it moves...\" -> Đáp án: D (Its outline stays the same even after a period of movement)[cite: 3].",
+        "37": "Trích dẫn: \"...some barchans actually sing.\" -> Đáp án: barchans[cite: 3].",
+        "38": "Trích dẫn: \"Their studies show the grains are a uniform shape...\" -> Đáp án: shape[cite: 3].",
+        "39": "Trích dẫn: \"...and that the variations in size affect the tone.\" -> Đáp án: tone[cite: 3].",
+        "40": "Trích dẫn: \"...coated with a special veneer... made from a precise combination of minerals...\" -> Đáp án: minerals[cite: 3]."
+    };
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const launchScreen = document.getElementById('launchScreen');
+        const app = document.getElementById('app');
+        const startNormalBtn = document.getElementById('startNormalBtn');
+        const launchTitle = document.getElementById('launchTestTitle');
+        if (launchTitle && document.title) {
+            launchTitle.textContent = document.title;
+        }
+        let examStarted = false;
+
+        const beginExam = () => {
+            if (examStarted) return;
+            examStarted = true;
+            if (launchScreen) launchScreen.style.display = 'none';
+            if (app) app.style.display = 'block';
+            initialize();
+        };
+
+        if (startNormalBtn) {
+            startNormalBtn.addEventListener('click', beginExam);
+        }
+        
+        const testMeta = window.testMeta || { totalQuestions: 40, parts: [], correctAnswers: {} };
+        const partRanges = testMeta.parts || [];
+        const correctAnswers = testMeta.correctAnswers || {};
+        const totalQuestions = testMeta.totalQuestions || Object.keys(correctAnswers).length;
+
+        let currentPassage = partRanges[0]?.part || 1;
+        let currentQuestion = partRanges[0]?.start || 1;
+        let pendingSelectionRange = null;
+        let activeAnnotationTarget = null;
+        let timeInSeconds = 3600;
+        let timerInterval;
+        let hasSubmitted = false;
+        let draggedItem = null;
+        let activeQuestionElement = null;
+        const markedQuestions = new Set();
+        const markButtons = new Map();
+        const COUNTDOWN_THRESHOLD = 300;
+
+        const timerDisplay = document.querySelector('.timer-display');
+        const timerToggleButton = document.getElementById('timer-toggle-btn');
+        const timerResetButton = document.getElementById('timer-reset-btn');
+        const deliverButton = document.getElementById('deliver-button');
+        const resizer = document.getElementById('resizer');
+        const passagePanel = document.getElementById('passage-panel');
+        const questionsPanel = document.getElementById('questions-panel');
+        const contextMenu = document.getElementById('contextMenu');
+        const menuHighlightColors = document.getElementById('menu-highlight-colors');
+        const menuNote = document.getElementById('menu-note');
+        const menuClear = document.getElementById('menu-clear');
+        const menuClearAll = document.getElementById('menu-clear-all');
+
+        const playIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>';
+        const pauseIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        const bookmarkIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg>';
+
+        function initialize() {
+            startTimer();
+            const firstPart = partRanges[0]?.part || 1;
+            switchToPart(firstPart);
+            
+            document.body.addEventListener('input', updateAllIndicators);
+            document.body.addEventListener('change', updateAllIndicators);
+            deliverButton.addEventListener('click', checkAnswers);
+            timerToggleButton.addEventListener('click', toggleTimer);
+            timerResetButton.addEventListener('click', resetTimer);
+
+            document.querySelectorAll('[data-q-start]').forEach(el => {
+                el.addEventListener('click', (ev) => {
+                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row')) {
+                        return;
+                    }
+                    const qNum = parseInt(el.dataset.qStart, 10);
+                    if (currentQuestion !== qNum) {
+                        goToQuestion(qNum);
+                    }
+                });
+            });
+
+            resizer.addEventListener('mousedown', initResize, false);
+            initializeContextMenu();
+            initializeQuestionMarkers();
+        }
+
+        function checkAnswers() {
+            if (hasSubmitted) return;
+            hasSubmitted = true;
+            const allInputs = document.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => { input.disabled = true; });
+
+            deliverButton.disabled = true;
+            deliverButton.style.cursor = 'not-allowed';
+            
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            let score = 0;
+            const resultsDetailsContainer = document.getElementById('results-details');
+            resultsDetailsContainer.innerHTML = '';
+
+            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => {
+                el.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
+            });
+            document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionKey = String(i);
+                const correctAnswer = correctAnswers[questionKey];
+                let userAnswer = '';
+                let isCorrect = false;
+                let userAnswerDisplay = 'Not Answered';
+                const correctAnswerText = Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : correctAnswer;
+
+                const textInput = document.getElementById(`q${i}`);
+                const radioGroup = document.querySelectorAll(`input[name="q${i}"][type="radio"]`);
+                const selectInput = document.getElementById(`q${i}`);
+                
+                if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
+                    const element = textInput.closest('.matching-form-row') || textInput;
+                    userAnswer = textInput.value.trim();
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = Array.isArray(correctAnswer) ?
+                        correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) :
+                        userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        textInput.parentNode.insertBefore(correctAnswerSpan, textInput.nextSibling);
+                    }
+                }
+                else if (selectInput && selectInput.tagName === 'SELECT') {
+                    const element = selectInput.closest('.matching-form-row') || selectInput;
+                    userAnswer = selectInput.value;
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = userAnswer === correctAnswer;
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        selectInput.parentNode.insertBefore(correctAnswerSpan, selectInput.nextSibling);
+                    }
+                }
+                else if (radioGroup.length > 0) {
+                    const questionContainer = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
+                    const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+
+                    if (checkedRadio) {
+                        userAnswer = checkedRadio.value;
+                        userAnswerDisplay = userAnswer;
+                        isCorrect = userAnswer === correctAnswer;
+
+                        const userLabel = checkedRadio.closest('.tf-option, .multi-choice-option');
+                        if (userLabel) {
+                            userLabel.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                    }
+
+                    if (isCorrect) {
+                        score++;
+                    } else {
+                        if (questionContainer){
+                            const correctOptionEl = questionContainer.querySelector(`input[value="${correctAnswerText}"]`);
+                            if (correctOptionEl) {
+                                const correctLabel = correctOptionEl.closest('.tf-option, .multi-choice-option');
+                                if (correctLabel) {
+                                    correctLabel.classList.add('correct-answer-highlight');
+                                }
+                            }
+                        }
+                    }
+                }
+                   
+                const resultRow = `
+                    <div class="result-row ${isCorrect ? '' : 'incorrect'}">
+                        <span class="q-num">${i}</span>
+                        <span class="user-ans">${userAnswerDisplay}</span>
+                        <span class="correct-ans">${correctAnswerText}</span>
+                    </div>`;
+                resultsDetailsContainer.innerHTML += resultRow;
+                
+                const navButton = document.querySelector(`.subQuestion[onclick="goToQuestion(${i})"]`);
+                if (navButton) {
+                    navButton.classList.remove('answered', 'active');
+                    navButton.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+
+                if (window.testExplanations && window.testExplanations[i]) {
+                    let container = null;
+                    if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
+                        container = textInput.closest('li') || textInput.closest('p');
+                    } else if (selectInput && selectInput.tagName === 'SELECT') {
+                        container = selectInput.closest('.matching-form-row');
+                    } else if (radioGroup.length > 0) {
+                        container = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
+                    }
+                    
+                    if (container) {
+                        let expElement = document.createElement('div');
+                        expElement.className = 'explanation-box show';
+                        expElement.dataset.forQ = i;
+                        expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i}:</div><div>${window.testExplanations[i]}</div>`;
+                        
+                        const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' ? container.parentNode : container;
+                        if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) {
+                            checkContainer.appendChild(expElement);
+                        }
+                    }
+                }
+            }
+
+            document.getElementById('results-score').textContent = score;
+            document.getElementById('results-band').textContent = calculateBandScore(score);
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        function calculateBandScore(score) {
+            if (score >= 39) return '9.0';
+            const mapping = {
+                40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5,
+                33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5,
+                26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5,
+                19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5,
+                12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0,
+                5: 2.5, 4: 2.5
+            };
+            if (score <= 0) return 0.0;
+            if (score === 1) return 1.0;
+            if (score <= 3) return 2.0;
+            if (score <= 5) return 2.5;
+            return mapping[score] || 0.0;
+        }
+
+        window.closeResultsModal = function() {
+            document.getElementById('results-modal').classList.add('hidden');
+        }
+
+        const getFirstQuestionOfPart = (partNumber) => {
+            const match = partRanges.find(p => p.part === partNumber);
+            return match ? match.start : 1;
+        };
+
+        const getPartForQuestion = (questionNumber) => {
+            const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end);
+            return match ? match.part : partRanges[0]?.part || 1;
+        };
+
+        function switchToPart(partNumber) {
+            currentPassage = partNumber;
+            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.getElementById(`passage-text-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`questions-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`part-header-${partNumber}`).classList.remove('hidden');
+
+            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => {
+                wrapper.classList.toggle('selected', (index + 1) === partNumber);
+            });
+            goToQuestion(getFirstQuestionOfPart(partNumber));
+        }
+        
+        function goToQuestion(questionNumber) {
+            currentQuestion = questionNumber;
+            const passageNumber = getPartForQuestion(questionNumber);
+            if (currentPassage !== passageNumber) {
+                switchToPart(passageNumber);
+                return; 
+            }
+            if (activeQuestionElement) {
+                activeQuestionElement.classList.remove('active-question', 'active-input');
+            }
+            let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
+            if (targetEl) {
+                activeQuestionElement = targetEl;
+                 if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
+                     targetEl.classList.add('active-input');
+                 } else {
+                     targetEl.classList.add('active-question');
+                 }
+                 scrollIntoViewIfNeeded(targetEl);
+            } else {
+                 const pMatch = document.querySelector(`.matching-form-row select[id="q${questionNumber}"]`);
+                 if(pMatch) {
+                    activeQuestionElement = pMatch;
+                    pMatch.classList.add('active-input');
+                    scrollIntoViewIfNeeded(pMatch);
+                 }
+            }
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            
+            const activeNav = Array.from(navButtons).find(btn => {
+                const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
+                const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
+                return qNum === currentQuestion;
+            });
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            const inputs = document.querySelectorAll('.answer-input');
+            inputs.forEach(input => input.classList.remove('active-input'));
+            
+            const activeInput = document.getElementById(`q${currentQuestion}`);
+            if (activeInput) {
+                activeInput.classList.add('active-input');
+                if (typeof activeInput.focus === 'function') {
+                    activeInput.focus();
+                }
+            }
+        }
+        
+        window.nextQuestion = () => currentQuestion < totalQuestions && goToQuestion(currentQuestion + 1);
+        window.previousQuestion = () => currentQuestion > 1 && goToQuestion(currentQuestion - 1);
+
+        function updateAllIndicators() {
+            partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end));
+            updateAnsweredNav();
+        }
+        
+        function updateAnsweredNav() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => {
+                const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
+                const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
+                if (!isNaN(qNum) && isQuestionAnswered(qNum)) {
+                    btn.classList.add('answered');
+                } else {
+                    btn.classList.remove('answered');
+                }
+            });
+        }
+        
+        function isQuestionAnswered(qNum) {
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') return true;
+            const radio = document.querySelector(`input[name="q${qNum}"]:checked`);
+            if (radio) return true;
+            return false;
+        }
+
+        function scrollIntoViewIfNeeded(element) {
+            const panel = element.closest('.questions-panel, .passage-panel');
+            const panelRect = panel.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function updateTimerDisplay() {
+            const displaySeconds = Math.max(timeInSeconds, 0);
+            if (displaySeconds > COUNTDOWN_THRESHOLD) {
+                const minutesRemaining = Math.ceil(displaySeconds / 60);
+                timerDisplay.textContent = `${minutesRemaining} minutes remaining`;
+            } else {
+                const minutes = Math.floor(displaySeconds / 60);
+                const seconds = displaySeconds % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        function handleTimeExpired() {
+            timeInSeconds = 0;
+            updateTimerDisplay();
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            checkAnswers();
+        }
+
+        function startTimer() {
+            if (hasSubmitted) return;
+            if (timerInterval) clearInterval(timerInterval);
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeInSeconds = Math.max(timeInSeconds - 1, 0);
+                updateTimerDisplay();
+                if (timeInSeconds <= 0) {
+                    handleTimeExpired();
+                }
+            }, 1000);
+            timerToggleButton.innerHTML = pauseIcon;
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+        }
+
+        function toggleTimer() {
+            if (timerInterval) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function resetTimer() {
+            timeInSeconds = 3600;
+            updateTimerDisplay();
+            startTimer();
+        }
+        
+        function initResize(e) {
+            e.preventDefault();
+            const startX = e.clientX;
+            const startWidth = passagePanel.offsetWidth;
+            
+            const doDrag = (e) => {
+                const newWidth = startWidth + e.clientX - startX;
+                if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) {
+                    passagePanel.style.flex = `0 0 ${newWidth}px`;
+                }
+            };
+            const stopDrag = () => {
+                window.removeEventListener('mousemove', doDrag, false);
+                window.removeEventListener('mouseup', stopDrag, false);
+            };
+            
+            window.addEventListener('mousemove', doDrag, false);
+            window.addEventListener('mouseup', stopDrag, false);
+        }
+        
+        const ANNOTATION_CLASSES = {
+            highlight: 'annotation-highlight',
+            note: 'annotation-note'
+        };
+
+        function unwrapElement(element) {
+            const parent = element?.parentNode;
+            if (!parent) return;
+            while (element.firstChild) {
+                parent.insertBefore(element.firstChild, element);
+            }
+            parent.removeChild(element);
+        }
+
+        function selectionWithinPanels(selection) {
+            const anchor = selection.anchorNode;
+            const focus = selection.focusNode;
+            const inPanels = node => node && (passagePanel.contains(node) || questionsPanel.contains(node));
+            return inPanels(anchor) && inPanels(focus);
+        }
+
+        function isRangeInsidePanels(range) {
+            const root = range.commonAncestorContainer;
+            return passagePanel.contains(root) || questionsPanel.contains(root);
+        }
+
+        function getCurrentSelectionRange() {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed) return null;
+            return selection.getRangeAt(0).cloneRange();
+        }
+
+        function positionContextMenu(x, y) {
+            contextMenu.style.display = 'block';
+            const menuHeight = contextMenu.offsetHeight;
+            const menuWidth = contextMenu.offsetWidth;
+            let left = x;
+            let top = y - menuHeight - 8;
+            if (left + menuWidth > window.innerWidth) left = window.innerWidth - menuWidth - 8;
+            if (left < 8) left = 8;
+            if (top < 8) top = y + 8;
+            contextMenu.style.left = `${left}px`;
+            contextMenu.style.top = `${top}px`;
+        }
+
+        function resetSelectionState() {
+            pendingSelectionRange = null;
+            activeAnnotationTarget = null;
+        }
+
+        function showMenuForSelection(event) {
+            menuHighlightColors.style.display = 'flex';
+            menuNote.style.display = 'flex';
+            menuClear.style.display = 'none';
+            menuClearAll.style.display = 'none';
+            contextMenu.dataset.mode = 'create';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function showMenuForAnnotation(event, target) {
+            activeAnnotationTarget = target;
+            pendingSelectionRange = null;
+            window.getSelection().removeAllRanges();
+            menuHighlightColors.style.display = 'none';
+            menuNote.style.display = 'none';
+            menuClear.style.display = 'flex';
+            menuClearAll.style.display = 'flex';
+            contextMenu.dataset.mode = 'manage';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function closeContextMenu(resetSelection = false) {
+            contextMenu.style.display = 'none';
+            contextMenu.dataset.mode = '';
+            if (resetSelection) {
+                window.getSelection().removeAllRanges();
+            }
+            resetSelectionState();
+        }
+
+        function expandRangeToAnnotations(range, selector) {
+            const spans = Array.from(document.querySelectorAll(selector));
+            spans.forEach(span => {
+                if (!range.intersectsNode(span)) return;
+                const spanRange = document.createRange();
+                spanRange.selectNode(span);
+                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) {
+                    range.setStartBefore(span);
+                }
+                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) {
+                    range.setEndAfter(span);
+                }
+            });
+        }
+
+        function unwrapAnnotationsInRange(range, type) {
+            const selector = type === 'highlight'
+                ? `.${ANNOTATION_CLASSES.highlight}`
+                : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
+            document.querySelectorAll(selector).forEach(span => {
+                if (range.intersectsNode(span)) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function getTextNodesInRange(range, type) {
+            const nodes = [];
+            const shouldInclude = (node) => {
+                if (!node || !node.nodeValue || !node.nodeValue.trim()) return false;
+                if (!range.intersectsNode(node)) return false;
+                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) {
+                    return false;
+                }
+                return true;
+            };
+
+            if (range.commonAncestorContainer.nodeType === Node.TEXT_NODE) {
+                if (shouldInclude(range.commonAncestorContainer)) {
+                    nodes.push(range.commonAncestorContainer);
+                }
+                return nodes;
+            }
+
+            const walker = document.createTreeWalker(
+                range.commonAncestorContainer,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+                }
+            );
+
+            while (walker.nextNode()) {
+                nodes.push(walker.currentNode);
+            }
+            return nodes;
+        }
+
+        function wrapTextPortion(node, range, type, noteText = '', highlightColor = 'yellow') {
+            let startOffset = 0;
+            let endOffset = node.nodeValue.length;
+
+            if (node === range.startContainer && range.startOffset > startOffset) {
+                startOffset = range.startOffset;
+            }
+            if (node === range.endContainer && range.endOffset < endOffset) {
+                endOffset = range.endOffset;
+            }
+
+            if (startOffset >= endOffset) return;
+
+            const selectedText = node.splitText(startOffset);
+            selectedText.splitText(endOffset - startOffset);
+
+            const span = document.createElement('span');
+            span.classList.add('annotation', type === 'highlight' ? ANNOTATION_CLASSES.highlight : ANNOTATION_CLASSES.note);
+            span.dataset.type = type;
+            if (type === 'highlight') {
+                const allowedColors = ['yellow', 'green', 'pink'];
+                const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
+                span.dataset.color = safeColor;
+                span.classList.add(`highlight-${safeColor}`);
+            }
+            if (type === 'note') {
+                const content = noteText || '';
+                span.dataset.note = content;
+                if (content) {
+                    span.setAttribute('data-note', content);
+                    span.title = content;
+                } else {
+                    span.removeAttribute('data-note');
+                    span.title = 'Note';
+                }
+            }
+            selectedText.parentNode.insertBefore(span, selectedText);
+            span.appendChild(selectedText);
+        }
+
+        function mergeAdjacentAnnotations() {
+            const annotations = document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+            annotations.forEach(span => {
+                if (!span.parentNode) return;
+                let cursor = span.nextSibling;
+                while (true) {
+                    const whitespaceBetween = [];
+                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) {
+                        whitespaceBetween.push(cursor);
+                        cursor = cursor.nextSibling;
+                    }
+                    if (
+                        cursor &&
+                        cursor.nodeType === Node.ELEMENT_NODE &&
+                        cursor.classList.contains('annotation') &&
+                        cursor.dataset.type === span.dataset.type &&
+                        (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))
+                    ) {
+                        whitespaceBetween.forEach(node => span.appendChild(node));
+                        while (cursor.firstChild) {
+                            span.appendChild(cursor.firstChild);
+                        }
+                        const after = cursor.nextSibling;
+                        cursor.remove();
+                        cursor = after;
+                    } else {
+                        break;
+                    }
+                }
+                if (!span.textContent.trim()) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function handleTextSelection(event) {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) {
+                return;
+            }
+            if (!selectionWithinPanels(selection)) {
+                return;
+            }
+            const range = selection.getRangeAt(0).cloneRange();
+            pendingSelectionRange = range;
+            activeAnnotationTarget = null;
+            showMenuForSelection(event);
+        }
+
+        function initializeContextMenu() {
+            const panels = [passagePanel, questionsPanel];
+            panels.forEach(panel => {
+                panel.addEventListener('mouseup', (e) => {
+                    setTimeout(() => handleTextSelection(e), 0);
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (contextMenu.contains(e.target)) return;
+                const annotation = e.target.closest(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+                if (annotation) {
+                    showMenuForAnnotation(e, annotation);
+                    return;
+                }
+                closeContextMenu();
+            });
+        }
+
+        function applyAnnotation(type, noteText = '', highlightColor = 'yellow') {
+            const baseRange = pendingSelectionRange ? pendingSelectionRange.cloneRange() : getCurrentSelectionRange();
+            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) {
+                closeContextMenu(true);
+                return;
+            }
+
+            if (type === 'highlight') {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`);
+            } else {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`);
+            }
+
+            unwrapAnnotationsInRange(baseRange, type);
+            const targets = getTextNodesInRange(baseRange, type);
+            targets.forEach(node => wrapTextPortion(node, baseRange, type, noteText, highlightColor));
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        function highlightText(color = 'yellow') {
+            applyAnnotation('highlight', '', color);
+        }
+
+        function addNote() {
+            const note = prompt('Nhập nội dung ghi chú (Take note):');
+            if (note === null) {
+                closeContextMenu();
+                return;
+            }
+            applyAnnotation('note', note.trim());
+        }
+
+        function clearHighlight() {
+            if (activeAnnotationTarget) {
+                unwrapElement(activeAnnotationTarget);
+                mergeAdjacentAnnotations();
+            }
+            closeContextMenu(true);
+        }
+        
+        function clearAllHighlights() {
+            document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`)
+                .forEach(unwrapElement);
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        function findQuestionAnchor(qNum) {
+            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`);
+            if (mcqNumber) return mcqNumber;
+            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum);
+            if (tfNumber) return tfNumber;
+            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim()));
+            if (strongLabel) return strongLabel;
+            const genericLabel = document.querySelector(`label[for="q${qNum}"]`);
+            if (genericLabel) return genericLabel;
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput) return textInput;
+            return null;
+        }
+
+        function createMarkerButton(anchor, qNum) {
+            if (!anchor || anchor.closest('.question-number-with-mark') || anchor.closest('.markable-blank-wrapper')) return null;
+            const isInput = anchor.tagName === 'INPUT' || anchor.tagName === 'SELECT';
+            const isInlineBlank = isInput;
+
+            const wrapper = document.createElement('span');
+            wrapper.dataset.questionNumber = qNum;
+            const parent = anchor.parentNode;
+            if (!parent) return null;
+
+            if (isInlineBlank) {
+                wrapper.className = 'markable-blank-wrapper';
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            } else {
+                wrapper.className = 'question-number-with-mark';
+                const displayMode = window.getComputedStyle(anchor).display;
+                if (displayMode === 'block' || displayMode === 'flex') {
+                    wrapper.style.display = 'flex';
+                    wrapper.style.alignItems = 'center';
+                }
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            }
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = isInlineBlank ? 'mark-toggle-btn inside-blank' : 'mark-toggle-btn';
+            button.dataset.questionNumber = qNum;
+            button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`);
+            button.innerHTML = bookmarkIcon;
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMark(qNum);
+            });
+            wrapper.appendChild(button);
+
+            const markHost = wrapper.closest('.tf-question, .matching-form-row, .matching-question-item, .question, .drag-drop-question, .summary-question, .paragraph-matching-question') || wrapper;
+            if(markHost) markHost.classList.add('markable-question');
+
+            markButtons.set(qNum, button);
+            return button;
+        }
+
+        function initializeQuestionMarkers() {
+            for (let i = 1; i <= totalQuestions; i++) {
+                const anchor = findQuestionAnchor(i);
+                createMarkerButton(anchor, i);
+            }
+        }
+
+        function toggleMark(qNum) {
+            const isMarked = markedQuestions.has(qNum);
+            if (isMarked) {
+                markedQuestions.delete(qNum);
+            } else {
+                markedQuestions.add(qNum);
+            }
+            updateMarkState(qNum, !isMarked);
+        }
+
+        function updateMarkState(qNum, marked) {
+            const btn = markButtons.get(qNum);
+            if (btn) {
+                btn.classList.toggle('marked', marked);
+                btn.setAttribute('aria-pressed', marked ? 'true' : 'false');
+            }
+            const navButton = Array.from(document.querySelectorAll('.subQuestion')).find(b => {
+                const hiddenSpan = b.querySelector('[aria-hidden="true"]');
+                const num = parseInt(hiddenSpan ? hiddenSpan.textContent : b.textContent.replace(/\D/g, ''), 10);
+                return num === qNum;
+            });
+            if (navButton) {
+                navButton.classList.toggle('marked', marked);
+            }
+        }
+
+        function updateAttemptedCount(part, startQ, endQ) {
+            let answeredCount = 0;
+            for (let i = startQ; i <= endQ; i++) {
+                if (isQuestionAnswered(i)) {
+                    answeredCount++;
+                }
+            }
+            const partHeader = document.querySelector(`.footer__questionNo___3WNct[onclick="switchToPart(${part})"]`);
+            if (partHeader) {
+                const countSpan = partHeader.querySelector('.attemptedCount');
+                if (countSpan) {
+                     countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`;
+                }
+            }
+        }
+
+        window.nextQuestion = nextQuestion;
+        window.previousQuestion = previousQuestion;
+        window.goToQuestion = goToQuestion;
+        window.switchToPart = switchToPart;
+        window.closeResultsModal = closeResultsModal;
+        window.highlightText = highlightText;
+        window.addNote = addNote;
+        window.clearHighlight = clearHighlight;
+        window.clearAllHighlights = clearAllHighlights;
+    });
+    </script>
+</div>
+</body>
+</html>

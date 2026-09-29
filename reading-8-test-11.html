@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
-    <title>IELTS Full Reading Practice - Test 3</title>
+    <title>IELTS Full Reading Practice - Test 1 (Vol 8)</title>
     <style>
         * {
             margin: 0;
@@ -386,7 +386,6 @@
             display: none !important;
         }
 
-        /* Context Menu - 3 màu trực tiếp & Take note */
         .context-menu {
             position: absolute;
             background: white;
@@ -449,7 +448,7 @@
         .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
         .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
         .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
-        .annotation-highlight.highlight-blue { --highlight-color: #d0ebff; }
+        .annotation-highlight.highlight-blue { --highlight-color: #d0ebff; border: 1px dashed #339af0; }
 
         .annotation-note {
             background-color: #b4f0c1;
@@ -677,31 +676,6 @@
             flex-shrink: 0;
         }
 
-        /* Table design for Questions 1-7 */
-        .questions-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-        .questions-table th, .questions-table td {
-            border: 1px solid #ccc;
-            padding: 8px 10px;
-            text-align: left;
-            vertical-align: middle;
-        }
-        .questions-table th {
-            background-color: #f2f5ff;
-            color: #1c2566;
-            font-weight: 700;
-        }
-        .questions-table .answer-input {
-            width: 130px;
-            display: inline-block;
-            margin: 0;
-        }
-
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -903,7 +877,7 @@
             width: 100%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s ease;
         }
         .explanation-box:hover {
             background-color: #e2efff;
@@ -951,7 +925,7 @@
         <div class="launch-card">
             <div>
                 <p class="launch-eyebrow">IELTS Test Launcher</p>
-                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test - TEST 3</h1>
+                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test - TEST 1 (Vol 8)</h1>
                 <p class="launch-meta">Dạng bài: Reading</p>
             </div>
             <div class="launch-guide">
@@ -1009,142 +983,114 @@
             <div class="panels-container">
             <div class="passage-panel" id="passage-panel">
                 <div id="passage-text-1" class="reading-passage">
-                    <h4 class="text-center">The development of plastics</h4>
-                    <p>The first plastics were developed as a substitute for natural rubber. Chemically, rubber is a polymer-a compound containing large molecules that are formed by the bonding of many smaller, simpler units, repeated over and over again. The same bonding principle-polymerization-is the basis of the creation of a huge range of plastics by the chemical industry.</p>
-                    <p>The first plastic was developed as a result of a competition in the USA. In the 1860s, $10,000 was offered to anybody who could replace ivory-supplies of which were declining-with something equally good as a material for making billiard balls. The prize was won by John Wesley Hyatt, with a material called celluloid. Celluloid was made by dissolving cellulose, a carbohydrate obtained from plants, in a solution of camphor dissolved in ethanol. This new material rapidly found other applications in the manufacture of everyday products such as knife handles and detachable collars and cuffs. But perhaps the best-known celluloid product was photographic film, without which the film industry could never have taken off at the end of the 19th century.</p>
-                    <p>Celluloid can be repeatedly softened and reshaped by heat, and is known as a thermoplastic. In 1907, Leo Baekeland (1863-1944), a Belgian chemist working in the USA, invented a different kind of plastic, by causing phenol and formaldehyde to react together. Baekeland called it Bakelite, and it was the first of the thermosets-plastic that can be cast and moulded while hot, but cannot be softened by heat and reshaped once they have set. Bakelite was a good insulator, and was resistant to water and acid. With these properties it was soon being used in the manufacture of electrical switches as well as a variety of domestic items.</p>
-                    <p>As the century went on, the range of newly developed plastic increased. Chemists began looking for other small molecules that could be strung together to make polymers. In the 1930s, chemists in Britain discovered that the gas ethylene would polymerize under heat and pressure to form a thermoplastic they called polythene. Polypropylene followed in the 1950s. Both are used to make bottles, pipes and plastic bags. A small change in the starting material-replacing a hydrogen atom in ethylene with a chlorine atom-produced rigid PVC (polyvinyl chloride), a fireproof plastic suitable for drains and gutters. By adding certain chemicals, a soft form of PVC can be produced, suitable as a substitute for rubber in items such as waterproof clothing. A closely related plastic is Teflon or PTFE (polytetrafluoroethylene). It produces very little friction, making it ideal for products such as non-stick frying pans.</p>
-                    <p>Polystyrene, a hard, clear material like glass, was developed during the 1930s in Germany, and its applications included food containers and toys. Expanded polystyrene is rigid and is widely used in packaging and insulation. Polyurethane, developed in the same country, was commonly produced as a foam which was very useful in the production of insulating materials.</p>
-                    <p>In the 1930s, the first of the man-made fibres was created-nylon. Its inventor was a chemist called Wallace Carothers (1896-1937), who worked for the Du Pont company in the USA. He found that under the right conditions two particular chemicals would form a polymer that could be pumped out through holes and then stretched to form long glossy threads that could be woven like silk. Its first use was to make parachutes for the US armed forces in World War II. In the postwar years, it completely replaced silk in the manufacture of stockings.</p>
-                    <p>Many other synthetic fibres joined nylon, including Orion, Acrilan, and Terylene. Today most garments are made of a blend of natural fibres, such as cotton and wool, and man-made fibres that make fabrics easier to look after.</p>
-                    <p>Despite its enormous usefulness, plastic has its drawbacks. In fact one its great strengths-its indestructibility- is its greatest disadvantage. Beaches all over the world, even on the remotest island, are littered with plastic bottles that nothing can destroy. Nor is it very easy to recycle plastics, as different types of plastic are often found in the same items and call for different treatments.</p>
-                    <p>Plastics can be made biodegradable by incorporating into their structure a material such as starch, which is attacked by bacteria and causes the plastic to fall apart. Other materials can be incorporated that gradually decay in sunlight-although bottles made of such materials have to be stored in the dark, to ensure they do not disintegrate before they have been used.</p>
+                    <h4 class="text-center">Carnivorous plant</h4>
+                    <p>The naturalist and author of Origin of Species, Charles Darwin, was fascinated by carnivorous plants. In 1860, soon after he came across his first carnivorous plant – the sundew, Drosera – he wrote, ‘I care more about Drosera than the origin of all the species in the world.' He spent months running experiments on the plants. He dropped flies and bits of meat on their leaves and watched them slowly fold their sticky tentacles over their prey. He thought it incredible that brushing a leaf with a single strand of human hair was enough to bring about a response. Yet sundews, he observed, ignored raindrops. To react to such a false alarm, he reasoned, would obviously be a great evil to the plant. This was no accident. This was adaptation.</p>
+                    <p>Darwin expanded his studies from sundews to other species in his book Insectivorous Plants. He was amazed at the quickness and power of the Venus flytrap. He showed that when one of its leaves snapped shut, it formed itself into a temporary ‘stomach', secreting enzymes that could dissolve the prey. He noted that a leaf took more than a week to reopen after closing, and reasoned that the interlocking spines along the margin of the leaf allowed tiny insects to escape, saving the plant the expense of digesting an insufficient meal.</p>
+                    <p>Today, biologists using 21st-century tools to study cells and DNA are beginning to understand how these plants hunt, eat, and digest – and how these strange adaptations came about in the first place. Alexander Volkov, a plant physiologist at Oakwood University in Alabama, believes he has figured out the Venus flytrap's secret. 'This,' Volkov declares, 'is an electrical plant.'</p>
+                    <p>When an insect brushes against a hair on the leaf of a Venus flytrap, the movement sets off an electric charge. The charge builds up inside the tissue of the leaf but is not enough to stimulate the snap, which keeps the Venus flytrap from reacting to false alarms, such as raindrops. An insect, however, is likely to brush a second hair, adding enough electric charge for the leaf to close.</p>
+                    <p>Volkov's experiments reveal that the electric charge travels down fluid-filled tunnels in a leaf, which opens up pores in cell membranes. Water rushes from the cells on the inside of the leaf to those on the outside, causing the leaf to rapidly flip in shape from convex to concave, like a soft contact lens. As the leaves flip, they snap together, trapping an insect inside.</p>
+                    <p>The bladderwort plant has an equally sophisticated way of setting its underwater trap. It pumps water out of tiny air sacs or bladders, lowering the pressure inside. When a water flea or some other small creature swims past, it bends hairs on the bladder, causing a flap to spring apart. The low pressure sucks water in, carrying the creature along with it. In one five-hundredth of a second, the flap swings shut again. The cells in the bladder then begin to pump water out again, creating a new vacuum. Many other species of carnivorous plants act like living flypaper, catching animals on sticky tentacles. Pitcher plants use yet another strategy, growing long tube-shaped leaves into which insects fall. Some of the largest have pitchers up to 30cm deep and can consume whole frogs unlucky enough to fall into them. Sophisticated chemistry helps make the pitcher a death trap.</p>
+                    <p>Nicholas Gotelli, of the University of Vermont, is trying to figure out what evolutionary forces pushed these plants towards meat. Carnivorous plants clearly benefit from eating animals; when scientists feed pitcher plants extra bugs, the plants get bigger. But the benefits of eating flesh are not the ones you might expect. Carnivorous animals, like ourselves, use the carbon in protein and the fat in meat to build muscles and store energy. Carnivorous plants, however, take nitrogen and phosphorus from the flesh in order to build light-harvesting enzymes. Eating animals, in other words, lets carnivorous plants do what all plants do: grow by taking energy directly from the sun.</p>
+                    <p>Unfortunately, they do a really bad job of it. That's because they have to use a lot of energy to make the equipment they need to catch animals – the enzymes, the pumps, the sticky tentacles, and so on. A pitcher or a flytrap is not very good at photosynthesis because, unlike plants with ordinary leaves, they do not have flat solar panels that can absorb lots of sunlight. Gotelli suspects that only under special conditions are the benefits of being carnivorous greater than the costs. The poor soil of bogs and swamps, where many carnivorous plants grow, offers little nitrogen and phosphorus, so carnivorous plants enjoy an advantage there over ‘conventional' plants. Also, bogs are often flooded with sunshine, so even an inefficient carnivorous plant can carry out enough photosynthesis to survive. 'They're stuck, and they're making the best of it,' says Aaron Ellison of Harvard University.</p>
+                    <p>Unfortunately, the adaptations that enable carnivorous plants to survive in harsh habitats also make them extremely sensitive to environmental changes. Chemical fertilizers used in agriculture and pollution from power plants are adding extra nitrogen to many bogs in North America. Carnivorous plants are so finely adapted to low levels of nitrogen that this extra fertilizer is overloading their systems. Humans also threaten carnivorous plants in other ways. The black market trade in exotic carnivorous plants is strong, but even if this can be prevented, carnivorous plants will continue to suffer from other dangers. Their habitat is disappearing, to be replaced by shopping centers and houses. The suppression of wildfires by government agencies allows other plants to grow quickly and outcompete the Venus flytraps. Good news, perhaps, for flies. But a loss for all who delight in the inventiveness of evolution.</p>
                 </div>
                 <div id="passage-text-2" class="reading-passage hidden">
-                    <h4 class="text-center">Lean Production innovation – in manufacturing systems</h4>
-                    <p><strong>Paragraph A</strong> After the First World War, car makers Henry Ford and Arthur Sloan of General Motors moved world manufacturing from centuries of craft production into the age of mass production. Largely as a result of this, the United States soon dominated the world economy. After the Second World War, and approximately a hundred years after Japan opened up to the modern world, Eiji Toyoda and Taiichi Ohno pioneered the concept of lean production at the Toyota car company. And now, although superimposing the method on existing mass production systems causes pain and upheaval, manufacturers around the world are trying to embrace this innovative system.</p>
-                    <p><strong>Paragraph B</strong> Perhaps the best way to describe lean production is to compare it with the two other major manufacturing systems: craft production and mass production. The craft producer uses highly skilled workers and simple but flexible tools to make exactly what the customer asks for – one item at a time. A present day example of this method is the customised production of a few exotic sports cars. The concept of craft production remains very popular, but the problem with it is obvious. Goods produced by the craft method – as cars once exclusively were – cost too much for most of us to afford. So at the beginning of the twentieth century, mass production was developed as an alternative method. The mass producer uses narrowly skilled professionals to design products which are then made by unskilled or semi-skilled workers, using expensive, single-purpose machines. These churn out standardised products in very high volumes. Because the machinery costs so much, and is so intolerant of disruption, the mass producer keeps standard designs in production for as long as possible. The result is that the customer gets lower costs, but at the expense of variety, and by means of work methods which most employees find boring and dispiriting. By contrast, the lean production system combines the advantages of craft and mass production, while avoiding the high cost of the former and the rigidity of the latter. Towards this end, companies appoint teams of multi-skilled workers to all levels of the organisation, and use highly flexible and increasingly automated machines to produce goods in enormous volume and variety.</p>
-                    <p><strong>Paragraph C</strong> Lean production is so called because, compared with mass production, it uses less of everything - half the human effort in the factory, half the manufacturing space, half the investment in tools, and half the engineering hours to develop the new product. It also results in far fewer defects.</p>
-                    <p><strong>Paragraph D</strong> Perhaps the most striking contrast between mass and lean production systems lies in their production standards. Mass producers set a limited goal for themselves: 'good enough', which translates into an acceptable number of defects, a maximum acceptable number of inventories, and a narrow range of standardised products. Lean producers, on the other hand, are unwilling to compromise standards in any of these areas.</p>
-                    <p><strong>Paragraph E</strong> Although cost reduction is the primary objective of the lean production system, it must meet three other intermediate objectives in order to achieve this: quantity control, quality assurance and respect for humanity. Firstly, the system must be able to adapt to daily and monthly fluctuations in demand. Secondly, each separate process must supply only good units to the subsequent process. Thirdly, in as far as the system uses human resources to attain its cost objectives, respect for human needs must be cultivated. It should be emphasised that none of these three objectives can be achieved separately.</p>
-                    <p><strong>Paragraph F</strong> The continuous flow of lean manufacturing production relies on two practical mechanisms: just-in-time and autonamation. Just-in-time means, for example, that in the process of assembling the parts to build a car, components from the preceding process should arrive at the next part of the line at exactly the right time and in the correct quantities. If just-in-time is fully realised throughout the company, then superfluous inventories are completely eliminated from the factory, making stores or warehouses unnecessary. However, relying solely on a central planning approach to control schedules for all stages of the production process simultaneously is very difficult in the case of cars, which consist of thousands of parts. So the lean system looks at the production flow in reverse; in other words, employees go to the preceding process to withdraw the necessary quantity of units at the appropriate time. The preceding process must produce only sufficient quantities of units to replace those that have been withdrawn, and in turn withdraws the requisite number of components from the process that precedes it.</p>
-                    <p><strong>Paragraph G</strong> Autonamation is the automatic checking for abnormalities in the production process. In order to realise just-in-time perfectly, only units which are in perfect condition must be allowed to flow to the next process, and this flow must be regular and uninterrupted. In other words, quality control must coexist with just-in-time procedures throughout the system. Autonamation involves building in a mechanism to prevent the multiplication of defects in machines or product lines. For example, in Toyota factories almost all the machines have been fitted with stopping devices, and the concept of autonamation has been extended to manual production lines. If something abnormal happens there, the worker pushes a button to stop the whole line, and lights, which are hung so high in the factory that they are visible to everyone, indicate the position of the problem.</p>
+                    <h4 class="text-center">Drawing Lessons from History</h4>
+                    <p>Numerous ancient civilisations collapsed or disappeared, leaving behind grand ruins reminiscent of what poet Shelley described in his sonnet Ozymandias. The term 'collapse' refers to a significant reduction in population and/or political, economic, and social complexity of a society across a wide area for an extended period.</p>
+                    <p>The awe-inspiring ruins left behind by these past civilisations captivate us all. As children, we marvel at them when we first discover them through pictures-vast stone structures, intricate carvings, or towering temples that defy imagination. As we grow older, many of us plan vacations to witness these remarkable sites firsthand, standing in silent reverence before the remnants of a world that once thrived. We are drawn to their magnificent and haunting beauty, as well as the enigmas they present. The grandeur of these ruins attests to the previous wealth and power of their builders, yet their sudden disappearance challenges our understanding of human resilience. These builders vanished, abandoning the remarkable structures they had painstakingly constructed. How did a once-mighty society end up collapsing, leaving behind only echoes of its former glory?</p>
+                    <p>For a long time, it has been suspected that the mysterious disappearance of many such societies was, to some extent, triggered by ecological issues unintentional destruction of the environmental resources on which their societies relied. This suspicion of unintended ecological suicide, or ecocide, has been substantiated by discoveries made in recent decades by archaeologists, climatologists, historians, palaeontologists, and palynologists (pollen scientists). The processes through which past societies have undermined themselves by damaging their environments can be categorised into eight areas, which vary in significance from one case to another: deforestation and habitat loss, soil degradation, water management challenges, overhunting, overfishing, the impacts of invasive species on native ones, human population growth, and increased human activity.</p>
+                    <p>Historical collapses generally followed similar patterns resembling variations on a theme. These patterns often include resource depletion, environmental degradation, internal strife, or external pressures, yet the specific combination and intensity of these factors varied across civilisations. Writers are often tempted to draw analogies between the trajectory of human society and that of an individual's life, speaking of a society's birth, growth, peak, old age, and eventual demise. However, this metaphor proves inaccurate for many past societies: they experienced rapid declines after reaching their peak in terms of population and power, and these rapid declines must have come as a surprise and shock to their inhabitants. It is evident that not all past societies followed this trajectory uniformly to its conclusion: different societies collapsed to varying degrees and in somewhat distinct ways while many societies did not collapse at all. The diversity in collapse mechanisms suggests that while certain systemic vulnerabilities may be universal, their expression is deeply contingent on local conditions, cultural responses, and the interplay of multiple stressors over time.</p>
+                    <p>Currently, many individuals believe that environmental problems eclipse other global threats. These environmental problems encompass the same eight factors that contributed to past societies' downfalls, plus four new ones: human-induced climate change, the accumulation of toxic chemicals, energy shortages, and the complete utilisation of the Earth's photosynthetic capacity. However, the seriousness of these modern environmental dilemmas is vigorously debated among the scientific community. Are the perceived risks overstated or undervalued? Will contemporary technology resolve our issues, or is it producing new challenges faster than it can remedy old ones? When one resource (such as wood, oil, or ocean fish) is depleted, can we trust that new alternatives (like plastics, wind and solar energy, or farmed fish) will emerge? Isn't the rate of human population growth slowing down, suggesting we might soon reach a manageable global population?</p>
+                    <p>Questions like these highlight why the well-known collapses of past civilisations carry more significance than merely being romantic mysteries. There may be practical lessons to be learnt from these historical failures. However, there are also differences between the modern world and its problems, and those ancient societies and their problems. It would be naive to assume that studying the past will yield straightforward answers directly applicable to today's world. We have certain advantages over past societies that reduce our risks, including our powerful technology (i.e. its beneficial effects), globalisation, modern medicine, and enhanced awareness of both past and distant modern societies. At the same time, there are also factors that heighten our risks in comparison to earlier civilisations: again, our potent technology (i.e. its unintended destructive effects), globalisation (where a problem in one area can affect the entire world), the reliance of millions on modern health care for survival, and our vastly larger human population. Perhaps we can still learn from the past, but only if we carefully contemplate its lessons.</p>
                 </div>
                 <div id="passage-text-3" class="reading-passage hidden">
-                    <h4 class="text-center">How Does Watching Sport Influence the Brain?</h4>
-                    <p><strong>A</strong> During the epoch when the poet Homer unveiled his grand epic, the ancient Greeks initiated a festival where men contended in a race of roughly 200 metres. The victor would be rewarded with a symbolic olive branch. This event, known as the Olympics, has transcended its humble origins to embody the human quest for progress. The captivating nature of these games raises an intriguing question: what exactly draws us in as spectators? Is it the thrill of competition, the beauty of human movement, or something happening within our brains?</p>
-                    <p><strong>B</strong> In 1996, three Italian neuroscientists-Giacomo Rizzolatti, Leonardo Fogassi, and Vittorio Gallese conducted research on the premotor cortex of monkeys and made a groundbreaking discovery. They revealed a cluster of cells that act as a repository for motor actions, similar to 'grammar of movement'. These cellular networks represent the 'sentences' of full-body motions that our brains meticulously retain and refine. Take the art of swinging a golf club as an example. For those who only watch the Masters Tournament on television, playing golf may appear deceptively effortless. However, for novices, smoothly manoeuvring the asymmetrical metal club presents a nearly impossible challenge. This is because novices rely on conscious effort, utilising brain regions adjacent to the premotor cortex. Experts, by contrast, instinctively execute perfectly balanced movements, as their actions are deeply ingrained and intertwined with neurons in the premotor cortex. Their swing occurs with the serenity of a refined autopilot, requiring no conscious control. This neural distinction between novices and experts provides insight into how long-term training can physically reshape the brain.</p>
-                    <p><strong>C</strong> These neurons in the premotor cortex not only help explain why some athletes seem to have exceptional skills, but they also exhibit a wondrous characteristic that prompted Rizzolatti, Fogassi, and Gallese to bestow upon them the exalted label of 'mirror neuron'. They point out that mirror neurons are activated when a primate performs a particular action, such as grasping or holding an object, or when it witnesses another individual performing a comparable action. Humans possess an even more intricate mirror neuron system that reflects the external world in our brains, enabling us to internalise the behaviours of others. Nonetheless, these cells necessitate what scientists refer to as 'goal-orientated movements' to activate. If we stare at a photograph, a static image of a runner striding ahead, our mirror neurons remain utterly silent. It is solely when the runner is in action, be it in running, moving, or sprinting, that they are ignited. Movement, not stillness, is what speaks to our brains.</p>
-                    <p><strong>D</strong> Electrophysiological studies have shown that when we observe a golfer or a runner in action, our own premotor cortex mirror neurons respond as if we were participating in the activity. This neural mirroring was initially identified in 1954 by French physiologists Gastaut and Bert, who noticed specific alpha and mu brain wave patterns in humans. The mu signal plays a role in neural mirroring, remaining active during periods of bodily stillness but dissipating when we undertake active pursuits like playing a sport or changing TV channels. Notably, the mu signal also remains subdued while we observe someone else in action, such as on television, which alludes to the influence of mirror neurons. This suggests that our brains do not simply passively register what we see, but actively simulate it, engaging systems normally reserved for action.</p>
-                    <p><strong>E</strong> Rizzolatti, Fogassi, and Gallese have coined the term 'direct matching hypothesis' to delineate the concept of mirror neurons. They asserted that to comprehend the movements of sports stars, we need to align the visual representation of the observed action with our own motor representation of the same action. According to this theory, watching an Olympic athlete can evoke a resonance in the observer's motor system. The observer's 'motor knowledge' is harnessed to decipher the observed action. However, mirror neurons extend beyond being merely neural foundations for our sporting inclinations. They also enable observers to enhance their athletic abilities through the process of observation. It turns out that watching a remarkable golfer improves our own golfing skills, and witnessing a skilled sprinter actually bolsters our running speed. This ability to learn through observation is a vital skill. From language acquisition in infancy to understanding facial expressions, mimicking plays a fundamental role in our consciousness. The most accomplished athletes possess a premotor cortex capable of envisioning victorious movements, supplemented by the physical attributes required to translate those movements into reality. In this way, action and imagination coalesce to drive performance.</p>
-                    <p><strong>F</strong> However, how many among us watch sport in order to enhance our athletic abilities? Most spectators tune in for the emotional roller coaster, the human drama it encompasses. This emotional connection finds its roots in mirror neurons, which allow spectators to perceive athletes' victorious movements and to share in the emotion of their triumphs. This is because they are directly associated with the amygdala, a key area of the brain responsible for emotional processing. During the Olympics, mirror neurons in individuals around the world resonate in unison, and watching sport unifies people. The majority of us may never run a mile in under four minutes or hit a home run. Yet, as we gather around our televisions, we all briefly get a taste of the feeling of executing something flawlessly. In those fleeting moments, sport becomes more than entertainment—it becomes a shared human experience.</p>
+                    <h4 class="text-center">Neanderthal Technology</h4>
+                    <p><strong>Section 1:</strong> We think of our prehistoric ancestors as people of the ice and snow, living in caves, and for many of the west European Neanderthalers that is a just picture of their life. But where there were no caves, further to the east on the Russian steppe, for example, open-air sites with some sort of constructed shelter were the only option.</p>
+                    <p>We now know much more about the cave sites than the open-air ones because, historically, it was the cave sites of Western Europe that were first explored by archaeologists and also because open-air sites are harder to find – many of them have disappeared under deep mud deposits or under the rising postglacial seas. Caves, moreover, aid the survival of archaeological material and can preserve the records of remote millennia.</p>
+                    <p><strong>Section 2:</strong> In south-west France, the limestone caves of the Périgord region made ideal homes for the Neanderthal people. There were good supplies of flint to hand for axes and the like, and the caves were often sited in small river valleys that offered protection against the worst of the weather. The Neanderthalers liked south-facing caves, for obvious reasons of sunshine and wind avoidance, and caves at some height above the valley floor offered refuge from floods and good game-watching vantage points.</p>
+                    <p>The Périgord region during the last ice age was, in fact, an exceptionally benign habitat for humans. It enjoyed a rather maritime climate with cooler summers that permitted the extension of tundra and steppe over its higher plateaux, and its year-round high levels of sunshine favoured the growth of the ground plants needed by reindeer, bison and horse. Winters were mildish for the ice age, animals never needed to migrate far from summer to winter, and men never needed to travel far from home to find abundant supplies of meat.</p>
+                    <p><strong>Section 3:</strong> In Central and Eastern Europe, where caves were unavailable, such open-air sites as have been discovered were mostly located near water – both because this was a good area to be for people and animals, and also because the sedimentation potential of lakes and stream courses has aided archaeological preservation– whereas erosion has presumably blown away sites which were out in the open. Some of the open-air sites in Germany, Central Europe and Russia have provided valuable information about Neanderthal man and his way of life. From Moldova, for example, comes evidence that has been interpreted as the remains of wind-break structures, or even a large tent: n ring. up to about 8 x 5m in size, of mainly mammoth bones enclosing a dense concentration of stone tools, animal bones and ash.</p>
+                    <p><strong>Section 4:</strong> From the west European caves more evidence of built structures is available, and some of it goes back a long way in time. In the Grotte du Lazaret, near Nice, at a date during the last ice age but one, claims for some sort of skin tent within the cave have been advanced, on the basis of arrangements of large stones out from the cave wall that might have supported timber struts for a covering of skins up to the rock face above.</p>
+                    <p>At Lazaret, what might be openings in the hypothesised tents seem to point away from the cave mouth, and finds of wolf and fox foot bones, without the rest of the skeletons, inside these 'tents' have been thought to indicate the use of animal pelts as bed coverings. The two patches of ash at Lazaret that mark ancient fires, with stone tools around them evidently made and used on the spot, are edged with small marine mollusc shells, prompting the excavator to suggest that seaweed had been used as bedding around the fires. The cave of Baume-Bonne in the Basses-Alpes region of France, another early site, boasts ten square metres of cobbles brought up from the local river and laid down, as though to take care of a puddle area in the cave, with the smoothest and roundest surfaces of the stones uppermost, and there are other similar cases.</p>
+                    <p><strong>Section 5:</strong> The ash encountered in concentrations at some sites testifies to the Neanderthal people's use of fire: not surprising, since use of fire was, by Neanderthal times, an already ancient accomplishment of evolving humanity, and survival in the sub-arctic conditions faced by the Neanderthalers is inconceivable without control of fire. Fire gave warmth, light, heat for cooking and defence against predatory animals. A charred piece of birch from Krapina in Croatia, is thought to be the remains of a fire-making twirl stick. But Neanderthal hearths, in the sense of specially constructed places for fire, are fewer and harder to identify with certainty than the mere ash piles that are a regular feature of their sites. They seem often to have just lit a small fire (40- 50cm across) on the existing ground surface of the cave, without preparation. Judging from the shallow penetration of heat effects under the ash, this fire was only of a short duration. Sometimes the fires were larger in size, up to one metre across, and quite irregular in shape. It is not always easy to decide how much additional structure some fires possessed: claims of stone circles to contain the fire run up against the fact that stones tend to litter the cave floors everywhere and those around a fire can quite accidentally look as though they were arranged in a circle.</p>
                 </div>
             </div>
             <div class="resizer" id="resizer"></div>
             <div class="questions-panel" id="questions-panel">
                 <div id="questions-1" class="question-set">
                     <div class="questions-container">
-                        <div class="question" data-q-start="1" data-q-end="7">
+                        <div class="question" data-q-start="1" data-q-end="5">
                             <div class="question-prompt">
-                                <p><strong>Questions 1-7</strong></p>
-                                <p>Complete the table below.</p>
-                                <p>Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
-                                <p style="text-align: center; font-weight: bold; margin-top: 10px;">Early types of plastic</p>
+                                <p><strong>Questions 1-5</strong></p>
+                                <p>Complete the notes below.</p>
+                                <p>Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
                             </div>
-                            <table class="questions-table">
-                               <thead>
-                                   <tr>
-                                       <th>Name</th>
-                                       <th>Date</th>
-                                       <th>Country of origin</th>
-                                       <th>Properties</th>
-                                       <th>Common uses</th>
-                                   </tr>
-                               </thead>
-                               <tbody>
-                                   <tr>
-                                       <td><strong>Celluloid</strong></td>
-                                       <td>1860s</td>
-                                       <td>USA</td>
-                                       <td>Can be soften and reshaped by heat</td>
-                                       <td>billiard balls (original use); cutlery; clothing; <input type="text" class="answer-input" id="q1" placeholder="1"></td>
-                                   </tr>
-                                   <tr>
-                                       <td><input type="text" class="answer-input" id="q2" placeholder="2"></td>
-                                       <td>1907</td>
-                                       <td>USA</td>
-                                       <td>Can't be softened after setting; good insulator; resistant to water and acid</td>
-                                       <td><input type="text" class="answer-input" id="q3" placeholder="3"> Household object</td>
-                                   </tr>
-                                   <tr>
-                                       <td><strong>Polythene</strong></td>
-                                       <td>1930s</td>
-                                       <td><input type="text" class="answer-input" id="q4" placeholder="4"></td>
-                                       <td>Can be softened and reshaped by heat</td>
-                                       <td>bottles; pipes; plastic bags</td>
-                                   </tr>
-                                   <tr>
-                                       <td><strong>Polypropylene</strong></td>
-                                       <td>1950s</td>
-                                       <td></td>
-                                       <td></td>
-                                       <td>bottles; pipes; plastic bags</td>
-                                   </tr>
-                                   <tr>
-                                       <td><strong>Rigid PVC</strong></td>
-                                       <td></td>
-                                       <td></td>
-                                       <td>Is <input type="text" class="answer-input" id="q5" placeholder="5"></td>
-                                       <td>external piping</td>
-                                   </tr>
-                                   <tr>
-                                       <td><strong>Soft PVC</strong></td>
-                                       <td></td>
-                                       <td></td>
-                                       <td></td>
-                                       <td>outdoor clothing</td>
-                                   </tr>
-                                   <tr>
-                                       <td><strong>Polystyrene</strong></td>
-                                       <td>1930s</td>
-                                       <td>Germany</td>
-                                       <td>Resembles <input type="text" class="answer-input" id="q6" placeholder="6"></td>
-                                       <td>food containers; toy</td>
-                                   </tr>
-                                   <tr>
-                                       <td><strong>Polyurethane</strong></td>
-                                       <td></td>
-                                       <td>Germany</td>
-                                       <td>Usually manufactured as a <input type="text" class="answer-input" id="q7" placeholder="7"></td>
-                                       <td>insulation</td>
-                                   </tr>
-                               </tbody>
-                            </table>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>Carnivorous Plants</strong></p>
+                            </div>
+                            <p><strong>Darwin's experiments:</strong></p>
+                            <p><strong>Drosera</strong></p>
+                            <ul>
+                                <li>He put insects and small amounts of meat onto leaves and observed what happened.</li>
+                                <li>He was amazed that one human hair triggered a response.</li>
+                                <li>He understood why the plant did not respond to <input type="text" class="answer-input" id="q1" placeholder="1">.</li>
+                            </ul>
+                            <p><strong>Venus Flytrap</strong></p>
+                            <ul>
+                                <li>He demonstrated how leaves close and then, for a short period, act like a <input type="text" class="answer-input" id="q2" placeholder="2">.</li>
+                                <li>He noted the structure of leaves ensures small insects are released.</li>
+                            </ul>
+                            <p><strong>Biology today:</strong></p>
+                            <p><strong>Venus Flytrap</strong></p>
+                            <ul>
+                                <li>If insects come into contact with leaf hairs, their movement produces an electric charge.</li>
+                                <li>The charge enters fluid-filled tunnels, causing <input type="text" class="answer-input" id="q3" placeholder="3"> in the cell walls to open.</li>
+                                <li>Water moves between cells and then the leaf changes from convex to concave, trapping the insect inside.</li>
+                            </ul>
+                            <p><strong>Bladderwort</strong></p>
+                            <ul>
+                                <li>Hairs bend when insects swim past, resulting in opening of a flap.</li>
+                                <li>Water is sucked in.</li>
+                                <li>When water is pumped out of bladder cells, a <input type="text" class="answer-input" id="q4" placeholder="4"> builds up inside.</li>
+                            </ul>
+                            <p><strong>Pitcher Plants</strong></p>
+                            <ul>
+                                <li>The plants have tube-shaped leaves that insects fall into.</li>
+                                <li>Some plants are big enough to capture and eat <input type="text" class="answer-input" id="q5" placeholder="5">.</li>
+                            </ul>
                         </div>
-                        <div class="question" data-q-start="8" data-q-end="13">
-                            <div class="question-prompt"><p><strong>Questions 8-13</strong></p><p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text,</p><p>choose <strong>FALSE</strong> if the statement contradicts the information,</p><p>or choose <strong>NOT GIVEN</strong> if there is no information on this.</p></div>
+                        <div class="question" data-q-start="6" data-q-end="13">
+                            <div class="question-prompt"><p><strong>Questions 6-13</strong></p><p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text,</p><p>choose <strong>FALSE</strong> if the statement contradicts the information,</p><p>or choose <strong>NOT GIVEN</strong> if there is no information on this.</p></div>
+                            <div class="tf-question" data-q-start="6" data-q-end="6">
+                                <div class="tf-question-line"><span class="tf-question-number">6</span><span class="tf-question-text">Pitcher plants increase in size after they have digested a lot of insects.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q6" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q6" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="7" data-q-end="7">
+                                <div class="tf-question-line"><span class="tf-question-number">7</span><span class="tf-question-text">Carnivorous plants produce light-harvesting enzymes with the nutrients they extract from animals.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q7" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q7" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q7" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
                             <div class="tf-question" data-q-start="8" data-q-end="8">
-                                <div class="tf-question-line"><span class="tf-question-number">8</span><span class="tf-question-text">The chemical structure of rubber is very different to that of plastics.</span></div>
+                                <div class="tf-question-line"><span class="tf-question-number">8</span><span class="tf-question-text">Pitcher plants and Venus flytraps are more efficient at photosynthesis than plants with ordinary leaves.</span></div>
                                 <div class="tf-options"><label class="tf-option"><input type="radio" name="q8" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q8" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q8" value="NOT GIVEN"> NOT GIVEN</label></div>
                             </div>
                             <div class="tf-question" data-q-start="9" data-q-end="9">
-                                <div class="tf-question-line"><span class="tf-question-number">9</span><span class="tf-question-text">John Wesley Hyatt was an industrial chemist.</span></div>
+                                <div class="tf-question-line"><span class="tf-question-number">9</span><span class="tf-question-text">Venus flytraps are better adapted to the soil of swamps and bogs than other carnivorous plants.</span></div>
                                 <div class="tf-options"><label class="tf-option"><input type="radio" name="q9" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q9" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q9" value="NOT GIVEN"> NOT GIVEN</label></div>
                             </div>
                             <div class="tf-question" data-q-start="10" data-q-end="10">
-                                <div class="tf-question-line"><span class="tf-question-number">10</span><span class="tf-question-text">Celluloid and Bakelite react in the same way to heat.</span></div>
+                                <div class="tf-question-line"><span class="tf-question-number">10</span><span class="tf-question-text">Carnivorous plants frequently find it difficult to photosynthesise in bogs due to a lack of sunlight.</span></div>
                                 <div class="tf-options"><label class="tf-option"><input type="radio" name="q10" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q10" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q10" value="NOT GIVEN"> NOT GIVEN</label></div>
                             </div>
                             <div class="tf-question" data-q-start="11" data-q-end="11">
-                                <div class="tf-question-line"><span class="tf-question-number">11</span><span class="tf-question-text">If an object is made of several plastics, these prove hard to break down and reuse.</span></div>
+                                <div class="tf-question-line"><span class="tf-question-number">11</span><span class="tf-question-text">Scientists have campaigned to reduce the amount of nitrogen that is released into the soil by agricultural practices.</span></div>
                                 <div class="tf-options"><label class="tf-option"><input type="radio" name="q11" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q11" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q11" value="NOT GIVEN"> NOT GIVEN</label></div>
                             </div>
                             <div class="tf-question" data-q-start="12" data-q-end="12">
-                                <div class="tf-question-line"><span class="tf-question-number">12</span><span class="tf-question-text">Adding starch to plastic makes it more durable.</span></div>
+                                <div class="tf-question-line"><span class="tf-question-number">12</span><span class="tf-question-text">A lot of exotic carnivorous plants are sold illegally.</span></div>
                                 <div class="tf-options"><label class="tf-option"><input type="radio" name="q12" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q12" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q12" value="NOT GIVEN"> NOT GIVEN</label></div>
                             </div>
                             <div class="tf-question" data-q-start="13" data-q-end="13">
-                                <div class="tf-question-line"><span class="tf-question-number">13</span><span class="tf-question-text">Containers which are designed to decompose need particular storage conditions.</span></div>
+                                <div class="tf-question-line"><span class="tf-question-number">13</span><span class="tf-question-text">Preventing wildfires is beneficial to the Venus flytrap.</span></div>
                                 <div class="tf-options"><label class="tf-option"><input type="radio" name="q13" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q13" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q13" value="NOT GIVEN"> NOT GIVEN</label></div>
                             </div>
                         </div>
@@ -1152,83 +1098,97 @@
                 </div>
                 <div id="questions-2" class="question-set hidden">
                     <div class="questions-container">
-                        <div class="question" data-q-start="14" data-q-end="20">
+                        <div class="question" data-q-start="14" data-q-end="16">
                             <div class="question-prompt">
-                                <p><strong>Questions 14-20</strong></p>
-                                <p>Reading Passage <strong>2</strong> has seven paragraphs.</p>
-                                <p>Choose the correct heading for each paragraph from the list of headings below.</p>
-                                <p>Choose the correct number, <strong>i-x</strong>.</p>
+                                <p><strong>Questions 14-16</strong></p>
+                                <p>Choose the correct answer, <strong>A, B, C or D</strong>.</p>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="14" data-q-end="14">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="14">14</span><span class="mcq-question-title">In describing the appeal of monumental ruins, the writer highlights</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="A"> A. the curiosity of historians about the original purpose of these ruins.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="B"> B. the vast geographical areas covered by these structures.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="C"> C. their profound impact on the field of archaeological research.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="D"> D. the mixture of beauty and mystery these sites represent.</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="15" data-q-end="15">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="15">15</span><span class="mcq-question-title">Recent findings regarding lost civilisations have</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q15" value="A"> A. upended established theories.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q15" value="B"> B. triggered a heated debate among scientists.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q15" value="C"> C. emerged from a range of disciplines.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q15" value="D"> D. confirmed a major cause of environmental destruction.</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="16" data-q-end="16">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="16">16</span><span class="mcq-question-title">In discussing how previous societies fell, the writer mentions that</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="A"> A. the pace of collapse showed some resemblance across societies.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="B"> B. the decline of societies was usually a slow and predictable process.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="C"> C. all societies peaked in terms of population and power before collapsing.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="D"> D. ordinary people could occasionally affect the course of events.</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="17" data-q-end="21">
+                            <div class="question-prompt"><p><strong>Questions 17-21</strong></p><p>Choose <strong>YES</strong> if the statement agrees with the claims of the writer,</p><p>choose <strong>NO</strong> if the statement contradicts the claims of the writer,</p><p>or choose <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p></div>
+                            <div class="tf-question" data-q-start="17" data-q-end="17">
+                                <div class="tf-question-line"><span class="tf-question-number">17</span><span class="tf-question-text">The impressive relics of ancient societies were influenced by Shelley's sonnet Ozymandias.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q17" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q17" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q17" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="18" data-q-end="18">
+                                <div class="tf-question-line"><span class="tf-question-number">18</span><span class="tf-question-text">There is a widespread belief that environmental issues pose the principal hazard to the contemporary world.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q18" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q18" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q18" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="19" data-q-end="19">
+                                <div class="tf-question-line"><span class="tf-question-number">19</span><span class="tf-question-text">Scientists have reached a consensus about how severe the present ecological concerns are.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q19" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q19" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q19" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="20" data-q-end="20">
+                                <div class="tf-question-line"><span class="tf-question-number">20</span><span class="tf-question-text">The presence of poisonous substances in high concentrations is a relatively modern issue.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q20" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q20" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q20" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="21" data-q-end="21">
+                                <div class="tf-question-line"><span class="tf-question-number">21</span><span class="tf-question-text">We should reflect cautiously when comparing the past with the present.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q21" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q21" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q21" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="22" data-q-end="26">
+                            <div class="question-prompt">
+                                <p><strong>Questions 22-26</strong></p>
+                                <p>Complete each sentence with the correct ending, <strong>A-F</strong>, below.</p>
                             </div>
                             <div class="example-box" style="font-size: 15px;">
-                                <p><strong>List of Headings</strong></p>
                                 <ul class="options-list">
-                                    <li><span class="options-list-label">i</span> Global resistance to lean manufacturing</li>
-                                    <li><span class="options-list-label">ii</span> The historical context</li>
-                                    <li><span class="options-list-label">iii</span> Procedures for controlling quality</li>
-                                    <li><span class="options-list-label">iv</span> The pros and cons of different production systems</li>
-                                    <li><span class="options-list-label">v</span> The impact on profits</li>
-                                    <li><span class="options-list-label">vi</span> Procedures for controlling supply</li>
-                                    <li><span class="options-list-label">vii</span> The origin of the term</li>
-                                    <li><span class="options-list-label">viii</span> A crucial difference in levels of quality</li>
-                                    <li><span class="options-list-label">ix</span> Working conditions</li>
-                                    <li><span class="options-list-label">x</span> Interdependent strategies for controlling expenditure</li>
+                                    <li><span class="options-list-label">A</span> are not implacable to all societies.</li>
+                                    <li><span class="options-list-label">B</span> provide a hopeful perspective.</li>
+                                    <li><span class="options-list-label">C</span> is embodied all physical features</li>
+                                    <li><span class="options-list-label">D</span> is potentially both positive and negative</li>
+                                    <li><span class="options-list-label">E</span> will not address current issues directly.</li>
+                                    <li><span class="options-list-label">F</span> have increased compared to the past</li>
                                 </ul>
                             </div>
                             <div class="matching-form-container">
                                 <div class="matching-form-row">
-                                    <label for="q14" class="matching-form-label"><strong>14</strong> Paragraph A</label>
-                                    <select class="answer-input" id="q14"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
+                                    <label for="q22" class="matching-form-label"><strong>22</strong> Evidence of remarkable achievements of certain past civilisations</label>
+                                    <select class="answer-input" id="q22"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q15" class="matching-form-label"><strong>15</strong> Paragraph B</label>
-                                    <select class="answer-input" id="q15"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
+                                    <label for="q23" class="matching-form-label"><strong>23</strong> Analogies between the development of an individual and that of a society</label>
+                                    <select class="answer-input" id="q23"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q16" class="matching-form-label"><strong>16</strong> Paragraph C</label>
-                                    <select class="answer-input" id="q16"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
+                                    <label for="q24" class="matching-form-label"><strong>24</strong> The environmental challenges that societies encounter</label>
+                                    <select class="answer-input" id="q24"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q17" class="matching-form-label"><strong>17</strong> Paragraph D</label>
-                                    <select class="answer-input" id="q17"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
+                                    <label for="q25" class="matching-form-label"><strong>25</strong> In modern society, powerful technology</label>
+                                    <select class="answer-input" id="q25"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q18" class="matching-form-label"><strong>18</strong> Paragraph E</label>
-                                    <select class="answer-input" id="q18"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q19" class="matching-form-label"><strong>19</strong> Paragraph F</label>
-                                    <select class="answer-input" id="q19"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q20" class="matching-form-label"><strong>20</strong> Paragraph G</label>
-                                    <select class="answer-input" id="q20"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option><option value="x">x</option></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="question" data-q-start="21" data-q-end="26">
-                            <div class="question-prompt">
-                                <p><strong>Questions 21-26</strong></p>
-                                <p>Complete the sentences below.</p>
-                                <p>Write <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p>
-                            </div>
-                            <div class="matching-form-container">
-                                <div class="matching-form-row">
-                                    <label for="q21" class="matching-form-label"><strong>21</strong> A small number of unusual cars are still produced by the <input type="text" class="answer-input" id="q21" placeholder="21"> method.</label>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q22" class="matching-form-label"><strong>22</strong> Lean production requires staff who are <input type="text" class="answer-input" id="q22" placeholder="22">.</label>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q23" class="matching-form-label"><strong>23</strong> Lean production employs fewer people, and uses less <input type="text" class="answer-input" id="q23" placeholder="23">, equipment and time.</label>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q24" class="matching-form-label"><strong>24</strong> Storage facilities are not needed if a procedure known as <input type="text" class="answer-input" id="q24" placeholder="24"> is implemented in the lean production method.</label>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q25" class="matching-form-label"><strong>25</strong> Autonamation is a procedure for spotting any <input type="text" class="answer-input" id="q25" placeholder="25"> in the products on a production line.</label>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q26" class="matching-form-label"><strong>26</strong> At Toyota factories, <input type="text" class="answer-input" id="q26" placeholder="26"> are suspended above manual production lines in order to show where production has to be halted.</label>
+                                    <label for="q26" class="matching-form-label"><strong>26</strong> Reflections on ancient events and tendencies</label>
+                                    <select class="answer-input" id="q26"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
                                 </div>
                             </div>
                         </div>
@@ -1236,91 +1196,103 @@
                 </div>
                 <div id="questions-3" class="question-set hidden">
                     <div class="questions-container">
-                        <div class="question" data-q-start="27" data-q-end="32">
+                        <div class="question" data-q-start="27" data-q-end="31">
                             <div class="question-prompt">
-                                <p><strong>Questions 27-32</strong></p>
-                                <p>Reading Passage <strong>3</strong> has six paragraphs, A-F.</p>
-                                <p>Which paragraph contains the following information?</p>
-                                <p>Choose the correct letter, <strong>A-F</strong>.</p>
+                                <p><strong>Questions 27-31</strong></p>
+                                <p>Reading Passage <strong>3</strong> has five sections, 1-5.</p>
+                                <p>Choose the correct heading for each section from the list of headings below, <strong>i-vi</strong>.</p>
+                            </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Headings</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">i</span> Evidence of outdoor dwellings</li>
+                                    <li><span class="options-list-label">ii</span> Learning to make fire</li>
+                                    <li><span class="options-list-label">iii</span> A perfect place to live</li>
+                                    <li><span class="options-list-label">iv</span> Examining the cave contents</li>
+                                    <li><span class="options-list-label">v</span> Contrasting two types of home</li>
+                                    <li><span class="options-list-label">vi</span> A vital source of power</li>
+                                </ul>
                             </div>
                             <div class="matching-form-container">
                                 <div class="matching-form-row">
-                                    <label for="q27" class="matching-form-label"><strong>27</strong>&nbsp;&nbsp;reasons why watching sport can bring emotional satisfaction</label>
-                                    <select class="answer-input" id="q27"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
+                                    <label for="q27" class="matching-form-label"><strong>27</strong> Section 1</label>
+                                    <select class="answer-input" id="q27"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q28" class="matching-form-label"><strong>28</strong>&nbsp;&nbsp;an explanation of why beginners struggle with sports tasks</label>
-                                    <select class="answer-input" id="q28"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
+                                    <label for="q28" class="matching-form-label"><strong>28</strong> Section 2</label>
+                                    <select class="answer-input" id="q28"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q29" class="matching-form-label"><strong>29</strong>&nbsp;&nbsp;a factor that can work alongside mirroring in sports competitions to maintain peak performance</label>
-                                    <select class="answer-input" id="q29"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
+                                    <label for="q29" class="matching-form-label"><strong>29</strong> Section 3</label>
+                                    <select class="answer-input" id="q29"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q30" class="matching-form-label"><strong>30</strong>&nbsp;&nbsp;a comparison between the mirror neurons of human beings and primates</label>
-                                    <select class="answer-input" id="q30"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
+                                    <label for="q30" class="matching-form-label"><strong>30</strong> Section 4</label>
+                                    <select class="answer-input" id="q30"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q31" class="matching-form-label"><strong>31</strong>&nbsp;&nbsp;mention of integrating visual and motor processes to understand athletic movements</label>
-                                    <select class="answer-input" id="q31"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
-                                </div>
-                                <div class="matching-form-row">
-                                    <label for="q32" class="matching-form-label"><strong>32</strong>&nbsp;&nbsp;reference to the first discovery of brain activity associated with mirror neurons</label>
-                                    <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select>
+                                    <label for="q31" class="matching-form-label"><strong>31</strong> Section 5</label>
+                                    <select class="answer-input" id="q31"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
                                 </div>
                             </div>
                         </div>
-                        <div class="question" data-q-start="33" data-q-end="35">
-                            <div class="question-prompt"><p><strong>Questions 33-35</strong></p><p>Choose the correct answer.</p></div>
-                            <div class="multi-choice-question" data-q-start="33" data-q-end="33">
-                                <div class="multi-choice-options">
-                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="33">33</span><span class="mcq-question-title">What point does the writer make about professional athletes in Paragraph B?</span></p>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q33" value="A"> They meticulously plan each phase of their movements.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q33" value="B"> They engage in regular practice to retain and refine their skills.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q33" value="C"> They actively consider and analyse the actions of their peers.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q33" value="D"> They perform their actions without conscious contemplation.</label></div>
-                                </div>
+                        <div class="question" data-q-start="32" data-q-end="36">
+                            <div class="question-prompt">
+                                <p><strong>Questions 32-36</strong></p>
+                                <p>Look at the following findings (Questions <strong>32-36</strong>) and the list of places below. Match each finding with the correct place, <strong>A-E</strong>.</p>
                             </div>
-                            <div class="multi-choice-question" data-q-start="34" data-q-end="34">
-                                <div class="multi-choice-options">
-                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="34">34</span><span class="mcq-question-title">In this passage, the writer mentions the example of a remarkable golfer to illustrate</span></p>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="A"> the critical role of imitation in the formation of consciousness.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="B"> the improvement of sporting ability through watching sport.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="C"> the stimulation of a resonance in the observer's motor system.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="D"> the motivation of the observer's interest and love for golf.</label></div>
-                                </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Places</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">A</span> The Périgord region</li>
+                                    <li><span class="options-list-label">B</span> Moldova</li>
+                                    <li><span class="options-list-label">C</span> The Grotte du Lazaret</li>
+                                    <li><span class="options-list-label">D</span> The cave of Baume-Bonne</li>
+                                    <li><span class="options-list-label">E</span> Krapina</li>
+                                </ul>
                             </div>
-                            <div class="multi-choice-question" data-q-start="35" data-q-end="35">
-                                <div class="multi-choice-options">
-                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="35">35</span><span class="mcq-question-title">What is the principal motivation for watching sport mentioned by the writer?</span></p>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="A"> to improve our physical ability by analyzing the athletes' technical strategies</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="B"> to unite viewers from different nations.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="C"> to experience intense positive emotions by immersing oneself in sport.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="D"> to become a sports professional.</label></div>
+                            <div class="matching-form-container">
+                                <div class="matching-form-row">
+                                    <label for="q32" class="matching-form-label"><strong>32</strong> a burnt piece of wood</label>
+                                    <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q33" class="matching-form-label"><strong>33</strong> evidence of efforts to prevent pools of water forming</label>
+                                    <select class="answer-input" id="q33"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q34" class="matching-form-label"><strong>34</strong> the remains of sea creatures</label>
+                                    <select class="answer-input" id="q34"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q35" class="matching-form-label"><strong>35</strong> a circular arrangement of animal bones</label>
+                                    <select class="answer-input" id="q35"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q36" class="matching-form-label"><strong>36</strong> evidence suggesting the use of animal fur for warmth</label>
+                                    <select class="answer-input" id="q36"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                                 </div>
                             </div>
                         </div>
-                        <div class="question" data-q-start="36" data-q-end="40">
-                            <div class="question-prompt"><p><strong>Questions 36-40</strong></p><p>Choose <strong>YES</strong> if the statement agrees with the claims of the writer,</p><p>choose <strong>NO</strong> if the statement contradicts the claims of the writer,</p><p>or choose <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p></div>
-                            <div class="tf-question" data-q-start="36" data-q-end="36">
-                                <div class="tf-question-line"><span class="tf-question-number">36</span><span class="tf-question-text">The emergence of Homer's epic poetry occurred in the same historical period as the beginning of the Olympic Games.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q36" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q36" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q36" value="NOT GIVEN"> NOT GIVEN</label></div>
+                        <div class="question" data-q-start="37" data-q-end="39">
+                            <div class="question-prompt">
+                                <p><strong>Questions 37-39</strong></p>
+                                <p>Complete the summary below.</p>
+                                <p>Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+                                <div class="question-title">The use of fire</div>
                             </div>
-                            <div class="tf-question" data-q-start="37" data-q-end="37">
-                                <div class="tf-question-line"><span class="tf-question-number">37</span><span class="tf-question-text">The Italian scientists concluded that the motor actions encoded within the premotor cortex have no discernible link to unrelated collections of neurons.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q37" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q37" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q37" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="38" data-q-end="38">
-                                <div class="tf-question-line"><span class="tf-question-number">38</span><span class="tf-question-text">Spectators can achieve flawless golf swings merely by watching the Masters Tournament without physical practice.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q38" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q38" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q38" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="39" data-q-end="39">
-                                <div class="tf-question-line"><span class="tf-question-number">39</span><span class="tf-question-text">Some neuroscientists believe that certain types of still images might activate mirror neurons under specific experimental conditions.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q39" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q39" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q39" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="40" data-q-end="40">
-                                <div class="tf-question-line"><span class="tf-question-number">40</span><span class="tf-question-text">The mu system is suppressed while we are dynamically involved in a particular activity.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q40" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q40" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q40" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            <p>Neanderthalers could not have survived without fire because the conditions they lived in were <input type="text" class="answer-input" id="q37" placeholder="37">. Most evidence of purpose-built fires takes the form of ash piles, features of which suggest that the fires lasted a <input type="text" class="answer-input" id="q38" placeholder="38"> time. It is hard to be certain about the size and structure of the fires, though they were certainly needed to protect the occupants from dangerous <input type="text" class="answer-input" id="q39" placeholder="39">, among other things.</p>
+                        </div>
+                        <div class="question" data-q-start="40" data-q-end="40">
+                            <div class="question-prompt"><p><strong>Question 40</strong></p><p>Choose the correct answer.</p></div>
+                            <div class="multi-choice-question" data-q-start="40" data-q-end="40">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="40">40</span><span class="mcq-question-title">The purpose of the writer of this article is to</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="A"> A. argue that Neanderthal homes were bigger than originally thought.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="B"> B. explain why Neanderthal people migrated to Western Europe.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="C"> C. discuss what is known about Neanderthal settlements.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="D"> D. track the progress of early Neanderthal development.</label></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1450,136 +1422,54 @@
         </div>
     </div>
 
-    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"photographic film","2":"Bakelite","3":"electrical switches","4":"Britain","5":"fireproof","6":"glass","7":"foam","8":"FALSE","9":"NOT GIVEN","10":"FALSE","11":"TRUE","12":"FALSE","13":"TRUE","14":"ii","15":"iv","16":"vii","17":"viii","18":"x","19":"vi","20":"iii","21":"craft","22":"multi-skilled","23":"investment in tools","24":"just-in-time","25":"abnormalities","26":"lights","27":"F","28":"B","29":"E","30":"C","31":"E","32":"D","33":"D","34":"B","35":"C","36":"YES","37":"NOT GIVEN","38":"NO","39":"NO","40":"YES"}};</script>
+    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"raindrops","2":"stomach","3":"pores","4":"vacuum","5":"frogs","6":"TRUE","7":"TRUE","8":"FALSE","9":"NOT GIVEN","10":"FALSE","11":"NOT GIVEN","12":"TRUE","13":"FALSE","14":"D","15":"C","16":"A","17":"NO","18":"YES","19":"NO","20":"YES","21":"YES","22":"C","23":"A","24":"F","25":"D","26":"E","27":"v","28":"iii","29":"i","30":"iv","31":"vi","32":"E","33":"D","34":"C","35":"B","36":"B","37":"sub-arctic","38":"short","39":"predatory animals","40":"C"}};</script>
     
     <script>
     window.testExplanations = {
-        "1": "Trích dẫn: \"...perhaps the best-known celluloid product was photographic film...\" (Paragraph 2, Line 8) -> Đáp án: photographic film[cite: 2].",
-        "2": "Trích dẫn: \"Baekeland called it Bakelite, and it was the first of the thermosets...\" (Paragraph 3, Line 3) -> Đáp án: Bakelite[cite: 2].",
-        "3": "Trích dẫn: \"...it was soon being used in the manufacture of electrical switches...\" (Paragraph 3, Line 7) -> Đáp án: electrical switches[cite: 2].",
-        "4": "Trích dẫn: \"In the 1930s, chemists in Britain discovered that the gas ethylene...\" (Paragraph 4, Line 3) -> Đáp án: Britain[cite: 2].",
-        "5": "Trích dẫn: \"...produced rigid PVC (polyvinyl chloride), a fireproof plastic...\" (Paragraph 4, Line 6) -> Đáp án: fireproof[cite: 2].",
-        "6": "Trích dẫn: \"Polystyrene, a hard, clear material like glass...\" (Paragraph 5, Line 1) -> Đáp án: glass[cite: 2].",
-        "7": "Trích dẫn: \"...commonly produced as a foam which was very useful...\" (Paragraph 5, Line 4) -> Đáp án: foam[cite: 2].",
-        "8": "Trích dẫn: \"Chemically, rubber is a polymer... The same bonding principle... is the basis of... plastics.\" (Paragraph 1, Line 1-3) -> Cả hai đều là polymer nên cấu trúc không \"rất khác biệt\", đáp án là FALSE[cite: 2].",
-        "9": "Bài chỉ nói ông thắng giải thưởng, không nói ông có phải là \"industrial chemist\" hay không, đáp án là NOT GIVEN[cite: 2].",
-        "10": "Trích dẫn: \"Celluloid can be repeatedly softened... Bakelite... cannot be softened by heat.\" (Paragraph 3, Line 1 & 5) -> Đáp án là FALSE[cite: 2].",
-        "11": "Trích dẫn: \"...different types of plastic are often found in the same items and call for different treatments.\" (Paragraph 7, Line 3) -> Đáp án là TRUE[cite: 2].",
-        "12": "Trích dẫn: \"...incorporating... starch... causes the plastic to fall apart.\" (Paragraph 8, Line 1) -> Làm nó phân hủy chứ không phải bền hơn, đáp án là FALSE[cite: 2].",
-        "13": "Trích dẫn: \"...bottles made of such materials have to be stored in the dark, to ensure they do not disintegrate before... used.\" (Paragraph 8, Line 3) -> Đáp án là TRUE[cite: 2].",
-        "14": "Đoạn này nói về lịch sử từ Ford, GM đến Toyota -> Heading ii (The historical context)[cite: 2].",
-        "15": "Đoạn này so sánh ưu và nhược điểm của craft, mass và lean production -> Heading iv (The pros and cons of different production systems)[cite: 2].",
-        "16": "Trích dẫn: \"Lean production is so called because... it uses less of everything...\" -> Heading vii (The origin of the term)[cite: 2].",
-        "17": "Nói về sự khác biệt tiêu chuẩn chất lượng: \"good enough\" vs \"unwilling to compromise\" -> Heading viii (A crucial difference in levels of quality)[cite: 2].",
-        "18": "Nói về 3 mục tiêu trung gian để đạt được mục tiêu chính là giảm chi phí -> Heading x (Interdependent strategies for controlling expenditure)[cite: 2].",
-        "19": "Nói về cơ chế \"Just-in-time\" (điều phối nguồn cung) -> Heading vi (Procedures for controlling supply)[cite: 2].",
-        "20": "Nói về \"Autonamation\" - kiểm tra lỗi tự động để đảm bảo chất lượng -> Heading iii (Procedures for controlling quality)[cite: 2].",
-        "21": "Trích dẫn: \"A present day example of this method (craft production) is the customised production of a few exotic sports cars.\" -> Đáp án: craft[cite: 2].",
-        "22": "Trích dẫn: \"...companies appoint teams of multi-skilled workers to all levels...\" -> Đáp án: multi-skilled[cite: 2].",
-        "23": "Trích dẫn: \"...it uses less of everything - ... half the investment in tools...\" -> Đáp án: investment in tools[cite: 2].",
-        "24": "Trích dẫn: \"If just-in-time is fully realised... making stores or warehouses unnecessary.\" -> Đáp án: just-in-time[cite: 2].",
-        "25": "Trích dẫn: \"Autonamation is the automatic checking for abnormalities in the production process.\" -> Đáp án: abnormalities[cite: 2].",
-        "26": "Trích dẫn: \"...and lights, which are hung so high... indicate the position of the problem.\" -> Đáp án: lights[cite: 2].",
-        "27": "Trích dẫn: \"...sport becomes more than entertainment—it becomes a shared human experience.\" (Paragraph F) -> Đáp án: F[cite: 2].",
-        "28": "Trích dẫn: \"This is because novices rely on conscious effort, utilising brain regions adjacent to the premotor cortex.\" (Paragraph B) -> Đáp án: B[cite: 2].",
-        "29": "Trích dẫn: \"...supplemented by the physical attributes required to translate those movements into reality.\" (Paragraph E) -> Đáp án: E[cite: 2].",
-        "30": "Trích dẫn: \"Humans possess an even more intricate mirror neuron system that reflects the external world...\" (Paragraph C) -> Đáp án: C[cite: 2].",
-        "31": "Trích dẫn: \"...we need to align the visual representation... with our own motor representation...\" (Paragraph E) -> Đáp án: E[cite: 2].",
-        "32": "Trích dẫn: \"This neural mirroring was initially identified in 1954 by French physiologists Gastaut and Bert...\" (Paragraph D) -> Đáp án: D[cite: 2].",
-        "33": "Trích dẫn: \"Their swing occurs with the serenity of a refined autopilot, requiring no conscious control.\" (Paragraph B) -> Đáp án: D[cite: 2].",
-        "34": "Trích dẫn: \"...watching a remarkable golfer improves our own golfing skills...\" (Paragraph E) -> Đáp án: B[cite: 2].",
-        "35": "Trích dẫn: \"Most spectators tune in for the emotional roller coaster... share in the emotion of their triumphs.\" (Paragraph F) -> Đáp án: C[cite: 2].",
-        "36": "Trích dẫn: \"During the epoch when the poet Homer unveiled his grand epic, the ancient Greeks initiated a festival (Olympics)...\" (Paragraph A) -> Đáp án: YES[cite: 2].",
-        "37": "Bài viết không đề cập đến việc các nhà khoa học Ý kết luận nơ-ron vận động không có liên kết với các nhóm nơ-ron không liên quan -> Đáp án: NOT GIVEN[cite: 2].",
-        "38": "Đoạn E và F khẳng định cần có \"physical attributes\" và thực tế không phải ai cũng làm được như vận động viên -> Đáp án: NO[cite: 2].",
-        "39": "Trích dẫn: \"If we stare at a photograph... our mirror neurons remain utterly silent.\" (Paragraph C) -> Đáp án: NO[cite: 2].",
-        "40": "Trích dẫn: \"The mu signal... dissipating when we undertake active pursuits...\" (Paragraph D) -> Đáp án: YES[cite: 2]."
+        "1": "Trích dẫn: \"Yet sundews, he observed, ignored raindrops.\"[cite: 3]",
+        "2": "Trích dẫn: \"...it formed itself into a temporary ‘stomach’, secreting enzymes that could dissolve the prey.\"[cite: 3]",
+        "3": "Trích dẫn: \"...which opens up pores in cell membranes.\"[cite: 3]",
+        "4": "Trích dẫn: \"...the cells in the bladder then begin to pump water out again, creating a new vacuum.\"[cite: 3]",
+        "5": "Trích dẫn: \"Some of the largest have pitchers up to 30cm deep and can consume whole frogs...\"[cite: 3]",
+        "6": "Trích dẫn: \"...when scientists feed pitcher plants extra bugs, the plants get bigger.\"[cite: 3]",
+        "7": "Trích dẫn: \"...take nitrogen and phosphorus from the flesh in order to build light-harvesting enzymes.\"[cite: 3]",
+        "8": "Trích dẫn: \"A pitcher or a flytrap is not very good at photosynthesis because... they do not have flat solar panels...\"[cite: 3]",
+        "9": "Thông tin về việc bẫy ruồi Venus thích nghi tốt hơn các cây bắt mồi khác không có trong bài[cite: 3].",
+        "10": "Trích dẫn: \"...bogs are often flooded with sunshine, so even an inefficient carnivorous plant can carry out enough photosynthesis...\"[cite: 3]",
+        "11": "Bài chỉ nói phân bón làm tăng nitơ, không nói về việc các nhà khoa học thực hiện chiến dịch giảm nitơ[cite: 3].",
+        "12": "Trích dẫn: \"The black market trade in exotic carnivorous plants is strong...\"[cite: 3]",
+        "13": "Trích dẫn: \"The suppression of wildfires... allows other plants to grow quickly and outcompete the Venus flytraps.\"[cite: 3]",
+        "14": "Trích dẫn: \"We are drawn to their magnificent and haunting beauty, as well as the enigmas they present.\"[cite: 3]",
+        "15": "Trích dẫn: \"...substantiated by discoveries made in recent decades by archaeologists, climatologists, historians, palaeontologists, and palynologists...\"[cite: 3]",
+        "16": "Trích dẫn: \"Historical collapses generally followed similar patterns resembling variations on a theme.\"[cite: 3]",
+        "17": "Trích dẫn: \"...leaving behind grand ruins reminiscent of what poet Shelley described in his sonnet Ozymandias.\"[cite: 3]",
+        "18": "Trích dẫn: \"Currently, many individuals believe that environmental problems eclipse other global threats.\"[cite: 3]",
+        "19": "Trích dẫn: \"...the seriousness of these modern environmental dilemmas is vigorously debated among the scientific community.\"[cite: 3]",
+        "20": "Trích dẫn: \"...plus four new ones: human-induced climate change, the accumulation of toxic chemicals...\"[cite: 3]",
+        "21": "Trích dẫn: \"It would be naive to assume that studying the past will yield straightforward answers... Perhaps we can still learn from the past, but only if we carefully contemplate its lessons.\"[cite: 3]",
+        "22": "Trích dẫn: \"The awe-inspiring ruins left behind by these past civilisations captivate us all... vast stone structures, intricate carvings, or towering temples that defy imagination.\"[cite: 3]",
+        "23": "Trích dẫn: \"However, this metaphor proves inaccurate for many past societies...\"[cite: 3]",
+        "24": "Trích dẫn: \"These environmental problems encompass the same eight factors... plus four new ones...\"[cite: 3]",
+        "25": "Trích dẫn: \"...including our powerful technology (i.e. its beneficial effects)... again, our potent technology (i.e. its unintended destructive effects)...\"[cite: 3]",
+        "26": "Trích dẫn: \"...studying the past will [not] yield straightforward answers directly applicable to today's world.\"[cite: 3]",
+        "27": "Đoạn này so sánh giữa \"cave sites\" và \"open-air sites\"[cite: 3].",
+        "28": "Trích dẫn: \"In south-west France, the limestone caves of the Périgord region made ideal homes for the Neanderthal people.\"[cite: 3]",
+        "29": "Trích dẫn: \"...comes evidence that has been interpreted as the remains of wind-break structures, or even a large tent...\"[cite: 3]",
+        "30": "Đoạn này liệt kê các vật dụng tìm thấy: skin tent, animal pelts, ash, stone tools, cobbles[cite: 3].",
+        "31": "Trích dẫn: \"...survival in the sub-arctic conditions faced by the Neanderthalers is inconceivable without control of fire.\"[cite: 3]",
+        "32": "Trích dẫn: \"A charred piece of birch from Krapina in Croatia...\"[cite: 3]",
+        "33": "Trích dẫn: \"The cave of Baume-Bonne... boasts ten square metres of cobbles... as though to take care of a puddle area...\"[cite: 3]",
+        "34": "Trích dẫn: \"The two patches of ash at Lazaret... are edged with small marine mollusc shells...\"[cite: 3]",
+        "35": "Trích dẫn: \"From Moldova... comes evidence... of a ring... of mainly mammoth bones...\"[cite: 3]",
+        "36": "Trích dẫn: \"At Lazaret... finds of wolf and fox foot bones... have been thought to indicate the use of animal pelts as bed coverings.\"[cite: 3]",
+        "37": "Trích dẫn: \"...survival in the sub-arctic conditions...\"[cite: 3]",
+        "38": "Trích dẫn: \"...this fire was only of a short duration.\"[cite: 3]",
+        "39": "Trích dẫn: \"Fire gave warmth, light, heat for cooking and defence against predatory animals.\"[cite: 3]",
+        "40": "Xuyên suốt bài viết, tác giả thảo luận về các bằng chứng khảo cổ liên quan đến nơi ở và sinh hoạt của người Neanderthal[cite: 3]."
     };
     </script>
 
     <script>
-    // Hàm thông minh tự động dò tìm và highlight đoạn evidence trong bài đọc với độ chính xác cao
-    function highlightEvidenceInPassage(explanationText) {
-        const passagePanel = document.getElementById('passage-panel');
-        const currentPassageEl = passagePanel.querySelector('.reading-passage:not(.hidden)');
-        if (!currentPassageEl) return;
-
-        // Xóa các highlight evidence cũ (màu xanh dương) trước đó
-        currentPassageEl.querySelectorAll('.annotation-highlight.highlight-blue').forEach(el => {
-            const parent = el.parentNode;
-            while (el.firstChild) parent.insertBefore(el.firstChild, el);
-            parent.removeChild(el);
-        });
-
-        // 1. Thử tìm chuỗi nằm trong dấu ngoặc kép đầu tiên
-        let targetPhrase = '';
-        const match = explanationText.match(/"([^"]+)"/);
-        if (match) {
-            targetPhrase = match[1].trim();
-        } else {
-            // Nếu không có ngoặc kép, lấy toàn bộ câu giải thích bỏ phần đầu
-            targetPhrase = explanationText.replace(/^(Trích dẫn:|Đáp án:).*?(\:|\-\>)/i, '').trim();
-        }
-
-        if (!targetPhrase) return;
-
-        const walker = document.createTreeWalker(currentPassageEl, NodeFilter.SHOW_TEXT, null, false);
-        let node;
-        let found = false;
-
-        // Thử tìm khớp chính xác đoạn chuỗi
-        while (node = walker.nextNode()) {
-            const text = node.nodeValue;
-            let index = text.indexOf(targetPhrase);
-            if (index !== -1) {
-                const range = document.createRange();
-                range.setStart(node, index);
-                range.setEnd(node, index + targetPhrase.length);
-                
-                const span = document.createElement('span');
-                span.className = 'annotation annotation-highlight highlight-blue';
-                span.dataset.type = 'highlight';
-                span.dataset.color = 'blue';
-                
-                try {
-                    range.surroundContents(span);
-                    span.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    found = true;
-                } catch (e) {}
-                break;
-            }
-        }
-
-        // 2. Nếu tìm chính xác không thấy, tách các từ khóa quan trọng (> 4 ký tự) để dò tìm linh hoạt
-        if (!found) {
-            const words = targetPhrase.split(/\s+/).map(w => w.replace(/[^a-zA-Z0-9]/g, '')).filter(w => w.length > 4);
-            if (words.length > 0) {
-                const keyword = words[0]; // Lấy từ khóa đặc trưng đầu tiên
-                walker.currentNode = currentPassageEl;
-                while (node = walker.nextNode()) {
-                    const text = node.nodeValue;
-                    const index = text.toLowerCase().indexOf(keyword.toLowerCase());
-                    if (index !== -1) {
-                        const range = document.createRange();
-                        range.setStart(node, index);
-                        range.setEnd(node, index + keyword.length);
-                        
-                        const span = document.createElement('span');
-                        span.className = 'annotation annotation-highlight highlight-blue';
-                        span.dataset.type = 'highlight';
-                        span.dataset.color = 'blue';
-                        
-                        try {
-                            range.surroundContents(span);
-                            span.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        } catch (e) {}
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
         const launchScreen = document.getElementById('launchScreen');
         const app = document.getElementById('app');
@@ -1664,6 +1554,83 @@
             initializeQuestionMarkers();
         }
 
+        // Hàm dò tìm và highlight evidence thông minh (hỗ trợ cả trích dẫn trực tiếp hoặc các từ khóa chính)
+        function highlightEvidenceInPassage(explanationText) {
+            let targetPhrase = "";
+            const match = explanationText.match(/"([^"]+)"/);
+            if (match) {
+                targetPhrase = match[1].trim();
+            } else {
+                // Nếu không có dấu ngoặc kép, lấy câu sau chữ "Trích dẫn:" hoặc toàn bộ nội dung
+                targetPhrase = explanationText.replace(/^.*?Trích dẫn:\s*/i, "").trim();
+            }
+            if (!targetPhrase) return;
+
+            // Xử lý loại bỏ các dấu chấm lửng (...) để tìm đoạn khớp tốt hơn
+            let cleanQuery = targetPhrase.replace(/^\.\.\./, "").replace(/\.\.\.$/, "").trim();
+            if (!cleanQuery) return;
+
+            const currentPassageEl = passagePanel.querySelector('.reading-passage:not(.hidden)');
+            if (!currentPassageEl) return;
+
+            const walker = document.createTreeWalker(currentPassageEl, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            let found = false;
+
+            while (node = walker.nextNode()) {
+                const text = node.nodeValue;
+                const index = text.indexOf(cleanQuery);
+                if (index !== -1) {
+                    const range = document.createRange();
+                    range.setStart(node, index);
+                    range.setEnd(node, index + cleanQuery.length);
+                    
+                    const span = document.createElement('span');
+                    span.className = 'annotation annotation-highlight highlight-blue';
+                    span.dataset.type = 'highlight';
+                    span.dataset.color = 'blue';
+                    
+                    try {
+                        range.surroundContents(span);
+                        span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        found = true;
+                    } catch (e) {
+                        // Bỏ qua nếu range bị xung đột node
+                    }
+                    break;
+                }
+            }
+
+            // Fallback nếu không tìm thấy chuỗi chính xác: thử tìm theo cụm từ khóa chính hoặc từ đầu tiên
+            if (!found) {
+                const words = cleanQuery.split(/\s+/).filter(w => w.length > 4);
+                if (words.length > 0) {
+                    const keyword = words[0];
+                    walker.currentNode = currentPassageEl; // reset walker
+                    while (node = walker.nextNode()) {
+                        const text = node.nodeValue;
+                        const index = text.indexOf(keyword);
+                        if (index !== -1) {
+                            const range = document.createRange();
+                            range.setStart(node, index);
+                            range.setEnd(node, Math.min(index + cleanQuery.length, text.length));
+                            
+                            const span = document.createElement('span');
+                            span.className = 'annotation annotation-highlight highlight-blue';
+                            span.dataset.type = 'highlight';
+                            span.dataset.color = 'blue';
+                            
+                            try {
+                                range.surroundContents(span);
+                                span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            } catch (e) {}
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         function checkAnswers() {
             if (hasSubmitted) return;
             hasSubmitted = true;
@@ -1698,7 +1665,7 @@
                 const selectInput = document.getElementById(`q${i}`);
                 
                 if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
-                    const element = textInput.closest('.matching-form-row') || textInput.closest('td') || textInput;
+                    const element = textInput.closest('.matching-form-row') || textInput;
                     userAnswer = textInput.value.trim();
                     userAnswerDisplay = userAnswer || 'Not Answered';
 
@@ -1782,7 +1749,7 @@
                 if (window.testExplanations && window.testExplanations[i]) {
                     let container = null;
                     if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
-                        container = textInput.closest('td') || textInput.closest('li') || textInput.closest('p');
+                        container = textInput.closest('li') || textInput.closest('p');
                     } else if (selectInput && selectInput.tagName === 'SELECT') {
                         container = selectInput.closest('.matching-form-row');
                     } else if (radioGroup.length > 0) {
@@ -1795,12 +1762,11 @@
                         expElement.dataset.forQ = i;
                         expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i} (Bấm vào đây để xem evidence):</div><div>${window.testExplanations[i]}</div>`;
                         
-                        expElement.title = 'Bấm để highlight evidence trong bài đọc';
                         expElement.addEventListener('click', () => {
                             highlightEvidenceInPassage(window.testExplanations[i]);
                         });
 
-                        const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' || container.tagName === 'TD' ? container.parentNode : container;
+                        const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' ? container.parentNode : container;
                         if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) {
                             checkContainer.appendChild(expElement);
                         }
@@ -1869,7 +1835,7 @@
             if (activeQuestionElement) {
                 activeQuestionElement.classList.remove('active-question', 'active-input');
             }
-            let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`) || document.getElementById(`q${questionNumber}`);
+            let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
             if (targetEl) {
                 activeQuestionElement = targetEl;
                  if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
@@ -1878,6 +1844,13 @@
                      targetEl.classList.add('active-question');
                  }
                  scrollIntoViewIfNeeded(targetEl);
+            } else {
+                 const pMatch = document.querySelector(`.matching-form-row select[id="q${questionNumber}"]`);
+                 if(pMatch) {
+                    activeQuestionElement = pMatch;
+                    pMatch.classList.add('active-input');
+                    scrollIntoViewIfNeeded(pMatch);
+                 }
             }
             updateNavigation();
         }
@@ -1933,6 +1906,8 @@
             if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') return true;
             const radio = document.querySelector(`input[name="q${qNum}"]:checked`);
             if (radio) return true;
+            const select = document.getElementById(`q${qNum}`);
+            if (select && select.tagName === 'SELECT' && select.value !== '') return true;
             return false;
         }
 

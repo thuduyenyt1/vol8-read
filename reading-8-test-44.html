@@ -449,6 +449,7 @@
         .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
         .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
         .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
+        .annotation-highlight.highlight-blue { --highlight-color: #d0ebff; }
 
         .annotation-note {
             background-color: #b4f0c1;
@@ -876,6 +877,11 @@
             line-height: 1.5;
             width: 100%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .explanation-box:hover {
+            background-color: #e2efff;
         }
         .explanation-box.show {
             display: block;
@@ -1405,6 +1411,87 @@
     </script>
 
     <script>
+    // Hàm thông minh tự động dò tìm và highlight đoạn evidence trong bài đọc với độ chính xác cao
+    function highlightEvidenceInPassage(explanationText) {
+        const passagePanel = document.getElementById('passage-panel');
+        const currentPassageEl = passagePanel.querySelector('.reading-passage:not(.hidden)');
+        if (!currentPassageEl) return;
+
+        // Xóa các highlight evidence cũ (màu xanh dương) trước đó
+        currentPassageEl.querySelectorAll('.annotation-highlight.highlight-blue').forEach(el => {
+            const parent = el.parentNode;
+            while (el.firstChild) parent.insertBefore(el.firstChild, el);
+            parent.removeChild(el);
+        });
+
+        // 1. Thử tìm chuỗi nằm trong dấu ngoặc kép đầu tiên
+        let targetPhrase = '';
+        const match = explanationText.match(/"([^"]+)"/);
+        if (match) {
+            targetPhrase = match[1].trim();
+        } else {
+            targetPhrase = explanationText.replace(/^(Trích dẫn:|Đáp án:).*?(\:|\-\>)/i, '').trim();
+        }
+
+        if (!targetPhrase) return;
+
+        const walker = document.createTreeWalker(currentPassageEl, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        let found = false;
+
+        // Thử khớp chính xác toàn bộ chuỗi
+        while (node = walker.nextNode()) {
+            const text = node.nodeValue;
+            let index = text.indexOf(targetPhrase);
+            if (index !== -1) {
+                const range = document.createRange();
+                range.setStart(node, index);
+                range.setEnd(node, index + targetPhrase.length);
+                
+                const span = document.createElement('span');
+                span.className = 'annotation annotation-highlight highlight-blue';
+                span.dataset.type = 'highlight';
+                span.dataset.color = 'blue';
+                
+                try {
+                    range.surroundContents(span);
+                    span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    found = true;
+                } catch (e) {}
+                break;
+            }
+        }
+
+        // 2. Nếu không khớp chính xác, tách từ khóa quan trọng (> 4 ký tự) để quét linh hoạt
+        if (!found) {
+            const words = targetPhrase.split(/\s+/).map(w => w.replace(/[^a-zA-Z0-9]/g, '')).filter(w => w.length > 4);
+            if (words.length > 0) {
+                const keyword = words[0];
+                walker.currentNode = currentPassageEl;
+                while (node = walker.nextNode()) {
+                    const text = node.nodeValue;
+                    const index = text.toLowerCase().indexOf(keyword.toLowerCase());
+                    if (index !== -1) {
+                        const range = document.createRange();
+                        range.setStart(node, index);
+                        range.setEnd(node, index + keyword.length);
+                        
+                        const span = document.createElement('span');
+                        span.className = 'annotation annotation-highlight highlight-blue';
+                        span.dataset.type = 'highlight';
+                        span.dataset.color = 'blue';
+                        
+                        try {
+                            range.surroundContents(span);
+                            span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } catch (e) {}
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const launchScreen = document.getElementById('launchScreen');
         const app = document.getElementById('app');
@@ -1439,7 +1526,6 @@
         let timeInSeconds = 3600;
         let timerInterval;
         let hasSubmitted = false;
-        let draggedItem = null;
         let activeQuestionElement = null;
         const markedQuestions = new Set();
         const markButtons = new Map();
@@ -1619,8 +1705,13 @@
                         let expElement = document.createElement('div');
                         expElement.className = 'explanation-box show';
                         expElement.dataset.forQ = i;
-                        expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i}:</div><div>${window.testExplanations[i]}</div>`;
+                        expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i} (Bấm vào đây để xem evidence):</div><div>${window.testExplanations[i]}</div>`;
                         
+                        expElement.title = 'Bấm để highlight evidence trong bài đọc';
+                        expElement.addEventListener('click', () => {
+                            highlightEvidenceInPassage(window.testExplanations[i]);
+                        });
+
                         const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' ? container.parentNode : container;
                         if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) {
                             checkContainer.appendChild(expElement);

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
+    <title>IELTS Listening Practice - Upgraded</title>
+    <style>
+        /* GIỮ NGUYÊN CSS GỐC CHO PHẦN CHUNG */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; background-color: #ffffff; line-height: 1.4; font-size: 16px; overflow-x: hidden; }
+        .header { background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb); background-size: 200% 200%; animation: bannerFlow 8s ease-in-out infinite; padding: 10px 20px; border-bottom: 1px solid #d7def5; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: nowrap; position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; }
+        .header-right { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1 1 auto; justify-content: flex-start; }
+        .audio-bar { position: fixed; top: 60px; left: 0; right: 0; z-index: 95; background: #f7f9fc; border-bottom: 1px solid #e0e7ff; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+        .audio-controls { display: flex; align-items: center; gap: 10px; flex: 1 1 420px; min-width: 260px; }
+        #audio-play-pause { width: 44px; height: 44px; border-radius: 50%; border: 1px solid #d5ddf7; background: #ffffff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        #audio-play-pause:hover { box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12); transform: translateY(-1px); }
+        #audio-progress { flex: 1; accent-color: #4a90e2; cursor: pointer; }
+        .audio-time { font-family: monospace; font-size: 13px; color: #3a3f63; min-width: 84px; text-align: right; }
+        .audio-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; flex: 0 0 auto; }
+        .audio-speed { position: relative; }
+        #audio-speed-btn { border: 1px solid #d5ddf7; background: #ffffff; border-radius: 12px; padding: 8px 12px; cursor: pointer; font-weight: 600; color: #1c2566; }
+        #audio-speed-options { position: absolute; top: calc(100% + 6px); right: 0; background: #ffffff; border: 1px solid #dfe7ff; border-radius: 12px; box-shadow: 0 8px 24px rgba(33, 58, 128, 0.15); overflow: hidden; min-width: 110px; z-index: 1000; }
+        .audio-speed-option { padding: 8px 12px; cursor: pointer; }
+        .audio-speed-option:hover { background: #f1f5ff; }
+        .header-ad { display: inline-flex; align-items: center; gap: 0; padding: 4px 10px; border-radius: 14px; border: 1px solid rgba(215, 222, 245, 0.9); background: rgba(255, 255, 255, 0.24); backdrop-filter: blur(4px); text-decoration: none; color: inherit; box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12); min-width: 180px; max-width: calc(100% - 70px); width: auto; flex: 1 1 auto; height: 48px; overflow: hidden; }
+        .ad-copy { display: flex; flex-direction: column; gap: 0; width: 100%; overflow: hidden; position: relative; }
+        .ad-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #6b7ac7; margin: 0; font-weight: 700; }
+        .ad-marquee { display: flex; gap: 24px; width: 100%; align-items: center; padding-left: 4px; }
+        .ad-headline { margin: 0; font-size: 16px; font-weight: 800; color: #1c2566; white-space: nowrap; }
+        .ad-loop { display: flex; gap: 40px; }
+        .ad-close { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #cdd6f5; background: rgba(255, 255, 255, 0.7); color: #46507a; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease; text-decoration: none; font-weight: 800; }
+        .ad-close:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25); background: #f6f8ff; }
+        @keyframes bannerFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .main-container { margin-top: 130px; display: flex; flex-direction: row; background: #ffffff; min-height: calc(100vh - 130px); padding-bottom: 100px; transition: all 0.3s ease; }
+        .panels-container { display: block; flex: 1; overflow-y: auto; transition: width 0.3s ease; }
+        .questions-panel { padding: 20px 20px 100px; min-width: 200px; width: 100%; margin: 0 auto; max-width: 800px; }
+        .question-title { font-weight: bold; margin-bottom: 10px; font-size: 16px; }
+        .nav-row { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; display: flex; align-items: center; height: 80px; z-index: 100; border-top: 1px solid #ccc; padding: 0 20px;}
+        .footer__questionWrapper___1tZ46 { display: flex; align-items: center; margin-right: 20px; }
+        .footer__questionNo___3WNct { background: none; border: none; padding: 10px 15px; font-size: 16px; font-weight: 600; color: #333; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: background-color 0.2s; }
+        .footer__questionNo___3WNct:hover { background-color: #f8f9fa; }
+        .sectionNr { font-size: 16px; font-weight: bold; }
+        .attemptedCount { font-size: 14px; color: #666; margin-left: 5px; font-weight: 400; }
+        .footer__subquestionWrapper___9GgoP { display: flex; gap: 4px; margin-left: 10px; flex-wrap: wrap; max-width: 70vw;}
+        .subQuestion { width: 32px; height: 32px; border: 1px solid #ccc; background: white; color: #333; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; border-radius: 2px; }
+        .subQuestion:hover { background-color: #f0f0f0; border-color: #999; }
+        .footer__deliverButton___3FM07 { margin-left: auto; background-color: #f0f0f0; color: #333; border: 1px solid #ccc; padding: 12px 20px; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background-color 0.2s, border-color 0.2s; min-width: 170px; justify-content: center; }
+        .footer__deliverButton___3FM07:hover { background-color: #e0e0e0; border-color: #bbb; }
+        .hidden { display: none !important; }
+        .question { margin-bottom: 40px; }
+        .question p { margin-bottom: 10px; }
+        .answer-input { border: 1px solid #888; border-radius: 4px; background-color: #fff; padding: 2px 5px; font-size: 16px; text-align: center; margin-right: 4px; margin-left: 4px; transition: border-color 0.3s, box-shadow 0.3s; height: 28px; width: 150px; z-index: 10; position: relative; pointer-events: auto;}
+        .answer-input:focus { border-color: #4a90e2; box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5); outline: none; }
+        .timer-container { display: flex; position: relative; cursor: default; color: #333; font-size: 16px; font-weight: 500; align-items: center; gap: 12px; flex: 0 0 auto; min-width: 220px; padding: 4px 10px; border-radius: 14px; border: 1px solid #d7def5; background: rgba(255, 255, 255, 0.24); box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08); }
+        .timer-controls { display: flex; align-items: center; gap: 8px; margin-left: 15px; }
+        .timer-controls button { background: #f0f0f0; border: 1px solid #ccc; border-radius: 50%; padding: 0; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s; }
+        .timer-controls button:hover { background: #e0e0e0; }
+        .timer-controls button svg { width: 20px; height: 20px; fill: #333; }
+        #launchScreen { display: flex; align-items: center; justify-content: center; padding: 24px; background: radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%), radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%), #f4f6fc; color: #1f2b59; width: 100vw; height: 100vh; position: fixed; top: 0; z-index: 9999;}
+        .launch-card { width: min(980px, 100%); border: 1px solid #d7def5; border-radius: 18px; background: linear-gradient(180deg, #ffffff, #f7f9ff); box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14); padding: 28px 30px 22px; display: grid; gap: 12px; }
+        .launch-btn { border: 1px solid #c5d0f2; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 700; padding: 11px 16px; color: #24336e; background: #ffffff; transition: transform 0.12s ease; box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14); }
+        .launch-btn:hover { transform: translateY(-1px); background: #f6f8ff; }
+        .grouped-fill-list { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .grouped-fill-bullet { list-style: disc; margin-left: 22px; padding-left: 4px; line-height: 1.6; }
+        .diagram-item { display: flex; align-items: center; gap: 10px; margin-top: 10px;}
+        .diagram-number { font-weight: 700; min-width: 32px; color: #0f172a; }
+
+        /* ====== TÍNH NĂNG MỚI ====== */
+
+        /* 1. Đổi màu nút Sidebar khi có đáp án */
+        .subQuestion.answered-blue { background-color: #4a90e2 !important; color: #ffffff !important; border-color: #357abd !important; }
+
+        /* 2. Cửa sổ Tapescript nổi bên phải */
+        .tapescript-sidebar {
+            position: fixed;
+            top: 130px;
+            right: -450px; /* Ẩn mặc định ngoài viền phải */
+            width: 420px;
+            height: calc(100vh - 210px);
+            background-color: #f8fafc;
+            border-left: 2px solid #d7def5;
+            box-shadow: -4px 0 15px rgba(0,0,0,0.05);
+            transition: right 0.4s ease-in-out;
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 90;
+        }
+        .tapescript-sidebar.open { right: 0; } /* Class hiển thị sidebar */
+        .panels-container.script-open { padding-right: 420px; } /* Đẩy nội dung câu hỏi sang trái để không bị đè */
+
+        .tapescript-sidebar h3 { color: #1c2566; text-align: center; margin-bottom: 20px; font-size: 20px; text-transform: uppercase; position: sticky; top: 0; background: #f8fafc; padding: 10px 0; border-bottom: 1px solid #d7def5; }
+        .ts-section { margin-bottom: 25px; }
+        .ts-section h4 { color: #4a90e2; margin-bottom: 15px; border-bottom: 2px solid #e0e7ff; padding-bottom: 5px;}
+        .ts-line { margin-bottom: 12px; font-size: 15px; line-height: 1.5; color: #333;}
+        .ts-speaker { font-weight: 700; color: #3c4a81; margin-right: 5px;}
+
+        /* 3. Style cho Explanation & Evidence Icon */
+        .explanation { margin-top: 8px; font-size: 15px; color: #155724; background-color: #d4edda; padding: 8px 12px; border-radius: 4px; border-left: 4px solid #28a745; display: inline-block; width: 100%;}
+        .evidence-icon { cursor: pointer; margin-left: 8px; font-size: 18px; display: inline-block; transition: transform 0.2s; }
+        .evidence-icon:hover { transform: scale(1.2); }
+
+        /* 4. Highlight Tapescript Animation */
+        @keyframes highlight-fade {
+            0% { background-color: #ffeb3b; color: #000; box-shadow: 0 0 5px #ffeb3b;}
+            70% { background-color: #ffeb3b; color: #000;}
+            100% { background-color: transparent; color: inherit; }
+        }
+        .evidence-highlight { animation: highlight-fade 3s ease-out; border-radius: 3px; padding: 2px;}
+
+        /* 5. Highlight text khi bôi đen chuột */
+        .user-highlight { background-color: #fff3a3; border-radius: 2px; }
+        
+        /* Chỉnh sửa layout cho các câu hỏi mới */
+        .part-header { background-color: #f1f2ec; padding: 10px 16px; border: 1px solid #e0e0e0; text-align: left; margin: 20px 0; border-radius: 5px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+    <!-- Màn hình chờ Launch Screen -->
+    <section id="launchScreen" aria-label="Launch screen">
+        <div class="launch-card">
+            <div>
+                <p class="launch-eyebrow">IELTS Test Launcher</p>
+                <h1 class="launch-title" id="launchTestTitle">IELTS Listening Test 5</h1>
+                <p class="launch-meta">Dạng bài: Listening Full 40 Questions</p>
+            </div>
+            <div class="launch-guide">
+                <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
+                <p class="launch-sub">Nếu bàn phím của bạn không có F11, hãy bấm nút bên dưới để làm bài ở giao diện thường.</p>
+            </div>
+            <div class="launch-row">
+                <button id="startNormalBtn" class="launch-btn" type="button" onclick="document.getElementById('launchScreen').style.display='none'; document.getElementById('app').style.display='block';">Bắt đầu làm bài</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="app">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="timer-container">
+                <span class="timer-display">40:00 remaining</span>
+            </div>
+        </div>
+        
+        <!-- AUDIO BAR ĐÃ KÍCH HOẠT -->
+        <div class="audio-bar">
+            <div class="audio-controls">
+                <button id="audio-play-pause" type="button" title="Play/Pause">
+                    <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>
+                    <svg id="icon-pause" class="hidden" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <input type="range" id="audio-progress" min="0" value="0" step="0.01">
+                <span class="audio-time"><span id="audio-current">0:00</span> / <span id="audio-duration">0:00</span></span>
+            </div>
+            <div class="audio-meta">
+                <div class="audio-speed">
+                    <button id="audio-speed-btn" type="button">1.0x</button>
+                    <div id="audio-speed-options" class="hidden">
+                        <div class="audio-speed-option" data-speed="0.75">0.75x</div>
+                        <div class="audio-speed-option" data-speed="1">1.0x</div>
+                        <div class="audio-speed-option" data-speed="1.25">1.25x</div>
+                        <div class="audio-speed-option" data-speed="1.5">1.5x</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Thay DƯỜNG DẪN FILE AUDIO THẬT CỦA BẠN VÀO ĐÂY -->
+            <audio id="audio-player" src="audio.mp3" preload="metadata"></audio>
+        </div>
+
+        <div class="main-container" id="main-container">
+            <!-- KHU VỰC CÂU HỎI TRÁI -->
+            <div class="panels-container" id="panels-container">
+                <div class="questions-panel" id="questions-panel">
+                    
+                    <!-- SECTION 1 -->
+                    <div id="part-header-1" class="part-header">
+                        <p><strong>Section 1: Questions 1-10</strong></p>
+                        <p>Complete the notes below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+                    </div>
+                    <div class="question grouped-fill-question">
+                        <div class="grouped-fill">
+                            <div class="grouped-fill-title">Library services</div>
+                            <div class="grouped-fill-section">
+                                <ul class="grouped-fill-list">
+                                    <li class="grouped-fill-bullet">Area of living: in the west of Perth</li>
+                                    <li class="grouped-fill-bullet">Best option - Minack Library</li>
+                                    <li class="grouped-fill-bullet">Located in <input type="text" class="answer-input" id="q1" placeholder="1"> Street, next to the <input type="text" class="answer-input" id="q2" placeholder="2">
+                                        <div class="explanation hidden">Đáp án Q1: Skellarn <span class="evidence-icon" data-target="evidence-q1">🔍</span><br>Đáp án Q2: park <span class="evidence-icon" data-target="evidence-q2">🔍</span></div>
+                                    </li>
+                                    <li class="grouped-fill-bullet">Saturdays: open until <input type="text" class="answer-input" id="q3" placeholder="3"> p.m.
+                                        <div class="explanation hidden">Đáp án Q3: 4:30 <span class="evidence-icon" data-target="evidence-q3">🔍</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grouped-fill-section">
+                                <div class="grouped-fill-heading">Children's activities</div>
+                                <ul class="grouped-fill-list">
+                                    <li class="grouped-fill-bullet">a <input type="text" class="answer-input" id="q4" placeholder="4"> club (5-13 year olds)
+                                        <div class="explanation hidden">Đáp án Q4: drama <span class="evidence-icon" data-target="evidence-q4">🔍</span></div>
+                                    </li>
+                                    <li class="grouped-fill-bullet">a <input type="text" class="answer-input" id="q5" placeholder="5"> club (every other Saturday)
+                                        <div class="explanation hidden">Đáp án Q5: singing <span class="evidence-icon" data-target="evidence-q5">🔍</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grouped-fill-section">
+                                <div class="grouped-fill-heading">Adult activities</div>
+                                <ul class="grouped-fill-list">
+                                    <li class="grouped-fill-bullet">book of the Month club</li>
+                                    <li class="grouped-fill-bullet">can meet local <input type="text" class="answer-input" id="q6" placeholder="6"> (about one a year)
+                                        <div class="explanation hidden">Đáp án Q6: artists <span class="evidence-icon" data-target="evidence-q6">🔍</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grouped-fill-section">
+                                <div class="grouped-fill-heading">Services</div>
+                                <ul class="grouped-fill-list">
+                                    <li class="grouped-fill-bullet">can borrow <input type="text" class="answer-input" id="q7" placeholder="7">
+                                        <div class="explanation hidden">Đáp án Q7: films <span class="evidence-icon" data-target="evidence-q7">🔍</span></div>
+                                    </li>
+                                    <li class="grouped-fill-bullet">computers are available (can be booked)</li>
+                                    <li class="grouped-fill-bullet">various <input type="text" class="answer-input" id="q8" placeholder="8"> are available
+                                        <div class="explanation hidden">Đáp án Q8: magazines <span class="evidence-icon" data-target="evidence-q8">🔍</span></div>
+                                    </li>
+                                    <li class="grouped-fill-bullet">can drop off books, etc via the letter box (must give card <input type="text" class="answer-input" id="q9" placeholder="9">)
+                                        <div class="explanation hidden">Đáp án Q9: number <span class="evidence-icon" data-target="evidence-q9">🔍</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grouped-fill-section">
+                                <div class="grouped-fill-heading">Library shop sells</div>
+                                <ul class="grouped-fill-list">
+                                    <li class="grouped-fill-bullet">postcards (small selection)</li>
+                                    <li class="grouped-fill-bullet"><input type="text" class="answer-input" id="q10" placeholder="10"> (wide range)
+                                        <div class="explanation hidden">Đáp án Q10: maps <span class="evidence-icon" data-target="evidence-q10">🔍</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2 -->
+                    <div id="part-header-2" class="part-header">
+                        <p><strong>Section 2: Questions 11-20</strong></p>
+                    </div>
+                    
+                    <div class="question diagram-question">
+                        <div class="question-prompt"><p><strong>Questions 11-16</strong></p><p>Choose the correct letter, <strong>A-H</strong>, for each answer.</p></div>
+                        <div class="diagram-title"><strong>Campsite plan</strong></div>
+                        <div class="diagram-image-wrap">
+                            <!-- BẠN DÁN MÃ ẢNH BASE64 BIỂU ĐỒ CỦA BẠN VÀO THUỘC TÍNH SRC DƯỚI ĐÂY -->
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArwAA..." alt="Campsite Plan Map" class="diagram-image">
+                        </div>
+                        <div class="diagram-inputs">
+                            <div class="diagram-item"><span class="diagram-number">11</span><span class="diagram-label">Toilet block</span><input type="text" class="answer-input" id="q11" placeholder="11"></div>
+                            <div class="explanation hidden">Đáp án Q11: A <span class="evidence-icon" data-target="evidence-q11">🔍</span></div>
+                            
+                            <div class="diagram-item"><span class="diagram-number">12</span><span class="diagram-label">Shower block</span><input type="text" class="answer-input" id="q12" placeholder="12"></div>
+                            <div class="explanation hidden">Đáp án Q12: C <span class="evidence-icon" data-target="evidence-q12">🔍</span></div>
+                            
+                            <div class="diagram-item"><span class="diagram-number">13</span><span class="diagram-label">Tents</span><input type="text" class="answer-input" id="q13" placeholder="13"></div>
+                            <div class="explanation hidden">Đáp án Q13: G <span class="evidence-icon" data-target="evidence-q13">🔍</span></div>
+                            
+                            <div class="diagram-item"><span class="diagram-number">14</span><span class="diagram-label">Cabins</span><input type="text" class="answer-input" id="q14" placeholder="14"></div>
+                            <div class="explanation hidden">Đáp án Q14: D <span class="evidence-icon" data-target="evidence-q14">🔍</span></div>
+                            
+                            <div class="diagram-item"><span class="diagram-number">15</span><span class="diagram-label">Barbecues</span><input type="text" class="answer-input" id="q15" placeholder="15"></div>
+                            <div class="explanation hidden">Đáp án Q15: F <span class="evidence-icon" data-target="evidence-q15">🔍</span></div>
+                            
+                            <div class="diagram-item"><span class="diagram-number">16</span><span class="diagram-label">Mountain biking</span><input type="text" class="answer-input" id="q16" placeholder="16"></div>
+                            <div class="explanation hidden">Đáp án Q16: H <span class="evidence-icon" data-target="evidence-q16">🔍</span></div>
+                        </div>
+                    </div>
+
+                    <div class="question grouped-fill-question">
+                        <div class="question-prompt"><p><strong>Questions 17-20</strong></p><p>Complete the sentences below. Write <strong>ONE WORD ONLY</strong> for each answer.</p></div>
+                        <ul class="grouped-fill-list">
+                            <li class="grouped-fill-bullet">It is suggested to bring a pair of <input type="text" class="answer-input" id="q17" placeholder="17">.
+                                <div class="explanation hidden">Đáp án Q17: earplugs <span class="evidence-icon" data-target="evidence-q17">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Campers should bring <input type="text" class="answer-input" id="q18" placeholder="18"> if the weather is wet.
+                                <div class="explanation hidden">Đáp án Q18: boots <span class="evidence-icon" data-target="evidence-q18">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Please prepare for a good <input type="text" class="answer-input" id="q19" placeholder="19"> for the final night.
+                                <div class="explanation hidden">Đáp án Q19: sing-along <span class="evidence-icon" data-target="evidence-q19">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">People much prefer to see some good <input type="text" class="answer-input" id="q20" placeholder="20"> at the concert.
+                                <div class="explanation hidden">Đáp án Q20: dancing <span class="evidence-icon" data-target="evidence-q20">🔍</span></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 3 -->
+                    <div id="part-header-3" class="part-header">
+                        <p><strong>Section 3: Questions 21-30</strong></p>
+                        <p>Complete the notes below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
+                    </div>
+                    <div class="question grouped-fill-question">
+                        <div class="grouped-fill-heading">Music Students Survey</div>
+                        <ul class="grouped-fill-list">
+                            <li class="grouped-fill-bullet">Before university, almost everyone was playing in front of <input type="text" class="answer-input" id="q21" placeholder="21">.
+                                <div class="explanation hidden">Đáp án Q21: live audiences <span class="evidence-icon" data-target="evidence-q21">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">In most cases, one of the instruments studied was <input type="text" class="answer-input" id="q22" placeholder="22">.
+                                <div class="explanation hidden">Đáp án Q22: dominant <span class="evidence-icon" data-target="evidence-q22">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Students practice mainly because of being terrified of <input type="text" class="answer-input" id="q23" placeholder="23">.
+                                <div class="explanation hidden">Đáp án Q23: failing <span class="evidence-icon" data-target="evidence-q23">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Most agree it's rewarding when mastering something that's really <input type="text" class="answer-input" id="q24" placeholder="24">.
+                                <div class="explanation hidden">Đáp án Q24: hard to learn <span class="evidence-icon" data-target="evidence-q24">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">A high percentage try to learn their pieces by <input type="text" class="answer-input" id="q25" placeholder="25">.
+                                <div class="explanation hidden">Đáp án Q25: heart <span class="evidence-icon" data-target="evidence-q25">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">It helps to <input type="text" class="answer-input" id="q26" placeholder="26"> playing your chosen piece.
+                                <div class="explanation hidden">Đáp án Q26: listen to other people <span class="evidence-icon" data-target="evidence-q26">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">They appreciate the challenge of solo performance and find it <input type="text" class="answer-input" id="q27" placeholder="27">.
+                                <div class="explanation hidden">Đáp án Q27: stimulating <span class="evidence-icon" data-target="evidence-q27">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Deciding pieces to perform took them ages to <input type="text" class="answer-input" id="q28" placeholder="28">.
+                                <div class="explanation hidden">Đáp án Q28: make their minds up <span class="evidence-icon" data-target="evidence-q28">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Regarding playing with a different genre, most had <input type="text" class="answer-input" id="q29" placeholder="29">.
+                                <div class="explanation hidden">Đáp án Q29: never even considered it <span class="evidence-icon" data-target="evidence-q29">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Performing with same instrument musicians was <input type="text" class="answer-input" id="q30" placeholder="30">.
+                                <div class="explanation hidden">Đáp án Q30: incredibly helpful <span class="evidence-icon" data-target="evidence-q30">🔍</span></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 4 -->
+                    <div id="part-header-4" class="part-header">
+                        <p><strong>Section 4: Questions 31-40</strong></p>
+                        <p>Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+                    </div>
+                    <div class="question grouped-fill-question">
+                        <div class="grouped-fill-heading">Ethics in Engineering</div>
+                        <ul class="grouped-fill-list">
+                            <li class="grouped-fill-bullet">In the 19th century, ethical issues were considered to be a <input type="text" class="answer-input" id="q31" placeholder="31"> issue.
+                                <div class="explanation hidden">Đáp án Q31: personal <span class="evidence-icon" data-target="evidence-q31">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Change was brought by the collapse of three <input type="text" class="answer-input" id="q32" placeholder="32">.
+                                <div class="explanation hidden">Đáp án Q32: bridges <span class="evidence-icon" data-target="evidence-q32">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">1879 Scotland disaster: Engineers failed to calculate effects of <input type="text" class="answer-input" id="q33" placeholder="33">.
+                                <div class="explanation hidden">Đáp án Q33: wind <span class="evidence-icon" data-target="evidence-q33">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">1907 Canada disaster: The <input type="text" class="answer-input" id="q34" placeholder="34"> of the structure was too great.
+                                <div class="explanation hidden">Đáp án Q34: weight <span class="evidence-icon" data-target="evidence-q34">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Boston Molasses Disaster: Molasses was used as the principal <input type="text" class="answer-input" id="q35" placeholder="35">.
+                                <div class="explanation hidden">Đáp án Q35: sweetener <span class="evidence-icon" data-target="evidence-q35">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">8 million liters of liquid was stored in a <input type="text" class="answer-input" id="q36" placeholder="36">.
+                                <div class="explanation hidden">Đáp án Q36: tank <span class="evidence-icon" data-target="evidence-q36">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Residents brought about a <input type="text" class="answer-input" id="q37" placeholder="37"> against the company.
+                                <div class="explanation hidden">Đáp án Q37: trial <span class="evidence-icon" data-target="evidence-q37">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">It was clear that not enough <input type="text" class="answer-input" id="q38" placeholder="38"> tests were carried out.
+                                <div class="explanation hidden">Đáp án Q38: safety <span class="evidence-icon" data-target="evidence-q38">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Fermentation of molasses led to an increase in <input type="text" class="answer-input" id="q39" placeholder="39">.
+                                <div class="explanation hidden">Đáp án Q39: pressure <span class="evidence-icon" data-target="evidence-q39">🔍</span></div>
+                            </li>
+                            <li class="grouped-fill-bullet">Legislation requires engineers to gain a <input type="text" class="answer-input" id="q40" placeholder="40">.
+                                <div class="explanation hidden">Đáp án Q40: license <span class="evidence-icon" data-target="evidence-q40">🔍</span></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CỬA SỔ NỔI SCRIPT (SIDEBAR BÊN PHẢI) -->
+            <div id="tapescript-sidebar" class="tapescript-sidebar">
+                <h3>Audio Transcripts</h3>
+                
+                <div class="ts-section">
+                    <h4>SECTION 1</h4>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Good morning, library services.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Oh, good morning. My family and I have recently moved to the area and we'd like to find where our nearest library is. We don't have a car.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Right. So whereabouts are you?</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> In Perthon, in the west.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Fine. So I'll just get the details on screen for you. Okay, your nearest one is the Minack Library.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Minack?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> <span id="evidence-q1">Yes, in Skellarn Street.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Can you spell that?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> It's S-K-E-L-L-A-R-N Street.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Got that.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> <span id="evidence-q2">It's very easy to find because it's beside a park.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Oh, I think I know that area. There's a sports center near there, isn't there?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> I don't know of one.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Oh, I'm probably mistaken. Anyway, it's probably a bit far for us to walk from home. Are there any buses?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Yes, it's well served by public transport. There's a stop about five minutes' walk away.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Oh, right. And when does the library open? We'll most often want to come at the weekend.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> I'm afraid it's not open on Sunday.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Saturday?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> <span id="evidence-q3">Opens at 9:00, closes at 4:30.</span> We shut at 5:00 on weekdays.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> That's fine. Now, I've got two kids, 14 and 9, and I wondered whether you have any special activities for them. In our last place, we had an art club.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> <span id="evidence-q4">Well, the library does run a drama club,</span> but that would only be suitable for your younger child. It's open for 5 to 13 year olds.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> A pity it's not open to both of them. Have you anything they could both go to?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Well, there's no reading club that would suit them both. <span id="evidence-q5">Oh, but there's a singing club</span> that's held every second Saturday afternoon for children of all ages up to 16.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Excellent.... Now, because we're new to the area, I'm also wanting to get involved in local activities.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Well, Minack does some sessions for adults as well. There's a Book of the Month club.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> That's good.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> And I know that about once every 12 months <span id="evidence-q6">they have a session where you can meet artists,</span> you know, from the local area.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> How interesting. Well, that sounds like a full program. Now, while I'm on the phone, can I check what the facilities are? Can you take out CDs?</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> <span id="evidence-q7">Not CDs, I'm afraid, but films, yes.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Right, I'll make a note of that.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Anything else you need to know? Oh yes, we have ten computers. <span id="evidence-q8">And we also stock several magazines,</span> including business, healthcare and hobbies.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Same as my last place.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> And there is a new drop-off facility where you can post any item through the door if it's after hours. All you have to do is attach a note to it <span id="evidence-q9">with the number on your card clearly written.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> That sounds good.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> And we do have a small shop on the premises where we sell postcards. We don't have many, but it's a popular service.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Oh, that's a good idea.</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> They're very popular. <span id="evidence-q10">We also have an impressive range of maps</span> of the surrounding area for sale.</div>
+                    <div class="ts-line"><span class="ts-speaker">Woman:</span> Well, it sounds like you've got...</div>
+                </div>
+
+                <div class="ts-section">
+                    <h4>SECTION 2</h4>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Hello everyone, and welcome to this orientation session prior to our camp next week. Thank you for coming along to find out what you and your children will be doing on this year's camp. To start off with, let's tell you a bit about the campsite itself so that you'll be able to find your way around once you get there.</div>
+                    <div class="ts-line">Firstly, we'll be arriving by bus into the car park, which if you look at the plan you have in front of you, you'll see at the top of the picture on the left-hand side. <span id="evidence-q11">Now, if you cross the road from the car park, the first building you'll come to is the toilet block.</span> It's been recently upgraded, so it's very nice and clean in there now, with plenty of facilities.</div>
+                    <div class="ts-line"><span id="evidence-q12">And built onto that, so this is across the road from the community hall, is the new shower block.</span> The hot water does run out occasionally, but usually there's enough to cope with a group your size.</div>
+                    <div class="ts-line"><span id="evidence-q13">If you now move to the bottom left of your map, among the pine trees, there is a special flat site set up for pitching tents,</span> with power points and outdoor taps for water.</div>
+                    <div class="ts-line">Now, let's go back and move along the top of your map. There's another area of pine forest, and <span id="evidence-q14">then over on the far right-hand side, there's a block of small cabins.</span> Note that this is different from the main accommodation block, which doesn't appear on this map, but is further over again to the right.</div>
+                    <div class="ts-line">Now let's look down from there, over the road, so we're moving clockwise around your map, okay? <span id="evidence-q15">In this next block beside the flower beds, we have a lovely place for barbecues,</span> where you can cook in the open air.</div>
+                    <div class="ts-line">What else to tell you about? Um, <span id="evidence-q16">below the flower bed and across Lakeside Drive, you'll see a trail for mountain biking,</span> which is always a popular activity. Moving on now, in the middle of the campsite, you'll see the lake where you can canoe, and above that again, the community hall.</div>
+                    <div class="ts-line">...</div>
+                    <div class="ts-line"><span class="ts-speaker">Man:</span> Now let's think about what you need to bring with you. I'm sure you're all wondering what you need to pack. The lake is a bit cold for swimming at this time of year, so you can leave your togs out of the suitcase. While we're on the subject of weather too, usually I recommend that campers bring sunblock with them, but I guess now that we're into April, that too can be left behind.</div>
+                    <div class="ts-line">Ah, let me think. Some campers like a torch, but actually the days are still so long that it's light outside till quite late, and the blocks all have outside lighting now. So I'd say that <span id="evidence-q17">a pair of earplugs are more useful,</span> as in my experience, a lot of talking goes on after lights out. But in April, if it's wet, it can get muddy around the campsite, <span id="evidence-q18">so to bring boots is not a bad idea.</span></div>
+                    <div class="ts-line">Finally, can you all please prepare something for the final night concert? Bring your musical instruments or whatever else you need. <span id="evidence-q19">You can't have a camp without a good sing-along.</span> That's our favorite activity. Maybe you could recite a poem, act out a skit or charades for us if you're brave enough to try that, or failing that, perhaps you can tell a joke or a funny story. <span id="evidence-q20">But actually, people much prefer to see some good dancing.</span> I'll look forward to seeing you all perform next week.</div>
+                </div>
+
+                <div class="ts-section">
+                    <h4>SECTION 3</h4>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> So Gareth, we need to organize the findings from our survey on music students for the final presentation.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> Yes, Lorna. I think we've got some very interesting results. Obviously, we need to start by saying that we interviewed all the third-year students doing a music degree and state the objective of our research project, that is to find out about their attitudes to performing.</div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> And then we should talk about the students' musical backgrounds before coming to university. The most important points to make are that although most people have actually composed music during the course, that wasn't the case when they arrived. And the other thing they had in common was the piano.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> Well, they'd had access to a piano at some point, but not all had studied it formally. I thought the most interesting finding was that before coming here, almost everyone was involved in a chamber orchestra or band, or singing in a choir and <span id="evidence-q21">playing in front of live audiences.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> But varying enormously in size. Some had only played in tiny venues. I think it's worth saying that.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> Okay. And as you might expect from people wanting to study music, they all had a degree of proficiency in at least two instruments, but <span id="evidence-q22">in most cases, one of the instruments was dominant.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> Right. We need to talk about attitudes to music practice. The most striking thing here is that even students who you'd expect to practice for hours every day until they get it perfect say <span id="evidence-q23">it's being terrified of failing that really makes them practice.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> I know I'm the same.</div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> Me too. It's interesting what was said about practicing alone. Some people preferred that because they could focus more on their weak points.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> But that wasn't a majority view. What most of them agree on is that there's nothing more rewarding than <span id="evidence-q24">mastering something that's really hard to learn.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> That's right. Okay, after that, we should talk a bit about the pieces that students select for assessed performances. There wasn't quite so much consensus on this, was there? A few people prefer to do pieces which are relatively unknown, while others choose the ones they think will show off their technical ability. But they were in the minority.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> Hmm. I think the first thing to say is that a high percentage said they would always try to <span id="evidence-q25">learn their pieces by heart</span> because it's too easy to get lost if you're trying to read and play when you're nervous.</div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> Okay. And quite a lot of them said it helps to <span id="evidence-q26">listen to other people playing your chosen piece,</span> preferably recordings, but even just other students....</div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> So finally, we need to look at the findings for students' attitudes to performing. We should point out that this includes informal and formal public performances as well as assessed ones.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> Yes, that's important. I expected to find that performing solo would make students very nervous, but in fact, that isn't the case. They do find it hugely challenging to start with, but they appreciate the challenge and find it <span id="evidence-q27">stimulating.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> Right. I was surprised by what students said about deciding which pieces to perform. I thought they'd all say this was easy. For me, it's always been quite straightforward: which pieces do I like best, and which pieces can I play well? And my repertoire is quite limited anyway. But the most commonly cited answer was that it <span id="evidence-q28">took them ages to make their minds up.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> I suppose it's because there are so many factors involved. You need to consider your audience, the venue, the time available to learn the piece, especially if it's complicated. You need to think about all these things, and you can't do that in a hurry.</div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> That's true. Then there's performing with musicians from a different genre, like a classical musician playing with a jazz group. That can be really fun.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> But most of the music students had <span id="evidence-q29">never even considered it.</span></div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> Right. For performing with musicians who play the same instrument, almost everyone put the same thing.</div>
+                    <div class="ts-line"><span class="ts-speaker">Gareth:</span> Yes, they all said it was <span id="evidence-q30">incredibly helpful</span> and not at all intimidating, which says a lot for the department's ethos.</div>
+                    <div class="ts-line"><span class="ts-speaker">Lorna:</span> Yes, that's a good point. Okay, what I think we should sort out now is...</div>
+                </div>
+
+                <div class="ts-section">
+                    <h4>SECTION 4</h4>
+                    <div class="ts-line"><span class="ts-speaker">Lecturer:</span> Good afternoon. Today we're starting a series of lectures on ethics in engineering, that is, engineering principles relating to right and wrong conduct and the sorts of moral responsibilities that you will have to uphold in your professional lives. I'm going to start by giving you a brief outline of the history of ethics in engineering. It was, of course, only in the 19th century that engineering really emerged as a profession.</div>
+                    <div class="ts-line"><span id="evidence-q31">Initially, ethical issues were considered to be a personal issue,</span> something to be decided in accordance with one's own principles and values.</div>
+                    <div class="ts-line">However, things gradually changed as the profession grew and as engineering projects became larger and more complex. A need began to be felt for a more codified set of principles that all engineers would agree to follow. Unfortunately, it took three major disasters to bring about this change in attitude. <span id="evidence-q32">All three of these involved the collapse of bridges.</span></div>
+                    <div class="ts-line">The first, known as the Ashtabula River Railroad disaster, happened in 1876 in the USA, and we now think it was probably caused by metal fatigue. Then in 1879, there was a second disaster, this time in Scotland. <span id="evidence-q33">This occurred because engineers had failed to correctly calculate the effects that wind would have on the structure.</span> The third collapse occurred in 1907 in Canada. This was also due to an engineering design problem. <span id="evidence-q34">The weight of the structure was so great that it could not support itself and it collapsed.</span> Public outcry over disasters such as these eventually led to the establishment of professional societies for engineers in most industrializing societies.</div>
+                    <div class="ts-line">Another different type of disaster also had an impact on the development of professional engineering organizations, and I'd like to talk about this in a little more detail. This incident, which happened early in the 20th century, is known as the Boston Molasses Disaster. <span id="evidence-q35">At the time, molasses was used rather than sugar as the principal sweetener in the USA.</span> It was also used in the manufacture of a number of other important products.</div>
+                    <div class="ts-line">One company in the city of Boston had a large amount of molasses waiting to be transferred to another factory. <span id="evidence-q36">The molasses, more than 8 million liters of thick sticky liquid, was stored in a tank.</span> Suddenly this collapsed, unleashing a wave of molasses up to 5 meters high. Nearby buildings were swept off their foundations and crashed to the ground. The wave also swept away a considerable stretch of railway track. Many streets round the factory were covered with a thick layer of sticky brown molasses.</div>
+                    <div class="ts-line">Local residents were furious, as they felt that the company was to blame. <span id="evidence-q37">They banded together and succeeded in bringing about a trial, charging the company with negligence.</span> After three years, the company was found responsible for the accident and required to pay out in damages the equivalent of six or seven million dollars in today's money.</div>
+                    <div class="ts-line">Even today, no one is absolutely sure about the immediate causes of the accident. <span id="evidence-q38">However, it is certainly clear that not enough safety tests were carried out.</span> Had these been done in accordance with the standards now applicable, then the accident would almost certainly have been prevented. <span id="evidence-q39">It seems that the collapse was probably brought about by fermentation of the molasses, which led to an increase in pressure.</span> This increase probably exerted too much force against a fatigue crack or some other weakness.</div>
+                    <div class="ts-line">However, this was one of the main incidents which led to increased legislation in the 1920s to regulate engineers and the engineering profession. <span id="evidence-q40">It is the reason why we can now only operate if we have gained a license.</span> This requires us always to be conscientious about doing everything necessary to avoid disasters, however time-consuming or expensive this may sometimes seem. Let's move on now to another...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM BAR -->
+        <div class="nav-row">
+            <div class="footer__questionWrapper___1tZ46">
+                <button class="footer__questionNo___3WNct">
+                    <span class="section-prefix">Questions </span>
+                </button>
+                <div class="footer__subquestionWrapper___9GgoP">
+                    <!-- Dựng 40 câu -->
+                    <script>
+                        for(let i=1; i<=40; i++){
+                            document.write(`<div class="subQuestion" data-q="${i}">${i}</div>`);
+                        }
+                    </script>
+                </div>
+            </div>
+            <button class="footer__deliverButton___3FM07" id="check-answer-btn">Check Answer</button>
+        </div>
+
+    </div>
+
+    <!-- ====== JAVASCRIPT ====== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- 1. KÍCH HOẠT THANH AUDIO ---
+            const audio = document.getElementById('audio-player');
+            const playPauseBtn = document.getElementById('audio-play-pause');
+            const progress = document.getElementById('audio-progress');
+            const currentTimeEl = document.getElementById('audio-current');
+            const durationEl = document.getElementById('audio-duration');
+            const speedBtn = document.getElementById('audio-speed-btn');
+            const speedOptions = document.getElementById('audio-speed-options');
+            const iconPlay = document.getElementById('icon-play');
+            const iconPause = document.getElementById('icon-pause');
+
+            // Format phút:giây
+            function formatTime(seconds) {
+                if(isNaN(seconds)) return "0:00";
+                const min = Math.floor(seconds / 60);
+                const sec = Math.floor(seconds % 60);
+                return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+            }
+
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    iconPlay.classList.add('hidden');
+                    iconPause.classList.remove('hidden');
+                } else {
+                    audio.pause();
+                    iconPlay.classList.remove('hidden');
+                    iconPause.classList.add('hidden');
+                }
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                if(!isNaN(audio.duration)) {
+                    progress.value = (audio.currentTime / audio.duration) * 100;
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            });
+
+            audio.addEventListener('loadedmetadata', () => {
+                durationEl.textContent = formatTime(audio.duration);
+            });
+
+            progress.addEventListener('input', (e) => {
+                audio.currentTime = (e.target.value / 100) * audio.duration;
+            });
+            
+            speedBtn.addEventListener('click', () => {
+                speedOptions.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.audio-speed-option').forEach(opt => {
+                opt.addEventListener('click', (e) => {
+                    const speed = e.target.getAttribute('data-speed');
+                    audio.playbackRate = speed;
+                    speedBtn.textContent = speed + 'x';
+                    speedOptions.classList.add('hidden');
+                });
+            });
+
+            // --- 2. LOGIC NÚT "CHECK ANSWER" TRƯỢT SCRIPT BÊN PHẢI ---
+            const checkBtn = document.getElementById('check-answer-btn');
+            if (checkBtn) {
+                checkBtn.addEventListener('click', () => {
+                    const tsSidebar = document.getElementById('tapescript-sidebar');
+                    const panelsContainer = document.getElementById('panels-container');
+                    
+                    if (tsSidebar && panelsContainer) {
+                        tsSidebar.classList.add('open');
+                        panelsContainer.classList.add('script-open');
+                    }
+                    
+                    // Hiện các khối Giải thích (Explanations) dưới mỗi câu hỏi
+                    const explanations = document.querySelectorAll('.explanation');
+                    explanations.forEach(expl => {
+                        expl.classList.remove('hidden');
+                    });
+                });
+            }
+
+            // --- 3. CLICK ICON "🔍" CUỘN ĐẾN EVIDENCE VÀ HIGHLIGHT ---
+            const evidenceIcons = document.querySelectorAll('.evidence-icon');
+            const tsSidebarContainer = document.getElementById('tapescript-sidebar');
+
+            evidenceIcons.forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement && tsSidebarContainer) {
+                        // Tính toán vị trí cuộn cho container chứa Tapescript
+                        const topPos = targetElement.offsetTop - tsSidebarContainer.offsetTop - 60;
+                        tsSidebarContainer.scrollTo({
+                            top: topPos,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Restart CSS animation (Trigger reflow)
+                        targetElement.classList.remove('evidence-highlight');
+                        void targetElement.offsetWidth; 
+                        targetElement.classList.add('evidence-highlight');
+                        
+                        // Xóa highlight sau 3s
+                        setTimeout(() => {
+                            targetElement.classList.remove('evidence-highlight');
+                        }, 3000);
+                    }
+                });
+            });
+
+            // --- 4. HIGHLIGHT TEXT MÀU VÀNG KHI NGƯỜI DÙNG BÔI ĐEN ---
+            const appContainer = document.getElementById('app');
+            if (appContainer) {
+                appContainer.addEventListener('mouseup', () => {
+                    const selection = window.getSelection();
+                    const selectedText = selection.toString().trim();
+                    
+                    if (selectedText.length > 0) {
+                        try {
+                            const range = selection.getRangeAt(0);
+                            const span = document.createElement('span');
+                            span.className = 'user-highlight';
+                            
+                            range.surroundContents(span);
+                            selection.removeAllRanges(); // Xóa bôi đen hệ thống
+                        } catch (err) {
+                            console.warn("Không thể highlight khi bôi đen vắt qua nhiều block element. Vui lòng bôi đen gọn trong 1 thẻ.");
+                        }
+                    }
+                });
+            }
+
+            // --- 5. ĐỔI MÀU Ô SỐ DƯỚI SIDEBAR KHI ĐÃ ĐIỀN ĐÁP ÁN ---
+            const answerInputs = document.querySelectorAll('.answer-input');
+            answerInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    const match = this.id.match(/\d+/);
+                    if (match) {
+                        const qNum = match[0];
+                        const subBtn = document.querySelector(`.subQuestion[data-q="${qNum}"]`);
+                        
+                        if (subBtn) {
+                            if (this.value.trim().length > 0) {
+                                subBtn.classList.add('answered-blue');
+                            } else {
+                                subBtn.classList.remove('answered-blue');
+                            }
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
